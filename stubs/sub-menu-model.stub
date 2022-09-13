@@ -1,0 +1,16 @@
+<?php
+/**
+* Created by Bengs.
+* User: contato@bengs.com.br
+* https://www.bengs.com.br
+*/
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Tall\Models\SubMenu as AbstractSubMenu;
+
+class SubMenu extends AbstractSubMenu
+{
+    use HasFactory;
+
+}

@@ -1,0 +1,13 @@
+<div>
+    <x-input class="!pl-[3.5rem]" wire:model.defer="data.label"
+        prefix="{{ str_pad(data_get($model, $field), 4, '0', STR_PAD_LEFT) }}" placeholder="{{ __($field) }}"
+        readonly>
+        <x-slot name="append">
+            <div class="absolute inset-y-0 right-0 flex items-center p-0.5">
+                <x-button wire:click="openModal" label="Selecione" class="h-full rounded-r-md" icon="search"
+                    primary flat squared />
+            </div>
+        </x-slot>
+    </x-input>
+     @include('livewire.admin.includes.form.category')
+</div>

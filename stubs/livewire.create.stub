@@ -1,0 +1,65 @@
+<?php
+/**
+* Created by Bengs.
+* User: contato@bengs.com.br
+* https://www.bengs.com.br
+*/
+
+namespace [namespace];
+
+use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use App\Http\Livewire\FormComponent;
+use [modelnamespace];
+
+class CreateComponent extends FormComponent
+{
+    use AuthorizesRequests;
+
+    public $title = "Cadastrar";
+
+    public function mount([model] $model)
+    {
+        $this->authorize(Route::currentRouteName());
+        $this->setFormProperties($model);
+        data_set($this->data,'name', '');
+        data_set($this->data,'user_id', auth()->id());
+        data_set($this->data,'status', 'draft');
+        data_set($this->data,'created_at', now()->format("Y-m-d H:i:s"));
+        data_set($this->data,'updated_at', now()->format("Y-m-d H:i:s"));
+    }
+
+    public function route(){
+        Route::get('/[path]/cadastrar', static::class)->name('[route].create');
+    }
+
+    public function rules()
+    {
+        return [
+            'name'=>'required'
+        ];
+    }
+
+    public function getListProperty()
+    {
+        return '[route]';
+    }
+    public function getDeleteProperty()
+    {
+       return '[route].delete';
+    }
+
+    public function getEditProperty()
+    {
+       return '[route].edit';
+    }
+
+    public function getCreateProperty()
+    {
+       return '[route].create';
+    }
+    public function view()
+    {
+        return '[view]';
+    }
+}

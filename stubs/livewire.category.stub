@@ -1,0 +1,83 @@
+<?php
+/**
+* Created by Bengs.
+* User: contato@bengs.com.br
+* https://www.bengs.com.br
+*/
+namespace [namespace];
+
+use App\Http\Livewire\Components\AbstractFormComponent;
+use [modelnamespace];
+
+class [class] extends AbstractFormComponent
+{
+
+    public function mount([model] $model, $field)
+    {
+        $this->data[$field]= data_get($model, $field);
+        if($model = $model->model){
+            $this->data['label']= $menu->name;
+            //Descomentar se a tabela conter muintos registros
+            //$this->search = $menu->name;
+        }
+        $this->model = $model;
+        $this->field = $field;
+    }
+
+    public function getCategoryProperty()
+    {
+        return app([model]::class);
+    }
+
+    public function getModelsProperty()
+    {
+        $builder =  [model]::query();
+        if($search = $this->search){
+            $builder->where($this->fieldCategory, 'LIKE', "%{$search}%");
+        }
+        return $builder->paginate(15);
+    }
+
+    public function rules()
+    {
+        return [
+            'category.name' => 'required',
+            'category.description' => 'required',
+        ];
+    }
+
+    public function save()
+    {
+        if ($this->model->exists) {
+            $this->model->update($this->data);
+        }
+        $this->data['label']= [model]::find(data_get($this->data, $this->field))->name;
+        $this->emit('loadData', [
+              'id'=>data_get($this->data, $this->field),
+              'label'=>data_get($this->data, 'label'),
+              'field' => $this->field
+          ]);
+        $this->cardModal = false;
+    }
+
+    public function submit()
+    {
+        $this->validate();
+        $this->category['user_id'] = auth()->user()->id;
+        $this->category['status'] = 1;
+        $this->category['created_at'] = now()->format("Y-m-d H:i:s");
+        $this->category['updated_at'] = now()->format("Y-m-d H:i:s");
+
+        if($model = [model]::create($this->category)){
+            $data[$this->field] = $model->id;
+            $this->model->update($data);
+            $this->data['label']= data_get($model, $this->fieldCategory);
+            $this->emit('loadData');
+            $this->cardModal = false;
+        }
+    }
+    public function render()
+    {
+       return view('[view]');
+    }
+}

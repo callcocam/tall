@@ -1,0 +1,1 @@
+<x-dynamic-component component="tall::icons.{{ $style }}.{{ $name }}" {{ $attributes }} />
