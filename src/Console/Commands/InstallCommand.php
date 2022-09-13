@@ -67,6 +67,7 @@ class InstallCommand extends MakeCommand
             File::put(app_path('Models/Permission.php'), file_get_contents(base_path('stubs/permission-model.stub')));
             File::put(app_path('Models/Menu.php'), file_get_contents(base_path('stubs/menu-model.stub')));
             File::put(app_path('Models/SubMenu.php'), file_get_contents(base_path('stubs/sub-menu-model.stub')));
+            File::put(resource_path('views/vendor/livewire/pagination.blade.php'), file_get_contents(base_path('stubs/pagination-blade.stub')));
             if ($this->option('m')) {
                 $this->call('migrate:fresh',[
                     '--seed' => true

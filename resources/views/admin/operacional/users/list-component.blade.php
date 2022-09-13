@@ -15,11 +15,11 @@
                             @endisset
                         </div>
                         <div class="mt-4 sm:mt-0 sm:ml-16 flex items-center space-x-2">
-                            <x-table.filters.clear  :filters="$filters" />
-                            <x-table.search />
-                            <x-table.add href="{{ route($this->create) }}">
+                            <x-tall::table.filters.clear  :filters="$filters" />
+                            <x-tall::table.search />
+                            <x-tall::table.add href="{{ route($this->create) }}">
                                 {{ __('Adicionar User') }}
-                            </x-table.add>
+                            </x-tall::table.add>
                         </div>
                     </div>
                     <table class="w-full table-auto">
@@ -27,12 +27,12 @@
                             <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal rounded-t-md">
                                 <th class="py-1 px-6 text-left  cursor-pointer">
                                     <div class="flex flex-col space-y-1">
-                                        <x-table.sort name="name">{{ __('Nome') }}</x-table.sort>
-                                        <x-table.filters.select name="role" :options="$this->roles" />
+                                        <x-tall::table.sort name="name">{{ __('Nome') }}</x-tall::table.sort>
+                                        <x-tall::table.filters.select name="role" :options="$this->roles" />
                                     </div>
                                 </th>
                                 <th class="py-1 px-6 text-left">
-                                    <x-table.filters.status sort="1" />
+                                    <x-tall::table.filters.status sort="1" />
                                 </th>
                                 <th class="py-3 px-6 text-center">#</th>
                             </tr>
@@ -45,10 +45,10 @@
                                             {{ $model->name }}
                                         </td>
                                         <td class="py-3 px-6 text-left">
-                                            <x-table.status status="{{ $model->status }}" />
+                                            <x-tall::table.status status="{{ $model->status }}" />
                                         </td>
                                         <td class="py-3 px-6 text-center">
-                                            <x-table.actions :model="$model" />
+                                            <x-tall::table.actions :model="$model" />
                                         </td>
                                     </tr>
                                 @endforeach
@@ -63,7 +63,7 @@
                         @else
                             <tr>
                                 <td colspan="3" class="w-full p-2 space-x-3">
-                                    <x-table.empty />
+                                    <x-tall::table.empty />
                                 </td>
                             </tr>
                         @endif

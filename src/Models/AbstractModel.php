@@ -21,9 +21,12 @@ class AbstractModel extends Model
     use HasFactory, BelongsToTenants, DateRange, HasSlug, SoftDeletes, UuidGenerate;
 
 
-    public $incrementing = false;
-
-    protected $keyType = "string";
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+        $this->setIncrementing(config('tall.incrementing', false));
+        $this->setKeyType(config('tall.keyType', 'string'));
+    }   
 
     /**
      * The attributes that should be cast.

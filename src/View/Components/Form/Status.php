@@ -17,7 +17,7 @@ class Status extends Radio
     public function __construct($label, $name=null)
     {
         $this->init($label, $name);
-        $this->options(['0'=>"Desabilitado", '1'=>'Abilitado']);
+        $this->options(['Desabilitado'=>"draft", 'Abilitado'=>'published']);
     }
 
     /**

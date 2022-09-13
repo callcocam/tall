@@ -1,9 +1,4 @@
-<div class="relative inline-block px-3 text-left mt-1" x-data="{
-    open: false,
-    toggle() {
-        this.open = !this.open
-    }
-}">
+<div class="relative inline-block px-3 text-left mt-1" x-data="accountSideabar(false)">
     <div>
         <button x-on:click="toggle" type="button"
             class="group w-full rounded-md bg-gray-100 px-3.5 py-2 text-left text-sm font-medium text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-gray-100"
@@ -36,17 +31,64 @@
         role="menu" aria-orientation="vertical" aria-labelledby="options-menu-button" tabindex="-1">
         <div class="py-1" role="none">
             <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
-            <a href="{{ route('profile.show') }}" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem"
-                tabindex="-1" id="options-menu-item-0">{{ __('Meus dados') }}</a>
+            @if (\Route::has('profile.show'))
+                @can('profile.show')
+                    <a href="{{ route('profile.show') }}"
+                        class="text-gray-700 block px-4 py-2 text-sm {{ request()->routeIs('profile.show') ? 'bg-gray-100 text-gray-900' : 'text-gray-700' }}"
+                        role="menuitem" tabindex="-1" id="options-menu-item-0">{{ __('View profile') }}</a>
+                @endcan
+            @endif
+            @if (\Route::has('tenant.show'))
+                @can('tenant.show')
+                    <a href="{{ route('tenant.show') }}"
+                        class="text-gray-700 block px-4 py-2 text-sm {{ request()->routeIs('tenant.show') ? 'bg-gray-100 text-gray-900' : 'text-gray-700' }}"
+                        role="menuitem" tabindex="-1" id="options-menu-item-0">{{ __('Settings') }}</a>
+                @endcan
+            @endif
         </div>
-
+        <div class="py-1" role="none">
+            @if (\Route::has('admin.users'))
+                @can('admin.users')
+                    <a href="{{ route('admin.users') }}"
+                        class="text-gray-700 block px-4 py-2 text-sm {{ request()->routeIs('admin.users') ? 'bg-gray-100 text-gray-900' : 'text-gray-700' }}"
+                        role="menuitem" tabindex="-1" id="options-users-item-3">{{ __('Users') }}</a>
+                @endcan
+            @endif
+            @if (\Route::has('admin.roles'))
+                @can('admin.roles')
+                    <a href="{{ route('admin.roles') }}"
+                        class="text-gray-700 block px-4 py-2 text-sm {{ request()->routeIs('admin.roles') ? 'bg-gray-100 text-gray-900' : 'text-gray-700' }}"
+                        role="menuitem" tabindex="-1" id="options-roles-item-3">{{ __('Roles') }}</a>
+                @endcan
+            @endif
+            @if (\Route::has('admin.permissions'))
+                @can('admin.permissions')
+                    <a href="{{ route('admin.permissions') }}"
+                        class="text-gray-700 block px-4 py-2 text-sm {{ request()->routeIs('admin.permissions') ? 'bg-gray-100 text-gray-900' : 'text-gray-700' }}"
+                        role="menuitem" tabindex="-1" id="options-permissions-item-3">{{ __('Permissions') }}</a>
+                @endcan
+            @endif
+            @if (\Route::has('admin.menus'))
+                @can('admin.menus')
+                    <a href="{{ route('admin.menus') }}"
+                        class="text-gray-700 block px-4 py-2 text-sm {{ request()->routeIs('admin.menus') ? 'bg-gray-100 text-gray-900' : 'text-gray-700' }}"
+                        role="menuitem" tabindex="-1" id="options-menus-item-3">{{ __('Menus') }}</a>
+                @endcan
+            @endif
+            @if (\Route::has('admin.sub-menus'))
+                @can('admin.sub-menus')
+                    <a href="{{ route('admin.sub-menus') }}"
+                        class="text-gray-700 block px-4 py-2 text-sm {{ request()->routeIs('admin.sub-menus') ? 'bg-gray-100 text-gray-900' : 'text-gray-700' }}"
+                        role="menuitem" tabindex="-1" id="options-sub-menus-item-3">{{ __('Sub Menus') }}</a>
+                @endcan
+            @endif
+        </div>
         <!-- Authentication -->
         <form class="py-1" role="none" method="POST" action="{{ route('logout') }}" x-data>
             @csrf
-
             <a class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" href="{{ route('logout') }}"
                 @click.prevent="$root.submit();">
-                {{ __('Deslogar') }}
+                {{ __('Log Out') }}
             </a>
         </form>
     </div>

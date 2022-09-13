@@ -63,6 +63,19 @@ class DatabaseSeeder extends Seeder
             'name' => 'Menu Admin',
             'slug' => 'menu-admin'
         ]);
+        $menu->sub_menus()->create([
+            'tenant_id' =>  $id,
+            'assets'=>'menus',
+            'name' => 'Home',
+            'slug' => 'dashboard',
+            'link' => null,
+            'icone' => 'home',
+            'attributes' => null,
+            'description' => null,
+            'ordering' => 1,
+            'sibling' => null,
+            'status' =>'published'
+         ]);
 
        $operacional = $menu->sub_menus()->create([
                         'tenant_id' =>  $id,
@@ -70,10 +83,10 @@ class DatabaseSeeder extends Seeder
                         'name' => 'Operacional',
                         'slug' => 'operacional',
                         'link' => null,
-                        'icone' => 'user',
+                        'icone' => 'cog',
                         'attributes' => null,
                         'description' => null,
-                        'ordering' => 1,
+                        'ordering' => 2,
                         'sibling' => null,
                         'status' =>'published'
                      ]);
@@ -87,7 +100,7 @@ class DatabaseSeeder extends Seeder
             'icone' => 'chevron-right',
             'attributes' => null,
             'description' => null,
-            'ordering' => 1,
+            'ordering' => 3,
             'sibling' => null,
             'status' =>'published'
         ]);
@@ -100,7 +113,7 @@ class DatabaseSeeder extends Seeder
             'icone' => 'chevron-right',
             'attributes' => null,
             'description' => null,
-            'ordering' => 1,
+            'ordering' => 4,
             'sibling' => null,
             'status' =>'published'
         ]);
@@ -113,7 +126,7 @@ class DatabaseSeeder extends Seeder
             'icone' => 'chevron-right',
             'attributes' => null,
             'description' => null,
-            'ordering' => 1,
+            'ordering' => 5,
             'sibling' => null,
             'status' =>'published'
         ]);
@@ -126,7 +139,7 @@ class DatabaseSeeder extends Seeder
             'icone' => 'chevron-right',
             'attributes' => null,
             'description' => null,
-            'ordering' => 1,
+            'ordering' => 6,
             'sibling' => null,
             'status' =>'published'
         ]);
@@ -139,7 +152,7 @@ class DatabaseSeeder extends Seeder
             'icone' => 'chevron-right',
             'attributes' => null,
             'description' => null,
-            'ordering' => 1,
+            'ordering' => 7,
             'sibling' => null,
             'status' =>'published'
         ]);

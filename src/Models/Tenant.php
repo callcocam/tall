@@ -7,10 +7,11 @@
 namespace Tall\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Tall\Models\Concerns\HasCoverPhoto;
 
 class Tenant extends AbstractModel
 {
-    use HasFactory;
+    use HasFactory, HasCoverPhoto;
 
     protected $guarded = ['id'];
 
@@ -21,5 +22,14 @@ class Tenant extends AbstractModel
         static::$landlord->disable();
     }
 
+    
+     /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = [
+        'cover_photo_url'
+    ];
 
 }

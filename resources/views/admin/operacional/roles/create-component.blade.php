@@ -7,7 +7,7 @@
         <div class="min-w-screen min-h-screen bg-gray-100 flex  font-sans overflow-hidden">
             <div class="w-full">
                 <div class="bg-white shadow-md rounded">
-                    @include('x-tall::form.create')
+                    @include('tall::form.create')
                 </div>
             </div>
         </div>

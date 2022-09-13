@@ -40,7 +40,7 @@ class DashboardComponent extends AbstractComponent
 
     protected function layout()
     {
-        return "admin";
+        return "tall::layouts.admin";
     }
 
     public function view()

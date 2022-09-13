@@ -14,7 +14,7 @@
                             {{-- <p class="mt-1 max-w-2xl text-sm text-gray-500">Personal details and application.</p> --}}
                         </div>
                         <div class="border-t border-gray-200">
-                            @include('x-tall::form.show')
+                            @include('tall::form.show')
                         </div>
                     </div>
                 </div>

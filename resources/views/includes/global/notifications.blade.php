@@ -1,26 +1,8 @@
-<div x-data="{
-    list: [],
-    notify(title, message, type = 'success', open = true, time = 3000) {
-        this.list.push({
-            title,
-            message,
-            type,
-            open
-        })
-        this.list.findIndex((v, i) => {
-            this.close(time, i)
-        })
-    },
-    close(time, i) {
-        setTimeout(() => {
-            this.list[i].open = false
-        }, time)
-    }
-}">
+<div>
     <div aria-live="assertive"
         class="pointer-events-none fixed inset-0 flex items-end px-4 py-6 sm:items-start sm:p-6 z-50">
         <div class="flex w-full flex-col items-center space-y-4 sm:items-end">
-            <template x-for="(notification, index) in list">
+            <template x-for="(notification, index) in $store.notifications.list">
                 <div x-show="notification.open" :key="index"
                     x-transition:enter="transform ease-out duration-300 transition"
                     x-transition:enter-start="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2"

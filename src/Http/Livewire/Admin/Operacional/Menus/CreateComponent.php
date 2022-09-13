@@ -25,8 +25,8 @@ class CreateComponent extends FormComponent
         data_set($this->data,'name', '');
         data_set($this->data,'user_id', auth()->id());
         data_set($this->data,'status', 'draft');
-        data_set($this->data,'created_at', now()->format("Y-m-d H:i:s"));
-        data_set($this->data,'updated_at', now()->format("Y-m-d H:i:s"));
+        data_set($this->data,'created_at', now()->format("Y-m-d"));
+        data_set($this->data,'updated_at', now()->format("Y-m-d"));
     }
 
     public function route(){

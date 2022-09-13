@@ -6,12 +6,12 @@
 */
 namespace Tall\Http\Livewire\Includes\Admin\Sidebar\Mobile;
 
-use Livewire\Component;
+use Tall\Http\Livewire\Includes\Admin\Sidebar\AbstractNavComponent;
 
-class NavComponent extends Component
+class NavComponent extends AbstractNavComponent
 {
-    public function render()
+    public function view()
     {
-        return view('tall::includes.admin.sidebar.mobile.nav-component');
+        return 'tall::includes.admin.sidebar.mobile.nav-component';
     }
 }

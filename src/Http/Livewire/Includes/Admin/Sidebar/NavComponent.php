@@ -6,45 +6,15 @@
 */
 namespace Tall\Http\Livewire\Includes\Admin\Sidebar;
 
-use Livewire\Component;
 use App\Models\Menu;
 use App\Models\SubMenu;
 
-class NavComponent extends Component
+class NavComponent extends AbstractNavComponent
 {
 
-    public $search="";
-
-    public $showDropdown=true;
-
-    protected $listeners = ['loadMenus'];
-
-    public function getMenusProperty()
+    public function view()
     {
-        $menus = [];
-        if($menu = Menu::query()->where([
-            'slug' => 'menu-admin',
-        ])->first()){
-            $builder =  $menu->sub_menus();
-            if($sarch = $this->search){
-                $builder->where('name','LIKE',"%{$this->search}%");
-            }
-            $menus = $builder->get()->map(function (SubMenu $SubMenu) {
-                $SubMenu->parents = $SubMenu;
-
-                return $SubMenu;
-            });
-        }
-        return $menus;
+        return 'tall::includes.admin.sidebar.nav-component';
     }
 
-    public function render()
-    {
-        return view('tall::includes.admin.sidebar.nav-component');
-    }
-
-    public function loadMenus($data = [])
-    {
-
-    }
 }

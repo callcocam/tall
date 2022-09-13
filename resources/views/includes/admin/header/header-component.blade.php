@@ -1,13 +1,13 @@
-<div x-clock x-data="{ open :false}">
-    <div class="relative z-10" role="dialog" x-bind:aria-modal="open.toString()" @click.away="open=false"
-        @close.stop="open=false">
+<div x-clock x-data="search(false)" @click.away="open=false"
+@close.stop="open=false">
+    <div class="relative z-10" role="dialog" x-bind:aria-modal="open.toString()">
 
         <div x-cloak x-show="open" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0"
             x-transition:enter-end="opacity-100" x-transition:leave="ease-in duration-200"
             x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
             x-description=" Command palette, show/hide based on modal state."
             class="fixed inset-0 bg-gray-500 bg-opacity-25 transition-opacity"></div>
-        <x-circle-button x-show="!open" indigo icon="search" x-on:click="toggle" />
+        {{-- <x-circle-button x-show="!open" indigo icon="search" x-on:click="toggle" /> --}}
 
         <div x-show="open" x-cloak x-transition:enter="ease-out duration-300"
             x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
@@ -17,7 +17,7 @@
             class="fixed inset-0 z-10 overflow-y-auto p-4 sm:p-6 md:p-20">
             <!--
         Command palette, show/hide based on modal state.
-
+  
         Entering: "ease-out duration-300"
           From: "opacity-0 scale-95"
           To: "opacity-100 scale-100"
@@ -37,19 +37,19 @@
                     </svg>
                     <input type="text"
                         class="h-12 w-full border-0 bg-transparent pl-11 pr-4 text-gray-800 placeholder-gray-400 focus:ring-0 sm:text-sm"
-                        placeholder="Pesquisar..." role="combobox" aria-expanded="false" aria-controls="options">
+                        placeholder="Search..." role="combobox" aria-expanded="false" aria-controls="options">
                 </div>
 
-{{--                <!-- Results, show/hide based on command palette state -->--}}
-{{--                <ul class="max-h-72 scroll-py-2 overflow-y-auto py-2 text-sm text-gray-800" id="options"--}}
-{{--                    role="listbox">--}}
-{{--                    <!-- Active: "bg-indigo-600 text-white" -->--}}
-{{--                    <li x-on:click="toggle" class="select-none px-4 py-2 cursor-pointer" id="option-1" role="option"--}}
-{{--                        tabindex="-1">Leslie--}}
-{{--                        Alexander</li>--}}
-{{--                </ul>--}}
-{{--                <!-- Empty state, show/hide based on command palette state -->--}}
-{{--                <p class="p-4 text-sm text-gray-500">Na.</p>--}}
+                <!-- Results, show/hide based on command palette state -->
+                <ul class="max-h-72 scroll-py-2 overflow-y-auto py-2 text-sm text-gray-800" id="options"
+                    role="listbox">
+                    <!-- Active: "bg-indigo-600 text-white" -->
+                    <li x-on:click="toggle" class="select-none px-4 py-2 cursor-pointer" id="option-1" role="option"
+                        tabindex="-1">Leslie
+                        Alexander</li>
+                </ul>
+                <!-- Empty state, show/hide based on command palette state -->
+                <p class="p-4 text-sm text-gray-500">No people found.</p>
             </div>
         </div>
     </div>

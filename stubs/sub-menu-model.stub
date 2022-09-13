@@ -13,4 +13,13 @@ class SubMenu extends AbstractSubMenu
 {
     use HasFactory;
 
+    /**
+    * The attributes that should be cast.
+    *
+    * @var array
+    */
+   protected $casts = [
+       'created_at' => 'datetime:Y-m-d',
+       'updated_at' => 'datetime:Y-m-d'
+   ];
 }

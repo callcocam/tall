@@ -13,7 +13,7 @@
                             <h3 class="text-lg leading-6 font-medium text-gray-900">
                                 {{ $model->name }}</h3>
                         </div>
-                          @include('x-tall::form.edit')
+                          @include('tall::form.edit')
                     </div>
                 </div>
             </div>

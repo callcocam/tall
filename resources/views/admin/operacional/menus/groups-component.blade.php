@@ -19,10 +19,10 @@
                         @this.reorderGroups(groupIds);
                     }
                 })"
-                    class="divide-y divide-gray-200  rounded-lg bg-gray-100 p-2 shadow sm:grid sm:grid-cols-2 sm:gap-4 sm:divide-y-0">
+                    class="divide-y divide-gray-200  rounded-lg bg-gray-100 p-2 shadow grid grid-cols-1 lg:grid-cols-2 sm:gap-4 sm:divide-y-0">
                     @foreach ($menus as $menu)
                         <div group-id="{{ $menu->id }}"
-                            class="rounded-tl-lg rounded-tr-lg sm:rounded-tr-none relative group bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+                            class="rounded-tl-lg rounded-tr-lg sm:rounded-tr-none relative group bg-white p-6 col-span-2 lg:col-span-1 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
                             <div class=" cursor-move bg-gray-200 rounded-md p-2 relative">
                                 {{-- <span
                                     class="absolute -top-2 -right-2 bg-blue-500 h-5 shadow-md text-white w-10 rounded-lg text-center flex justify-center items-center text-[10px]">{{ $menu->id }}</span> --}}
@@ -35,7 +35,7 @@
                                                 name="arrows-expand" />
                                         </div>
                                         <div class="rounded-lg text-lg inline-flex p-3 text-teal-700 flex-1">
-                                            {{ $menu->name }} {{ $sortable }}
+                                            {{ $menu->name }}  
                                         </div>
                                     </div>
                                     <div class="flex justify-end">

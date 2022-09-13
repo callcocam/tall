@@ -27,76 +27,84 @@
                 </button>
             </div>
             <div class="flex flex-shrink-0 items-center px-4">
-                <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=purple&shade=500"
-                    alt="Your Company">
+                <img class="h-8 w-auto" src="{{ app('currentTenant')->cover_photo_url }}"
+                    alt="{{ app('currentTenant')->name }}">
             </div>
             <div class="mt-5 h-0 flex-1 overflow-y-auto">
                 <nav class="px-2">
-                    <div class="space-y-1">
-                        <!-- Current: "bg-gray-100 text-gray-900", Default: "text-gray-600 hover:text-gray-900 hover:bg-gray-50" -->
-                        <a href="#"
-                            class="bg-gray-100 text-gray-900 group flex items-center px-2 py-2 text-base leading-5 font-medium rounded-md"
-                            aria-current="page">
-                            <!--
-                    Heroicon name: outline/home
-
-                    Current: "text-gray-500", Default: "text-gray-400 group-hover:text-gray-500"
-                  -->
-                            <svg class="text-gray-500 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg"
-                                fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
-                            </svg>
-                            Home
-                        </a>
-
-                        <a href="#"
-                            class="text-gray-600 hover:text-gray-900 hover:bg-gray-50 group flex items-center px-2 py-2 text-base leading-5 font-medium rounded-md">
-                            <!-- Heroicon name: outline/bars-4 -->
-                            <svg class="text-gray-400 group-hover:text-gray-500 mr-3 flex-shrink-0 h-6 w-6"
-                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
-                            </svg>
-                            My tasks
-                        </a>
-
-                        <a href="#"
-                            class="text-gray-600 hover:text-gray-900 hover:bg-gray-50 group flex items-center px-2 py-2 text-base leading-5 font-medium rounded-md">
-                            <!-- Heroicon name: outline/clock -->
-                            <svg class="text-gray-400 group-hover:text-gray-500 mr-3 flex-shrink-0 h-6 w-6"
-                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                            Recent
-                        </a>
-                    </div>
-                    <div class="mt-8">
-                        <h3 class="px-3 text-sm font-medium text-gray-500" id="mobile-teams-headline">Teams</h3>
-                        <div class="mt-1 space-y-1" role="group" aria-labelledby="mobile-teams-headline">
-                            <a href="#"
-                                class="group flex items-center rounded-md px-3 py-2 text-base font-medium leading-5 text-gray-600 hover:bg-gray-50 hover:text-gray-900">
-                                <span class="w-2.5 h-2.5 mr-4 bg-indigo-500 rounded-full" aria-hidden="true"></span>
-                                <span class="truncate">Engineering</span>
-                            </a>
-
-                            <a href="#"
-                                class="group flex items-center rounded-md px-3 py-2 text-base font-medium leading-5 text-gray-600 hover:bg-gray-50 hover:text-gray-900">
-                                <span class="w-2.5 h-2.5 mr-4 bg-green-500 rounded-full" aria-hidden="true"></span>
-                                <span class="truncate">Human Resources</span>
-                            </a>
-
-                            <a href="#"
-                                class="group flex items-center rounded-md px-3 py-2 text-base font-medium leading-5 text-gray-600 hover:bg-gray-50 hover:text-gray-900">
-                                <span class="w-2.5 h-2.5 mr-4 bg-yellow-500 rounded-full" aria-hidden="true"></span>
-                                <span class="truncate">Customer Success</span>
-                            </a>
-                        </div>
-                    </div>
+                    @if ($menus = $this->menus)
+                        @foreach ($menus as $menu)
+                            @if ($sub_menus = $menu->sub_menus)
+                                @if ($sub_menus->count())
+                                    <div class="space-y-1" x-data="sidebar({{ request()->routeIs($menu->parents->toArray()) }})">
+                                        <!-- Current: "bg-gray-100 text-gray-900", Default: "bg-white text-gray-600 hover:bg-gray-50 hover:text-gray-900" -->
+                                        <button type="button" x-on:click="toggle"
+                                            :class="{
+                                                'bg-gray-200 text-gray-900': open,
+                                                'text-gray-600 hover:bg-gray-50 hover:text-gray-900': !(
+                                                    open)
+                                            }"
+                                            class=" group w-full flex items-center pl-2 pr-1 py-2 text-left text-sm font-medium"
+                                            aria-controls="sub-menu-{{ $menu->id }} " {{-- x-bind:aria-expanded="open.toString()" --}}>
+                                            <!-- Heroicon name: outline/users -->
+                                            @if (\View::exists(sprintf('tall::components.icons.outline.%s', $menu->icone)))
+                                                <x-dynamic-component component="tall::icons.outline.{{ $menu->icone }}"
+                                                    class="mr-3 h-6 w-6 flex-shrink-0 text-gray-400 " />
+                                            @elseif(\View::exists(sprintf('tall::components.icons.solid.%s', $menu->icone)))
+                                                <x-dynamic-component component="tall::icons.solid.{{ $menu->icone }}"
+                                                    class="mr-3 h-6 w-6 flex-shrink-0 text-gray-400 " />
+                                            @endif
+                                            {{-- <svg :class="{ 'group-hover:text-gray-500': !open }"
+                                            class="mr-3 h-6 w-6 flex-shrink-0 text-gray-400 "
+                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
+                                        </svg> --}}
+                                            <span class="flex-1 uppercase">{{ $menu->name }} </span>
+                                            <!-- Expanded: "text-gray-400 rotate-90", Collapsed: "text-gray-300" -->
+                                            <svg :class="{ 'text-gray-400 rotate-90': open, 'text-gray-300': !(open) }"
+                                                class="text-gray-300 ml-3 h-5 w-5 flex-shrink-0 transform transition-colors duration-150 ease-in-out group-hover:text-gray-400"
+                                                viewBox="0 0 20 20" aria-hidden="true">
+                                                <path d="M6 6L14 10L6 14V6Z" fill="currentColor" />
+                                            </svg>
+                                        </button>
+                                        <!-- Expandable link section, show/hide based on state. -->
+                                        <div class="space-y-1 bg-gray-50" id="sub-menu-{{ $menu->id }} "
+                                            x-show="open">
+                                            @foreach ($sub_menus as $sub_menu)
+                                                @if (\Route::has($sub_menu->slug))
+                                                    <a href="{{ route($sub_menu->slug) }}"
+                                                        class="group flex w-full items-center rounded-md py-2 pl-11 pr-2 text-sm font-medium  {{ request()->routeIs($sub_menu->slug) ? 'bg-gray-200 text-gray-900' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-200' }}">{{ $sub_menu->name }}</a>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                @else
+                                    @if (\Route::has($menu->slug))
+                                        <div class="space-y-1">
+                                            <!-- Current: "bg-gray-200 text-gray-900", Default: "text-gray-700 hover:text-gray-900 hover:bg-gray-50" -->
+                                            <a href="{{ route($menu->slug) }}"
+                                                class="  group flex items-center px-2 py-2 text-sm font-medium rounded-md {{ request()->routeIs($menu->slug) ? 'bg-gray-200 text-gray-900' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50' }}"
+                                                aria-current="page">
+                                                @if (\View::exists(sprintf('tall::components.icons.outline.%s', $menu->icone)))
+                                                    <x-dynamic-component
+                                                        component="tall::icons.outline.{{ $menu->icone }}"
+                                                        class="mr-3 h-6 w-6 flex-shrink-0 text-gray-400 " />
+                                                @elseif(\View::exists(sprintf('tall::components.icons.solid.%s', $menu->icone)))
+                                                    <x-dynamic-component
+                                                        component="tall::icons.solid.{{ $menu->icone }}"
+                                                        class="mr-3 h-6 w-6 flex-shrink-0 text-gray-400 " />
+                                                @endif
+                                                <span>{{ $menu->name }}</span>
+                                            </a>
+                                        </div>
+                                    @endif
+                                @endif
+                            @endif
+                            {{-- <li class="nav-title">Components</li> --}}
+                        @endforeach
+                    @endif
                 </nav>
             </div>
         </div>
