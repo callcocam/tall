@@ -62,6 +62,12 @@ class InstallCommand extends MakeCommand
                 '--tag' => 'tall',
                 '--force' => true
             ]);
+            if(!is_dir(resource_path('views/vendor'))){
+                mkdir(resource_path('views/vendor'));
+            }
+            if(!is_dir(resource_path('views/vendor/livewire'))){
+                mkdir(resource_path('views/vendor/livewire'));
+            }
             File::put(app_path('Models/User.php'), file_get_contents(base_path('stubs/user-model.stub')));
             File::put(app_path('Models/Role.php'), file_get_contents(base_path('stubs/role-model.stub')));
             File::put(app_path('Models/Permission.php'), file_get_contents(base_path('stubs/permission-model.stub')));
