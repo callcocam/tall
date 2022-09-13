@@ -105,6 +105,17 @@
                             {{-- <li class="nav-title">Components</li> --}}
                         @endforeach
                     @endif
+                    <div class="space-y-1">
+                        <form class="py-1" role="none" method="POST" action="{{ route('logout') }}" x-data>
+                            @csrf
+                            <a class="group flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                                role="menuitem" href="{{ route('logout') }}" @click.prevent="$root.submit();">
+                                <x-dynamic-component component="tall::icons.outline.logout"
+                                    class="mr-3 h-6 w-6 flex-shrink-0 text-gray-400 " />
+                                {{ __('Log Out') }}
+                            </a>
+                        </form>
+                    </div>
                 </nav>
             </div>
         </div>
