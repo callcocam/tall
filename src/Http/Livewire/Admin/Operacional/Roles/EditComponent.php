@@ -51,7 +51,7 @@ class EditComponent extends FormComponent
     protected function fields(){
 
         return [
-            'permissions'=> Access::make('Permissions')->filters($this->filters)->pluck(\Tall\Models\Permission::query())
+            'permissions'=> Access::make('Permissions')->filters($this->filters)->pluck(\App\Models\Permission::query())
         ];
     }
 
