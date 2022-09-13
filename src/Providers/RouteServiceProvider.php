@@ -53,7 +53,9 @@ class RouteServiceProvider extends ServiceProvider
             ->prefix('admin')
             ->group(function(){
                 $this->configureDynamicRoute(sprintf("%s/Http/Livewire/Admin",dirname(__DIR__,1)),'src','\\Tall');
-                $this->configureDynamicRoute(app_path('Http/Livewire/Admin'));
+                if(is_dir(app_path('Http/Livewire/Admin'))){
+                    $this->configureDynamicRoute(app_path('Http/Livewire/Admin'));
+                }
             });
 
         });
