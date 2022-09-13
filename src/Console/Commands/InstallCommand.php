@@ -19,7 +19,7 @@ class InstallCommand extends MakeCommand
      *
      * @var string
      */
-    protected $signature = 'tall:install  {--force}  {--m}';
+    protected $signature = 'tall:install  {--force}  {--m}  {--j}';
 
     /**
      * The console command description.
@@ -37,6 +37,13 @@ class InstallCommand extends MakeCommand
     {
         
         if ($this->option('force')) {
+
+            if ($this->option('j')) {               
+                $this->call('jetstream:install',[
+                    'livewire' => true
+                ]);
+            }
+            
             $path=database_path('migrations');
             foreach ((new \Symfony\Component\Finder\Finder)->in($path)->files()->name('*.php') as $file) {
                 File::delete($file->getRealPath());
