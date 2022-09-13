@@ -40,7 +40,7 @@ class InstallCommand extends MakeCommand
 
             if ($this->option('j')) {               
                 $this->call('jetstream:install',[
-                    'livewire' => true
+                    'stack' => 'livewire'
                 ]);
             }
             

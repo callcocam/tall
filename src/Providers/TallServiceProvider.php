@@ -21,7 +21,10 @@ class TallServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->app->register(\Tall\Tenant\TenantServiceProvider::class);
         $this->app->register(\Tall\Models\Auth\Acl\AclServiceProvider::class);
+        $loader = \Illuminate\Foundation\AliasLoader::getInstance();
+        $loader->alias('Ui', \Tall\Facades\Ui::class);    
     }
 
     /**
@@ -203,6 +206,7 @@ class TallServiceProvider extends ServiceProvider
             __DIR__ . '/../../resources/lang' => base_path('lang/vendor/tall' ),
             __DIR__ . '/../../stubs' => base_path('stubs' ),
             __DIR__ . '/../../config/tall.php' => config_path('tall.php'),
+            __DIR__ . '/../../vite.config.js' => base_path('vite.config.js'),
             __DIR__ . '/../../package.json' => base_path('package.json'),
             __DIR__ . '/../../public/js' => public_path('js'),
             __DIR__ . '/../../public/css' => public_path('css'),

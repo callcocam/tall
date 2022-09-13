@@ -22,7 +22,7 @@ abstract class FormComponent extends AbstractComponent
     
     public function layout()
     {
-        return "admin";
+        return "tall::layouts.admin";
     }
 
     protected function data(){

@@ -24,14 +24,14 @@ abstract class AbstractComponent extends Component
   
     protected function layout()
     {
-        return "app";
+        return "layouts.app";
     }
 
     public function render()
     {
         return view(sprintf("tall::%s-component", $this->view()))
         ->with($this->data())
-        ->layout(sprintf("layouts.%s", $this->layout()));
+        ->layout($this->layout());
     }
 
     public function success($title, $message)
