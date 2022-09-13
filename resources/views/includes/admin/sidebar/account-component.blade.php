@@ -31,17 +31,17 @@
         role="menu" aria-orientation="vertical" aria-labelledby="options-menu-button" tabindex="-1">
         <div class="py-1" role="none">
             <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
-            @if (\Route::has('profile.show'))
-                @can('profile.show')
-                    <a href="{{ route('profile.show') }}"
-                        class="text-gray-700 block px-4 py-2 text-sm {{ request()->routeIs('profile.show') ? 'bg-gray-100 text-gray-900' : 'text-gray-700' }}"
+            @if (\Route::has('admin.profile.view'))
+                @can('admin.profile.view')
+                    <a href="{{ route('admin.profile.view') }}"
+                        class="text-gray-700 block px-4 py-2 text-sm {{ request()->routeIs('admin.profile.view') ? 'bg-gray-100 text-gray-900' : 'text-gray-700' }}"
                         role="menuitem" tabindex="-1" id="options-menu-item-0">{{ __('View profile') }}</a>
                 @endcan
             @endif
-            @if (\Route::has('tenant.show'))
-                @can('tenant.show')
-                    <a href="{{ route('tenant.show') }}"
-                        class="text-gray-700 block px-4 py-2 text-sm {{ request()->routeIs('tenant.show') ? 'bg-gray-100 text-gray-900' : 'text-gray-700' }}"
+            @if (\Route::has('admin.tenant.view'))
+                @can('admin.tenant.view')
+                    <a href="{{ route('admin.tenant.view') }}"
+                        class="text-gray-700 block px-4 py-2 text-sm {{ request()->routeIs('admin.tenant.view') ? 'bg-gray-100 text-gray-900' : 'text-gray-700' }}"
                         role="menuitem" tabindex="-1" id="options-menu-item-0">{{ __('Settings') }}</a>
                 @endcan
             @endif

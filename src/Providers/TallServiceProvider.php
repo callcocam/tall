@@ -76,6 +76,8 @@ class TallServiceProvider extends ServiceProvider
             Livewire::component( 'tall::includes.admin.sidebar.account-component', \Tall\Http\Livewire\Includes\Admin\Sidebar\AccountComponent::class);
             Livewire::component( 'tall::includes.admin.header.search-component', \Tall\Http\Livewire\Includes\Admin\Header\SearchComponent::class);
             Livewire::component( 'tall::includes.admin.header-component', \Tall\Http\Livewire\Includes\Admin\Header\HeaderComponent::class);
+            
+            Livewire::component( 'tall::admin.operacional.tenant.show-component', \Tall\Http\Livewire\Admin\Operacional\Tenant\ShowComponent::class);
 
            
            
@@ -86,6 +88,14 @@ class TallServiceProvider extends ServiceProvider
             Livewire::component( 'tall::admin.operacional.users.create-component', \Tall\Http\Livewire\Admin\Operacional\Users\CreateComponent::class);
             Livewire::component( 'tall::admin.operacional.users.show-component', \Tall\Http\Livewire\Admin\Operacional\Users\ShowComponent::class);
             Livewire::component( 'tall::admin.operacional.users.delete-component', \Tall\Http\Livewire\Admin\Operacional\Users\DeleteComponent::class);
+           
+           
+            Livewire::component( 'tall::admin.operacional.profile.show-component', \Tall\Http\Livewire\Admin\Operacional\Profile\ShowComponent::class);
+            Livewire::component( 'tall::admin.operacional.profile.update-profile-information-form', \Tall\Http\Livewire\Admin\Operacional\Profile\UpdateProfileInformationForm::class);
+            Livewire::component( 'tall::admin.operacional.profile.update-password-form', \Tall\Http\Livewire\Admin\Operacional\Profile\UpdatePasswordForm::class);
+            Livewire::component( 'tall::admin.operacional.profile.two-factor-authentication-form', \Tall\Http\Livewire\Admin\Operacional\Profile\TwoFactorAuthenticationForm::class);
+            Livewire::component( 'tall::admin.operacional.profile.logout-other-browser-sessions-form', \Tall\Http\Livewire\Admin\Operacional\Profile\LogoutOtherBrowserSessionsForm::class);
+            Livewire::component( 'tall::admin.operacional.profile.delete-user-form', \Tall\Http\Livewire\Admin\Operacional\Profile\DeleteUserForm::class);
 
             Livewire::component( 'tall::admin.operacional.roles.list-component', \Tall\Http\Livewire\Admin\Operacional\Roles\ListComponent::class);
             Livewire::component( 'tall::admin.operacional.roles.edit-component', \Tall\Http\Livewire\Admin\Operacional\Roles\EditComponent::class);

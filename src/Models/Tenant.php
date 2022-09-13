@@ -22,6 +22,15 @@ class Tenant extends AbstractModel
         static::$landlord->disable();
     }
 
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'created_at' => 'datetime:Y-m-d',
+        'updated_at' => 'datetime:Y-m-d'
+    ];
     
      /**
      * The accessors to append to the model's array form.
