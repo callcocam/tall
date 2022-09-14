@@ -10,7 +10,7 @@ namespace Tall\Http\Livewire\Admin\Operacional\Tenant;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Tall\Http\Livewire\FormComponent;
-use Tall\Models\Tenant;
+use App\Models\Tenant;
 use Tall\View\Components\Form\{Input};
 
 class ShowComponent extends FormComponent

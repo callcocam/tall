@@ -28,7 +28,7 @@ if (!function_exists('get_tenant')) {
      */
     function get_tenant()
     {
-        return \Tall\Models\Tenant::find(get_tenant_id());
+        return \App\Models\Tenant::find(get_tenant_id());
     }
 }
 

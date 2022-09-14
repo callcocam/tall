@@ -7,7 +7,7 @@
 namespace Tall\Tenant;
 
 use Illuminate\Support\ServiceProvider;
-use Tall\Models\Tenant;
+use App\Models\Tenant;
 use Tall\Tenant\Facades\Tenant as TenantFacade;
 
 class TenantServiceProvider extends ServiceProvider
