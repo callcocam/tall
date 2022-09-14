@@ -109,6 +109,24 @@
 
                 <div class="px-5 py-2 shadow bg-gray-100">
                     {{ $slot }}
+                    @isset($querysLogs)
+                        @if ($querysLogs)
+                            <div class="bg-gray-800 p-4 border-white boder-2">
+                                <table class="text-gray-50 flex w-full space-y-3">
+                                    @foreach ($querysLogs as $item)
+                                        <tr>
+                                            <td class="border-b">
+                                                {{ data_get($item, 'query') }}
+                                            </td>
+                                            <td class="border-b">
+                                                {{ data_get($item, 'time') }}
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </table>
+                            </div>
+                        @endisset
+                    @endif
                 </div>
 
             </main>

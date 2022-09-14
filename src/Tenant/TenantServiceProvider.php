@@ -57,7 +57,7 @@ class TenantServiceProvider extends ServiceProvider
                     die(response("Nenhuma empresa cadastrada com esse endereço " . str_replace("admin.", "", request()->getHost()), 401));
 
                 endif;
-                TenantFacade::addTenant("tenant_id", $this->tenant->id);
+                TenantFacade::addTenant(config('tall.current_tenant_key', 'tenant_id'), $this->tenant->id);
 
             $containerKey = config('tall.current_tenant_container_key', 'currentTenant');
 

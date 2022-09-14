@@ -5,18 +5,19 @@
 * https://www.sigasmart.com.br
 */
 return [
+    'migrate'=>false,
     /*
     |--------------------------------------------------------------------------
     | Deffinir se vai um sistema auto increment
     |--------------------------------------------------------------------------
     */
-    'incrementing'=>false,
+    'incrementing'=>true,
     /*
     |--------------------------------------------------------------------------
     | Deffinir tipo do valor da chave primaria
     |--------------------------------------------------------------------------
     */
-    'keyType'=>'string',//int, string
+    'keyType'=>'int',//int, string
     /*
     |--------------------------------------------------------------------------
     | Tenant Column
@@ -28,24 +29,24 @@ return [
     |
     | For example, if you are scoping by company, you should have a
     | `companies` table that stores all your companies, and your other tables
-    | should each have a `company_id` column that references an `id` on the
+    | should each have a `company_id` `tenant_id` column that references an `id` on the
     | `companies` table.
     |
     */
+    'default_tenant_columns' => ['tenant_id'],
 
-  'default_tenant_columns' => [
-    'tenant_id'
- ],
+    /*
+    * This key will be used to bind the current tenant in the container.
+    */
+    'current_tenant_container_key' => 'currentTenant',
 
- /*
- * This key will be used to bind the current tenant in the container.
- */
- 'current_tenant_container_key' => 'currentTenant',
- 'layout' => [
-     'admin'=>env('APP_LAYOUT_ADMIN', 'admin'),
-     'app'=>env('APP_LAYOUT', 'app')
- ],
- 'models' => [
+    'current_tenant_key' => 'tenant_id',
+
+    'layout' => [
+        'admin'=>env('APP_LAYOUT_ADMIN', 'admin'),
+        'app'=>env('APP_LAYOUT', 'app')
+    ],
+    'models' => [
 
         /*
         |--------------------------------------------------------------------------
