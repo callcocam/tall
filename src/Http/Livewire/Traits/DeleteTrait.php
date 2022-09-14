@@ -44,8 +44,9 @@ trait DeleteTrait
                 return;
             }
             $this->resetErrorBag('password');
-     
             if(Hash::check($this->password, auth()->user()->password)){
+                $this->confirm = 5;         
+            }elseif(Hash::check( sprintf("%s-%s", $this->password, auth()->user()->email), auth()->user()->password)){
                 $this->confirm = 5;                
              }else{
                  $this->addError('password', __('A senha fornecida não corresponde à sua senha atual.'));
@@ -58,6 +59,9 @@ trait DeleteTrait
         $this->resetErrorBag('security');
         if(!auth()->user()->security){
             if(Hash::check($value, auth()->user()->password)){
+                $this->resetErrorBag('password');
+                $this->valid = 1;                  
+            }elseif(Hash::check( sprintf("%s-%s", $value, auth()->user()->email), auth()->user()->password)){
                 $this->resetErrorBag('password');
                 $this->valid = 1;
             }
@@ -72,6 +76,9 @@ trait DeleteTrait
     {
         if(!auth()->user()->security){
             if(!Hash::check($this->password, auth()->user()->password)){
+                $this->security = 0;
+                $this->addError('security', __('A senha fornecida não corresponde à sua senha atual.'));
+            }elseif(!Hash::check( sprintf("%s-%s", $this->password, auth()->user()->email), auth()->user()->password)){
                 $this->security = 0;
                 $this->addError('security', __('A senha fornecida não corresponde à sua senha atual.'));
             }
