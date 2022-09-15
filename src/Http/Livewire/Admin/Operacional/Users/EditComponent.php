@@ -40,7 +40,7 @@ class EditComponent extends FormComponent
     protected function fields(){
 
         return [
-            'access'=> Access::make('Access')->filters($this->filters)->pluck(\Tall\Models\Role::query()),
+            'access'=> Access::make('Access')->filters($this->filters)->pluck(\App\Models\Role::query()),
             'profile_photo_path'=> Avatar::make('profile_photo_path'),
             'document'=> Input::make('Cpf/Cnpj','document'),
             'email'=> Input::make('Email'),
