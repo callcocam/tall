@@ -115,7 +115,7 @@ class ComponentParser
         //$path = Str::beforeLast( $path, ".");
         $path = Str::replace(  ".", "/", $path);
         if(function_exists('renameroute')){
-            $route =renameroute($route);
+            $route =renameroute($this->model);
         }
         else{
             // $route = Str::replace( ".","-", $route);
