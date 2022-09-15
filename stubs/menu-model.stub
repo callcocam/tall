@@ -22,4 +22,13 @@ class Menu extends AbstractMenu
        'created_at' => 'datetime:Y-m-d',
        'updated_at' => 'datetime:Y-m-d'
    ];
+
+   
+    public function sub_menus()
+    {
+        return $this->hasMany(\App\Models\SubMenu::class, 'menu_id')
+        ->where('status', 'published')
+        ->whereNull('sub_menu_id')
+        ->orderby('ordering');
+    }
 }

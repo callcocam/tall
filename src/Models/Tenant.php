@@ -15,12 +15,6 @@ class Tenant extends AbstractModel
 
     protected $guarded = ['id'];
 
-    public function __construct(array $attributes = [])
-    {
-        parent::__construct($attributes);
-
-        static::$landlord->disable();
-    }
 
     /**
      * The attributes that should be cast.

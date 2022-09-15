@@ -28,6 +28,8 @@ class AbstractModel extends Model
         $this->setKeyType(config('tall.keyType', 'string'));
     }   
 
+ 
+    //protected $appends = ['company'];
     /**
      * The attributes that should be cast.
      *
@@ -37,6 +39,14 @@ class AbstractModel extends Model
     //     'created_at' => 'date:d/m/Y H:i:s',
     //     'updated_at' => 'date:d/m/Y H:i:s',
     // ];
+
+    public function getCompanyAttribute()
+    {
+        if(class_exists(\App\Models\Tenant::class))
+            return $this->belongsTo(\App\Models\Tenant::class);
+        else
+            return $this->belongsTo(\Tall\Models\Tenant::class);
+    }
 
      /**
     * @return string

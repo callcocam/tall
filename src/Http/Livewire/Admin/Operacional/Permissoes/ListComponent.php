@@ -20,7 +20,7 @@ class ListComponent extends TableComponent
     {
         $this->authorize(Route::currentRouteName());
 
-        \Tall\Models\Auth\Acl\LoadRouterHelper::save();
+        //\Tall\Models\Auth\Acl\LoadRouterHelper::save();
     }
 
     public function route(){

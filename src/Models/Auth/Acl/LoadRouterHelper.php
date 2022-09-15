@@ -33,7 +33,7 @@ class LoadRouterHelper
     }
 
 
-    public static function save(){
+    public static function save($callback=null){
 
         $permissions = self::make();
 
@@ -46,13 +46,16 @@ class LoadRouterHelper
                     $last = "index";
                 }
                 $name = str_replace(".", " ", \Illuminate\Support\Str::title($permission));
-                Permission::factory()->create([
-                    'name' => $name,
-                    'slug' => $permission,
-                    'group' => $last,
-                    'status' => 'published',
-                    'description' => $name
-                ]);
+                if($callback){
+                    Permission::factory()->create(
+                        $callback([
+                            'name' => $name,
+                            'slug' => $permission,
+                            'group' => $last,
+                            'status' => 'published',
+                            'description' => $name
+                        ]));
+                }               
             }
         }
     }

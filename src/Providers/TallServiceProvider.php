@@ -38,6 +38,8 @@ class TallServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(
             __DIR__ . '/../../config/tall.php','tall'
         );
+        
+      
         if ($this->app->runningInConsole()) {
            $this->commands([
                     \Tall\Console\Commands\InstallCommand::class,
@@ -49,7 +51,14 @@ class TallServiceProvider extends ServiceProvider
                     \Tall\Console\Commands\ShowCommand::class
                 ]);
         }
-
+        $builder = null;
+        if($menu = \App\Models\Menu::query()->where([
+            'slug' => 'menu-admin',
+        ])->first()){
+            $builder =  $menu->sub_menus();   
+        }
+        $this->app->instance('currentMenueAdmin', $builder);
+        
         $this->registerBladeDirectives();
         $this->registerBladeComponents();
         $this->publishMigrations();

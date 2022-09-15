@@ -22,19 +22,20 @@ class AbstractNavComponent extends Component
     public function getMenusProperty()
     {
         $menus = [];
-        if($menu = Menu::query()->where([
-            'slug' => 'menu-admin',
-        ])->first()){
-            $builder =  $menu->sub_menus();
-            if($sarch = $this->search){
-                $builder->where('name','LIKE',"%{$this->search}%");
+      
+        if(app()->has('currentMenueAdmin')){
+            $builder =  app('currentMenueAdmin');
+            if( $builder){
+                if($sarch = $this->search){
+                    $builder->where('name','LIKE',"%{$this->search}%");
+                }
+                $menus = $builder->get()->map(function (SubMenu $SubMenu) {
+                    $SubMenu->parents = $SubMenu;
+                    return $SubMenu;
+                });
             }
-            $menus = $builder->get()->map(function (SubMenu $SubMenu) {
-                $SubMenu->parents = $SubMenu;
-
-                return $SubMenu;
-            });
         }
+       
         return $menus;
     }
 
