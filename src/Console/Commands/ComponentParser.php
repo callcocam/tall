@@ -114,15 +114,22 @@ class ComponentParser
         $route = Str::afterLast( $route, ".");
         //$path = Str::beforeLast( $path, ".");
         $path = Str::replace(  ".", "/", $path);
-        // $route = Str::replace( ".","-", $route);
-        // $route = Str::replace( ".","-", $route);
-        $routeModel = Str::slug($this->model);
-        $routeModel = Str::of($routeModel)->plural();
-        $route = Str::of($routeModel)->prepend('admin.')->value;
+        if(function_exists('renameroute')){
+            $route =renameroute($route);
+        }
+        else{
+            // $route = Str::replace( ".","-", $route);
+            // $route = Str::replace( ".","-", $route);
+            $routeModel = Str::slug($this->model);
+            $routeModel = Str::of($routeModel)->plural();
+            $route = Str::of($routeModel)->prepend('admin.')->value;
+        }
+        
         //  dd($route,$path);
        $view = $this->viewName();
        $view = Str::replace(  "livewire.", "", $view);
        $view = Str::replace(  "-component", "", $view);
+
         return preg_replace(
             ['/\[model\]/', '/\[modelnamespace\]/','/\[path\]/', '/\[route\]/', '/\[namespace\]/', '/\[class\]/', '/\[view\]/'],
             [$this->model, $model, $path, $route, $this->classNamespace(), $this->className(), $view],
