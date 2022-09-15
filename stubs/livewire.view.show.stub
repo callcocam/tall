@@ -1,6 +1,6 @@
 <x-slot name="header">
-    <x-table.breadcrumbs url="{{ route($this->list) }}" label="{{ __('[model]') }}" />
-    <x-table.breadcrumbs url="#" label="{{ $title }}" />
+    <x-tall-table.breadcrumbs url="{{ route($this->list) }}" label="{{ __('[model]') }}" />
+    <x-tall-table.breadcrumbs url="#" label="{{ $title }}" />
 </x-slot>
 <div class="w-full">
     <div class="overflow-x-auto">
@@ -14,7 +14,7 @@
                             {{-- <p class="mt-1 max-w-2xl text-sm text-gray-500">Personal details and application.</p> --}}
                         </div>
                         <div class="border-t border-gray-200">
-                              @include('vendor.form.show')
+                              @include('tall::form.show')
                         </div>
                     </div>
                 </div>
