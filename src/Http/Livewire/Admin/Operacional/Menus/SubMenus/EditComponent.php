@@ -42,6 +42,6 @@ class EditComponent extends FormComponent
 
     public function view()
     {
-        return 'admin.operacional.menus.sub-menus.edit';
+        return 'tall::admin.operacional.menus.sub-menus.edit';
     }
 }

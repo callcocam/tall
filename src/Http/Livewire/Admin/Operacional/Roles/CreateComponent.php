@@ -63,6 +63,6 @@ class CreateComponent extends FormComponent
     }
     public function view()
     {
-        return 'admin.operacional.roles.create';
+        return 'tall::admin.operacional.roles.create';
     }
 }

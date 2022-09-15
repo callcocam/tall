@@ -39,11 +39,6 @@ class ListComponent extends TableComponent
         return $builder;
     }
 
-    public function view()
-    {
-        return 'admin.operacional.permissoes.list';
-    }
-
     public function getRolesProperty()
     {
         return Role::query()->pluck('name','id')->toArray();
@@ -70,6 +65,10 @@ class ListComponent extends TableComponent
     public function getDeleteProperty()
     {
        return 'admin.permissions.delete';
+    }
+    public function view()
+    {
+        return 'tall::admin.operacional.permissoes.list';
     }
 
 

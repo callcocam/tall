@@ -35,11 +35,6 @@ class [class] extends TableComponent
         return $builder;
     }
 
-    public function view()
-    {
-        return '[view]';
-    }
-
     public function getListProperty()
     {
         return '[route]';
@@ -61,5 +56,9 @@ class [class] extends TableComponent
     public function getDeleteProperty()
     {
        return '[route].delete';
+    }
+    public function view()
+    {
+        return 'livewire.[view]';
     }
 }

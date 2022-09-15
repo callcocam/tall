@@ -56,6 +56,6 @@ class ShowComponent extends FormComponent
     }
     public function view()
     {
-        return 'admin.operacional.tenant.show';
+        return 'tall::admin.operacional.tenant.show';
     }
 }

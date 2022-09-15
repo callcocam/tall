@@ -42,11 +42,6 @@ class ListComponent extends TableComponent
         return $builder;
     }
 
-    public function view()
-    {
-        return 'admin.operacional.users.list';
-    }
-
     public function getListProperty()
     {
         return 'admin.users';
@@ -68,5 +63,9 @@ class ListComponent extends TableComponent
     public function getDeleteProperty()
     {
        return 'admin.users.delete';
+    }
+    public function view()
+    {
+        return 'tall::admin.operacional.users.list';
     }
 }

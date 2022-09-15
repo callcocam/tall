@@ -60,6 +60,6 @@ class EditComponent extends FormComponent
 
     public function view()
     {
-        return 'admin.operacional.users.edit';
+        return 'tall::admin.operacional.users.edit';
     }
 }

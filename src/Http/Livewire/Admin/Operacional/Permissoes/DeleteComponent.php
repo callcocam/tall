@@ -54,6 +54,6 @@ class DeleteComponent extends AbstractDeleteComponent
 
     public function view()
     {
-        return 'admin.operacional.permissoes.delete';
+        return 'tall::admin.operacional.permissoes.delete';
     }
 }

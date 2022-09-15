@@ -29,11 +29,6 @@ class ListComponent extends TableComponent
         return Role::query();
     }
 
-    public function view()
-    {
-        return 'admin.operacional.roles.list';
-    }
-
     public function getListProperty()
     {
         return 'admin.roles';
@@ -55,5 +50,9 @@ class ListComponent extends TableComponent
     public function getDeleteProperty()
     {
        return 'admin.roles.delete';
+    }
+    public function view()
+    {
+        return 'tall::admin.operacional.roles.list';
     }
 }

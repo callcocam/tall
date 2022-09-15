@@ -29,7 +29,7 @@ abstract class AbstractComponent extends Component
 
     public function render()
     {
-        return view(sprintf("tall::%s-component", $this->view()))
+        return view(sprintf("%s-component", $this->view()))
         ->with($this->data())        
         ->layout($this->layout(),['querysLogs'=>\DB::getQueryLog()]);
     }

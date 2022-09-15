@@ -45,6 +45,6 @@ class DashboardComponent extends AbstractComponent
 
     public function view()
     {
-        return 'admin.dashboard';
+        return 'tall::admin.dashboard';
     }
 }

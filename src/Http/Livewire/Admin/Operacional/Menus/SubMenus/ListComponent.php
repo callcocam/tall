@@ -49,11 +49,6 @@ class ListComponent extends TableComponent
         return SubMenu::query()->whereNull('sub_menu_id')->pluck('name','id')->toArray();
     }
 
-    public function view()
-    {
-        return 'admin.operacional.menus.sub-menus.list';
-    }
-
     public function getListProperty()
     {
         return 'admin.sub-menus';
@@ -75,5 +70,9 @@ class ListComponent extends TableComponent
     public function getDeleteProperty()
     {
        return 'admin.sub-menus.delete';
+    }
+    public function view()
+    {
+        return 'tall::admin.operacional.menus.sub-menus.list';
     }
 }

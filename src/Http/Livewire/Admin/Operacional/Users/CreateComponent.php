@@ -72,6 +72,6 @@ class CreateComponent extends FormComponent
     }
     public function view()
     {
-        return 'admin.operacional.users.create';
+        return 'tall::admin.operacional.users.create';
     }
 }

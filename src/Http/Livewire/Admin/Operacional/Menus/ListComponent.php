@@ -29,11 +29,6 @@ class ListComponent extends TableComponent
         return Menu::query();
     }
 
-    public function view()
-    {
-        return 'admin.operacional.menus.list';
-    }
-
     public function getListProperty()
     {
         return 'admin.menus';
@@ -55,5 +50,9 @@ class ListComponent extends TableComponent
     public function getDeleteProperty()
     {
        return 'admin.menus.delete';
+    }
+    public function view()
+    {
+        return 'tall::admin.operacional.menus.list';
     }
 }

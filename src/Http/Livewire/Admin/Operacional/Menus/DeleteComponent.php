@@ -52,6 +52,6 @@ class DeleteComponent extends AbstractDeleteComponent
 
     public function view()
     {
-        return 'admin.operacional.menus.delete';
+        return 'tall::admin.operacional.menus.delete';
     }
 }

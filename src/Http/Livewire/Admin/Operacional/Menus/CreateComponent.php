@@ -58,8 +58,9 @@ class CreateComponent extends FormComponent
     {
        return 'admin.menus.create';
     }
+
     public function view()
     {
-        return 'admin.operacional.menus.create';
+        return 'tall::admin.operacional.menus.create';
     }
 }

@@ -45,6 +45,6 @@ class ShowComponent extends FormComponent
     }
     public function view()
     {
-        return 'admin.operacional.permissoes.show';
+        return 'tall::admin.operacional.permissoes.show';
     }
 }
