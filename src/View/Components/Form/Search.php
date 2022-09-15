@@ -6,7 +6,7 @@
 */
 namespace Tall\View\Components\Form;
 
-use App\View\Components\Form\Traits\WithOptions;
+use Tall\View\Components\Form\Traits\WithOptions;
 
 
 class Search extends Field
