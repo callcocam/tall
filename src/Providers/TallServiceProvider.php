@@ -44,6 +44,7 @@ class TallServiceProvider extends ServiceProvider
            $this->commands([
                     \Tall\Console\Commands\InstallCommand::class,
                     \Tall\Console\Commands\CategoryCommand::class,
+                    \Tall\Console\Commands\TableCommand::class,
                     \Tall\Console\Commands\CreateCommand::class,
                     \Tall\Console\Commands\CrudCommand::class,
                     \Tall\Console\Commands\DeleteCommand::class,
