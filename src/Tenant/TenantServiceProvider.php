@@ -52,7 +52,9 @@ class TenantServiceProvider extends ServiceProvider
 
         if(class_exists(Tenant::class)){
             try {
-                $this->tenant = Tenant::query()->where('domain', str_replace("admin.", "", request()->getHost()))->first();
+                $host[] = str_replace(["admin.","www."], ["",""], request()->getHost());
+                $host[] = request()->getHost();
+                $this->tenant = Tenant::query()->whereIn('domain', $host)->first();
                 if (!$this->tenant):
                     die(response("Nenhuma empresa cadastrada com esse endereço " . str_replace("admin.", "", request()->getHost()), 401));
 
@@ -66,7 +68,8 @@ class TenantServiceProvider extends ServiceProvider
             app()->instance($containerKey, $this->tenant);
 
             config([
-                'app.name'=> $this->tenant->name
+                'app.name'=> $this->tenant->name,
+                'app.url'=> request()->getHost(),
             ]);
             // config([
             //     'lfm.folder_categories.file.folder_name'=> sprintf("files/%s", $this->tenant->id)

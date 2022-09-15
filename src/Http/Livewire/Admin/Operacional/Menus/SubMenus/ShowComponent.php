@@ -43,6 +43,6 @@ class ShowComponent extends FormComponent
     }
     public function view()
     {
-        return 'admin.operacional.menus.sub-menus.show';
+        return 'tall::admin.operacional.menus.sub-menus.show';
     }
 }
