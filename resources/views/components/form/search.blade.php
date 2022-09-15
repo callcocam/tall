@@ -16,7 +16,7 @@
                 class="relative -ml-px flex items-center space-x-2 rounded-r-md border border-gray-300 bg-gray-50 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500">
                <x-dynamic-component :component="Ui::component('icon')" :name="$rightIcon" class="{{ $iconSize }} shrink-0" />
             </button>
-            <x-search>
+            <x-tall::search>
                 <div x-cloak @click.away="open=false" @close.stop="open=false"
                     class="mx-auto max-w-xl max-h-96 transform divide-y divide-gray-100 overflow-hidden rounded-xl bg-white shadow-2xl ring-1 ring-black ring-opacity-5 transition-all">
                     <div class="relative">
@@ -62,7 +62,7 @@
                         <p x-show="!lists.length" class="p-4 text-sm text-gray-500">{{ __('No people found.') }}</p>
                     @endif
                 </div>
-            </x-search>
+            </x-tall::search>
         </div>
     </dd>
 </div>
