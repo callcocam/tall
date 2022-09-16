@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Tall\Http\Livewire\FormComponent;
 use App\Models\SubMenu;
+use Tall\View\Components\Form\{ Input};
 
 class EditComponent extends FormComponent
 {
@@ -35,6 +36,13 @@ class EditComponent extends FormComponent
         ];
     }
 
+    protected function fields(){
+
+        return [
+            'slug'=> Input::make('Slug','slug'),
+            'alias'=> Input::make('Alias','alias'),
+        ];
+    }
     public function getListProperty()
     {
         return 'admin.sub-menus';

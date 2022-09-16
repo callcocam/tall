@@ -65,7 +65,7 @@ class TallServiceProvider extends ServiceProvider
         $builder = null;
 
         if($menu = \App\Models\Menu::query()->where([
-            'slug' => config('tall.menu.site', 'menu-home'),
+            'slug' => config('tall.menu.site', 'menus-site'),
         ])->first()){
             $builder =  $menu->sub_menus();   
         }
