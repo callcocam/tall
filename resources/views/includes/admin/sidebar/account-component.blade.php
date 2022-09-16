@@ -47,6 +47,13 @@
             @endif
         </div>
         <div class="py-1" role="none">
+            @if (\Route::has('admin.tenants'))
+                @can('admin.tenants')
+                    <a href="{{ route('admin.tenants') }}"
+                        class="text-gray-700 block px-4 py-2 text-sm {{ request()->routeIs('admin.tenants') ? 'bg-gray-100 text-gray-900' : 'text-gray-700' }}"
+                        role="menuitem" tabindex="-1" id="options-users-item-3">{{ __('Tenants') }}</a>
+                @endcan
+            @endif
             @if (\Route::has('admin.users'))
                 @can('admin.users')
                     <a href="{{ route('admin.users') }}"

@@ -68,6 +68,7 @@ class InstallCommand extends MakeCommand
             if(!is_dir(resource_path('views/vendor/livewire'))){
                 mkdir(resource_path('views/vendor/livewire'));
             }
+            File::put(app_path('Models/CurrentTenant.php'), file_get_contents(base_path('stubs/current-tenant-model.stub')));
             File::put(app_path('Models/Tenant.php'), file_get_contents(base_path('stubs/tenant-model.stub')));
             File::put(app_path('Models/User.php'), file_get_contents(base_path('stubs/user-model.stub')));
             File::put(app_path('Models/Role.php'), file_get_contents(base_path('stubs/role-model.stub')));

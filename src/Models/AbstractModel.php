@@ -48,6 +48,15 @@ class AbstractModel extends Model
             return $this->belongsTo(\Tall\Models\Tenant::class);
     }
 
+
+    public function tenant()
+    {
+        if(class_exists(\App\Models\Tenant::class))
+            return $this->belongsTo(\App\Models\Tenant::class);
+        else
+            return $this->belongsTo(\Tall\Models\Tenant::class);
+    }
+
      /**
     * @return string
     */

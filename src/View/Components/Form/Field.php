@@ -61,6 +61,13 @@ abstract class Field extends Component
         return $this;
     }
 
+    public function span($span)
+    {
+        $this->setProp('span', $span);
+
+        return $this;
+    }
+
     public function getProp($prop)
     {
         return $this->props[$prop];

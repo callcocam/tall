@@ -107,6 +107,12 @@ class TallServiceProvider extends ServiceProvider
             Livewire::component( 'tall::admin.operacional.profile.logout-other-browser-sessions-form', \Tall\Http\Livewire\Admin\Operacional\Profile\LogoutOtherBrowserSessionsForm::class);
             Livewire::component( 'tall::admin.operacional.profile.delete-user-form', \Tall\Http\Livewire\Admin\Operacional\Profile\DeleteUserForm::class);
 
+            Livewire::component( 'tall::admin.operacional.tenants.list-component', \Tall\Http\Livewire\Admin\Operacional\Tenants\ListComponent::class);
+            Livewire::component( 'tall::admin.operacional.tenants.edit-component', \Tall\Http\Livewire\Admin\Operacional\Tenants\EditComponent::class);
+            Livewire::component( 'tall::admin.operacional.tenants.create-component', \Tall\Http\Livewire\Admin\Operacional\Tenants\CreateComponent::class);
+            Livewire::component( 'tall::admin.operacional.tenants.show-component', \Tall\Http\Livewire\Admin\Operacional\Tenants\ShowComponent::class);
+            Livewire::component( 'tall::admin.operacional.tenants.delete-component', \Tall\Http\Livewire\Admin\Operacional\Tenants\DeleteComponent::class);
+            
             Livewire::component( 'tall::admin.operacional.roles.list-component', \Tall\Http\Livewire\Admin\Operacional\Roles\ListComponent::class);
             Livewire::component( 'tall::admin.operacional.roles.edit-component', \Tall\Http\Livewire\Admin\Operacional\Roles\EditComponent::class);
             Livewire::component( 'tall::admin.operacional.roles.create-component', \Tall\Http\Livewire\Admin\Operacional\Roles\CreateComponent::class);
