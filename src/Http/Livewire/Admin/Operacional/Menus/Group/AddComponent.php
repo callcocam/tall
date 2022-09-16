@@ -68,11 +68,11 @@ class AddComponent extends FormComponent
     
     public function getIconsProperty()
     {
-        return load_icones(data_get($this->filters,'icone', null));
+        return load_icones(data_get($this->filters,'icone', ""));
     }
     
     public function view()
     {
-        return 'admin.operacional.menus.group.add';
+        return 'tall::admin.operacional.menus.group.add';
     }
 }

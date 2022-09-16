@@ -27,6 +27,7 @@
                     class="block w-full min-w-0 flex-grow rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
             </div>
             <div class="col-span-3">
+                {{-- @include('tall::admin.operacional.menus.icons') --}}
                 <x-tall::icone field="icone" label="{{ __('Icone') }}" :options="$this->icons" :selectedLabel="data_get($data, 'icone')" :selected="data_get($data, 'icone')"/>
             </div>
             <div class="col-span-3">

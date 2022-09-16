@@ -46,7 +46,7 @@ class AddComponent extends FormComponent
 
     public function view()
     {
-        return 'admin.operacional.menus.group.items.add';
+        return 'tall::admin.operacional.menus.group.items.add';
     }
 
     public function save()
@@ -69,7 +69,7 @@ class AddComponent extends FormComponent
     
     public function getIconsProperty()
     {
-        return load_icones(data_get($this->filters,'icone', null));
+        return load_icones(data_get($this->filters,'icone', ""));
     }
     
     public function showModalToggle()

@@ -15,12 +15,12 @@
         })" class="flex flex-col space-y-1">
             @foreach ($submenus as $submenu)
                 <li menu-id="{{ $submenu->id }}"
-                    class="flex flex-col  w-full pl-2 py-2 rounded-md cursor-move justify-end items-center space-x-2 relative">
-                    <div class="flex ring-2 ring-gray-200 w-full p-1 rounded-sm handler">
-                        <div class="flex ring-2 ring-gray-200 w-full p-1 rounded-sm handler">
+                    class="flex flex-col  w-full pl-2 py-2 rounded-md justify-end items-center space-x-2">
+                    <div class="flex ring-2 ring-gray-200 w-full p-1 rounded-sm">
+                        <div class="flex ring-2 ring-gray-200 w-full p-1 rounded-sm handler  cursor-move items-center ">
                             {{-- <span
                                 class="absolute -top-2 -left-2 bg-blue-500 h-5 shadow-md text-white w-10 rounded-lg text-center flex justify-center items-center text-[10px]">{{ $submenu->id }}</span> --}}
-                            <x-dynamic-component :component="Ui::component('icon')" class="h-6 w-6  rounded-full group-hover:opacity-75"
+                            <x-tall::icons.solid.arrows-expand class="h-8 w-8  rounded-full group-hover:opacity-75"
                                 name="arrows-expand" />
                             <span class="text-gray-800 font-bold">
                                 {{ $submenu->name }}
@@ -46,8 +46,8 @@
                                 @this.reorderItems({ groupId, menuIds });
                             }
                         })"
-                            class="flex flex-col w-full pl-2 py-1 rounded-md cursor-move justify-end items-center space-x-2 relative">
-                            <li>{{ __("Não tem sub menu(s)")}}</li>
+                            class="flex flex-col w-full pl-2 py-1 rounded-md  justify-end items-center space-x-2">
+                            <li>{{ __('Não tem sub menu(s)') }}</li>
                         </ul>
                     @endif
                 </li>

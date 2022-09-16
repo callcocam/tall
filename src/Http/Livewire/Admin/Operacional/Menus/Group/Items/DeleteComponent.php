@@ -21,7 +21,7 @@ class DeleteComponent extends AbstractDeleteComponent
 
     public function view()
     {
-        return 'admin.operacional.menus.group.items.delete';
+        return 'tall::admin.operacional.menus.group.items.delete';
     }
     public function trashConfirm($callback=null)
     {

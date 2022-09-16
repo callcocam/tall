@@ -1,5 +1,5 @@
 <div x-data="{ isSortable: true }">
-    <header class="bg-gray-50 py-2">
+    <header class="bg-gray-50 py-2  z-0">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:flex xl:items-center xl:justify-between">
             @include('tall::admin.operacional.menus.controllers')
         </div>
@@ -22,17 +22,20 @@
                     class="divide-y divide-gray-200  rounded-lg bg-gray-100 p-2 shadow grid grid-cols-1 lg:grid-cols-2 sm:gap-4 sm:divide-y-0">
                     @foreach ($menus as $menu)
                         <div group-id="{{ $menu->id }}"
-                            class="rounded-tl-lg rounded-tr-lg sm:rounded-tr-none relative group bg-white p-6 col-span-2 lg:col-span-1 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
-                            <div class=" cursor-move bg-gray-200 rounded-md p-2 relative">
+                            class="rounded-tl-lg rounded-tr-lg sm:rounded-tr-none group bg-white p-6 col-span-2 lg:col-span-1 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+                            <div class="bg-gray-200 rounded-md p-2">
                                 {{-- <span
                                     class="absolute -top-2 -right-2 bg-blue-500 h-5 shadow-md text-white w-10 rounded-lg text-center flex justify-center items-center text-[10px]">{{ $menu->id }}</span> --}}
-                                <div class="flex items-center justify-between  ring-4 ring-white">
-                                    <div class="handler flex items-center">
+                                <div class="flex items-center justify-between  ring-white">
+                                    <div class="handler flex items-center  cursor-move">
                                         <div class="pointer-events-none text-gray-300 group-hover:text-gray-400"
                                             aria-hidden="true">
-                                            <x-dynamic-component :component="Ui::component('icon')"
+                                            <x-tall::icons.solid.arrows-expand 
+                                            class="h-8 w-8  rounded-full group-hover:opacity-75"
+                                            name="arrows-expand" />
+                                            {{-- <x-dynamic-component :component="Ui::component('icon')"
                                                 class="h-8 w-8  rounded-full group-hover:opacity-75"
-                                                name="arrows-expand" />
+                                                name="arrows-expand" /> --}}
                                         </div>
                                         <div class="rounded-lg text-lg inline-flex p-3 text-teal-700 flex-1">
                                             {{ $menu->name }}  

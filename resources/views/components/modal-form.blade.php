@@ -1,5 +1,5 @@
 @props(['icon' => 'pencil', 'maxWidth' => 'xl'])
-<div x-data="{ open: @entangle('showModal') }">
+<div x-data="{ open: @entangle('showModal') }"  @click.away="open = false" @close.stop="open = false">
     @isset($actions)
         {{ $actions }}
     @else
@@ -19,7 +19,7 @@
         @endisset
         <form
             {{ $attributes->merge([
-                'class' => 'relative z-10',
+                'class' => 'relative',
                 'aria-labelledby' => 'modal-title',
                 'role' => 'dialog',
                 'aria-modal' => 'true',
@@ -28,7 +28,7 @@
                 x-transition:enter-end="opacity-100" x-transition:leave="ease-in duration-200"
                 x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
                 x-description="Background backdrop, show/hide based on modal state."
-                class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" x-cloak></div>
+                class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity z-30" x-cloak></div>
 
             <div x-show="open" x-transition:enter="eease-out duration-300" x-transition:enter-start="opacity-0"
                 x-transition:enter-end="opacity-100" x-transition:leave="ease-in duration-200"

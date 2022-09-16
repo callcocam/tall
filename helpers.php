@@ -89,27 +89,26 @@ if (!function_exists('date_carbom_format')) {
 }
 
 if (!function_exists('load_icones')) {
-    function load_icones($search=null)
+    function load_icones($search="")
     {
-        if(is_dir(resource_path('views/vendor/tall')))
+        if(is_dir(resource_path('views/vendor/tall/components/icons')))
         {
             $path=resource_path('views/vendor/tall/components/icons');
         }
         else{
-            $path= __DIR__ . '/../../resources/views/components/icons';
+            $path= __DIR__ . '/resources/views/components/icons';
         }
-        
         $files =collect([]);
-        foreach ((new \Symfony\Component\Finder\Finder)->in($path)->files()->name('*.blade.php') as $component) {   
+        foreach ((new \Symfony\Component\Finder\Finder)->in($path)->files()->name(sprintf('%s*.blade.php', $search)) as $component) {   
             $file = \Str::beforeLast( $component->getFilename(), ".blade");
             //$file = sprintf("%s.%s", $component->getRelativePath(), $file);           
             $files[$file] = $file;
         }    
-        if($search){
-           return $files->filter(function ($item) use ($search) {
-                return false !== stristr($item, $search);
-            })->sortKeys()->toarray();
-        }
+        // if($search){
+        //    return $files->filter(function ($item) use ($search) {
+        //         return false !== stristr($item, $search);
+        //     })->sortKeys()->toarray();
+        // }
         return $files->sortKeys()->toarray();
     }
 }

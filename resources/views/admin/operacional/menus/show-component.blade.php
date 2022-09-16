@@ -14,21 +14,16 @@
                                 <!-- Navbar -->
                                 <nav class="bg-gray-50">
                                     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                                        <div
-                                            class="relative flex h-16 items-center justify-between border-b border-gray-200">
+                                        <div class="flex h-16 items-center justify-between border-b border-gray-200">
 
                                             <div class="flex flex-1 justify-center px-2 lg:ml-6 lg:justify-end">
                                                 <!-- Search section -->
                                                 <div class="w-full max-w-lg lg:max-w-xs">
                                                     <label for="search" class="sr-only">Search</label>
                                                     <div class="relative text-gray-400 focus-within:text-gray-500">
-                                                        <div
-                                                            class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                                                            <!-- Heroicon name: mini/magnifying-glass -->
-                                                            <x-tall::icons.outline.search class="h-5 w-5" />
-                                                        </div>
+                                                        <x-tall::icons.outline.search class="h-5 w-5 absolute left-2 top-2.5" />
                                                         <input wire:model.debounce.500ms="filters.search"
-                                                            class="block w-full rounded-md border border-gray-300 bg-white py-2 pl-10 pr-3 leading-5 text-gray-900 placeholder-gray-500 focus:border-purple-500 focus:placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-purple-500 sm:text-sm"
+                                                            class="block w-full rounded-md border border-gray-300 bg-white py-2 pl-8 pr-3 leading-5 text-gray-900 placeholder-gray-500 focus:border-purple-500 focus:placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-purple-500 sm:text-sm"
                                                             placeholder="Search" type="search" name="search">
                                                     </div>
                                                 </div>

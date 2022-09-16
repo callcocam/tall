@@ -35,14 +35,15 @@ class EditComponent extends FormComponent
         }
         return true;
     }
+    
     public function view()
     {
-        return 'admin.operacional.menus.group.items.edit';
+        return 'tall::admin.operacional.menus.group.items.edit';
     }
 
     public function getIconsProperty()
     {
-        return load_icones(data_get($this->filters,'icone', null));
+        return load_icones(data_get($this->filters,'icone', ""));
     }
 
 
