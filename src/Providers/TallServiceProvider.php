@@ -215,11 +215,45 @@ class TallServiceProvider extends ServiceProvider
             Blade::anonymousComponentNamespace(resource_path('views/vendor/tall/components'), 'tall');
         }
 
+        $this->publishes([         
+            __DIR__ . '/../../database/migrations/' => database_path('migrations'),
+            __DIR__ . '/../../database/factories/' => database_path('factories'),
+            __DIR__ . '/../../database/seeders/' => database_path('seeders'),
+        ], 'tall-migrations');
+
+        
         $this->publishes([
             __DIR__ . '/../../resources/views' => resource_path('views/vendor/tall'),
+            __DIR__ . '/../../resources/css' => resource_path('css'),
+            __DIR__ . '/../../resources/js' => resource_path('js'),
+            __DIR__ . '/../../resources/lang' => base_path('lang/vendor/tall' ),
         ], 'tall-views');
 
         
+        $this->publishes([         
+            __DIR__ . '/../../public/js' => public_path('js'),
+            __DIR__ . '/../../public/css' => public_path('css'),
+            __DIR__ . '/../../public/img' => public_path('img'),
+        ], 'tall-public');
+
+        
+        $this->publishes([
+            __DIR__ . '/../../stubs' => base_path('stubs' ),
+        ], 'tall-stubs');
+
+        
+        $this->publishes([
+            __DIR__ . '/../../config/tall.php' => config_path('tall.php'),
+        ], 'tall-config');
+        
+        $this->publishes([         
+            __DIR__ . '/../../package.json' => base_path('package.json'),
+        ], 'tall-package');
+        
+        $this->publishes([         
+            __DIR__ . '/../../package.json' => base_path('package.json'),
+        ], 'tall-vite');
+
         $this->publishes([
             __DIR__ . '/../../database/migrations/' => database_path('migrations'),
             __DIR__ . '/../../database/factories/' => database_path('factories'),
