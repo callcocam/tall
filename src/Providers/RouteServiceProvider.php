@@ -53,8 +53,15 @@ class RouteServiceProvider extends ServiceProvider
             ->prefix('admin')
             ->group(function(){
                 $this->configureDynamicRoute(sprintf("%s/Http/Livewire/Admin",dirname(__DIR__,1)),'src','\\Tall');
-                if(is_dir(app_path('Http/Livewire/Admin'))){
-                    $this->configureDynamicRoute(app_path('Http/Livewire/Admin'));
+                if(config('tall.generate.route.admin', true)){
+                    if(is_dir(app_path('Http/Livewire/Admin'))){
+                        $this->configureDynamicRoute(app_path('Http/Livewire/Admin'));
+                    }
+                }
+                if(config('tall.generate.route.site', true)){
+                    if(is_dir(app_path('Http/Livewire/Pagigas'))){
+                        $this->configureDynamicRoute(app_path('Http/Livewire/Pagigas'));
+                    }
                 }
             });
 
