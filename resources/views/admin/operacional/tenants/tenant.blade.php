@@ -13,7 +13,7 @@
             <div class="ml-3 text-sm">
                 <label for="{{ $value->id }}-tenant" class="font-medium text-gray-700">{{ $value->name }}</label>
                 <p id="{{ $value->id }}-description" class="text-gray-500">
-                    {{ $value->description }}
+                    {{-- {!! $value->description !!} --}}
                 </p>
             </div>
         </div>
