@@ -206,16 +206,14 @@ class TallServiceProvider extends ServiceProvider
     private function publishViews(): void
     {
         $pathViews = __DIR__ . '/../../resources/views';
-
+        $this->loadViewsFrom($pathViews, 'tall');
+        Blade::anonymousComponentNamespace(__DIR__ . '/../../resources/views/components', 'tall');
         if(is_dir(resource_path('views/vendor/tall')))
         {
             $pathViews = resource_path('views/vendor/tall');
+            $this->loadViewsFrom($pathViews, 'tall');
             Blade::anonymousComponentNamespace(resource_path('views/vendor/tall/components'), 'tall');
         }
-        else{
-            Blade::anonymousComponentNamespace(__DIR__ . '/../../resources/views/components', 'tall');
-        }
-        $this->loadViewsFrom($pathViews, 'tall');
 
         $this->publishes([
             __DIR__ . '/../../resources/views' => resource_path('views/vendor/tall'),
