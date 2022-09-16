@@ -43,6 +43,7 @@ class TallServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
            $this->commands([
                     \Tall\Console\Commands\InstallCommand::class,
+                    \Tall\Console\Commands\PageCommand::class,
                     \Tall\Console\Commands\CategoryCommand::class,
                     \Tall\Console\Commands\TableCommand::class,
                     \Tall\Console\Commands\CreateCommand::class,
@@ -53,12 +54,23 @@ class TallServiceProvider extends ServiceProvider
                 ]);
         }
         $builder = null;
+        
         if($menu = \App\Models\Menu::query()->where([
-            'slug' => 'menu-admin',
+            'slug' => config('tall.menu.admin', 'menu-admin'),
         ])->first()){
             $builder =  $menu->sub_menus();   
         }
-        $this->app->instance('currentMenueAdmin', $builder);
+        $this->app->instance('currentMenuAdmin', $builder);
+        
+        $builder = null;
+
+        if($menu = \App\Models\Menu::query()->where([
+            'slug' => config('tall.menu.site', 'menu-home'),
+        ])->first()){
+            $builder =  $menu->sub_menus();   
+        }
+
+        $this->app->instance('currentMenuSite', $builder);
         
         $this->registerBladeDirectives();
         $this->registerBladeComponents();
@@ -143,7 +155,15 @@ class TallServiceProvider extends ServiceProvider
             Livewire::component( 'tall::admin.operacional.menus.sub-menus.edit-component', \Tall\Http\Livewire\Admin\Operacional\Menus\SubMenus\EditComponent::class);
             Livewire::component( 'tall::admin.operacional.menus.sub-menus.create-component', \Tall\Http\Livewire\Admin\Operacional\Menus\SubMenus\CreateComponent::class);
             Livewire::component( 'tall::admin.operacional.menus.sub-menus.show-component', \Tall\Http\Livewire\Admin\Operacional\Menus\SubMenus\ShowComponent::class);
-            Livewire::component( 'tall::admin.operacional.menus.sub-menus.delete-component', \Tall\Http\Livewire\Admin\Operacional\Menus\SubMenus\DeleteComponent::class);
+            Livewire::component( 'tall::admin.operacional.menus.sub-menus.delete-component',  \Tall\Http\Livewire\Admin\Operacional\Menus\SubMenus\DeleteComponent::class);
+          
+          
+            Livewire::component( 'tall::site.dash-board-component',\Tall\Http\Livewire\Site\DashBoardComponent::class);
+            Livewire::component( 'tall::includes.site.nav.desktop-component',\Tall\Http\Livewire\Includes\Site\Nav\DesktopComponent::class);
+            Livewire::component( 'tall::includes.site.nav.desktop-item-component',\Tall\Http\Livewire\Includes\Site\Nav\DesktopItemComponent::class);
+            Livewire::component( 'tall::includes.site.nav.mobile-component',\Tall\Http\Livewire\Includes\Site\Nav\MobileComponent::class);
+            Livewire::component( 'tall::includes.site.nav.mobile-item-component',\Tall\Http\Livewire\Includes\Site\Nav\MobileItemComponent::class);
+            Livewire::component( 'tall::includes.site.footer-component',\Tall\Http\Livewire\Includes\Site\FooterComponent::class);
            
             $this->app->register(RouteServiceProvider::class);     
      

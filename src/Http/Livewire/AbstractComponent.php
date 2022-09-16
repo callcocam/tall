@@ -24,7 +24,7 @@ abstract class AbstractComponent extends Component
   
     protected function layout()
     {
-        return "layouts.app";
+        return "tall::layouts.app";
     }
 
     public function render()

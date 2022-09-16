@@ -46,8 +46,9 @@ class RouteServiceProvider extends ServiceProvider
                 ->namespace($this->namespace)
                 ->group(function(){                    
                     if(config('tall.generate.route.site', true)){
-                        if(is_dir(app_path('Http/Livewire/Paginas'))){
-                            $this->configureDynamicRoute(app_path('Http/Livewire/Paginas'));
+                        $this->configureDynamicRoute(sprintf("%s/Http/Livewire/Site",dirname(__DIR__,1)),'src','\\Tall');
+                        if(is_dir(app_path('Http/Livewire/Site'))){
+                            $this->configureDynamicRoute(app_path('Http/Livewire/Site'));
                         }
                     }
                 });

@@ -111,18 +111,23 @@ class ComponentParser
         $route = Str::beforeLast( $route, ".show");
         $route = Str::beforeLast( $route, ".delete");
         $path = Str::afterLast( $route, "admin.");
+        $path = Str::afterLast( $path, "site.");
         $route = Str::afterLast( $route, ".");
         //$path = Str::beforeLast( $path, ".");
         $path = Str::replace(  ".", "/", $path);
         if(function_exists('renameroute')){
-            $route =renameroute($this->model);
+            $route =renameroute($this->model,Str::contains($this->viewName(), 'admin'));
         }
         else{
             // $route = Str::replace( ".","-", $route);
             // $route = Str::replace( ".","-", $route);
             $routeModel = Str::slug($this->model);
             $routeModel = Str::of($routeModel)->plural();
-            $route = Str::of($routeModel)->prepend('admin.')->value;
+            if(Str::contains($this->viewName(), 'admin'))
+                $route = Str::of($routeModel)->prepend('admin.')->value;
+            else
+                $route = Str::of($routeModel)->prepend('site.')->value;
+
         }
         
         //  dd($route,$path);

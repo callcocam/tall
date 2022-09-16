@@ -4,7 +4,7 @@
 * User: contato@bengs.com.br
 * https://www.bengs.com.br
 */
-namespace Tall\Http\Livewire\Includes\Admin\Sidebar;
+namespace Tall\Http\Livewire\Includes\Site\Nav;
 
 use Livewire\Component;
 use App\Models\Menu;
@@ -16,6 +16,7 @@ abstract class AbstractNavComponent extends Component
     public $search="";
 
     public $showDropdown=true;
+    public $currentMenu = 'currentMenuSite';
 
     protected $listeners = ['loadMenus'];
 
@@ -23,8 +24,8 @@ abstract class AbstractNavComponent extends Component
     {
         $menus = [];
       
-        if(app()->has('currentMenuAdmin')){
-            $builder =  app('currentMenuAdmin');
+        if(app()->has($this->currentMenu)){
+            $builder =  app($this->currentMenu);
             if( $builder){
                 if($sarch = $this->search){
                     $builder->where('name','LIKE',"%{$this->search}%");

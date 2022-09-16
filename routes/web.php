@@ -11,11 +11,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//Route::get('/',\Tall\Http\Livewire\Pagina\DashboardComponent::class)->name('admin');    
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->prefix('admin')->group(function () {
-    Route::get('/',\Tall\Http\Livewire\Admin\DashboardComponent::class)->name('admin');    
-});
+// Route::middleware([
+//     'auth:sanctum',
+//     config('jetstream.auth_session'),
+//     'verified'
+// ])->prefix('admin')->group(function () {
+//     Route::get('/',\Tall\Http\Livewire\Admin\DashboardComponent::class)->name('admin');    
+// });

@@ -1,0 +1,55 @@
+<?php
+/**
+* Created by Bengs.
+* User: contato@bengs.com.br
+* https://www.bengs.com.br
+*/
+
+namespace [namespace];
+
+
+//use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Tall\Http\Livewire\AbstractComponent;
+use Illuminate\Support\Facades\Route;
+use [modelnamespace];
+
+class [class] extends AbstractComponent
+{
+   // use AuthorizesRequests;
+
+    public $title = "[model]";
+
+    public function mount([model] $model)
+    {
+       // $this->authorize(Route::currentRouteName());
+        $this->setFormProperties($model);
+    }
+    
+    
+    public function route(){
+        Route::get('/[path]', static::class)->name('[route]-stores');
+    }
+
+    /**
+     * @param null $model
+     */
+    public function setFormProperties($model = null)
+    {
+        //$this->user = $this->user();
+        $this->model = $model;
+        if ($model) {
+            $this->data = $model->toArray();
+        }
+        // dd( $this->data);
+    }
+
+   // public function getShowProperty()
+   // {
+   //     return '[route]-view';
+   // }
+
+    public function view()
+    {
+        return 'livewire.[view]';
+    }
+}
