@@ -42,7 +42,16 @@ class RouteServiceProvider extends ServiceProvider
                 ->namespace($this->namespace)
                 ->group(__DIR__.'/../../routes/web.php');
 
-                
+            Route::middleware(['web'])
+                ->namespace($this->namespace)
+                ->group(function(){                    
+                    if(config('tall.generate.route.site', true)){
+                        if(is_dir(app_path('Http/Livewire/Paginas'))){
+                            $this->configureDynamicRoute(app_path('Http/Livewire/Paginas'));
+                        }
+                    }
+                });
+
             Route::middleware([
                 'web',
                 'auth:sanctum',
@@ -56,11 +65,6 @@ class RouteServiceProvider extends ServiceProvider
                 if(config('tall.generate.route.admin', true)){
                     if(is_dir(app_path('Http/Livewire/Admin'))){
                         $this->configureDynamicRoute(app_path('Http/Livewire/Admin'));
-                    }
-                }
-                if(config('tall.generate.route.site', true)){
-                    if(is_dir(app_path('Http/Livewire/Pagigas'))){
-                        $this->configureDynamicRoute(app_path('Http/Livewire/Pagigas'));
                     }
                 }
             });
