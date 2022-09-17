@@ -12,21 +12,102 @@ use Livewire\Commands\FileManipulationCommand;
 class MakeCommand extends FileManipulationCommand
 {
 
+    protected $gararComponent = false;
+
+    public function generateMenu($menus=[], $data=[])
+    {
+        $menu = null;
+        if ($this->confirm('Deseja gerar o menu?', true)) {
+            $menu = $this->choice(
+                'Selecione um menu?',
+                $menus
+            );
+        }
+        if($menu){
+            if($menu = \App\Models\Menu::find($menu)){
+                $this->generateSubMenu($menu, $data);
+            }
+            else
+            {
+                $name = data_get($menus, $menu);
+                $this->line("<fg=red;options=bold>Não foi possivel recupear os sub menus do menu selecionado:</> {$name}");
+            }
+        }
+    }
+
+    public function generateSubItem($submenus,$menu, $data){
+            $submenu  = null;
+            $name = data_get($menu, 'name');            
+            $submenu = $this->choice(
+                sprintf('Ja Selecione um menu para realacionar o novo sub menu :)',$menu->name),
+                 $submenus
+            );
+            if ($submenu= \App\models\SubMenu::find($submenu)) {
+                 //Verificar se ja tem sub menus
+                $submenuitems = $submenu->sub_menus()->pluck('name','id');
+                if($submenuitems->count()){
+                    if ($this->confirm(sprintf('Ja existe sub menus para [ %s ] deseja criar um sub item?',$submenu->name), true)) {
+                        $this->generateSubItem($submenuitems->toArray(), $menu, $data);
+                        return;
+                    }
+                }
+            }
+            $data['sub_menu_id '] = $submenu->id;
+            $this->createMenu($submenu, $data, $name);
+            return;
+    }
+
+    public function generateSubMenu($menu, $data)
+    {
+        //Verificar se ja tem sub menus
+        $submenus = $menu->sub_menus()->pluck('name','id');
+        if($submenus->count()){
+            if ($this->confirm('Ja existe sub menus deseja criar um sub item?', true)) {
+                $this->generateSubItem($submenus->toArray(), $menu, $data);
+                return;
+            }
+        }
+         //Se não tiver sub menus so pode criar menus
+         $name = data_get($menu, 'name');
+         $this->createMenu($menu, $data, $name);
+    }
+
+    public function createMenu($menu, $data, $name)
+    {
+   
+        if($submenu =  $menu->sub_menus()->create([
+            config('tall.current_tenant_key','tenant_id')=>data_get($menu, config('tall.current_tenant_key','tenant_id')),
+            'name'=>data_get($data,'name'),
+            'sub_menu_id'=>data_get($data,'sub_menu_id', null),
+            'slug'=>$this->gararComponent ? data_get($data,3) : null,
+            'link'=>$this->gararComponent ? data_get($data,2) : null,
+            'icone'=>'arrow-left',
+            'description'=>data_get($data,'name'),
+            'ordering'=>1,
+        ])){
+            $this->line("<fg=green;options=bold>Menu criado com sucesso:</> {$submenu->name}");
+        }else{
+            $this->line("<fg=red;options=bold>Não foi possivel recupear os sub menus do menu selecionado:</> {$name}");
+        }
+    }
     public function handle()
     {
+       
     
-        if (!$this->isClassNameValid($name = $this->parser->className())) {
-            $this->line("<options=bold,reverse;fg=red> WHOOPS! </> 😳 \n");
-            $this->line("<fg=red;options=bold>Class is invalid:</> {$name}");
+        if($this->gararComponent){
+            if (!$this->isClassNameValid($name = $this->parser->className())) {
+                $this->line("<options=bold,reverse;fg=red> WHOOPS! </> 😳 \n");
+                $this->line("<fg=red;options=bold>Class is invalid:</> {$name}");
 
-            return;
-        }
+                return;
+            }
 
-        if ($this->isReservedClassName($name)) {
-            $this->line("<options=bold,reverse;fg=red> WHOOPS! </> 😳 \n");
-            $this->line("<fg=red;options=bold>Class is reserved:</> {$name}");
+            if ($this->isReservedClassName($name)) {
+                $this->line("<options=bold,reverse;fg=red> WHOOPS! </> 😳 \n");
+                $this->line("<fg=red;options=bold>Class is reserved:</> {$name}");
 
-            return;
+                return;
+            }
         }
 
         $force = $this->option('force');
@@ -38,7 +119,11 @@ class MakeCommand extends FileManipulationCommand
         $view = $this->createView($force, $inline);
 
         $this->refreshComponentAutodiscovery();
-
+        if(!$this->gararComponent){
+            $this->parser->relativeClassPath();
+            $this->parser->relativeViewPath();
+            return;
+        }
         if($class || $view) {
             $this->line("<options=bold,reverse;fg=green> COMPONENT CREATED </> 🤙\n");
             $class && $this->line("<options=bold;fg=green>CLASS:</> {$this->parser->relativeClassPath()}");

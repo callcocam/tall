@@ -13,6 +13,7 @@ use function Livewire\str;
 
 class ComponentParser
 {
+    protected $data = [];
     protected $model;
     protected $appPath;
     protected $viewPath;
@@ -135,6 +136,8 @@ class ComponentParser
        $view = Str::replace(  "livewire.", "", $view);
        $view = Str::replace(  "-component", "", $view);
 
+       $this->data = [$this->model, $model, $path, $route, $this->classNamespace(), $this->className(), $view];
+
         return preg_replace(
             ['/\[model\]/', '/\[modelnamespace\]/','/\[path\]/', '/\[route\]/', '/\[namespace\]/', '/\[class\]/', '/\[view\]/'],
             [$this->model, $model, $path, $route, $this->classNamespace(), $this->className(), $view],
@@ -230,5 +233,14 @@ class ComponentParser
         return app('path').'/'.str_replace('\\', '/', $name);
     }
 
+    public function getData()
+    {
+        return $this->data;
+    }
+
+    public function getMenus()
+    {
+        return \App\Models\Menu::query()->where(published())->pluck('name','id')->toArray();
+    }
 
 }

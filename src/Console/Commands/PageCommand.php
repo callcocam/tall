@@ -18,7 +18,7 @@ class PageCommand extends MakeCommand
      *
      * @var string
      */
-    protected $signature =  'make:page {name} {model} {--force} {--inline} {--test} {--stub }';
+    protected $signature =  'make:page {name} {model?} {--force} {--inline} {--test} {--stub }';
 
      /**
      * The console command description.
@@ -27,6 +27,9 @@ class PageCommand extends MakeCommand
      */
     protected $description = 'Create a new page Livewire component';
 
+    protected $stubComp ="page";
+
+    protected $stubView ="page";
     /**
      * Execute the console command.
      *
@@ -34,15 +37,33 @@ class PageCommand extends MakeCommand
      */
     public function handle()
     {
+        
+        // $path=app_path('Http/Livewire/Site');
+        // foreach ((new \Symfony\Component\Finder\Finder)->in($path)->files()->name('*.php') as $file) {
+        //     File::delete($file->getRealPath());
+        // }  
+        $model = \Str::title($this->argument('name'));
+        if ($this->confirm('Deseja gerar os components?', true)) {
+          $this->gararComponent = true;
+          $model = $this->getModel($this->argument('model'));
+        }
+       
         $this->parser = new ComponentParser(
             config('livewire.class_namespace'),
             config('livewire.view_path'),
             sprintf("site.%s-component", $this->argument('name')),
-            $this->argument('model'),
+            $model,
             $this->option('stub')
         );
 
         parent::handle();
+
+        $data = $this->parser->getData();
+
+        $name = \Str::replace('-',' ', $this->argument('name'));
+        $data['name'] = \Str::title($name);
+
+        $this->generateMenu($this->parser->getMenus(), $data);
     }
 
     protected function createClass($force = false, $inline = false)
@@ -57,8 +78,12 @@ class PageCommand extends MakeCommand
         }
 
         $this->ensureDirectoryExists($classPath);
-
-        File::put($classPath, $this->parser->classContents("page"));
+        if($this->gararComponent){
+            File::put($classPath, $this->parser->classContents($this->stubComp));
+        }
+        else{
+            $this->parser->classContents($this->stubComp);
+        }
 
         return $classPath;
     }
@@ -78,8 +103,27 @@ class PageCommand extends MakeCommand
 
         $this->ensureDirectoryExists($viewPath);
 
-        File::put($viewPath, $this->parser->viewContents('page'));
+        if($this->gararComponent){
+            File::put($viewPath, $this->parser->viewContents($this->stubView));
+        }
 
         return $viewPath;
+    }
+
+    public function getModel($model)
+    {
+        if(!$model){
+            $model = $this->choice(
+                'Adcionar um model para adicionar como dependencia?',
+                ['User', 'Tenant','NO'],
+                'NO'
+            );
+            $this->info('Você pode remover ou adicionar uma dependencia do model no componente se desejar!');
+            if($model == 'NO'){
+                $this->stubComp = "inline.page";
+                $model = \Str::title($this->argument('name'));
+            }
+        }
+        return $model;
     }
 }

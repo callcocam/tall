@@ -47,10 +47,13 @@
                                         <!-- Heroicon name: outline/users -->
                                         @if (\View::exists(sprintf('tall::components.icons.outline.%s', $menu->icone)))
                                             <x-dynamic-component component="tall::icons.outline.{{ $menu->icone }}"
-                                                class="mr-3 h-6 w-6 flex-shrink-0 text-gray-400 " />
+                                                class="mr-3 h-6 w-6 flex-shrink-0 " />
                                         @elseif(\View::exists(sprintf('tall::components.icons.solid.%s', $menu->icone)))
                                             <x-dynamic-component component="tall::icons.solid.{{ $menu->icone }}"
-                                                class="mr-3 h-6 w-6 flex-shrink-0 text-gray-400 " />
+                                                class="mr-3 h-6 w-6 flex-shrink-0 " />
+                                        @else
+                                            <x-dynamic-component component="tall::icons.outline.arrow-left"
+                                                class="mr-3 h-6 w-6 flex-shrink-0 " />
                                         @endif
                                         {{-- <svg :class="{ 'group-hover:text-gray-500': !open }"
                                             class="mr-3 h-6 w-6 flex-shrink-0 text-gray-400 "
@@ -71,26 +74,48 @@
                                     <div class="space-y-1 bg-gray-50" id="sub-menu-{{ $menu->id }} " x-show="open">
                                         @foreach ($sub_menus as $sub_menu)
                                             @if (\Route::has($sub_menu->slug))
-                                                <a href="{{ route($sub_menu->slug) }}"
-                                                    class="group flex w-full items-center rounded-md py-2 pl-11 pr-2 text-sm font-medium  {{ request()->routeIs($sub_menu->slug) ? 'bg-gray-200 text-gray-900' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-200' }}">{{ $sub_menu->name }}</a>
-                                            @endif
-                                        @endforeach
+                                                <a @if (\Route::has($sub_menu->slug)) href="{{ route($sub_menu->slug) }}"                 
+                                                @else
+                                                href="{{ $sub_menu->link }}" @endif
+                                                    class="group flex w-full items-center rounded-md py-2 pl-11 pr-2 text-sm font-medium  {{ request()->routeIs($sub_menu->slug) ? 'bg-gray-200 text-gray-900' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-200' }}">
+                                                    @if (\View::exists(sprintf('tall::components.icons.outline.%s', $menu->icone)))
+                                                        <x-dynamic-component
+                                                            component="tall::icons.outline.{{ $menu->icone }}"
+                                                            class="mr-2 h-4 w-4 flex-shrink-0 " />
+                                                    @elseif(\View::exists(sprintf('tall::components.icons.solid.%s', $menu->icone)))
+                                                        <x-dynamic-component
+                                                            component="tall::icons.solid.{{ $menu->icone }}"
+                                                            class="mr-2 h-4 w-4 flex-shrink-0 " />
+                                                    @else
+                                                        <x-dynamic-component component="tall::icons.outline.arrow-left"
+                                                            class="mr-2 h-4 w-4 flex-shrink-0 " />
+                                                    @endif
+                                                    <span>
+                                                        {{ $sub_menu->name }}
+                                                    </span>
+                                                </a>
+                                            @endforeach
                                     </div>
                                 </div>
                             @else
                                 @if (\Route::has($menu->slug))
                                     <div class="space-y-1">
                                         <!-- Current: "bg-gray-200 text-gray-900", Default: "text-gray-700 hover:text-gray-900 hover:bg-gray-50" -->
-                                        <a href="{{ route($menu->slug) }}"
+                                        <a @if (\Route::has($menu->slug)) href="{{ route($menu->slug) }}"                 
+                                            @else
+                                            href="{{ $menu->link }}" @endif
                                             class="  group flex items-center px-2 py-2 text-sm font-medium rounded-md {{ request()->routeIs($menu->slug) ? 'bg-gray-200 text-gray-900' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50' }}"
                                             aria-current="page">
                                             @if (\View::exists(sprintf('tall::components.icons.outline.%s', $menu->icone)))
                                                 <x-dynamic-component
                                                     component="tall::icons.outline.{{ $menu->icone }}"
-                                                    class="mr-3 h-6 w-6 flex-shrink-0 text-gray-400 " />
+                                                    class="mr-3 h-6 w-6 flex-shrink-0" />
                                             @elseif(\View::exists(sprintf('tall::components.icons.solid.%s', $menu->icone)))
                                                 <x-dynamic-component component="tall::icons.solid.{{ $menu->icone }}"
-                                                    class="mr-3 h-6 w-6 flex-shrink-0 text-gray-400 " />
+                                                    class="mr-3 h-6 w-6 flex-shrink-0" />
+                                            @else
+                                                <x-dynamic-component component="tall::icons.outline.arrow-left"
+                                                    class="mr-1 h-5 w-4 flex-shrink-0 " />
                                             @endif
                                             <span>{{ $menu->name }}</span>
                                         </a>
@@ -104,11 +129,10 @@
                 <div class="space-y-1">
                     <form class="py-1" role="none" method="POST" action="{{ route('logout') }}" x-data>
                         @csrf
-                        <a class="group flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-50" role="menuitem" href="{{ route('logout') }}"
-                            @click.prevent="$root.submit();">
-                            <x-dynamic-component
-                            component="tall::icons.outline.logout"
-                            class="mr-3 h-6 w-6 flex-shrink-0 text-gray-400 " />
+                        <a class="group flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                            role="menuitem" href="{{ route('logout') }}" @click.prevent="$root.submit();">
+                            <x-dynamic-component component="tall::icons.outline.logout"
+                                class="mr-3 h-6 w-6 flex-shrink-0 text-gray-400 " />
                             {{ __('Log Out') }}
                         </a>
                     </form>
