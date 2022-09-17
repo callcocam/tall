@@ -3,6 +3,29 @@
 
 #EXEMPLOS
 
+#COMMANDS
+
+```
+... artisan make:crud path-do-component Model 
+
+Exemplo artisan make:crud posts Post
+
+vai gerar 4 components
+/Http/Livewire/Admin/Pots/ListComponent.php
+/Http/Livewire/Admin/Pots/CreateComponent.php
+/Http/Livewire/Admin/Pots/EditComponent.php
+/Http/Livewire/Admin/Pots/ShowComponent.php
+/Http/Livewire/Admin/Pots/DeleteComponent.php
+ou
+... artisan make:crud posts.categorias Post
+/Http/Livewire/Admin/Pots/Categorias/ListComponent.php
+....
+
+#CRIAR PAGINAS E MAIS COMPLEXO
+
+
+
+```
 #FILTROS API CONTROLLER
 
 ```
