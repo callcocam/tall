@@ -15,7 +15,7 @@ class CrudCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'make:crud {name} {model} {--force} {--inline} {--test} {--stub }';
+    protected $signature = 'make:crud {name} {model} {--force} {--m} {--stub }';
 
     /**
      * The console command description.
@@ -59,6 +59,9 @@ class CrudCommand extends Command
             '-f' => true,
             '-s' => true,
         ]);
+        if ($this->option('m')) {               
+            $this->call('migrate');
+        }
 
     }
 }

@@ -81,7 +81,7 @@ class MakeCommand extends FileManipulationCommand
             'sub_menu_id'=>data_get($data,'sub_menu_id', null),
             'slug'=>$this->gararComponent ? data_get($data,3) : null,
             'link'=>$this->gararComponent ? data_get($data,2) : null,
-            'icone'=>'arrow-left',
+            'icone'=>'chevron-right',
             'description'=>data_get($data,'name'),
             'ordering'=>1,
         ])){
