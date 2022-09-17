@@ -10,7 +10,7 @@
 
 Exemplo artisan make:crud posts Post
 
-vai gerar 4 components
+vai gerar 5 components
 /Http/Livewire/Admin/Pots/ListComponent.php
 /Http/Livewire/Admin/Pots/CreateComponent.php
 /Http/Livewire/Admin/Pots/EditComponent.php
@@ -23,7 +23,7 @@ ou
 
 #CRIAR PAGINAS E MAIS COMPLEXO
 
-
+https://www.youtube.com/watch?v=sbCFQygJKE8
 
 ```
 #FILTROS API CONTROLLER

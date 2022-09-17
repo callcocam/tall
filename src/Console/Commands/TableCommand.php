@@ -25,6 +25,8 @@ class TableCommand extends MakeCommand
      * @var string
      */
     protected $description = 'Create a new Table Livewire component';
+    
+    protected $gararComponent = true;
 
     public function handle()
     {
@@ -37,6 +39,15 @@ class TableCommand extends MakeCommand
         );
 
         parent::handle();
+        
+        $data = $this->parser->getData();
+
+        $name = \Str::afterLast($this->argument('name'), '.');
+        $name = \Str::replace('-',' ', $name);
+        $data['name'] = \Str::title($name);
+
+        $this->generateMenu($this->parser->getMenus(), $data);
+
     }
 
     protected function createClass($force = false, $inline = false)

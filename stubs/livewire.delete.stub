@@ -52,6 +52,6 @@ class DeleteComponent extends AbstractDeleteComponent
 
     public function view()
     {
-        return 'livewire.[view]';
+        return '[view]';
     }
 }

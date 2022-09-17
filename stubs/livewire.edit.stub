@@ -42,6 +42,6 @@ class EditComponent extends FormComponent
 
     public function view()
     {
-        return 'livewire.[view]';
+        return '[view]';
     }
 }

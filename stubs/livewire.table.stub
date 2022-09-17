@@ -59,6 +59,6 @@ class [class] extends TableComponent
     }
     public function view()
     {
-        return 'livewire.[view]';
+        return '[view]';
     }
 }
