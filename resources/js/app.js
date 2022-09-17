@@ -9,8 +9,10 @@ import Sortablejs from "sortablejs";
 window.Sortablejs = Sortablejs;
 
 import settings from './settings';
+import site from './site';
 import { sidebar, notifications } from './store';
 
+Alpine.data('site', site)
 Alpine.data('settings', settings)
 Alpine.store('sidebar', sidebar)
 Alpine.store('notifications', notifications)
