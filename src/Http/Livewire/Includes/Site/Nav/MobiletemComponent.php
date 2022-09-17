@@ -19,7 +19,8 @@ class MobiletemComponent extends Component
     }
     public function render()
     {
-        if ($sub_menus=  $this->menu->sub_menus):
+        $sub_menus=  $this->menu->sub_menus;
+        if ($sub_menus->count()):
             return view('tall::includes.site.nav.mobile-items-component', compact('sub_menus'));
         else:
             return view('tall::includes.site.nav.mobile-item-component');

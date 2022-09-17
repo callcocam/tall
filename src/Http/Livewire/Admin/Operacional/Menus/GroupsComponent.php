@@ -66,7 +66,7 @@ class GroupsComponent extends Component
             ['id'],
             ['ordering']
         );
-       $this->emit('loadMenus');
+      // $this->emit('loadMenus');
        // return redirect()->route('menus-admin-view', $this->model);
     }
     protected $rules = [

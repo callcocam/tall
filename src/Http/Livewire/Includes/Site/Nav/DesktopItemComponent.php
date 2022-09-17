@@ -19,7 +19,8 @@ class DesktopItemComponent extends Component
     }
     public function render()
     {
-        if ($sub_menus=  $this->menu->sub_menus):
+        $sub_menus=  $this->menu->sub_menus;
+        if ($sub_menus->count()):
             return view('tall::includes.site.nav.desktop-items-component', compact('sub_menus'));
         else:
             return view('tall::includes.site.nav.desktop-item-component');

@@ -44,7 +44,7 @@ class ItemsComponent extends Component
                     $Submenu->save();
                 });
         });
-        $this->emit('loadMenus');
+        //$this->emit('loadMenus');
     }
 
     public function loadMenus(){}
