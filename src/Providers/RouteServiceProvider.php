@@ -33,14 +33,17 @@ class RouteServiceProvider extends ServiceProvider
     {
        
         $this->routes(function () {
+            
             Route::prefix('api')
                 ->middleware('api')
                 ->namespace($this->namespace)
                 ->group(__DIR__.'/../../routes/api.php');
 
+
             Route::middleware(['web'])
                 ->namespace($this->namespace)
                 ->group(__DIR__.'/../../routes/web.php');
+
 
             Route::middleware(['web'])
                 ->namespace($this->namespace)
@@ -53,13 +56,13 @@ class RouteServiceProvider extends ServiceProvider
                     }
                 });
 
+
             Route::middleware([
                 'web',
                 'auth:sanctum',
                 config('jetstream.auth_session'),
                 'verified'
             ])
-            //->name('admin.')
             ->prefix('admin')
             ->group(function(){
                 $this->configureDynamicRoute(sprintf("%s/Http/Livewire/Admin",dirname(__DIR__,1)),'src','\\Tall');
@@ -69,7 +72,12 @@ class RouteServiceProvider extends ServiceProvider
                     }
                 }
             });
-
+            if(file_exists(base_path('routes/pages.php'))){
+                if(config('tall.generate.route.pages', true)){
+                    Route::middleware('web')
+                    ->group(base_path('routes/pages.php'));
+                }
+            }
         });
     }
 
