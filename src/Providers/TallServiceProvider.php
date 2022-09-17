@@ -11,6 +11,7 @@ use Livewire\Livewire;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\View\Compilers\BladeCompiler;
 use Livewire\LivewireBladeDirectives;
+use Illuminate\Support\Facades\Schema;
 
 class TallServiceProvider extends ServiceProvider
 {
@@ -53,21 +54,23 @@ class TallServiceProvider extends ServiceProvider
                     \Tall\Console\Commands\ShowCommand::class
                 ]);
         }
-        $builder = null;
-        
-        if($menu = \App\Models\Menu::query()->where([
-            'slug' => config('tall.menu.admin', 'menu-admin'),
-        ])->first()){
-            $builder =  $menu->sub_menus();   
-        }
-        $this->app->instance('currentMenuAdmin', $builder);
-        
-        $builder = null;
+        if (Schema::hasTable('menus')) {  
+            $builder = null;
+            
+            if($menu = \App\Models\Menu::query()->where([
+                'slug' => config('tall.menu.admin', 'menu-admin'),
+            ])->first()){
+                $builder =  $menu->sub_menus();   
+            }
+            $this->app->instance('currentMenuAdmin', $builder);
+            
+            $builder = null;
 
-        if($menu = \App\Models\Menu::query()->where([
-            'slug' => config('tall.menu.site', 'menus-site'),
-        ])->first()){
-            $builder =  $menu->sub_menus();   
+            if($menu = \App\Models\Menu::query()->where([
+                'slug' => config('tall.menu.site', 'menus-site'),
+            ])->first()){
+                $builder =  $menu->sub_menus();   
+            }
         }
 
         $this->app->instance('currentMenuSite', $builder);

@@ -24,10 +24,11 @@
 </head>
 
 <body class="min-h-full" x-data="site" x-on:resize.window="updateSidebar">
-    <div class="flex flex-col items-center justify-center ">
-        <div class="bg-[#eee] w-full shadow-lg">
-            <ul class="flex  mx-auto max-w-6xl py-2" aria-label="Controles de acessibilidade do site">
-                {{-- <li role="menuitem" class="closeContrast">
+    @if (config('tall.acessibilidade', false))
+        <div class="flex flex-col items-center justify-center ">
+            <div class="bg-[#eee] w-full shadow-lg">
+                <ul class="flex  mx-auto max-w-6xl py-2" aria-label="Controles de acessibilidade do site">
+                    {{-- <li role="menuitem" class="closeContrast">
                     <a href="acessibilidade.html" title="Acessar a página de acessibilidade" class="pgacessibilidade">
                         <span lang="pt-br">Acessibilidade</span>
                     </a>
@@ -59,21 +60,20 @@
                         </ul>
                     </div>
                 </li> --}}
-                <li role="menuitem">
-                    <a target="_blank" class="flex space-x-2 items-center" href="https://www.pinheiralprevi.rj.gov.br/webmail">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round"
-                                d="M16.5 12a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 10-2.636 6.364M16.5 12V8.25" />
-                        </svg><span lang="pt-br">Webmail</span>
-                    </a>
-                </li>
-            </ul>
+                    <li role="menuitem">
+                        <a target="_blank" class="flex space-x-2 items-center"
+                            href="https://www.pinheiralprevi.rj.gov.br/webmail">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round"
+                                    d="M16.5 12a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 10-2.636 6.364M16.5 12V8.25" />
+                            </svg><span lang="pt-br">Webmail</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="mx-auto max-w-6xl rounded-b-lg">
-            <img class="rounded-b-lg" src="https://www.pinheiralprevi.rj.gov.br/dist/uploads/files/7/imagens/1.png" alt="">
-        </div>
-    </div>
+    @endif
     @livewire('tall::includes.site.nav.desktop-component')
     <div class="min-h-screen bg-gray-100">
 
