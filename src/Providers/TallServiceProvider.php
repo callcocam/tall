@@ -71,9 +71,9 @@ class TallServiceProvider extends ServiceProvider
             ])->first()){
                 $builder =  $menu->sub_menus();   
             }
+            $this->app->instance('currentMenuSite', $builder);
         }
 
-        $this->app->instance('currentMenuSite', $builder);
         
         $this->registerBladeDirectives();
         $this->registerBladeComponents();
