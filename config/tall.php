@@ -11,13 +11,13 @@ return [
     | Deffinir se vai um sistema auto increment
     |--------------------------------------------------------------------------
     */
-    'incrementing'=>true,
+    'incrementing'=>false,
     /*
     |--------------------------------------------------------------------------
     | Deffinir tipo do valor da chave primaria
     |--------------------------------------------------------------------------
     */
-    'keyType'=>'int',//int, string
+    'keyType'=>'string',//int, string
     /*
     |--------------------------------------------------------------------------
     | Tenant Column
