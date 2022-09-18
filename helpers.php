@@ -112,3 +112,11 @@ if (!function_exists('load_icones')) {
         return $files->sortKeys()->toarray();
     }
 }
+
+
+if (!function_exists('published')) {
+    
+    function published(){
+        return ['status'=>'published'];
+    }
+}

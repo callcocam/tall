@@ -42,7 +42,7 @@ class TableCommand extends MakeCommand
         
         $data = $this->parser->getData();
 
-        $name = \Str::afterLast($this->argument('name'), '.');
+        $name = \Str::afterLast( $this->argument('name'), ".");
         $name = \Str::replace('-',' ', $name);
         $data['name'] = \Str::title($name);
 

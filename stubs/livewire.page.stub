@@ -27,7 +27,7 @@ class [class] extends AbstractComponent
     
     
     public function route(){
-        Route::get('/[path]', static::class)->name('[route]-stores');
+        Route::get('/[path]', static::class)->name('[route]');
     }
 
     /**

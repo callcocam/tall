@@ -69,18 +69,39 @@ abstract class FormComponent extends AbstractComponent
     {
         
         $defaults = [
-            'name'=> \Tall\View\Components\Form\Input::make('name'),
-            'status'=> \Tall\View\Components\Form\Status::make('Status'),
-            'assets'=> \Tall\View\Components\Form\Input::make('assets'),
-            'date_birth'=> \Tall\View\Components\Form\DateTime::make('Data de Nascimento','date_birth'),
-            'created_at'=> \Tall\View\Components\Form\DateTime::make('created_at'),
-            'updated_at'=> \Tall\View\Components\Form\DateTime::make('updated_at'),
-            'description'=> \Tall\View\Components\Form\Textarea::make('description'),
+            'name'=> \Tall\View\Components\Form\Input::make('name')->order(1),
+            // 'assets'=> \Tall\View\Components\Form\Input::make('assets')->order(49),
+            //'date_birth'=> \Tall\View\Components\Form\DateTime::make('Data de Nascimento','date_birth')->order(40),
+            'description'=> \Tall\View\Components\Form\Textarea::make('description')->order(15),
+            'status'=> \Tall\View\Components\Form\Status::make('Status')->order(30),
+            'created_at'=> \Tall\View\Components\Form\DateTime::make('created_at')->order(40),
+            'updated_at'=> \Tall\View\Components\Form\DateTime::make('updated_at')->order(41),
         ];
-        
-        return array_merge($defaults, $this->fields());
+        return $this->getOrderedFields(array_merge($defaults, $this->fields()));
     }
 
+    /**
+     * Get menu items and order it by 'order' key.
+     *
+     * @return array
+     */
+    public function getOrderedFields($fields)
+    {
+        return $this->toCollection($fields)->sortBy(function ($item) {
+            return $item->order;
+        })->all();
+    }
+
+    /**
+     * Get menu items as laravel collection instance.
+     *
+     * @return \Illuminate\Support\Collection
+     */
+    public function toCollection($fields)
+    {
+        return collect($fields);
+    }
+    
     public function getIgnoresProperty()
     {
         return [

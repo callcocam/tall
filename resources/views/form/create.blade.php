@@ -23,15 +23,17 @@
                 @endif
             </dt>
             <dd class="mt-1 text-sm text-gray-900 sm:mt-0">
-                <dl> 
-                     <x-errors />
-                    @foreach ($data as $name => $value)
-                        @if (!in_array($name, $this->ignores))
-                            @if ($field = \Arr::get($this->types, $name))
-                                {{ $field->render()->with('data', $data)->with('field', $name)->with('model', $model) }}
+                <dl>
+                    <x-errors />
+                    @if ($types = $this->types)
+                        @foreach ($types as $name => $field)
+                            @if (!in_array($name, $this->ignores))
+                                @if (in_array($name, array_keys($data)))
+                                    {{ $field->render()->with('data', $data)->with('field', $name)->with('model', $model) }}
+                                @endif
                             @endif
-                        @endif
-                    @endforeach
+                        @endforeach
+                    @endif
                     <div class="bg-white px-4 py-5 flex justify-between sm:px-6">
                         @if ($list = $this->list)
                             <x-button red squared href="{{ route($list) }}" icon="arrow-narrow-left"

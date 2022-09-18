@@ -9,10 +9,10 @@
         Aicionar um sub menu: {{ data_get($model, 'name') }}
     </x-slot>
     <div class="grid grid-cols-3 gap-2 my-3">
-        <div class="col-span-3">
+        {{-- <div class="col-span-3">
             <x-input label="{{ __('Menu') }}" wire:model.lazy="data.menu_id" readonly
                 class="block w-full min-w-0 flex-grow rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
-        </div>
+        </div> --}}
         <div class="col-span-3">
             <x-input label="{{ __('Nome Do Menu') }}" wire:model.lazy="data.name"
                 class="block w-full min-w-0 flex-grow rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />

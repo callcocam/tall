@@ -60,9 +60,9 @@ class PageCommand extends MakeCommand
 
         $data = $this->parser->getData();
 
-        $name = \Str::replace('-',' ', $this->argument('name'));
+        $name = \Str::afterLast($this->argument('name'), '.');
+        $name = \Str::replace('-',' ', $name);
         $data['name'] = \Str::title($name);
-
         $this->generateMenu($this->parser->getMenus(), $data);
     }
 
