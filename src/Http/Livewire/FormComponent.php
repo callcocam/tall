@@ -69,13 +69,13 @@ abstract class FormComponent extends AbstractComponent
     {
         
         $defaults = [
-            'name'=> \Tall\View\Components\Form\Input::make('name')->order(1),
+            'name'=> \Tall\View\Components\Form\Input::make('Nome Completo', 'name')->order(1),
             // 'assets'=> \Tall\View\Components\Form\Input::make('assets')->order(49),
             //'date_birth'=> \Tall\View\Components\Form\DateTime::make('Data de Nascimento','date_birth')->order(40),
-            'description'=> \Tall\View\Components\Form\Textarea::make('description')->order(15),
+            'description'=> \Tall\View\Components\Form\Textarea::make('Descrição','description')->order(15),
             'status'=> \Tall\View\Components\Form\Status::make('Status')->order(30),
-            'created_at'=> \Tall\View\Components\Form\DateTime::make('created_at')->order(40),
-            'updated_at'=> \Tall\View\Components\Form\DateTime::make('updated_at')->order(41),
+            'created_at'=> \Tall\View\Components\Form\DateTime::make('Data de criação','created_at')->order(40),
+            'updated_at'=> \Tall\View\Components\Form\DateTime::make('Última atualização','updated_at')->order(41),
         ];
         return $this->getOrderedFields(array_merge($defaults, $this->fields()));
     }

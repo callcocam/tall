@@ -42,6 +42,8 @@ return [
 
     'current_tenant_key' => 'tenant_id',
 
+    'current_tenant_container_domain' => 'domain',
+
     'layout' => [
         'admin'=>env('APP_LAYOUT_ADMIN', 'admin'),
         'app'=>env('APP_LAYOUT', 'app')

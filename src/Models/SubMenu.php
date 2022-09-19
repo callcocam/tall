@@ -7,10 +7,11 @@
 namespace Tall\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Tall\Tenant\Models\Concerns\UsesLandlordConnection;
 
 class SubMenu extends AbstractModel
 {
-    use HasFactory;
+    use HasFactory,UsesLandlordConnection;
 
     protected $guarded = ['id'];
 

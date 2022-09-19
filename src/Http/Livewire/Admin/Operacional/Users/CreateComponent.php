@@ -38,10 +38,15 @@ class CreateComponent extends FormComponent
 
     public function rules()
     {
-        return [
+        $rules =[
             'name'=>'required',
             'email'=>'required|email|unique:users,email',
         ];
+
+        if(data_get($this->data, 'document')){
+            $rules['document'] ='required|unique:users,document';
+        }
+        return $rules;
     }
 
     protected function fields(){

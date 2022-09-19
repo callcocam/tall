@@ -29,28 +29,35 @@ class EditComponent extends FormComponent
         Route::get('/operacional/users/{model}/editar', static::class)->name('admin.users.edit');
     }
 
+   
     public function rules()
     {
-        return [
+        $rules =[
             'name' => 'required',
-            'email'=>'required|email|unique:users,email',
+            'email'=>['required','email',Rule::unique('users', 'email')->ignore($this->model->id)]
         ];
+
+        if(data_get($this->data, 'document')){
+            $rules['document'] =[Rule::unique('users', 'document')->ignore($this->model->id)];
+        }
+        return $rules;
     }
 
     protected function fields(){
 
-        return [
-            'access'=> Access::make('Access')->filters($this->filters)->pluck(\App\Models\Role::query()),
-            'profile_photo_path'=> Avatar::make('profile_photo_path'),
-            'document'=> Input::make('Cpf/Cnpj','document'),
-            'email'=> Input::make('Email'),
-            'nationality'=> Input::make('Nationality'),
-            'vereador_old_id'=> Search::make('vereador_old_id')->modelName('vereador.name'),
-            'profession'=> Input::make('Profession'),
-            'formations'=> Input::make('Formations'),
-            'office'=> Input::make('Office'),
-            'genre'=> Genre::make('Genre'),//Ta preenchido com as informções basica sobre sexo do usuário
+        $fields = [
+            'email'=> Input::make('Email')->order(2),
+            'document'=> Input::make('Cpf/Cnpj','document')->order(3),
+            'profile_photo_path'=> Avatar::make('Foto de perfil','profile_photo_path')->order(4),
+            'nationality'=> Input::make('Nacionalidade','nationality')->order(5),
+            'vereador_old_id'=> Search::make('vereador_old_id')->modelName('vereador.name')->order(6),
+            'profession'=> Input::make('Profição','profession')->order(7),
+            'formations'=> Input::make('Formação','formations')->order(8),
+            'office'=> Input::make('Gargo','office')->order(9),
+            'genre'=> Genre::make('Sexo','genre')->order(10),//Ta preenchido com as informções basica sobre sexo do usuário
+            'access'=> Access::make('Permissões de acesso','access')->filters($this->filters)->pluck(\App\Models\Role::query())->order(11),
         ];
+        return array_merge( $fields, config('tall.fields.users', []));
     }
 
     public function getListProperty()

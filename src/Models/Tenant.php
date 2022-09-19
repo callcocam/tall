@@ -8,10 +8,11 @@ namespace Tall\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Tall\Models\Concerns\HasCoverPhoto;
+use Tall\Tenant\Models\Concerns\UsesLandlordConnection;
 
 class Tenant extends AbstractModel
 {
-    use HasFactory, HasCoverPhoto;
+    use HasFactory, HasCoverPhoto,UsesLandlordConnection;
 
     protected $guarded = ['id'];
 

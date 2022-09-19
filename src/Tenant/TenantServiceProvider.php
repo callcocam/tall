@@ -54,7 +54,8 @@ class TenantServiceProvider extends ServiceProvider
             try {
                 $host[] = str_replace(["admin.","www."], ["",""], request()->getHost());
                 $host[] = request()->getHost();
-                $this->tenant = Tenant::query()->whereIn('domain', $host)->first();
+                $current_tenant_container_domain = config('tall.current_tenant_container_domain','domain');
+                $this->tenant = Tenant::query()->whereIn($current_tenant_container_domain, $host)->first();
                 if (!$this->tenant):
                     die(response("Nenhuma empresa cadastrada com esse endereço " . str_replace("admin.", "", request()->getHost()), 401));
 

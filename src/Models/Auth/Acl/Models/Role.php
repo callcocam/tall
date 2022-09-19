@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Str;
 use Tall\Models\Auth\Acl\Concerns\HasPermissions;
 use Tall\Models\Auth\Acl\Contracts\Role as ContractRole;
-use Tall\Models\Auth\Acl\Concerns\UsesLandlordConnection;
+use Tall\Tenant\Models\Concerns\UsesLandlordConnection;
 use Tall\Models\AbstractModel;
 
 class Role extends AbstractModel implements ContractRole
