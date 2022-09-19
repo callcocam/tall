@@ -4,7 +4,7 @@
 * User: callcocam@gmail.com, contato@sigasmart.com.br
 * https://www.sigasmart.com.br
 */
-namespace Tall\Concerns;
+namespace Tall\Tenant\Concerns;
 
 use Illuminate\Support\Arr;
 use Tall\Exceptions\InvalidConfiguration;
