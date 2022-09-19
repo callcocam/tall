@@ -147,6 +147,10 @@ return [
             /*
             * This key will be used to bind the current tenant in the container.
             */
+            'prefix' => 'admin',
+            /*
+            * This key will be used to bind the current tenant in the container.
+            */
             'current_tenant_container_key' => 'currentTenant',
             /*
             * These fields are used by tenant:artisan command to match one or more tenant

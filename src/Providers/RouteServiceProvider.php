@@ -63,7 +63,7 @@ class RouteServiceProvider extends ServiceProvider
                 config('jetstream.auth_session'),
                 'verified'
             ])
-            ->prefix('admin')
+            ->prefix(config('talll.multitenancy.prefix','admin'))
             ->group(function(){
                 $this->configureDynamicRoute(sprintf("%s/Http/Livewire/Admin",dirname(__DIR__,1)),'src','\\Tall');
                 if(config('tall.generate.route.admin', true)){
