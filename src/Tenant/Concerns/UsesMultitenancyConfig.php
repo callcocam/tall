@@ -27,15 +27,14 @@ trait UsesMultitenancyConfig
         return config('tall.multitenancy.current_tenant_container_key');
     }
 
-    public function getMultitenancyActionClass(string $actionName, string $actionClass)
+    public function getMultitenancyActionClass(string $actionNam)
     {
-        $configuredClass = config("tall.multitenancy.actions.{$actionName}") ?? $actionClass;
+        $configuredClass = config("tall.multitenancy.actions.{$actionName}");
 
-        if (! is_a($configuredClass, $actionClass, true)) {
+        if (! $configuredClass) {
             throw InvalidConfiguration::invalidAction(
                 actionName: $actionName,
-                configuredClass: $configuredClass ?? '',
-                actionClass: $actionClass
+                configuredClass: $configuredClass ?? ''
             );
         }
 
