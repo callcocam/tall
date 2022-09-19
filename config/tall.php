@@ -17,32 +17,6 @@ return [
     | Deffinir tipo do valor da chave primaria
     |--------------------------------------------------------------------------
     */
-    'keyType'=>'string',//int, string
-    /*
-    |--------------------------------------------------------------------------
-    | Tenant Column
-    |--------------------------------------------------------------------------
-    |
-    | Every model that needs to be scoped by tenant (company, user, etc.)
-    | should have one or more columns that reference the `id` of a tenant in the tenant
-    | table.
-    |
-    | For example, if you are scoping by company, you should have a
-    | `companies` table that stores all your companies, and your other tables
-    | should each have a `company_id` `tenant_id` column that references an `id` on the
-    | `companies` table.
-    |
-    */
-    'default_tenant_columns' => ['tenant_id'],
-
-    /*
-    * This key will be used to bind the current tenant in the container.
-    */
-    'current_tenant_container_key' => 'currentTenant',
-
-    'current_tenant_key' => 'tenant_id',
-
-    'current_tenant_container_domain' => 'domain',
 
     'layout' => [
         'admin'=>env('APP_LAYOUT_ADMIN', 'admin'),
@@ -143,15 +117,47 @@ return [
                 'alias' => 'form-input',
             ]
         ],
-        'multitenancy'=>[            
+        'multitenancy'=>[           
             /*
-            * This key will be used to bind the current tenant in the container.
+            |--------------------------------------------------------------------------
+            | Tenant Column
+            |--------------------------------------------------------------------------
+            |
+            | Every model that needs to be scoped by tenant (company, user, etc.)
+            | should have one or more columns that reference the `id` of a tenant in the tenant
+            | table.
+            |
+            | For example, if you are scoping by company, you should have a
+            | `companies` table that stores all your companies, and your other tables
+            | should each have a `company_id` `tenant_id` column that references an `id` on the
+            | `companies` table.
+            |
             */
-            'prefix' => 'admin',
+            'default_tenant_columns' => ['tenant_id'],
+
             /*
             * This key will be used to bind the current tenant in the container.
             */
             'current_tenant_container_key' => 'currentTenant',
+
+            'current_tenant_key' => 'tenant_id',
+
+            'current_table' => 'tenants',
+
+            'current_tenant_container_domain' => 'domain',
+
+              /*
+            * This class is responsible for determining which tenant should be current
+            * for the given request.
+            *
+            * This class should extend `Tall\Tenant\TenantFinder\TenantFinder`
+            *
+            */
+            'tenant_finder' => \Tall\Tenant\TenantFinder\DomainTenantFinder::class, 
+            /*
+            * This key will be used to bind the current tenant in the container.
+            */
+            'prefix' => 'admin',
             /*
             * These fields are used by tenant:artisan command to match one or more tenant
             */
@@ -161,7 +167,7 @@ return [
              /*
             * This class is the model used for storing configuration on tenants.
             *
-            * It must be or extend `Spatie\Multitenancy\Models\Tenant::class`
+            * It must be or extend `Tall\Tenant\Models\Tenant::class`
             */
             'tenant_model' => \App\Models\Tenant::class,
 
@@ -188,7 +194,7 @@ return [
             * Your custom action should always extend the default one.
             */
             'actions' => [
-                // 'make_tenant_current_action' => MakeTenantCurrentAction::class,
+                 'make_tenant_current_action' => \Tall\Tenant\Actions\MakeTenantCurrentAction::class,
                 // 'forget_current_tenant_action' => ForgetCurrentTenantAction::class,
                 // 'make_queue_tenant_aware_action' => MakeQueueTenantAwareAction::class,
                 // 'migrate_tenant' => MigrateTenantAction::class,

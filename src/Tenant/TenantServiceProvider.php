@@ -51,27 +51,28 @@ class TenantServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) return;
 
         if(class_exists(Tenant::class)){
+            $this->app->bind(Multitenancy::class, fn ($app) => new Multitenancy($app));
+            app(Multitenancy::class)->start();
+             $containerKey = config('tall.multitenancy.current_tenant_container_key', 'currentTenant');
+            
             try {
-                $host[] = str_replace(["admin.","www."], ["",""], request()->getHost());
-                $host[] = request()->getHost();
-                $current_tenant_container_domain = config('tall.current_tenant_container_domain','domain');
-                $this->tenant = Tenant::query()->whereIn($current_tenant_container_domain, $host)->first();
+                $this->tenant = app()->get($containerKey);
                 if (!$this->tenant):
                     die(response("Nenhuma empresa cadastrada com esse endereço " . str_replace("admin.", "", request()->getHost()), 401));
 
                 endif;
-                TenantFacade::addTenant(config('tall.current_tenant_key', 'tenant_id'), $this->tenant->id);
+                TenantFacade::addTenant(config('tall.multitenancy.current_tenant_key', 'tenant_id'), $this->tenant->id);
 
-            $containerKey = config('tall.current_tenant_container_key', 'currentTenant');
+                $containerKey = config('tall.multitenancy.current_tenant_container_key', 'currentTenant');
 
-            app()->forgetInstance($containerKey);
+                app()->forgetInstance($containerKey);
 
-            app()->instance($containerKey, $this->tenant);
+                app()->instance($containerKey, $this->tenant);
 
-            config([
-                'app.name'=> $this->tenant->name,
-                'app.url'=> request()->getHost(),
-            ]);
+                config([
+                    'app.name'=> $this->tenant->name,
+                    'app.url'=> request()->getHost(),
+                ]);
             // config([
             //     'lfm.folder_categories.file.folder_name'=> sprintf("files/%s", $this->tenant->id)
             // ]);
@@ -91,11 +92,11 @@ class TenantServiceProvider extends ServiceProvider
             //     ]
             // ]);
             // dd(config('lfm'));
-        } catch (\PDOException $th) {
+            } catch (\PDOException $th) {
 
-            throw $th;
+                throw $th;
 
+            }
         }
-    }
     }
 }

@@ -36,5 +36,51 @@ class Tenant extends AbstractModel
         'cover_photo_url'
     ];
 
+    
+    public function makeCurrent(): static
+    {
+        if ($this->isCurrent()) {
+            return $this;
+        }
+
+        static::forgetCurrent();
+
+        $this->getMultitenancyActionClass(
+                'make_tenant_current_action'
+            )->execute($this);
+
+        return $this;
+    }
+
+    public static function current(): ?static
+    {
+        $containerKey = config('tall.multitenancy.current_tenant_container_key');
+
+        if (! app()->has($containerKey)) {
+            return null;
+        }
+
+        return app($containerKey);
+    }
+    
+    public function isCurrent(): bool
+    {
+        return static::current()?->getKey() === $this->getKey();
+    }
+
+    
+    public static function forgetCurrent(): ?Tenant
+    {
+        $currentTenant = static::current();
+
+        if (is_null($currentTenant)) {
+            return null;
+        }
+
+        $currentTenant->forget();
+
+        return $currentTenant;
+    }
+
 
 }

@@ -33,7 +33,7 @@ class ShowComponent extends FormComponent
          $this->setFormProperties($model);
 
          data_set($this->data, 'tenant', $model->copy_tenants()->firstOrCreate([
-            config('tall.current_tenant_key','tenant_id')=>$model->id
+            config('tall.multitenancy.current_tenant_key','tenant_id')=>$model->id
          ]));
          $this->step = data_get($this->data, 'tenant.step', 0);
 
@@ -79,12 +79,12 @@ class ShowComponent extends FormComponent
     
     public function getRolesProperty()
     {
-        return \App\Models\Role::query()->where(config('tall.current_tenant_key','tenant_id'),data_get($this->data,'tenant.stepTenant'))->get();
+        return \App\Models\Role::query()->where(config('tall.multitenancy.current_tenant_key','tenant_id'),data_get($this->data,'tenant.stepTenant'))->get();
     }
     
     public function getMenusProperty()
     {
-        return \App\Models\Menu::query()->where(config('tall.current_tenant_key','tenant_id'),data_get($this->data,'tenant.stepTenant'))->get();
+        return \App\Models\Menu::query()->where(config('tall.multitenancy.current_tenant_key','tenant_id'),data_get($this->data,'tenant.stepTenant'))->get();
     }
 
     public function getCurrentStepProperty()

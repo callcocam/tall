@@ -8,7 +8,7 @@
 namespace Tall\Tenant\TenantFinder;
 
 use Illuminate\Http\Request;
-use Tall\Tenant\Models\Tenant;
+use Tall\Models\Tenant;
 
 abstract class TenantFinder
 {

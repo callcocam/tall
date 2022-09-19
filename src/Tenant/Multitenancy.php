@@ -27,9 +27,7 @@ class Multitenancy
     {
         $this
             ->registerTenantFinder()
-            ->registerTasksCollection()
-            ->configureRequests()
-            ->configureQueue();
+            ->configureRequests();
     }
 
     public function end(): void
@@ -47,23 +45,12 @@ class Multitenancy
         $tenantFinder = $this->app[TenantFinder::class];
 
         $tenant = $tenantFinder->findForRequest($this->app['request']);
-
         $tenant?->makeCurrent();
-    }
-
-    protected function registerTasksCollection(): self
-    {
-        $this->app->singleton(TasksCollection::class, function () {
-            $taskClassNames = $this->app['config']->get('tall.multitenancy.switch_tenant_tasks');
-
-            return new TasksCollection($taskClassNames);
-        });
-
-        return $this;
     }
 
     protected function registerTenantFinder(): self
     {
+
         if ($this->app['config']->get('tall.multitenancy.tenant_finder')) {
             $this->app->bind(TenantFinder::class, $this->app['config']->get('tall.multitenancy.tenant_finder'));
         }
@@ -76,18 +63,6 @@ class Multitenancy
         if (! $this->app->runningInConsole()) {
             $this->determineCurrentTenant();
         }
-
-        return $this;
-    }
-
-    protected function configureQueue(): self
-    {
-        $this
-            ->getMultitenancyActionClass(
-                actionName: 'make_queue_tenant_aware_action'
-            )
-            ->execute();
-
         return $this;
     }
 }

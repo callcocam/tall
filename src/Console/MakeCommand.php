@@ -76,7 +76,7 @@ class MakeCommand extends FileManipulationCommand
     {
    
         if($submenu =  $menu->sub_menus()->create([
-            config('tall.current_tenant_key','tenant_id')=>data_get($menu, config('tall.current_tenant_key','tenant_id')),
+            config('tall.multitenancy.current_tenant_key','tenant_id')=>data_get($menu, config('tall.multitenancy.current_tenant_key','tenant_id')),
             'name'=>data_get($data,'name'),
             'sub_menu_id'=>data_get($data,'sub_menu_id', null),
             'slug'=>$this->gararComponent ? data_get($data,3) : null,

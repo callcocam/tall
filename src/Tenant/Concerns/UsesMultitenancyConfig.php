@@ -27,7 +27,7 @@ trait UsesMultitenancyConfig
         return config('tall.multitenancy.current_tenant_container_key');
     }
 
-    public function getMultitenancyActionClass(string $actionNam)
+    public function getMultitenancyActionClass(string $actionName)
     {
         $configuredClass = config("tall.multitenancy.actions.{$actionName}");
 
