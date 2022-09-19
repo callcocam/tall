@@ -9,7 +9,7 @@ namespace Tall\Tenant\Concerns;
 use Illuminate\Support\Arr;
 use Tall\Exceptions\InvalidConfiguration;
 
-trait Usestall.MultitenancyConfig
+trait UsesMultitenancyConfig
 {
     public function tenantDatabaseConnectionName(): ?string
     {
