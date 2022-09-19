@@ -102,45 +102,94 @@ return [
 
       ],
       'components'=>[
-        'button' => [
-          'class' => \Tall\View\Components\Button::class,
-          'alias' => 'button',
-      ],
-      'input' => [
-          'class' => \Tall\View\Components\Input::class,
-          'alias' => 'input',
-      ],
-      'toggle' => [
-          'class' => \Tall\View\Components\Toggle::class,
-          'alias' => 'toggle',
-      ],
-      'checkbox' => [
-          'class' => \Tall\View\Components\Checkbox::class,
-          'alias' => 'checkbox',
-      ],
-      'icon' => [
-          'class' => \Tall\View\Components\Icon::class,
-          'alias' => 'icon',
-      ],
-      'label' => [
-          'class' => \Tall\View\Components\Label::class,
-          'alias' => 'label',
-      ],
-      'errors' => [
-          'class' => \Tall\View\Components\Errors::class,
-          'alias' => 'errors',
-      ],
-      'error' => [
-          'class' => \Tall\View\Components\Error::class,
-          'alias' => 'error',
-      ],
-      'circle-button' => [
-          'class' => \Tall\View\Components\CircleButton::class,
-          'alias' => 'circle-button',
-      ],
-      'form-input'=> [
-          'class' => \Tall\View\Components\Form\Input::class,
-          'alias' => 'form-input',
-      ]
-      ]
+            'button' => [
+                'class' => \Tall\View\Components\Button::class,
+                'alias' => 'button',
+            ],
+            'input' => [
+                'class' => \Tall\View\Components\Input::class,
+                'alias' => 'input',
+            ],
+            'toggle' => [
+                'class' => \Tall\View\Components\Toggle::class,
+                'alias' => 'toggle',
+            ],
+            'checkbox' => [
+                'class' => \Tall\View\Components\Checkbox::class,
+                'alias' => 'checkbox',
+            ],
+            'icon' => [
+                'class' => \Tall\View\Components\Icon::class,
+                'alias' => 'icon',
+            ],
+            'label' => [
+                'class' => \Tall\View\Components\Label::class,
+                'alias' => 'label',
+            ],
+            'errors' => [
+                'class' => \Tall\View\Components\Errors::class,
+                'alias' => 'errors',
+            ],
+            'error' => [
+                'class' => \Tall\View\Components\Error::class,
+                'alias' => 'error',
+            ],
+            'circle-button' => [
+                'class' => \Tall\View\Components\CircleButton::class,
+                'alias' => 'circle-button',
+            ],
+            'form-input'=> [
+                'class' => \Tall\View\Components\Form\Input::class,
+                'alias' => 'form-input',
+            ]
+        ],
+        'multitenancy'=>[            
+            /*
+            * This key will be used to bind the current tenant in the container.
+            */
+            'current_tenant_container_key' => 'currentTenant',
+            /*
+            * These fields are used by tenant:artisan command to match one or more tenant
+            */
+            'tenant_artisan_search_fields' => [
+                'id',
+            ],
+             /*
+            * This class is the model used for storing configuration on tenants.
+            *
+            * It must be or extend `Spatie\Multitenancy\Models\Tenant::class`
+            */
+            'tenant_model' => \App\Models\Tenant::class,
+
+            /*
+            * If there is a current tenant when dispatching a job, the id of the current tenant
+            * will be automatically set on the job. When the job is executed, the set
+            * tenant on the job will be made current.
+            */
+            'queues_are_tenant_aware_by_default' => true,
+
+            /*
+            * The connection name to reach the tenant database.
+            *
+            * Set to `null` to use the default connection.
+            */
+            'tenant_database_connection_name' => env('DB_CONNECTION', 'mysql'),
+
+            /*
+            * The connection name to reach the landlord database
+            */
+            'landlord_database_connection_name' => env('DB_CONNECTION_LANDLORD', 'mysql'),
+             /*
+            * You can customize some of the behavior of this package by using our own custom action.
+            * Your custom action should always extend the default one.
+            */
+            'actions' => [
+                // 'make_tenant_current_action' => MakeTenantCurrentAction::class,
+                // 'forget_current_tenant_action' => ForgetCurrentTenantAction::class,
+                // 'make_queue_tenant_aware_action' => MakeQueueTenantAwareAction::class,
+                // 'migrate_tenant' => MigrateTenantAction::class,
+            ],
+
+        ]
+
 ];

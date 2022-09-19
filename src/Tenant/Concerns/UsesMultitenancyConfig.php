@@ -9,6 +9,7 @@ namespace Tall\Tenant\Concerns;
 use Illuminate\Support\Arr;
 use Tall\Exceptions\InvalidConfiguration;
 
+
 trait UsesMultitenancyConfig
 {
     public function tenantDatabaseConnectionName(): ?string
@@ -26,7 +27,7 @@ trait UsesMultitenancyConfig
         return config('tall.multitenancy.current_tenant_container_key');
     }
 
-    public function gettall.MultitenancyActionClass(string $actionName, string $actionClass)
+    public function getMultitenancyActionClass(string $actionName, string $actionClass)
     {
         $configuredClass = config("tall.multitenancy.actions.{$actionName}") ?? $actionClass;
 
