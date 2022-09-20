@@ -56,6 +56,10 @@ class TenantServiceProvider extends ServiceProvider
              $containerKey = config('tall.multitenancy.current_tenant_container_key', 'currentTenant');
             
             try {
+                if (!app()->has($containerKey)):
+                    die(response("Nenhuma empresa cadastrada com esse endereço " . str_replace("admin.", "", request()->getHost()), 401));
+
+                endif;
                 $this->tenant = app()->get($containerKey);
                 if (!$this->tenant):
                     die(response("Nenhuma empresa cadastrada com esse endereço " . str_replace("admin.", "", request()->getHost()), 401));
@@ -63,16 +67,6 @@ class TenantServiceProvider extends ServiceProvider
                 endif;
                 TenantFacade::addTenant(config('tall.multitenancy.current_tenant_key', 'tenant_id'), $this->tenant->id);
 
-                $containerKey = config('tall.multitenancy.current_tenant_container_key', 'currentTenant');
-
-                app()->forgetInstance($containerKey);
-
-                app()->instance($containerKey, $this->tenant);
-
-                config([
-                    'app.name'=> $this->tenant->name,
-                    'app.url'=> request()->getHost(),
-                ]);
             // config([
             //     'lfm.folder_categories.file.folder_name'=> sprintf("files/%s", $this->tenant->id)
             // ]);
@@ -99,4 +93,22 @@ class TenantServiceProvider extends ServiceProvider
             }
         }
     }
+
+    // The function uses the reflection class that is built into PHP!!!
+    // The purpose is to determine the type of a certain method that exi
+    private function is_class_method($type="public", $method, $class) {
+        // $type = mb_strtolower($type);
+         $refl = new \ReflectionMethod($class, $method);
+         switch($type) {
+             case "static":
+             return $refl->isStatic();
+             break;
+             case "public":
+             return $refl->isPublic();
+             break;
+             case "private":
+             return $refl->isPrivate();
+             break;
+         }
+     }
 }

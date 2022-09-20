@@ -171,6 +171,16 @@ return [
             */
             'tenant_model' => \App\Models\Tenant::class,
 
+            
+            'providers' => [
+                'users' => [
+                    'model' => [
+                        'landlord'=>\Tall\Models\UserLandlord::class,
+                        'tenant'=>\Tall\Models\UserTenant::class,
+                    ]
+                ],
+            ],
+
             /*
             * If there is a current tenant when dispatching a job, the id of the current tenant
             * will be automatically set on the job. When the job is executed, the set
@@ -188,7 +198,7 @@ return [
             /*
             * The connection name to reach the landlord database
             */
-            'landlord_database_connection_name' => env('DB_CONNECTION_LANDLORD', 'mysql'),
+            'landlord_database_connection_name' => env('DB_CONNECTION_LANDLORD', 'landlord'),
              /*
             * You can customize some of the behavior of this package by using our own custom action.
             * Your custom action should always extend the default one.

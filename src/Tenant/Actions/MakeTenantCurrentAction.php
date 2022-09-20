@@ -31,7 +31,14 @@ class MakeTenantCurrentAction
         app()->forgetInstance($containerKey);
 
         app()->instance($containerKey, $tenant);
-
+        $clone = config('database.connections.mysql');
+        $clone['database'] = $tenant->database;
+        \Config::set("database.connections.{$tenant->database}", $clone);
+        \Config::set("tall.multitenancy.prefix",  $tenant->prefix);
+        \Config::set("tall.multitenancy.prefix",  $tenant->prefix);
+        $clone = config('auth.providers.users');
+        $clone['model'] = \Config::get("tall.multitenancy.providers.users.model.{$tenant->provider}");        
+        \Config::set("auth.providers.users", $clone);
         return $this;
     }
 }

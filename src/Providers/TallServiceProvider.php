@@ -54,24 +54,27 @@ class TallServiceProvider extends ServiceProvider
                     \Tall\Console\Commands\ShowCommand::class
                 ]);
         }
-        if (Schema::hasTable('menus')) {  
-            $builder = null;
-            
-            if($menu = \App\Models\Menu::query()->where([
-                'slug' => config('tall.menu.admin', 'menu-admin'),
-            ])->first()){
-                $builder =  $menu->sub_menus();   
-            }
-            $this->app->instance('currentMenuAdmin', $builder);
-            
-            $builder = null;
+        else{
 
-            if($menu = \App\Models\Menu::query()->where([
-                'slug' => config('tall.menu.site', 'menus-site'),
-            ])->first()){
-                $builder =  $menu->sub_menus();   
+            if (Schema::hasTable('menus')) {  
+                $builder = null;
+                
+                if($menu = \App\Models\Menu::query()->where([
+                    'slug' => config('tall.menu.admin', 'menu-admin'),
+                ])->first()){
+                    $builder =  $menu->sub_menus();   
+                }
+                $this->app->instance('currentMenuAdmin', $builder);
+                
+                $builder = null;
+    
+                if($menu = \App\Models\Menu::query()->where([
+                    'slug' => config('tall.menu.site', 'menus-site'),
+                ])->first()){
+                    $builder =  $menu->sub_menus();   
+                }
+                $this->app->instance('currentMenuSite', $builder);
             }
-            $this->app->instance('currentMenuSite', $builder);
         }
 
         

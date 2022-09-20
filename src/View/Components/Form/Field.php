@@ -85,6 +85,13 @@ abstract class Field extends Component
         return $this;
     }
 
+    public function order($order)
+    { 
+        $this->setProp('order', $order);
+
+        return $this;
+    }
+    
     public function type()
     {
         return "text";

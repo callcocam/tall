@@ -63,7 +63,7 @@ class RouteServiceProvider extends ServiceProvider
                 config('jetstream.auth_session'),
                 'verified'
             ])
-            ->prefix(config('talll.multitenancy.prefix','admin'))
+            ->prefix(config('tall.multitenancy.prefix','admin'))
             ->group(function(){
                 $this->configureDynamicRoute(sprintf("%s/Http/Livewire/Admin",dirname(__DIR__,1)),'src','\\Tall');
                 if(config('tall.generate.route.admin', true)){
@@ -73,7 +73,7 @@ class RouteServiceProvider extends ServiceProvider
                 }
             });
             if(file_exists(base_path('routes/pages.php'))){
-                if(config('tall.generate.route.pages', true)){
+                if(config('tall.generate.route.pages', false)){
                     Route::middleware('web')
                     ->group(base_path('routes/pages.php'));
                 }

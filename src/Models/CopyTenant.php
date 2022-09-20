@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class CopyTenant extends AbstractModel
 {
     use HasFactory,UsesLandlordConnection;
-
+ 
     protected $guarded = ['id'];
 
      /**

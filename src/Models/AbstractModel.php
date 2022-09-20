@@ -18,7 +18,8 @@ use Tall\Scopes\UuidGenerate;
 
 class AbstractModel extends Model
 {
-    use HasFactory, BelongsToTenants, DateRange, HasSlug, SoftDeletes, UuidGenerate;
+    use HasFactory, DateRange, HasSlug, SoftDeletes, UuidGenerate;
+    // use HasFactory, BelongsToTenants, DateRange, HasSlug, SoftDeletes, UuidGenerate;
 
 
     public function __construct(array $attributes = [])

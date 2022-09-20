@@ -17,13 +17,14 @@ use Tall\Models\AbstractModel;
 use Illuminate\Foundation\Auth\Access\Authorizable;
 use Tall\Models\Concerns\HasProfilePhoto;
 use Tall\Models\Auth\Acl\Concerns\HasRolesAndPermissions;
+use Tall\Tenant\Models\Concerns\UsesLandlordConnection;
 
 class User extends AbstractModel implements
     AuthenticatableContract,
     AuthorizableContract,
     CanResetPasswordContract
 {
-    use Authenticatable,HasProfilePhoto, Authorizable, CanResetPassword, MustVerifyEmail, HasRolesAndPermissions;
+    use Authenticatable,HasProfilePhoto, Authorizable, CanResetPassword, MustVerifyEmail, HasRolesAndPermissions, UsesLandlordConnection;
 
 
 
