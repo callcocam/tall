@@ -45,19 +45,23 @@ class MakeTenantCurrentAction
         ]);
         \Config::set("tall.multitenancy.path",  data_get($paths,$tenant->prefix));
         //Alteramos a model do user
-        $clone = config('auth.providers.users');
-        $clone['model'] = \Config::get("tall.multitenancy.providers.users.model.{$tenant->provider}");        
-        \Config::set("auth.providers.users", $clone);
+        if($provider = \Config::get("tall.multitenancy.providers.users.model.{$tenant->provider}")){
+            $clone = config('auth.providers.users');
+            $clone['model'] = $provider;        
+            \Config::set("auth.providers.users", $clone);
+        }
         \Config::set("app.name", $tenant->name);
 
         if (Schema::connection(config('tall.multitenancy.landlord_database_connection_name','landlord'))->hasTable('menus')) {  
             $builder = null;
             if($menus = \App\Models\Menu::query()->get()){
                foreach ($menus as  $menu) {
-                 $builder =  $tenant->sub_menus->filter(function($item) use($menu){
-                    return $item->menu_id == $menu->id;
-                  });   
-                 app()->instance($menu->slug, $builder);
+                    if($tenant->sub_menus){
+                        $builder =  $tenant->sub_menus->filter(function($item) use($menu){
+                            return $item->menu_id == $menu->id;
+                        });   
+                    }
+                    app()->instance($menu->slug, $builder);
                }
             }
         }
