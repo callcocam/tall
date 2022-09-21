@@ -49,18 +49,18 @@
                                         <!-- Heroicon name: outline/users -->
                                         @if (\View::exists(sprintf('tall::components.icons.outline.%s', $menu->icone)))
                                             <x-dynamic-component component="tall::icons.outline.{{ $menu->icone }}"
-                                                class="mr-3 h-5 w-5 flex-shrink-0 " />
+                                                class="mr-3 h-4 w-4 flex-shrink-0 " />
                                         @elseif(\View::exists(sprintf('tall::components.icons.solid.%s', $menu->icone)))
                                             <x-dynamic-component component="tall::icons.solid.{{ $menu->icone }}"
-                                                class="mr-3 h-5 w-5 flex-shrink-0 " />
+                                                class="mr-3 h-4 w-4 flex-shrink-0 " />
                                         @else
-                                            <x-dynamic-component component="tall::icons.outline.arrow-left"
-                                                class="mr-3 h-5 w-5 flex-shrink-0 " />
+                                            <x-dynamic-component component="tall::icons.outline.chevron-right"
+                                                class="mr-3 h-4 w-4 flex-shrink-0 " />
                                         @endif
                                         <span class="flex-1 uppercase">{{ $menu->name }} </span>
                                         <!-- Expanded: "text-gray-400 rotate-90", Collapsed: "text-gray-300" -->
                                         <svg :class="{ 'text-gray-400 rotate-90': open, 'text-gray-300': !(open) }"
-                                            class="text-gray-300 ml-3 h-5 w-5 flex-shrink-0 transform transition-colors duration-150 ease-in-out group-hover:text-gray-400"
+                                            class="text-gray-300 ml-3 h-4 w-4 flex-shrink-0 transform transition-colors duration-150 ease-in-out group-hover:text-gray-400"
                                             viewBox="0 0 20 20" aria-hidden="true">
                                             <path d="M6 6L14 10L6 14V6Z" fill="currentColor" />
                                         </svg>
@@ -81,7 +81,7 @@
                                                         component="tall::icons.solid.{{ $sub_menu->icone }}"
                                                         class="mr-1 h-4 w-4 flex-shrink-0 " />
                                                 @else
-                                                    <x-dynamic-component component="tall::icons.outline.arrow-left"
+                                                    <x-dynamic-component component="tall::icons.outline.chevron-right"
                                                         class="mr-1 h-4 w-4 flex-shrink-0 " />
                                                 @endif
                                                 <span>
@@ -103,13 +103,13 @@
                                             @if (\View::exists(sprintf('tall::components.icons.outline.%s', $menu->icone)))
                                                 <x-dynamic-component
                                                     component="tall::icons.outline.{{ $menu->icone }}"
-                                                    class="mr-3 h-5 w-5 flex-shrink-0" />
+                                                    class="mr-3 h-4 w-4 flex-shrink-0" />
                                             @elseif(\View::exists(sprintf('tall::components.icons.solid.%s', $menu->icone)))
                                                 <x-dynamic-component component="tall::icons.solid.{{ $menu->icone }}"
-                                                    class="mr-3 h-5 w-5 flex-shrink-0" />
+                                                    class="mr-3 h-4 w-4 flex-shrink-0" />
                                             @else
-                                                <x-dynamic-component component="tall::icons.outline.arrow-left"
-                                                    class="mr-1 h-5 w-5 flex-shrink-0 " />
+                                                <x-dynamic-component component="tall::icons.outline.chevron-right"
+                                                    class="mr-1 h-4 w-4 flex-shrink-0 " />
                                             @endif
                                             <span>{{ $menu->name }}</span>
                                         </a>
@@ -126,7 +126,7 @@
                         <a class="group flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-50"
                             role="menuitem" href="{{ route('logout') }}" @click.prevent="$root.submit();">
                             <x-dynamic-component component="tall::icons.outline.logout"
-                                class="mr-3 h-5 w-5 flex-shrink-0 text-gray-400 " />
+                                class="mr-3 h-4 w-4 flex-shrink-0 text-gray-400 " />
                             {{ __('Log Out') }}
                         </a>
                     </form>

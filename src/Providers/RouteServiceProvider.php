@@ -65,12 +65,15 @@ class RouteServiceProvider extends ServiceProvider
             ])
             ->prefix(config('tall.multitenancy.prefix','admin'))
             ->group(function(){
-                $this->configureDynamicRoute(sprintf("%s/Http/Livewire/Admin",dirname(__DIR__,1)),'src','\\Tall');
+                $path = sprintf("%s/%s",dirname(__DIR__,1),config("tall.multitenancy.path"));
+                $this->configureDynamicRoute($path,'src','\\Tall');
+               
                 if(config('tall.generate.route.admin', true)){
                     if(is_dir(app_path('Http/Livewire/Admin'))){
                         $this->configureDynamicRoute(app_path('Http/Livewire/Admin'));
                     }
                 }
+
             });
             if(file_exists(base_path('routes/pages.php'))){
                 if(config('tall.generate.route.pages', false)){

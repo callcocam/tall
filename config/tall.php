@@ -199,6 +199,11 @@ return [
             * The connection name to reach the landlord database
             */
             'landlord_database_connection_name' => env('DB_CONNECTION_LANDLORD', 'landlord'),
+
+            /*
+            * The path load components admin and landlord
+            */
+            'path' => env('BASE_LIVEWIRE_PATH', '/Http/Livewire/Admin'),
              /*
             * You can customize some of the behavior of this package by using our own custom action.
             * Your custom action should always extend the default one.

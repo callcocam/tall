@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Tall\Http\Livewire\FormComponent;
 use App\Models\User;
+use Illuminate\Validation\Rule;
 use Tall\View\Components\Form\{Access, Input, Genre, Avatar, Search};
 
 class EditComponent extends FormComponent

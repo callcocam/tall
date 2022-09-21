@@ -22,13 +22,7 @@ class AddSlugUserTable extends Migration
                 $table->softDeletes();
             } 
             if (!Schema::hasColumn('users', "tenant_id")) {
-                $table->foreignUuid('tenant_id')->nullable()->constrained('tenants')->cascadeOnDelete();
-            }                
-        });
-
-        Schema::table('sub_menus', function (Blueprint $table) {
-            if (!Schema::hasColumn('sub_menus', "sub_menu_id")) {               
-                $table->foreignUuid('sub_menu_id')->nullable()->constrained('sub_menus')->cascadeOnDelete();         
+                $table->uuid('tenant_id');
             }                
         });
     }

@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug')->nullable();
             $table->string('email')->unique();
+            $table->string('document')->nullable();
+            $table->string('assets')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->enum('status',['draft','published'])->nullable()->comment("Situação")->default('published');

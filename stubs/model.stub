@@ -7,10 +7,12 @@
 namespace {{ namespace }};
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Tall\Tenant\Models\Concerns\UsesTenantConnection;
+use Tall\Tenant\BelongsToTenants;
 
 class {{ class }} extends AbstractModel
 {
-    use HasFactory;
+    use HasFactory, BelongsToTenants, UsesTenantConnection;
 
     protected $guarded = ['id'];
 

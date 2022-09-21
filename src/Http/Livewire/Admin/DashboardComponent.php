@@ -17,21 +17,7 @@ class DashboardComponent extends AbstractComponent
     // public $search="";
     // public function mount()
     // {
-    //     $menus = [];
-    //     if($menu = Menu::query()->where([
-    //         'name' => 'menusAdmin',
-    //     ])->first()){
-    //         $builder =  $menu->sub_menus();
-    //         if($sarch = $this->search){
-    //             $builder->where('name','LIKE',"%{$this->search}%");
-    //         }
-    //         $menus = $builder->get()->map(function (SubMenu $SubMenu) {
-    //             $SubMenu->parents = $SubMenu;
-
-    //             return $SubMenu;
-    //         });
-    //     }
-    //      dd($menus->toArray());
+    //    dd(auth()->user());
     // }
 
     public function route(){

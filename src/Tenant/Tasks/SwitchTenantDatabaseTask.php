@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Tall\Tenant\Concerns\UsesMultitenancyConfig;
 use Tall\Tenant\Exceptions\InvalidConfiguration;
-use Tall\Tenant\Models\Tenant;
+use Tall\Models\Tenant;
 
 class SwitchTenantDatabaseTask implements SwitchTenantTask
 {

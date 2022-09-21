@@ -7,6 +7,7 @@
 namespace Tall\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Tall\Tenant\Models\Concerns\UsesLandlordConnection;
 
 class CopyTenant extends AbstractModel
 {

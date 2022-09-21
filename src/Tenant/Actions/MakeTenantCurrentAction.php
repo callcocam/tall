@@ -11,6 +11,7 @@ use Tall\Tenant\Events\MakingTenantCurrentEvent;
 use Tall\Models\Tenant;
 use Tall\Tenant\Tasks\SwitchTenantTask;
 use Tall\Tenant\Tasks\TasksCollection;
+use Illuminate\Support\Facades\Schema;
 
 class MakeTenantCurrentAction
 {
@@ -31,14 +32,35 @@ class MakeTenantCurrentAction
         app()->forgetInstance($containerKey);
 
         app()->instance($containerKey, $tenant);
+        //pegar a conexão de acordo com o tenant
         $clone = config('database.connections.mysql');
         $clone['database'] = $tenant->database;
         \Config::set("database.connections.{$tenant->database}", $clone);
+        //prefix da rota da administração
         \Config::set("tall.multitenancy.prefix",  $tenant->prefix);
-        \Config::set("tall.multitenancy.prefix",  $tenant->prefix);
+       //pastas para ler os compnent livewire padrão e geração de rotas
+        $paths = config('tall.multitenancy.paths',[
+            'landlord'=>'/Http/Livewire/Landlord',
+            'admin'=>'/Http/Livewire/Admin',
+        ]);
+        \Config::set("tall.multitenancy.path",  data_get($paths,$tenant->prefix));
+        //Alteramos a model do user
         $clone = config('auth.providers.users');
         $clone['model'] = \Config::get("tall.multitenancy.providers.users.model.{$tenant->provider}");        
         \Config::set("auth.providers.users", $clone);
+        \Config::set("app.name", $tenant->name);
+
+        if (Schema::connection(config('tall.multitenancy.landlord_database_connection_name','landlord'))->hasTable('menus')) {  
+            $builder = null;
+            if($menus = \App\Models\Menu::query()->get()){
+               foreach ($menus as  $menu) {
+                 $builder =  $tenant->sub_menus->filter(function($item) use($menu){
+                    return $item->menu_id == $menu->id;
+                  });   
+                 app()->instance($menu->slug, $builder);
+               }
+            }
+        }
         return $this;
     }
 }

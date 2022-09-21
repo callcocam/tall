@@ -8,10 +8,11 @@ namespace Tall\Models;
 
 use App\Models\User;
 use Tall\Tenant\Models\Concerns\UsesTenantConnection;
+use Tall\Tenant\BelongsToTenants;
 
 class UserTenant extends User
 {
-    use UsesTenantConnection;
+    use UsesTenantConnection,BelongsToTenants;
     
     protected $table = "users";
 }

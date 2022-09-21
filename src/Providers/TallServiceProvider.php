@@ -54,28 +54,27 @@ class TallServiceProvider extends ServiceProvider
                     \Tall\Console\Commands\ShowCommand::class
                 ]);
         }
-        else{
-
-            if (Schema::hasTable('menus')) {  
-                $builder = null;
+        // else{
+        //     if (Schema::connection(config('tall.multitenancy.landlord_database_connection_name','landlord'))->hasTable('menus')) {  
+        //         $builder = null;
+        //         if($menu = \App\Models\Menu::query()->where([
+        //             'slug' =>  'menusadmin',
+        //         ])->first()){
+        //             $builder =  $menu->sub_menus();   
+        //         }
+        //         $this->app->instance('menusadmin', $builder);
                 
-                if($menu = \App\Models\Menu::query()->where([
-                    'slug' => config('tall.menu.admin', 'menu-admin'),
-                ])->first()){
-                    $builder =  $menu->sub_menus();   
-                }
-                $this->app->instance('currentMenuAdmin', $builder);
-                
-                $builder = null;
+        //         $builder = null;
     
-                if($menu = \App\Models\Menu::query()->where([
-                    'slug' => config('tall.menu.site', 'menus-site'),
-                ])->first()){
-                    $builder =  $menu->sub_menus();   
-                }
-                $this->app->instance('currentMenuSite', $builder);
-            }
-        }
+        //         if($menu = \App\Models\Menu::query()->where([
+        //             'slug' => config('tall.menu.site', 'menus-site'),
+        //         ])->first()){
+        //             $builder =  $menu->sub_menus();   
+        //         }
+        //         $this->app->instance('currentMenuSite', $builder);
+        //     }
+           
+        // }
 
         
         $this->registerBladeDirectives();
@@ -98,26 +97,80 @@ class TallServiceProvider extends ServiceProvider
 
         
         if (class_exists(Livewire::class)) {
+            //SIDEBAR GLOBAL
             Livewire::component( 'tall::includes.admin.sidebar.mobile.nav-component', \Tall\Http\Livewire\Includes\Admin\Sidebar\Mobile\NavComponent::class);
             Livewire::component( 'tall::includes.admin.sidebar.mobile.account-component', \Tall\Http\Livewire\Includes\Admin\Sidebar\Mobile\AccountComponent::class);
             Livewire::component( 'tall::includes.admin.sidebar.nav-component', \Tall\Http\Livewire\Includes\Admin\Sidebar\NavComponent::class);
             Livewire::component( 'tall::includes.admin.sidebar.account-component', \Tall\Http\Livewire\Includes\Admin\Sidebar\AccountComponent::class);
             Livewire::component( 'tall::includes.admin.header.search-component', \Tall\Http\Livewire\Includes\Admin\Header\SearchComponent::class);
             Livewire::component( 'tall::includes.admin.header-component', \Tall\Http\Livewire\Includes\Admin\Header\HeaderComponent::class);
-            
-            Livewire::component( 'tall::admin.operacional.tenant.show-component', \Tall\Http\Livewire\Admin\Operacional\Tenant\ShowComponent::class);
+                       
+           
+            //LAND LORD
+            Livewire::component( 'tall::landlord.dashboard-component', \Tall\Http\Livewire\Landlord\DashboardComponent::class);
+            Livewire::component( 'tall::landlord.operacional.users.list-component', \Tall\Http\Livewire\Landlord\Operacional\Users\ListComponent::class);
+            Livewire::component( 'tall::landlord.operacional.users.edit-component', \Tall\Http\Livewire\Landlord\Operacional\Users\EditComponent::class);
+            Livewire::component( 'tall::landlord.operacional.users.create-component', \Tall\Http\Livewire\Landlord\Operacional\Users\CreateComponent::class);
+            Livewire::component( 'tall::landlord.operacional.users.show-component', \Tall\Http\Livewire\Landlord\Operacional\Users\ShowComponent::class);
+            Livewire::component( 'tall::landlord.operacional.users.delete-component', \Tall\Http\Livewire\Landlord\Operacional\Users\DeleteComponent::class);
+           
+           
+            Livewire::component( 'tall::landlord.operacional.profile.show-component', \Tall\Http\Livewire\Landlord\Operacional\Profile\ShowComponent::class);
+            Livewire::component( 'tall::landlord.operacional.profile.update-profile-information-form', \Tall\Http\Livewire\Landlord\Operacional\Profile\UpdateProfileInformationForm::class);
+            Livewire::component( 'tall::landlord.operacional.profile.update-password-form', \Tall\Http\Livewire\Landlord\Operacional\Profile\UpdatePasswordForm::class);
+            Livewire::component( 'tall::landlord.operacional.profile.two-factor-authentication-form', \Tall\Http\Livewire\Landlord\Operacional\Profile\TwoFactorAuthenticationForm::class);
+            Livewire::component( 'tall::landlord.operacional.profile.logout-other-browser-sessions-form', \Tall\Http\Livewire\Landlord\Operacional\Profile\LogoutOtherBrowserSessionsForm::class);
+            Livewire::component( 'tall::landlord.operacional.profile.delete-user-form', \Tall\Http\Livewire\Landlord\Operacional\Profile\DeleteUserForm::class);
 
-           
-           
-           
+            Livewire::component( 'tall::landlord.operacional.tenants.list-component', \Tall\Http\Livewire\Landlord\Operacional\Tenants\ListComponent::class);
+            Livewire::component( 'tall::landlord.operacional.tenants.edit-component', \Tall\Http\Livewire\Landlord\Operacional\Tenants\EditComponent::class);
+            Livewire::component( 'tall::landlord.operacional.tenants.create-component', \Tall\Http\Livewire\Landlord\Operacional\Tenants\CreateComponent::class);
+            Livewire::component( 'tall::landlord.operacional.tenants.show-component', \Tall\Http\Livewire\Landlord\Operacional\Tenants\ShowComponent::class);
+            Livewire::component( 'tall::landlord.operacional.tenants.delete-component', \Tall\Http\Livewire\Landlord\Operacional\Tenants\DeleteComponent::class);
+            
+            Livewire::component( 'tall::landlord.operacional.roles.list-component', \Tall\Http\Livewire\Landlord\Operacional\Roles\ListComponent::class);
+            Livewire::component( 'tall::landlord.operacional.roles.edit-component', \Tall\Http\Livewire\Landlord\Operacional\Roles\EditComponent::class);
+            Livewire::component( 'tall::landlord.operacional.roles.create-component', \Tall\Http\Livewire\Landlord\Operacional\Roles\CreateComponent::class);
+            Livewire::component( 'tall::landlord.operacional.roles.show-component', \Tall\Http\Livewire\Landlord\Operacional\Roles\ShowComponent::class);
+            Livewire::component( 'tall::landlord.operacional.roles.delete-component', \Tall\Http\Livewire\Landlord\Operacional\Roles\DeleteComponent::class);
+            
+            Livewire::component( 'tall::landlord.operacional.permissions.list-component', \Tall\Http\Livewire\Landlord\Operacional\Permissions\ListComponent::class);
+            Livewire::component( 'tall::landlord.operacional.permissions.edit-component', \Tall\Http\Livewire\Landlord\Operacional\Permissions\EditComponent::class);
+            Livewire::component( 'tall::landlord.operacional.permissions.create-component', \Tall\Http\Livewire\Landlord\Operacional\Permissions\CreateComponent::class);
+            Livewire::component( 'tall::landlord.operacional.permissions.show-component', \Tall\Http\Livewire\Landlord\Operacional\Permissions\ShowComponent::class);
+            Livewire::component( 'tall::landlord.operacional.permissions.delete-component', \Tall\Http\Livewire\Landlord\Operacional\Permissions\DeleteComponent::class);
+
+            
+            Livewire::component( 'tall::landlord.operacional.menus.list-component', \Tall\Http\Livewire\Landlord\Operacional\Menus\ListComponent::class);
+            Livewire::component( 'tall::landlord.operacional.menus.edit-component', \Tall\Http\Livewire\Landlord\Operacional\Menus\EditComponent::class);
+            Livewire::component( 'tall::landlord.operacional.menus.create-component', \Tall\Http\Livewire\Landlord\Operacional\Menus\CreateComponent::class);
+            Livewire::component( 'tall::landlord.operacional.menus.show-component', \Tall\Http\Livewire\Landlord\Operacional\Menus\ShowComponent::class);
+            Livewire::component( 'tall::landlord.operacional.menus.delete-component', \Tall\Http\Livewire\Landlord\Operacional\Menus\DeleteComponent::class);
+            Livewire::component( 'tall::landlord.operacional.menus.group.add-component', \Tall\Http\Livewire\Landlord\Operacional\Menus\Group\AddComponent::class);
+            Livewire::component( 'tall::landlord.operacional.menus.group.items.add-component', \Tall\Http\Livewire\Landlord\Operacional\Menus\Group\Items\AddComponent::class);
+            Livewire::component( 'tall::landlord.operacional.menus.group.items.edit-component', \Tall\Http\Livewire\Landlord\Operacional\Menus\Group\Items\EditComponent::class);
+            Livewire::component( 'tall::landlord.operacional.menus.group.items.delete-component', \Tall\Http\Livewire\Landlord\Operacional\Menus\Group\Items\DeleteComponent::class);
+            Livewire::component( 'tall::landlord.operacional.menus.groups-component', \Tall\Http\Livewire\Landlord\Operacional\Menus\GroupsComponent::class);
+            Livewire::component( 'tall::landlord.operacional.menus.items-component', \Tall\Http\Livewire\Landlord\Operacional\Menus\ItemsComponent::class);
+
+            
+            Livewire::component( 'tall::landlord.operacional.menus.sub-menus.list-component', \Tall\Http\Livewire\Landlord\Operacional\Menus\SubMenus\ListComponent::class);
+            Livewire::component( 'tall::landlord.operacional.menus.sub-menus.edit-component', \Tall\Http\Livewire\Landlord\Operacional\Menus\SubMenus\EditComponent::class);
+            Livewire::component( 'tall::landlord.operacional.menus.sub-menus.create-component', \Tall\Http\Livewire\Landlord\Operacional\Menus\SubMenus\CreateComponent::class);
+            Livewire::component( 'tall::landlord.operacional.menus.sub-menus.show-component', \Tall\Http\Livewire\Landlord\Operacional\Menus\SubMenus\ShowComponent::class);
+            Livewire::component( 'tall::landlord.operacional.menus.sub-menus.delete-component',  \Tall\Http\Livewire\Landlord\Operacional\Menus\SubMenus\DeleteComponent::class);
+          
+
+
+
+            //ADMIN
             Livewire::component( 'tall::admin.dashboard-component', \Tall\Http\Livewire\Admin\DashboardComponent::class);
             Livewire::component( 'tall::admin.operacional.users.list-component', \Tall\Http\Livewire\Admin\Operacional\Users\ListComponent::class);
             Livewire::component( 'tall::admin.operacional.users.edit-component', \Tall\Http\Livewire\Admin\Operacional\Users\EditComponent::class);
             Livewire::component( 'tall::admin.operacional.users.create-component', \Tall\Http\Livewire\Admin\Operacional\Users\CreateComponent::class);
             Livewire::component( 'tall::admin.operacional.users.show-component', \Tall\Http\Livewire\Admin\Operacional\Users\ShowComponent::class);
             Livewire::component( 'tall::admin.operacional.users.delete-component', \Tall\Http\Livewire\Admin\Operacional\Users\DeleteComponent::class);
-           
-           
+
             Livewire::component( 'tall::admin.operacional.profile.show-component', \Tall\Http\Livewire\Admin\Operacional\Profile\ShowComponent::class);
             Livewire::component( 'tall::admin.operacional.profile.update-profile-information-form', \Tall\Http\Livewire\Admin\Operacional\Profile\UpdateProfileInformationForm::class);
             Livewire::component( 'tall::admin.operacional.profile.update-password-form', \Tall\Http\Livewire\Admin\Operacional\Profile\UpdatePasswordForm::class);
@@ -125,51 +178,15 @@ class TallServiceProvider extends ServiceProvider
             Livewire::component( 'tall::admin.operacional.profile.logout-other-browser-sessions-form', \Tall\Http\Livewire\Admin\Operacional\Profile\LogoutOtherBrowserSessionsForm::class);
             Livewire::component( 'tall::admin.operacional.profile.delete-user-form', \Tall\Http\Livewire\Admin\Operacional\Profile\DeleteUserForm::class);
 
-            Livewire::component( 'tall::admin.operacional.tenants.list-component', \Tall\Http\Livewire\Admin\Operacional\Tenants\ListComponent::class);
-            Livewire::component( 'tall::admin.operacional.tenants.edit-component', \Tall\Http\Livewire\Admin\Operacional\Tenants\EditComponent::class);
-            Livewire::component( 'tall::admin.operacional.tenants.create-component', \Tall\Http\Livewire\Admin\Operacional\Tenants\CreateComponent::class);
-            Livewire::component( 'tall::admin.operacional.tenants.show-component', \Tall\Http\Livewire\Admin\Operacional\Tenants\ShowComponent::class);
-            Livewire::component( 'tall::admin.operacional.tenants.delete-component', \Tall\Http\Livewire\Admin\Operacional\Tenants\DeleteComponent::class);
-            
-            Livewire::component( 'tall::admin.operacional.roles.list-component', \Tall\Http\Livewire\Admin\Operacional\Roles\ListComponent::class);
-            Livewire::component( 'tall::admin.operacional.roles.edit-component', \Tall\Http\Livewire\Admin\Operacional\Roles\EditComponent::class);
-            Livewire::component( 'tall::admin.operacional.roles.create-component', \Tall\Http\Livewire\Admin\Operacional\Roles\CreateComponent::class);
-            Livewire::component( 'tall::admin.operacional.roles.show-component', \Tall\Http\Livewire\Admin\Operacional\Roles\ShowComponent::class);
-            Livewire::component( 'tall::admin.operacional.roles.delete-component', \Tall\Http\Livewire\Admin\Operacional\Roles\DeleteComponent::class);
-            
-            Livewire::component( 'tall::admin.operacional.permissions.list-component', \Tall\Http\Livewire\Admin\Operacional\Permissions\ListComponent::class);
-            Livewire::component( 'tall::admin.operacional.permissions.edit-component', \Tall\Http\Livewire\Admin\Operacional\Permissions\EditComponent::class);
-            Livewire::component( 'tall::admin.operacional.permissions.create-component', \Tall\Http\Livewire\Admin\Operacional\Permissions\CreateComponent::class);
-            Livewire::component( 'tall::admin.operacional.permissions.show-component', \Tall\Http\Livewire\Admin\Operacional\Permissions\ShowComponent::class);
-            Livewire::component( 'tall::admin.operacional.permissions.delete-component', \Tall\Http\Livewire\Admin\Operacional\Permissions\DeleteComponent::class);
+            Livewire::component( 'tall::admin.operacional.tenant.show-component', \Tall\Http\Livewire\Admin\Operacional\Tenant\ShowComponent::class);
 
-            
-            Livewire::component( 'tall::admin.operacional.menus.list-component', \Tall\Http\Livewire\Admin\Operacional\Menus\ListComponent::class);
-            Livewire::component( 'tall::admin.operacional.menus.edit-component', \Tall\Http\Livewire\Admin\Operacional\Menus\EditComponent::class);
-            Livewire::component( 'tall::admin.operacional.menus.create-component', \Tall\Http\Livewire\Admin\Operacional\Menus\CreateComponent::class);
-            Livewire::component( 'tall::admin.operacional.menus.show-component', \Tall\Http\Livewire\Admin\Operacional\Menus\ShowComponent::class);
-            Livewire::component( 'tall::admin.operacional.menus.delete-component', \Tall\Http\Livewire\Admin\Operacional\Menus\DeleteComponent::class);
-            Livewire::component( 'tall::admin.operacional.menus.group.add-component', \Tall\Http\Livewire\Admin\Operacional\Menus\Group\AddComponent::class);
-            Livewire::component( 'tall::admin.operacional.menus.group.items.add-component', \Tall\Http\Livewire\Admin\Operacional\Menus\Group\Items\AddComponent::class);
-            Livewire::component( 'tall::admin.operacional.menus.group.items.edit-component', \Tall\Http\Livewire\Admin\Operacional\Menus\Group\Items\EditComponent::class);
-            Livewire::component( 'tall::admin.operacional.menus.group.items.delete-component', \Tall\Http\Livewire\Admin\Operacional\Menus\Group\Items\DeleteComponent::class);
-            Livewire::component( 'tall::admin.operacional.menus.groups-component', \Tall\Http\Livewire\Admin\Operacional\Menus\GroupsComponent::class);
-            Livewire::component( 'tall::admin.operacional.menus.items-component', \Tall\Http\Livewire\Admin\Operacional\Menus\ItemsComponent::class);
-
-            
-            Livewire::component( 'tall::admin.operacional.menus.sub-menus.list-component', \Tall\Http\Livewire\Admin\Operacional\Menus\SubMenus\ListComponent::class);
-            Livewire::component( 'tall::admin.operacional.menus.sub-menus.edit-component', \Tall\Http\Livewire\Admin\Operacional\Menus\SubMenus\EditComponent::class);
-            Livewire::component( 'tall::admin.operacional.menus.sub-menus.create-component', \Tall\Http\Livewire\Admin\Operacional\Menus\SubMenus\CreateComponent::class);
-            Livewire::component( 'tall::admin.operacional.menus.sub-menus.show-component', \Tall\Http\Livewire\Admin\Operacional\Menus\SubMenus\ShowComponent::class);
-            Livewire::component( 'tall::admin.operacional.menus.sub-menus.delete-component',  \Tall\Http\Livewire\Admin\Operacional\Menus\SubMenus\DeleteComponent::class);
-          
-          
-            Livewire::component( 'tall::site.dash-board-component',\Tall\Http\Livewire\Site\DashBoardComponent::class);
             Livewire::component( 'tall::includes.site.nav.desktop-component',\Tall\Http\Livewire\Includes\Site\Nav\DesktopComponent::class);
             Livewire::component( 'tall::includes.site.nav.desktop-item-component',\Tall\Http\Livewire\Includes\Site\Nav\DesktopItemComponent::class);
             Livewire::component( 'tall::includes.site.nav.mobile-component',\Tall\Http\Livewire\Includes\Site\Nav\MobileComponent::class);
             Livewire::component( 'tall::includes.site.nav.mobile-item-component',\Tall\Http\Livewire\Includes\Site\Nav\MobileItemComponent::class);
             Livewire::component( 'tall::includes.site.footer-component',\Tall\Http\Livewire\Includes\Site\FooterComponent::class);
+            Livewire::component( 'tall::site.dash-board-component',\Tall\Http\Livewire\Site\DashBoardComponent::class);
+
            
             $this->app->register(RouteServiceProvider::class);     
      

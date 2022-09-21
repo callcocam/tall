@@ -21,4 +21,16 @@ class Tenant extends AbstractTenant
 
         //static::$landlord->disable();
     }
+
+    
+    /**
+     * Get the default cover photo URL if no cover photo has been uploaded.
+     *
+     * @return string
+     */
+    protected function defaultCoverPhotoUrl()
+    {
+        return asset('img/logo-black.png');
+    }
+    
 }
