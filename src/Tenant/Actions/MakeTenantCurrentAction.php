@@ -58,12 +58,18 @@ class MakeTenantCurrentAction
             $builder = null;
             if($menus = \App\Models\Menu::query()->get()){
                foreach ($menus as  $menu) {
+                if(method_exists($tenant, 'sub_menus')){
                     if($tenant->sub_menus){
                         $builder =  $tenant->sub_menus->filter(function($item) use($menu){
                             return $item->menu_id == $menu->id;
                         });   
                     }
-                    app()->instance($menu->slug, $builder);
+                }else{
+                    if($menu->sub_menus){
+                        $builder =  $menu->sub_menus();   
+                    }
+                }
+                app()->instance($menu->slug, $builder);
                }
             }
         }

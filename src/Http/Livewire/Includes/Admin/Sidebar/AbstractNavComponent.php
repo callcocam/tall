@@ -23,8 +23,9 @@ abstract class AbstractNavComponent extends Component
     {
         $menus = [];
       
-        if(app()->has('currentMenuAdmin')){
-            $builder =  app('currentMenuAdmin');
+        $this->currentMenu = config('tall.multitenancy.current_tenant_container_menus_key.currentMenuAdmin', 'menu-admin')
+        if(app()->has($this->currentMenu)){
+            $builder =  app($this->currentMenu);
             if( $builder){
                 if($sarch = $this->search){
                     $builder->where('name','LIKE',"%{$this->search}%");

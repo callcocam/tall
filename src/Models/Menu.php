@@ -16,14 +16,23 @@ class Menu extends AbstractModel
     protected $guarded = ['id'];
     protected $with = ['sub_menus'];
 
+    //protected $table = "table";
+
+       
     public function sub_menus()
     {
-        return $this->hasMany(\App\Models\SubMenu::class, 'menu_id')
+        if(class_exists(\App\Models\SubMenu::class)){
+            return $this->hasMany(\App\Models\SubMenu::class, 'menu_id')
+            ->where('status', 'published')
+            ->whereNull('sub_menu_id')
+            ->orderby('ordering')
+            ->orderby('name');
+        }
+        
+        return $this->hasMany(\Tall\Models\SubMenu::class, 'menu_id')
         ->where('status', 'published')
         ->whereNull('sub_menu_id')
         ->orderby('ordering')
         ->orderby('name');
     }
-
-    //protected $table = "table";
 }

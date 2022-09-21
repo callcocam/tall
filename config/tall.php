@@ -139,6 +139,11 @@ return [
             * This key will be used to bind the current tenant in the container.
             */
             'current_tenant_container_key' => 'currentTenant',
+           //ONDE É MONTADO OS MENUS
+            'current_tenant_container_menus_key' => [
+                 'currentMenuAdmin'=>'menu-admin',
+                 'currentMenuSite'=>'menus-site',
+            ],
 
             'current_tenant_key' => 'tenant_id',
 
@@ -158,6 +163,13 @@ return [
             * This key will be used to bind the current tenant in the container.
             */
             'prefix' => 'admin',
+
+            'generate'=>[
+                    'route'=>[
+                        'pages'=>true
+                    ]
+                ]
+            ]
             /*
             * These fields are used by tenant:artisan command to match one or more tenant
             */

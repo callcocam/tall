@@ -21,7 +21,7 @@ class DashBoardComponent extends AbstractComponent
 
     
     public function route(){
-        Route::get('/', static::class)->name('home');
+        Route::get('/app', static::class)->name('app');
     }
 
     public function view()

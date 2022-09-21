@@ -126,19 +126,19 @@ abstract class FormComponent extends AbstractComponent
         if ($this->model->exists) {
             try {
                 if($this->model->update($this->data)){
-                    $this->success( __('OPSS!!'), __("Cadastro atualizado com sucesso!!"));
+                    $this->success( __('sucesso'), __("Cadastro atualizado com sucesso!!"));
                     return true;
                 }
                 return false;
             } catch (\PDOException $PDOException) {
-                $this->error('Error !!!', __($PDOException->getMessage()));
+                $this->error('erro', __($PDOException->getMessage()));
                 return false;
             }
         } else {
             try {
                 $this->model = $this->model->create($this->data);
                 if ($this->model->exists) {
-                    $this->success( __('OPSS!!'), __("Cadastro atualizado com sucesso!!"));
+                    $this->success( __('sucesso'), __("Cadastro atualizado com sucesso!!"));
                     if(method_exists($this, 'edit')){
                         if(\Route::has($this->edit)){
                             return redirect()->route($this->edit,['model'=>$this->model]);
@@ -154,7 +154,7 @@ abstract class FormComponent extends AbstractComponent
                 }
                 return false;
             } catch (\PDOException $PDOException) {
-                $this->error('Error !!!', __($PDOException->getMessage()));
+                $this->error('erro', __($PDOException->getMessage()));
                 return false;
             }
         }
