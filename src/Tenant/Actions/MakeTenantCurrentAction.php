@@ -36,14 +36,16 @@ class MakeTenantCurrentAction
         $clone = config('database.connections.mysql');
         $clone['database'] = $tenant->database;
         \Config::set("database.connections.{$tenant->database}", $clone);
-        //prefix da rota da administração
-        \Config::set("tall.multitenancy.prefix",  $tenant->prefix);
        //pastas para ler os compnent livewire padrão e geração de rotas
-        $paths = config('tall.multitenancy.paths',[
-            'landlord'=>'/Http/Livewire/Landlord',
-            'admin'=>'/Http/Livewire/Admin',
-        ]);
-        \Config::set("tall.multitenancy.path",  data_get($paths,$tenant->prefix));
+       if(!is_array(config("tall.multitenancy.path"))){
+            $paths = config('tall.multitenancy.paths',[
+                'landlord'=>'/Http/Livewire/Landlord',
+                'admin'=>'/Http/Livewire/Admin',
+            ]);
+            \Config::set("tall.multitenancy.path",  data_get($paths,$tenant->prefix));
+            //prefix da rota da administração
+            \Config::set("tall.multitenancy.prefix",  $tenant->prefix);
+        }
         //Alteramos a model do user
         if($provider = \Config::get("tall.multitenancy.providers.users.model.{$tenant->provider}")){
             $clone = config('auth.providers.users');

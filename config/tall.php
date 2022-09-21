@@ -199,7 +199,11 @@ return [
             * The connection name to reach the landlord database
             */
             'landlord_database_connection_name' => env('DB_CONNECTION_LANDLORD', 'mysql'),
-
+            
+            'paths'=>[
+                'landlord'=>'/Http/Livewire/Landlord',
+                'admin'=>'/Http/Livewire/Admin',
+            ],
             /*
             * The path load components admin and landlord
             */
