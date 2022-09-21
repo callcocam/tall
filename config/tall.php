@@ -207,7 +207,12 @@ return [
             /*
             * The path load components admin and landlord
             */
-            'path' => env('BASE_LIVEWIRE_PATH', '/Http/Livewire/Admin'),
+            //'path' => env('BASE_LIVEWIRE_PATH', '/Http/Livewire/Admin'),
+            // OR            
+            'path' => env('BASE_LIVEWIRE_PATH',[
+                'landlord'=>'/Http/Livewire/Landlord',
+                'admin'=>'/Http/Livewire/Admin',
+            ]),
              /*
             * You can customize some of the behavior of this package by using our own custom action.
             * Your custom action should always extend the default one.
