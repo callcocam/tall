@@ -169,7 +169,7 @@ return [
                         'pages'=>true
                     ]
                 ]
-            ]
+            ],
             /*
             * These fields are used by tenant:artisan command to match one or more tenant
             */
