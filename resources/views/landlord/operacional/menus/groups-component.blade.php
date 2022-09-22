@@ -65,17 +65,17 @@
                                     <div class="flex justify-end">
                                         @if (data_get($showToggle, $menu->id))
                                             <x-circle-button type="button" title="{{ __('Ver') }}" icon="eye"
-                                                wire:click="showToggle('{{ $menu->id }}',null)" />
+                                                wire:click.prevent="showToggle('{{ $menu->id }}',null)" />
                                         @else
                                             <x-circle-button type="button" title="{{ __('Esconder') }}" icon="eye-off"
-                                                wire:click="showToggle('{{ $menu->id }}','{{ $menu->id }}')" />
+                                                wire:click.prevent="showToggle('{{ $menu->id }}','{{ $menu->id }}')" />
                                         @endif
                                         <x-circle-button type="button" title="{{ __('Add') }}" icon="plus"
-                                            wire:click="showModalToggleManager('{{ $menu->id }}',1)" />
+                                            wire:click.prevent="showModalToggleManager('{{ $menu->id }}',1)" />
                                         <x-circle-button type="button" title="{{ __('Edit') }}" icon="pencil"
-                                            wire:click="showModalToggleManager('{{ $menu->id }}',2)" />
+                                            wire:click.prevent="showModalToggleManager('{{ $menu->id }}',2)" />
                                         <x-circle-button type="button" title="{{ __('Trash') }}" icon="trash"
-                                            wire:click="showModalToggleManager('{{ $menu->id }}',3)" />
+                                            wire:click.prevent="showModalToggleManager('{{ $menu->id }}',3)" />
                                         {{-- @livewire('tall::landlord.operacional.menus.group.items.add-component', ['model' => $menu], key(sprintf('add-%s', $menu->id)))
                                         @livewire('tall::landlord.operacional.menus.group.items.edit-component', ['model' => $menu], key(sprintf('edit-%s', $menu->id)))
                                         @livewire('tall::landlord.operacional.menus.group.items.delete-component', ['model' => $menu], key(sprintf('delete-%s', $menu->id))) --}}

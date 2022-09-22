@@ -31,22 +31,22 @@
             @foreach ($submenus as $submenu)
                 <li menu-id="{{ $submenu->id }}"
                     class="flex flex-col  w-full pl-2 py-2 rounded-md justify-end items-center space-x-2">
-                    <div class="flex ring-2 ring-gray-200 w-full p-1 rounded-sm">
-                        <div class="flex ring-2 ring-gray-200 w-full p-1 rounded-sm handler  cursor-move items-center ">
+                    <div class="flex ring-2 ring-gray-200 w-full p-0 rounded-sm">
+                        <div class="flex ring-2 ring-gray-200 w-full p-0 rounded-sm handler  cursor-move items-center ">
                             {{-- <span
                                 class="absolute -top-2 -left-2 bg-blue-500 h-5 shadow-md text-white w-10 rounded-lg text-center flex justify-center items-center text-[10px]">{{ $submenu->id }}</span> --}}
-                            <x-tall::icons.solid.arrows-expand class="h-8 w-8  rounded-full group-hover:opacity-75"
+                            <x-tall::icons.solid.arrows-expand class="h-5 w-5  rounded-full group-hover:opacity-75"
                                 name="arrows-expand" />
                             <span class="text-gray-800 font-bold">
                                 {{ $submenu->name }}
                             </span>
                         </div>
                         <x-circle-button type="button" title="{{ __('Add') }}" icon="plus"
-                            wire:click="showModalToggleManager('{{ $submenu->id }}',1)" />
+                            wire:click.prevent="showModalToggleManager('{{ $submenu->id }}',1)" />
                         <x-circle-button type="button" title="{{ __('Edit') }}" icon="pencil"
-                            wire:click="showModalToggleManager('{{ $submenu->id }}',2)" />
+                            wire:click.prevent="showModalToggleManager('{{ $submenu->id }}',2)" />
                         <x-circle-button type="button" title="{{ __('Trash') }}" icon="trash"
-                            wire:click="showModalToggleManager('{{ $submenu->id }}',3)" />
+                            wire:click.prevent="showModalToggleManager('{{ $submenu->id }}',3)" />
                         {{-- @livewire('tall::landlord.operacional.menus.group.items.add-component', ['model' => $submenu], key(sprintf('add-submenu-%s', $submenu->id)))
                         @livewire('tall::landlord.operacional.menus.group.items.edit-component', ['model' => $submenu], key(sprintf('edit-submenu-%s', $submenu->id)))
                         @livewire('tall::landlord.operacional.menus.group.items.delete-component', ['model' => $submenu], key(sprintf('delete-submenu-%s', $submenu->id))) --}}
