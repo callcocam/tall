@@ -12,6 +12,18 @@ return [
     |--------------------------------------------------------------------------
     */
     'incrementing'=>false,
+     /*
+    |--------------------------------------------------------------------------
+    | Deffinir o tio da chave primaria, string ou int se for auto increment
+    |--------------------------------------------------------------------------
+    */
+    'keyType'=>'string',
+    /*
+    |--------------------------------------------------------------------------
+    | Deffinir a geração de paginas pela slug
+    |--------------------------------------------------------------------------
+    */
+    'generate_route_pages'=> true,
     /*
     |--------------------------------------------------------------------------
     | Deffinir tipo do valor da chave primaria
@@ -19,8 +31,8 @@ return [
     */
 
     'layout' => [
-        'admin'=>env('APP_LAYOUT_ADMIN', 'admin'),
-        'app'=>env('APP_LAYOUT', 'app')
+        'admin'=>env('APP_LAYOUT_ADMIN', 'tall::layouts.admin'),
+        'app'=>env('APP_LAYOUT', 'tall::layouts.app')
     ],
     'models' => [
 
@@ -29,7 +41,7 @@ return [
         | Model References
         |--------------------------------------------------------------------------
         |
-        | Shinobi precisa saber quais modelos do Eloquent devem ser referenciados durante
+        | Acl precisa saber quais modelos do Eloquent devem ser referenciados durante
         | ações como registro e verificação de permissões, atribuição
         | permissões para funções e usuários e atribuição de funções aos usuários.
         */
@@ -123,20 +135,20 @@ return [
             | Tenant Column
             |--------------------------------------------------------------------------
             |
-            | Every model that needs to be scoped by tenant (company, user, etc.)
-            | should have one or more columns that reference the `id` of a tenant in the tenant
-            | table.
+            | Cada modelo que precisa ser definido por locatário (empresa, usuário, etc.)
+            | deve ter uma ou mais colunas que fazem referência ao `id` de um inquilino no inquilino
+            | tabela.
             |
-            | For example, if you are scoping by company, you should have a
-            | `companies` table that stores all your companies, and your other tables
-            | should each have a `company_id` `tenant_id` column that references an `id` on the
-            | `companies` table.
+            | Por exemplo, se você está fazendo o escopo por empresa, você deve ter um
+            | tabela `companies` que armazena todas as suas empresas e suas outras tabelas
+            | cada um deve ter uma coluna `company_id` `tenant_id` que faz referência a um `id` no
+            | tabela `empresas`.
             |
             */
             'default_tenant_columns' => ['tenant_id'],
 
             /*
-            * This key will be used to bind the current tenant in the container.
+            * Essa chave será usada para vincular o locatário atual no contêiner.
             */
             'current_tenant_container_key' => 'currentTenant',
 
@@ -147,27 +159,27 @@ return [
             'current_tenant_container_domain' => 'domain',
 
               /*
-            * This class is responsible for determining which tenant should be current
-            * for the given request.
+            * Esta classe é responsável por determinar qual inquilino deve ser atual
+            * para o pedido fornecido.
             *
-            * This class should extend `Tall\Tenant\TenantFinder\TenantFinder`
+            * Esta classe deve se estender `Tall\Tenant\TenantFinder\TenantFinder`
             *
             */
             'tenant_finder' => \Tall\Tenant\TenantFinder\DomainTenantFinder::class, 
             /*
-            * This key will be used to bind the current tenant in the container.
+            * Esta chave será usada para vincular um prefix de rota ao locatário atual.
             */
             'prefix' => 'admin',
             /*
-            * These fields are used by tenant:artisan command to match one or more tenant
+            * Esses campos são usados ​​pelo comando inquilino:artisan para corresponder a um ou mais inquilinos
             */
             'tenant_artisan_search_fields' => [
                 'id',
             ],
              /*
-            * This class is the model used for storing configuration on tenants.
+            * Essa classe é o modelo usado para armazenar a configuração em locatários.
             *
-            * It must be or extend `Tall\Tenant\Models\Tenant::class`
+            * Deve ser ou estender `Tall\Tenant\Models\Tenant::class`
             */
             'tenant_model' => \App\Models\Tenant::class,
 
@@ -182,21 +194,21 @@ return [
             ],
 
             /*
-            * If there is a current tenant when dispatching a job, the id of the current tenant
-            * will be automatically set on the job. When the job is executed, the set
-            * tenant on the job will be made current.
+            * Se houver um inquilino atual ao despachar um trabalho, o id do inquilino atual
+            * será definido automaticamente no trabalho. Quando o trabalho é executado, o conjunto
+            * O inquilino no trabalho será atualizado.
             */
             'queues_are_tenant_aware_by_default' => true,
 
             /*
-            * The connection name to reach the tenant database.
+            * O nome da conexão para acessar o banco de dados do locatário.
             *
-            * Set to `null` to use the default connection.
+            * Defina como `null` para usar a conexão padrão.
             */
             'tenant_database_connection_name' => env('DB_CONNECTION', 'mysql'),
 
             /*
-            * The connection name to reach the landlord database
+            * O nome da conexão para acessar o banco de dados do proprietário
             */
             'landlord_database_connection_name' => env('DB_CONNECTION_LANDLORD', 'mysql'),
             
@@ -205,24 +217,24 @@ return [
                 'admin'=>'/Http/Livewire/Admin',
             ],
             /*
-            * The path load components admin and landlord
+            * Os caminho dos componentes administrador e proprietário
             */
-           // 'path' => env('BASE_LIVEWIRE_PATH', '/Http/Livewire/Admin'),
+            //'path' => env('BASE_LIVEWIRE_PATH', '/Http/Livewire/Admin'),
             // OR            
             'path' => env('BASE_LIVEWIRE_PATH',[
                 'landlord'=>'/Http/Livewire/Landlord',
                 'admin'=>'/Http/Livewire/Admin',
             ]),
              /*
-            * You can customize some of the behavior of this package by using our own custom action.
-            * Your custom action should always extend the default one.
+            * Você pode personalizar parte do comportamento deste pacote usando nossa própria ação personalizada.
+            * Sua ação personalizada deve sempre estender a ação padrão.
             */
             'actions' => [
                  'make_tenant_current_action' => \Tall\Tenant\Actions\MakeTenantCurrentAction::class,
                 // 'forget_current_tenant_action' => ForgetCurrentTenantAction::class,
                 // 'make_queue_tenant_aware_action' => MakeQueueTenantAwareAction::class,
                 // 'migrate_tenant' => MigrateTenantAction::class,
-            ],
+            ]
 
         ]
 

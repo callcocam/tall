@@ -34,7 +34,7 @@ abstract class TableComponent extends AbstractComponent
 
     public function layout()
     {
-        return "tall::layouts.admin";
+        return config('tall.layout.admin',"tall::layouts.admin");
     }
 
     public function view()

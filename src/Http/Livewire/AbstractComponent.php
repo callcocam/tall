@@ -24,7 +24,10 @@ abstract class AbstractComponent extends Component
   
     protected function layout()
     {
-        return "tall::layouts.app";
+        if(config('tall.use_layout_default', false)){
+            return config('livewire.layout');
+        }
+        return config('tall.layout.app',"tall::layouts.app");
     }
 
     public function render()

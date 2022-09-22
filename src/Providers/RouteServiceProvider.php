@@ -84,7 +84,7 @@ class RouteServiceProvider extends ServiceProvider
 
             });
             if(file_exists(base_path('routes/pages.php'))){
-                if(config('tall.generate.route.pages', false)){
+                if(config('tall.generate_route_pages', false)){
                     Route::middleware('web')
                     ->group(base_path('routes/pages.php'));
                 }
