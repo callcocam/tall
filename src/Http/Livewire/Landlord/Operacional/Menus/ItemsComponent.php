@@ -25,7 +25,7 @@ class ItemsComponent extends Component
 
     public function getSubMenusProperty()
     {
-        return $this->menu->sub_menus()->limit(5)->orderBy('ordering')->get();
+        return $this->menu->sub_menus()->orderBy('ordering')->get();
     }
 
     public function render()

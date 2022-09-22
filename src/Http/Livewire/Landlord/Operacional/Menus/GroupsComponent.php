@@ -51,7 +51,7 @@ class GroupsComponent extends Component
         if($search = data_get($this->filters, 'search')){
             $query->where('name', 'LIKE',"%{$search}%");
         }
-        return $query->orderBy('ordering')->limit(5)->get();
+        return $query->orderBy('ordering')->get();
     }
 
     public function render()

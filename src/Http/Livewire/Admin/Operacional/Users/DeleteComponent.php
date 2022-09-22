@@ -39,17 +39,17 @@ class DeleteComponent extends AbstractDeleteComponent
 
             return;
         }
-        return $this->kill('admin.users.stores');
+        return $this->kill('admin.users');
     }
 
     public function getListProperty()
     {
-        return 'admin.users.stores';
+        return 'admin.users';
     }
 
     public function cancel()
     {
-        return redirect()->route('admin.users.stores');
+        return redirect()->route('admin.users');
     }
 
     public function view()
