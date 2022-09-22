@@ -23,7 +23,7 @@ abstract class AbstractNavComponent extends Component
     public function getMenusProperty()
     {
         $menus = [];
-        $this->currentMenu = config('tall.multitenancy.current_tenant_container_menus_key.currentMenuSite', 'menus-site')
+        $this->currentMenu = config('tall.multitenancy.current_tenant_container_menus_key.currentMenuSite', 'menus-site');
         if(app()->has($this->currentMenu)){
             $builder =  app($this->currentMenu);
             if( $builder){

@@ -139,11 +139,6 @@ return [
             * This key will be used to bind the current tenant in the container.
             */
             'current_tenant_container_key' => 'currentTenant',
-           //ONDE É MONTADO OS MENUS
-            'current_tenant_container_menus_key' => [
-                 'currentMenuAdmin'=>'menu-admin',
-                 'currentMenuSite'=>'menus-site',
-            ],
 
             'current_tenant_key' => 'tenant_id',
 
@@ -163,13 +158,6 @@ return [
             * This key will be used to bind the current tenant in the container.
             */
             'prefix' => 'admin',
-
-            'generate'=>[
-                    'route'=>[
-                        'pages'=>true
-                    ]
-                ]
-            ],
             /*
             * These fields are used by tenant:artisan command to match one or more tenant
             */
@@ -219,12 +207,12 @@ return [
             /*
             * The path load components admin and landlord
             */
-            //'path' => env('BASE_LIVEWIRE_PATH', '/Http/Livewire/Admin'),
+            'path' => env('BASE_LIVEWIRE_PATH', '/Http/Livewire/Admin'),
             // OR            
-            'path' => env('BASE_LIVEWIRE_PATH',[
-                'landlord'=>'/Http/Livewire/Landlord',
-                'admin'=>'/Http/Livewire/Admin',
-            ]),
+            // 'path' => env('BASE_LIVEWIRE_PATH',[
+            //     'landlord'=>'/Http/Livewire/Landlord',
+            //     'admin'=>'/Http/Livewire/Admin',
+            // ]),
              /*
             * You can customize some of the behavior of this package by using our own custom action.
             * Your custom action should always extend the default one.
