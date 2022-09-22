@@ -23,7 +23,7 @@ abstract class AbstractNavComponent extends Component
     {
         $menus = [];
       
-        $this->currentMenu = config('tall.multitenancy.current_tenant_container_menus_key.currentMenuAdmin', 'menu-admin')
+        $this->currentMenu = config('tall.multitenancy.current_tenant_container_menus_key.currentMenuAdmin', 'menu-admin');
         if(app()->has($this->currentMenu)){
             $builder =  app($this->currentMenu);
             if( $builder){
