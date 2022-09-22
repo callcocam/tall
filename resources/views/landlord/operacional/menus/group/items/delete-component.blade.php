@@ -1,5 +1,5 @@
 <div>
-    <x-circle-button type="button" title="{{ __('Trash') }}" icon="trash" wire:click="showModalToggle" />
+    {{-- <x-circle-button type="button" title="{{ __('Trash') }}" icon="trash" wire:click="showModalToggle" /> --}}
     <x-tall::modal-delete>
         <x-slot name="actions">
         </x-slot>

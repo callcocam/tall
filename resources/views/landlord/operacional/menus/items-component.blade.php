@@ -1,4 +1,19 @@
 <div wire:id="{{ $menu->id }}-items" class="mt-1 text-sm text-gray-500 w-full pl-4 border-2 ">
+    @switch($actionType)
+        @case(1)
+            @livewire('tall::landlord.operacional.menus.group.items.add-component', ['model' => $currentModel, 'showModal' => true], key(sprintf('add-%s', $currentModel->id)))
+        @break
+
+        @case(2)
+            @livewire('tall::landlord.operacional.menus.group.items.edit-component', ['model' => $currentModel, 'showModal' => true], key(sprintf('edit-%s', $currentModel->id)))
+        @break
+
+        @case(3)
+            @livewire('tall::landlord.operacional.menus.group.items.delete-component', ['model' => $currentModel, 'showModal' => true], key(sprintf('delete-%s', $currentModel->id)))
+        @break
+
+        @default
+    @endswitch
     @if ($submenus = $this->sub_menus)
         <ul x-data="" group-id="{{ $menu->id }}" x-init="Sortablejs.create($el, {
             animation: 150,
@@ -26,9 +41,15 @@
                                 {{ $submenu->name }}
                             </span>
                         </div>
-                        @livewire('tall::landlord.operacional.menus.group.items.add-component', ['model' => $submenu], key(sprintf('add-submenu-%s', $submenu->id)))
+                        <x-circle-button type="button" title="{{ __('Add') }}" icon="plus"
+                            wire:click="showModalToggleManager('{{ $submenu->id }}',1)" />
+                        <x-circle-button type="button" title="{{ __('Edit') }}" icon="pencil"
+                            wire:click="showModalToggleManager('{{ $submenu->id }}',2)" />
+                        <x-circle-button type="button" title="{{ __('Trash') }}" icon="trash"
+                            wire:click="showModalToggleManager('{{ $submenu->id }}',3)" />
+                        {{-- @livewire('tall::landlord.operacional.menus.group.items.add-component', ['model' => $submenu], key(sprintf('add-submenu-%s', $submenu->id)))
                         @livewire('tall::landlord.operacional.menus.group.items.edit-component', ['model' => $submenu], key(sprintf('edit-submenu-%s', $submenu->id)))
-                        @livewire('tall::landlord.operacional.menus.group.items.delete-component', ['model' => $submenu], key(sprintf('delete-submenu-%s', $submenu->id)))
+                        @livewire('tall::landlord.operacional.menus.group.items.delete-component', ['model' => $submenu], key(sprintf('delete-submenu-%s', $submenu->id))) --}}
                     </div>
                     @if ($submenu->sub_menus->count())
                         @livewire('tall::landlord.operacional.menus.items-component', ['model' => $model, 'menu' => $submenu], key($submenu->id))

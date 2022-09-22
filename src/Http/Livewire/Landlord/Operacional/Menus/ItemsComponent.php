@@ -12,9 +12,11 @@ use App\Models\Menu;
 
 class ItemsComponent extends Component
 {
+    public $currentModel;
+    public $actionType;
     public $menu;
     public $model;
-    protected $listeners = ['loadMenusAdd'=>'loadMenus'];
+    protected $listeners = ['loadMenusAdd'=>'loadMenus','closeModal'=>'showModalToggleManager'];
     public function mount(Menu $model, SubMenu $menu)
     {
        $this->model = $model;
@@ -23,7 +25,7 @@ class ItemsComponent extends Component
 
     public function getSubMenusProperty()
     {
-        return $this->menu->sub_menus()->orderBy('ordering')->get();
+        return $this->menu->sub_menus()->limit(5)->orderBy('ordering')->get();
     }
 
     public function render()
@@ -49,4 +51,13 @@ class ItemsComponent extends Component
 
     public function loadMenus(){}
 
+    public function showModalToggleManager($id = null, $actionType=0)
+    {       $this->currentModel =  null;
+            $this->actionType =  0;
+        if($sub = $this->menu->sub_menus()->where('id', $id)->first()){
+            $this->currentModel =  $sub;
+            $this->actionType =  $actionType;
+        }
+        
+    }
 }

@@ -13,8 +13,9 @@ class DeleteComponent extends AbstractDeleteComponent
 {
     public $showModal=false;
 
-    public function mount(SubMenu $model)
+    public function mount(SubMenu $model, $showModal= false)
     {
+        $this->showModal =$showModal;
         $this->model =$model;
         $this->data =$model->toArray();
     }
@@ -29,10 +30,15 @@ class DeleteComponent extends AbstractDeleteComponent
             $model->delete();
         });
 
-        return parent::trashConfirm(function($model){
-
+        return parent::trashConfirm(function($model){        
+            $this->emit('closeModal');
         });
 
     }
 
+    public function showModalToggle()
+    {
+        $this->showModal = false;        
+        $this->emit('closeModal');
+    }
 }

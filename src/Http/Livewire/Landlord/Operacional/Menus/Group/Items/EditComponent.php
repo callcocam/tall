@@ -15,8 +15,9 @@ class EditComponent extends FormComponent
 
     public $showModal=false;
 
-    public function mount(SubMenu $model)
+    public function mount(SubMenu $model, $showModal= false)
     {
+        $this->showModal =$showModal;
         $this->model =$model;
         $this->data =$model->toArray();
     }
@@ -49,7 +50,8 @@ class EditComponent extends FormComponent
 
     public function showModalToggle()
     {
-        $this->showModal = !$this->showModal;
+        $this->showModal = false;        
+        $this->emit('closeModal');
     }
 
 }

@@ -12,13 +12,16 @@ use App\Models\SubMenu;
 
 class GroupsComponent extends Component
 {
+    public $currentModel;
+    public $actionType;
     public $showModal=false;
     public $sortable=false;
+    public $showToggle=[];
     public $model;
     public $filters = [];
     public $data = [];
 
-    protected $listeners = ['loadMenusAdd'=>'loadMenus'];
+    protected $listeners = ['loadMenusAdd'=>'loadMenus','closeModal'=>'showModalToggleManager'];
 
     public function mount(Menu $model, $filters=[])
     {
@@ -40,13 +43,15 @@ class GroupsComponent extends Component
 
     public function loadMenus()
     {
+        $this->currentModel =  null;
+        $this->actionType =  0;
         $query = $this->model->sub_menus()->with([
             'sub_menus' => fn ($sub_menu) => $sub_menu->orderByDesc('ordering')
         ]);
         if($search = data_get($this->filters, 'search')){
             $query->where('name', 'LIKE',"%{$search}%");
         }
-        return $query->orderBy('ordering')->get();
+        return $query->orderBy('ordering')->limit(5)->get();
     }
 
     public function render()
@@ -55,19 +60,28 @@ class GroupsComponent extends Component
     }
     public function reorderGroups($data)
     {
-        $groups = SubMenu::query()->findMany($data)
-        ->map(function (SubMenu $group) use ($data) {
-            $group->ordering = array_flip($data)[$group->id];
+       
+        $groups = SubMenu::query()->findMany($data);
+ 
+        $groups->map(function (SubMenu $group) use ($data) {
+            $arr = array_flip(array_filter($data));
+            $group->ordering = data_get($arr, $group->id);
             return $group;
         });
 
+        $groupsArrs =  $groups->toArray();
+        $groupsArr=[];
+        if($groupsArrs){
+            foreach($groupsArrs as $group){
+                unset($group['sub_menus']);
+                $groupsArr[] = $group;
+            }
+        }
         SubMenu::query()->upsert(
-            $groups->toArray(),
+            $groupsArr,
             ['id'],
             ['ordering']
         );
-      // $this->emit('loadMenus');
-       // return redirect()->route('menus-admin-view', $this->model);
     }
     protected $rules = [
         'data.name' => 'required|min:6',
@@ -80,13 +94,30 @@ class GroupsComponent extends Component
        $this->showModalToggle();
     }
 
+    public function showToggle($model, $value)
+    {
+        $this->showToggle[$model] = $value;
+    }
+
     public function toggleSortable()
     {
         $this->sortable = !$this->sortable;
     }
-
+    
     public function showModalToggle()
     {
         $this->showModal = !$this->showModal;
     }
+    
+    public function showModalToggleManager($id = null, $actionType=0)
+    {       $this->currentModel =  null;
+            $this->actionType =  0;
+        if($sub = $this->model->sub_menus()->where('id', $id)->first()){
+            $this->currentModel =  $sub;
+            $this->actionType =  $actionType;
+        }
+        
+    }
+
+
 }

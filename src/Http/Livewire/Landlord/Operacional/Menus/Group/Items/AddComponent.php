@@ -15,8 +15,9 @@ class AddComponent extends FormComponent
     public $title;
     public $showModal=false;
 
-    public function mount(SubMenu $model)
+    public function mount(SubMenu $model, $showModal= false)
     {
+        $this->showModal =$showModal;
         $this->title =  $model->name;
         $this->model = app(SubMenu::class);
         data_set($this->data,'id', null);
@@ -74,6 +75,7 @@ class AddComponent extends FormComponent
     
     public function showModalToggle()
     {
-        $this->showModal = !$this->showModal;
+        $this->showModal = false;        
+        $this->emit('closeModal');
     }
 }
