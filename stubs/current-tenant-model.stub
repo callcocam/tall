@@ -8,10 +8,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Tall\Models\AbstractModel;
+use Tall\Tenant\Models\Concerns\UsesLandlordConnection;
+
 
 class CurrentTenant extends AbstractModel
 {
-    use HasFactory;
+    use HasFactory, UsesLandlordConnection;
     
     public function __construct(array $attributes = [])
     {
@@ -21,15 +23,49 @@ class CurrentTenant extends AbstractModel
     }
     protected $table = "tenants";
 
-    
+    protected $guarded = ['id'];
+    protected $appends = ['sub_menus'];
     /**
-     * Get the default cover photo URL if no cover photo has been uploaded.
-     *
-     * @return string
-     */
-    protected function defaultCoverPhotoUrl()
+   
+    * The attributes that should be cast.
+    *
+    * @var array
+    */
+    protected $casts = [
+        'created_at' => 'datetime:Y-m-d',
+        'updated_at' => 'datetime:Y-m-d'
+    ];
+
+    public function copy_tenants()
     {
-        return asset('img/logo-black.png');
+        return $this->hasOne(\Tall\Models\CopyTenant::class, 'tenant_id');
     }
+
     
+    public function getSubMenusAttribute()
+    {
+      $data = [];
+       $menus = \App\Models\Menu::query()->with([
+            'sub_menus' => fn ($sub_menu) => $sub_menu->tenant($this->id)->with([
+                'sub_menus' => fn ($sub_menu) => $sub_menu->tenant($this->id)
+            ])
+        ])->get();
+
+        foreach($menus as $sub01){
+            if($sub01->sub_menus->count() && $subs02 = $sub01->sub_menus){
+                foreach($subs02 as $sub02){                   
+                    if($sub02->sub_menus->count() && $subs03 = $sub02->sub_menus){
+                        foreach($subs03 as $sub03){
+                            data_set($data, sprintf("%s.%s",$sub02->id,$sub03->id), $sub03->id);
+                        }
+                    }
+                    else{
+                        data_set($data, $sub02->id, $sub02->id);
+                    }
+                }
+            }
+            
+        }
+        return $data;
+    }
 }

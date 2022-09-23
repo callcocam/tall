@@ -18,6 +18,7 @@ class ShowComponent extends FormComponent
 
     public $title = "Visualizar";
     public $filters = [];
+    public $showToggle=[];
 
     public $step;
 
@@ -29,13 +30,13 @@ class ShowComponent extends FormComponent
     public function mount(CurrentTenant $model)
     {
          $this->authorize(Route::currentRouteName());
-
          $this->setFormProperties($model);
-
-         data_set($this->data, 'tenant', $model->copy_tenants()->firstOrCreate([
-            config('tall.multitenancy.current_tenant_key','tenant_id')=>$model->id
-         ]));
-         $this->step = data_get($this->data, 'tenant.step', 0);
+         if (\Schema::connection(config('tall.multitenancy.landlord_database_connection_name','landlord'))->hasTable('copy_tenants')) {  
+            data_set($this->data, 'tenant', $model->copy_tenants()->firstOrCreate([
+                config('tall.multitenancy.current_tenant_key','tenant_id')=>$model->id
+            ]));
+            $this->step = data_get($this->data, 'tenant.step', 0);
+        }
 
     }
 
@@ -50,12 +51,12 @@ class ShowComponent extends FormComponent
     
     public function updatedDataTenantStepAccess($value)
     {
-        dd($value);
+        //dd($value);
     }
     
     public function updatedDataTenantStepMenus($value)
     {
-        dd($value);
+        //dd($value);
     }
 
     public function nextStep()
@@ -72,19 +73,26 @@ class ShowComponent extends FormComponent
         $this->model->copy_tenants->forceFill(data_get($this->data, 'tenant'))->save();
     }
     
-    public function getTenantsProperty()
+    public function showToggle($model, $value)
     {
-        return $this->model->allTenants()->get();
+        data_set($this->showToggle,$model, $value);
     }
+
     
     public function getRolesProperty()
     {
-        return \App\Models\Role::query()->where(config('tall.multitenancy.current_tenant_key','tenant_id'),data_get($this->data,'tenant.stepTenant'))->get();
+        if(class_exists(\App\Models\Role::class)){
+            return \App\Models\Role::query()->get();
+        }
+        return \Tall\Models\Auth\Acl\Models\Role::query()->get();
     }
     
     public function getMenusProperty()
     {
-        return \App\Models\Menu::query()->where(config('tall.multitenancy.current_tenant_key','tenant_id'),data_get($this->data,'tenant.stepTenant'))->get();
+        if(class_exists(\App\Models\Menu::class)){
+            return \App\Models\Menu::query()->get();
+        }
+        return \Tall\Models\Menu::query()->get();
     }
 
     public function getCurrentStepProperty()
