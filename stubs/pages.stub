@@ -18,9 +18,9 @@ Route::get('{slugpagina}', function ($slugpagina) {
   $paginas = sprintf('site.paginas.%s',$slugpagina);
   if(\View::exists($paginas)){
       return view($paginas);
-  }else{
-      return view('site.paginas.default');
+  }elseif(\View::exists('site.paginas.default')){
+    return view('site.paginas.default');
   }
-//    return view('paginas.'.$slugpagina);
-
-})->where('slugpagina','[\/\w\.\,\-]*');
+  else{
+      return view('tall::site.404');
+  }

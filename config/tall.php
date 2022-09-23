@@ -212,6 +212,12 @@ return [
             */
             'landlord_database_connection_name' => env('DB_CONNECTION_LANDLORD', 'mysql'),
             
+
+            'current_tenant_container_menus_key'=>[
+                'currentMenuSite'=>'menussite',
+                'currentMenuAdmin'=>'menusadmin',
+            ],
+            
             'paths'=>[
                 'landlord'=>'/Http/Livewire/Landlord',
                 'admin'=>'/Http/Livewire/Admin',

@@ -10,7 +10,7 @@ namespace Tall\Http\Livewire\Admin\Operacional\Users;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Tall\Http\Livewire\AbstractDeleteComponent;
-use App\Models\User;
+use Tall\Models\UserTenant as User;
 
 class DeleteComponent extends AbstractDeleteComponent
 {

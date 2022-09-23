@@ -10,7 +10,7 @@ namespace Tall\Http\Livewire\Landlord\Operacional\Users;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Tall\Http\Livewire\FormComponent;
-use App\Models\User;
+use Tall\Models\UserLandlord as User;
 use Illuminate\Validation\Rule;
 use Tall\View\Components\Form\{Access, Input, Genre, Avatar, Search};
 
