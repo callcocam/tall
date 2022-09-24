@@ -90,9 +90,9 @@ class ShowComponent extends FormComponent
     public function getMenusProperty()
     {
         if(class_exists(\App\Models\Menu::class)){
-            return \App\Models\Menu::query()->get();
+            return \App\Models\Menu::query()->orderBy('ordering')->get();
         }
-        return \Tall\Models\Menu::query()->get();
+        return \Tall\Models\Menu::query()->orderBy('ordering')->get();
     }
 
     public function getCurrentStepProperty()

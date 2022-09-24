@@ -7,50 +7,27 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Tall\Models\AbstractModel;
+use Tall\Models\CurrentTenant as AbstractModel;
 use Tall\Tenant\Models\Concerns\UsesLandlordConnection;
-
 
 class CurrentTenant extends AbstractModel
 {
     use HasFactory, UsesLandlordConnection;
-    
-    public function __construct(array $attributes = [])
-    {
-        parent::__construct($attributes);
-
-        static::$landlord->disable();
-    }
-    protected $table = "tenants";
 
     protected $guarded = ['id'];
-    protected $appends = ['sub_menus'];
-    /**
-   
-    * The attributes that should be cast.
-    *
-    * @var array
-    */
-    protected $casts = [
-        'created_at' => 'datetime:Y-m-d',
-        'updated_at' => 'datetime:Y-m-d'
-    ];
 
-    public function copy_tenants()
-    {
-        return $this->hasOne(\Tall\Models\CopyTenant::class, 'tenant_id');
-    }
+    protected $table = "tenants";
 
     
     public function getSubMenusAttribute()
     {
       $data = [];
-       $menus = \App\Models\Menu::query()->with([
-            'sub_menus' => fn ($sub_menu) => $sub_menu->tenant($this->id)->with([
+       $menus = \App\Models\Menu::query()
+       ->with([
+            'sub_menus' => fn ($sub_menu) => $sub_menu->tenantNull($this->id)->with([
                 'sub_menus' => fn ($sub_menu) => $sub_menu->tenant($this->id)
             ])
         ])->get();
-
         foreach($menus as $sub01){
             if($sub01->sub_menus->count() && $subs02 = $sub01->sub_menus){
                 foreach($subs02 as $sub02){                   
