@@ -1,7 +1,7 @@
 <div class="group inline-block" x-data="{ active: false }" @click.away="active = false" @close.stop="active = false">
     <button x-on:click="active = !active" :class="{ 'hover:bg-gray-100': !active }"
         class="outline-none focus:outline-none px-2 py-4 bg-white rounded-sm flex items-center min-w-32 w-full text-left">
-        <span class=" font-semibold flex-1">{{ $menu->name }}</span>
+        <span class=" font-semibold flex-1">{{ __(data_get($menu, 'sub_menu.name')) }}</span>
         <span>
             <svg :class="{ '-rotate-180': active }"
                 class="fill-current h-4 w-4 transform  transition duration-150 ease-in-out"
@@ -17,13 +17,13 @@
         x-description="Dropdown menu, show/hide based on menu state." :class="{ 'scale-100': active }"
         class="bg-white rounded-sm transform scale-0 lg:absolute transition duration-150 ease-in-out origin-top min-w-32">
         @foreach ($sub_menus as $sub_menu)
-            @if ($sub_menu->sub_menus->count() && ($items = $sub_menu->sub_menus))
-                @include('tall::includes.site.nav.dropdown', ['items' => $items, 'item' => $sub_menu])
-            @else
-                @include('tall::includes.site.nav.link', ['item' => $sub_menu])
+            @if ($items = data_get($sub_menu, 'sub_menus', []))
+                @if (count($items))
+                    @include('tall::includes.site.nav.dropdown', ['items' => $items, 'item' => $sub_menu])
+                @else
+                    @include('tall::includes.site.nav.link', ['item' => $sub_menu])
+                @endif
             @endif
         @endforeach
     </ul>
 </div>
-
-

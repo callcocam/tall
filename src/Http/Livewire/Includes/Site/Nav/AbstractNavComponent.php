@@ -24,6 +24,19 @@ abstract class AbstractNavComponent extends Component
     {
         $menus = [];
         $this->currentMenu = config('tall.multitenancy.current_tenant_container_menus_key.currentMenuSite', 'menus-site');
+       
+        if($tenant = request()->query('tenant')){
+            if($builder = \Tall\Models\CurrentTenant::find($tenant)){
+                $menu = \Tall\Models\Menu::query()->where('slug', $this->currentMenu)->first();         
+                return $builder->sub_menu_orderings()        
+                ->where('menu_id',$menu->id)->get();
+                // ->map(function (\Tall\Models\SubMenuOrdering $SubMenu) {
+                //     $SubMenu->parents = $SubMenu;
+                //     return $SubMenu;
+                // })
+              }
+        }
+
         if(app()->has($this->currentMenu)){
             $builder =  app($this->currentMenu);
                 if( $builder){                  
@@ -47,13 +60,12 @@ abstract class AbstractNavComponent extends Component
                             });
                         }
                         else{
-                            // if($sarch = $this->search){
-                            //     $builder->where('name','LIKE',"%{$this->search}%");
-                            // }
                             $menus = $builder->get()->map(function (\Tall\Models\SubMenuOrdering $SubMenu) {
-                                $SubMenu->parents = $SubMenu;
-                                return $SubMenu;
-                            });
+                                if($SubMenu->sub_menu){
+                                    $SubMenu->sub_menu['sud_menus'] =$SubMenu->sub_menus;
+                                }
+                                return $SubMenu->sub_menu;
+                            });    
                         }
                     }
                     else{

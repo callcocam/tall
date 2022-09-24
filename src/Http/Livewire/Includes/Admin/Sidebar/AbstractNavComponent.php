@@ -32,13 +32,14 @@ abstract class AbstractNavComponent extends Component
         $this->currentMenu = config('tall.multitenancy.current_tenant_container_menus_key.currentMenuAdmin', 'menu-admin');
        
         if($this->tenant){
-          if($tenant = \Tall\Models\CurrentTenant::find($this->tenant)){
+          if($builder = \Tall\Models\CurrentTenant::find($this->tenant)){
             $menu = \Tall\Models\Menu::query()->where('slug', $this->currentMenu)->first();         
-            return $tenant->sub_menu_orderings()        
-            ->where('menu_id',$menu->id)->get()->map(function (\Tall\Models\SubMenuOrdering $SubMenu) {
-                $SubMenu->parents = $SubMenu;
-                return $SubMenu;
-            });
+            return $builder->sub_menu_orderings()        
+            ->where('menu_id',$menu->id)->get();
+            // ->map(function (\Tall\Models\SubMenuOrdering $SubMenu) {
+            //     $SubMenu->parents = $SubMenu;
+            //     return $SubMenu;
+            // })
           }
         }
         else{
@@ -85,10 +86,11 @@ abstract class AbstractNavComponent extends Component
                         // if($sarch = $this->search){
                         //     $builder->where('name',' LIKE',"%{$this->search}%");
                         // }
-                        $menus = $builder->get()->map(function (\Tall\Models\SubMenuOrdering $SubMenu) {
-                            $SubMenu->parents = $SubMenu;
-                            return $SubMenu;
-                        });
+                        $menus = $builder->get();
+                        // ->map(function (\Tall\Models\SubMenuOrdering $SubMenu) {
+                        //     $SubMenu->parents = $SubMenu;
+                        //     return $SubMenu;
+                        // })
                     }
                 }
                 else{

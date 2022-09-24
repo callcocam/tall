@@ -4,12 +4,15 @@
         <nav class="-mx-5 -my-2 flex flex-wrap justify-center" aria-label="Footer">
             @if ($menus = $this->menus)
                 @foreach ($menus as $menu)
-                    @if (\Route::has($menu->slug))
-                        @can($menu->slug)
-                            <div class="px-5 py-2">
-                                <a href="{{ route($menu->slug) }}" class="text-base text-gray-500 hover:text-gray-900">{{ $menu->name }}</a>
-                            </div>
-                        @endcan
+                    @if ($menu)
+                        @if (\Route::has($menu->slug))
+                            @can($menu->slug)
+                                <div class="px-5 py-2">
+                                    <a href="{{ route($menu->slug) }}"
+                                        class="text-base text-gray-500 hover:text-gray-900">{{ $menu->name }}</a>
+                                </div>
+                            @endcan
+                        @endif
                     @endif
                 @endforeach
             @endif

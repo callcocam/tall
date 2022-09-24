@@ -7,19 +7,19 @@
                 open)
         }"
         class=" group w-full flex items-center pl-2 pr-1 py-2 text-left text-sm font-medium"
-        aria-controls="sub-menu-{{ $menu->id }} " {{-- x-bind:aria-expanded="open.toString()" --}}>
+        aria-controls="sub-menu-{{ data_get($menu,'id') }} " {{-- x-bind:aria-expanded="open.toString()" --}}>
         <!-- Heroicon name: outline/users -->
-        @if (\View::exists(sprintf('tall::components.icons.outline.%s', $menu->icone)))
-            <x-dynamic-component component="tall::icons.outline.{{ $menu->icone }}"
+        @if (\View::exists(sprintf('tall::components.icons.outline.%s', data_get($menu,'icone'))))
+            <x-dynamic-component component="tall::icons.outline.{{ data_get($menu,'icone') }}"
                 class="mr-3 h-4 w-4 flex-shrink-0 " />
-        @elseif(\View::exists(sprintf('tall::components.icons.solid.%s', $menu->icone)))
-            <x-dynamic-component component="tall::icons.solid.{{ $menu->icone }}"
+        @elseif(\View::exists(sprintf('tall::components.icons.solid.%s', data_get($menu,'icone'))))
+            <x-dynamic-component component="tall::icons.solid.{{ data_get($menu,'icone') }}"
                 class="mr-3 h-4 w-4 flex-shrink-0 " />
         @else
             <x-dynamic-component component="tall::icons.outline.chevron-right"
                 class="mr-3 h-4 w-4 flex-shrink-0 " />
         @endif
-        <span class="flex-1 uppercase">{{ $menu->name }} </span>
+        <span class="flex-1 uppercase">{{ data_get($menu,'name') }} </span>
         <!-- Expanded: "text-gray-400 rotate-90", Collapsed: "text-gray-300" -->
         <svg :class="{ 'text-gray-400 rotate-90': open, 'text-gray-300': !(open) }"
             class="text-gray-300 ml-3 h-4 w-4 flex-shrink-0 transform transition-colors duration-150 ease-in-out group-hover:text-gray-400"
@@ -28,26 +28,26 @@
         </svg>
     </button>
     <!-- Expandable link section, show/hide based on state. -->
-    <div class="space-y-1 bg-gray-50" id="sub-menu-{{ $menu->id }} " x-show="open">
+    <div class="space-y-1 bg-gray-50" id="sub-menu-{{ data_get($menu,'id') }} " x-show="open">
         @foreach ($sub_menus as $sub_menu)
-            <a @if (\Route::has($sub_menu->slug)) href="{{ route($sub_menu->slug) }}"                 
+            <a @if (\Route::has(data_get($sub_menu,'slug'))) href="{{ route(data_get($sub_menu,'slug')) }}"                 
                 @else
-                href="{{ $sub_menu->link }}" @endif
-                class="group flex w-full items-center rounded-md py-2 pl-11 pr-2 text-sm font-medium  {{ request()->routeIs($sub_menu->slug) ? 'bg-gray-200 text-gray-900' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-200' }}">
-                @if (\View::exists(sprintf('tall::components.icons.outline.%s', $sub_menu->icone)))
+                href="{{ data_get($sub_menu, 'link') }}" @endif
+                class="group flex w-full items-center rounded-md py-2 pl-11 pr-2 text-sm font-medium  {{ request()->routeIs(data_get($sub_menu,'slug')) ? 'bg-gray-200 text-gray-900' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-200' }}">
+                @if (\View::exists(sprintf('tall::components.icons.outline.%s', data_get($sub_menu, 'icone'))))
                     <x-dynamic-component
-                        component="tall::icons.outline.{{ $sub_menu->icone }}"
+                        component="tall::icons.outline.{{ data_get($sub_menu, 'icone') }}"
                         class="mr-1 h-4 w-4 flex-shrink-0 " />
-                @elseif(\View::exists(sprintf('tall::components.icons.solid.%s', $sub_menu->icone)))
+                @elseif(\View::exists(sprintf('tall::components.icons.solid.%s', data_get($sub_menu, 'icone'))))
                     <x-dynamic-component
-                        component="tall::icons.solid.{{ $sub_menu->icone }}"
+                        component="tall::icons.solid.{{ data_get($sub_menu, 'icone') }}"
                         class="mr-1 h-4 w-4 flex-shrink-0 " />
                 @else
                     <x-dynamic-component component="tall::icons.outline.chevron-right"
                         class="mr-1 h-4 w-4 flex-shrink-0 " />
                 @endif
                 <span>
-                    {{ $sub_menu->name }}
+                    {{ __(data_get($sub_menu, 'name')) }}
                 </span>
             </a>
         @endforeach

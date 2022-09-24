@@ -65,9 +65,13 @@ class MakeTenantCurrentAction
             if($menus){
                foreach ($menus as  $menu) {
                 if(method_exists($tenant, 'sub_menu_orderings')){
+
                     \Config::set('tall.selecttenant', true);
+                    
                     $builder =  $tenant->sub_menu_orderings()        
                      ->where('menu_id',$menu->id);   
+
+
                 }else{
                     if($menu->sub_menus){
                         $builder =  $menu->sub_menus();   
