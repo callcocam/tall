@@ -10,8 +10,8 @@ use Livewire\Component;
 
 abstract class AbstractComponent extends Component
 {
-
-
+    public $search="";
+    
     protected function models(){
         
     }

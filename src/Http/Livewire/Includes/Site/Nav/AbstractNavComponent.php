@@ -61,8 +61,7 @@ abstract class AbstractNavComponent extends Component
                     }     
                 }
             }
-        }
-       
+    
         return $menus;
     }
 
