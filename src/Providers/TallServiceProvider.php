@@ -127,6 +127,8 @@ class TallServiceProvider extends ServiceProvider
             Livewire::component( 'tall::landlord.operacional.tenants.create-component', \Tall\Http\Livewire\Landlord\Operacional\Tenants\CreateComponent::class);
             Livewire::component( 'tall::landlord.operacional.tenants.show-component', \Tall\Http\Livewire\Landlord\Operacional\Tenants\ShowComponent::class);
             Livewire::component( 'tall::landlord.operacional.tenants.delete-component', \Tall\Http\Livewire\Landlord\Operacional\Tenants\DeleteComponent::class);
+            Livewire::component( 'tall::landlord.operacional.tenants.groups-component', \Tall\Http\Livewire\Landlord\Operacional\Tenants\GroupsComponent::class);
+            Livewire::component( 'tall::landlord.operacional.tenants.items-component', \Tall\Http\Livewire\Landlord\Operacional\Tenants\ItemsComponent::class);
             
             Livewire::component( 'tall::landlord.operacional.roles.list-component', \Tall\Http\Livewire\Landlord\Operacional\Roles\ListComponent::class);
             Livewire::component( 'tall::landlord.operacional.roles.edit-component', \Tall\Http\Livewire\Landlord\Operacional\Roles\EditComponent::class);
