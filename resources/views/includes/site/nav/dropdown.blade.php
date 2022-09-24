@@ -20,7 +20,10 @@
                 @if (count($sub_items))
                     @include('tall::includes.site.nav.dropdown', ['items' => $sub_items, 'item' => $item])
                 @else
-                    @include('tall::includes.site.nav.link', ['item' => $item])
+                    <li class="px-3 py-3 hover:bg-gray-100">
+                        {{-- tall/resources/views/components/nav/link.blade.php --}}
+                        <x-tall::nav.link :item="$item" />
+                    </li>
                 @endif
             @endif
         @endforeach
