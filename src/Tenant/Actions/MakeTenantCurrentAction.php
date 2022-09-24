@@ -56,14 +56,18 @@ class MakeTenantCurrentAction
 
         if (Schema::connection(config('tall.multitenancy.landlord_database_connection_name','landlord'))->hasTable('menus')) {  
             $builder = null;
-            if($menus = \App\Models\Menu::query()->get()){
+            if(class_exists(\App\Models\Menu::class)){
+                $menus = \App\Models\Menu::query()->get();
+            }
+            else{
+                $menus = \Tall\Models\Menu::query()->get();
+            }
+            if($menus){
                foreach ($menus as  $menu) {
-                if(method_exists($tenant, 'sub_menus')){
-                    if($tenant->sub_menus){
-                        $builder =  $tenant->sub_menus->filter(function($item) use($menu){
-                            return $item->menu_id == $menu->id;
-                        });   
-                    }
+                if(method_exists($tenant, 'sub_menu_orderings')){
+                    \Config::set('tall.selecttenant', true);
+                    $builder =  $tenant->sub_menu_orderings()        
+                     ->where('menu_id',$menu->id);   
                 }else{
                     if($menu->sub_menus){
                         $builder =  $menu->sub_menus();   

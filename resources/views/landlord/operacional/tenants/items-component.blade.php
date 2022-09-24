@@ -16,7 +16,7 @@
         @foreach ($submenus as $subitem)
             {{-- @if (data_get($stepMenus, sprintf('%s.%s', $menu->id, $subitem->id))) --}}
             <li menu-id="{{ data_get($subitem, 'id') }}" class="flex relative py-1  handler  cursor-move justify-start">
-                <div class="relative flex items-center justify-start">
+                <div class="relative flex items-center justify-start mx-6">
                     <div class="flex h-5 items-center">
                         <span id="menus-{{ $subitem->id }}"
                             class="h-4 w-4 rounded  border-gray-300 bg-indigo-600 flex items-center justify-center">

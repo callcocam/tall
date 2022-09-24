@@ -15,34 +15,35 @@ abstract class AbstractNavComponent extends Component
 
     public $search="";
 
+    public $tenant="";
+
     public $showDropdown=true;
 
     protected $listeners = ['loadMenus'];
 
+    public function getTenantsProperty()
+    {
+       return \Tall\Models\Tenant::all();
+    }
+
     public function getMenusProperty()
     {
         $menus = [];
-      
         $this->currentMenu = config('tall.multitenancy.current_tenant_container_menus_key.currentMenuAdmin', 'menu-admin');
-        if(app()->has($this->currentMenu)){
-            $builder =  app($this->currentMenu);
-            
-            if( $builder){
-                if($builder instanceof \Illuminate\Database\Eloquent\Relations\HasMany){
-                    if($sarch = $this->search){
-                            $builder->where('name','LIKE',"%{$this->search}%");
-                    }
-                    $menus = $builder->get()->map(function (SubMenu $SubMenu) {
-                        $SubMenu->parents = $SubMenu;
-                        return $SubMenu;
-                    });
-                }               
-            }
-            else{
-                $menus = $builder;
-            }
+       
+        if($this->tenant){
+          if($tenant = \Tall\Models\CurrentTenant::find($this->tenant)){
+            $menu = \Tall\Models\Menu::query()->where('slug', $this->currentMenu)->first();         
+            return $tenant->sub_menu_orderings()        
+            ->where('menu_id',$menu->id)->get()->map(function (\Tall\Models\SubMenuOrdering $SubMenu) {
+                $SubMenu->parents = $SubMenu;
+                return $SubMenu;
+            });
+          }
         }
-        return $menus;
+        else{
+            return $this->getLoadMenus();
+        }
     }
 
     public function render()
@@ -53,5 +54,47 @@ abstract class AbstractNavComponent extends Component
     public function loadMenus($data = [])
     {
 
+    }
+
+    public function getLoadMenus()
+    {
+        if(app()->has($this->currentMenu)){
+            $builder =  app($this->currentMenu);               
+            if( $builder){
+                if($builder instanceof \Illuminate\Database\Eloquent\Relations\HasMany){
+                    $related = $builder->getRelated();
+                    if($related instanceof \App\Models\SubMenu){
+                        if($sarch = $this->search){
+                            $builder->where('name','LIKE',"%{$this->search}%");
+                        }
+                        $menus = $builder->get()->map(function (\App\Models\SubMenu $SubMenu) {
+                            $SubMenu->parents = $SubMenu;
+                            return $SubMenu;
+                        });
+                    }elseif($related instanceof \Tall\Models\SubMenu){
+                        if($sarch = $this->search){
+                            $builder->where('name','LIKE',"%{$this->search}%");
+                        }
+                        $menus = $builder->get()->map(function (\Tall\Models\SubMenu $SubMenu) {
+                            $SubMenu->parents = $SubMenu;
+                            return $SubMenu;
+                        });
+                    }
+                    else{
+                       
+                        // if($sarch = $this->search){
+                        //     $builder->where('name',' LIKE',"%{$this->search}%");
+                        // }
+                        $menus = $builder->get()->map(function (\Tall\Models\SubMenuOrdering $SubMenu) {
+                            $SubMenu->parents = $SubMenu;
+                            return $SubMenu;
+                        });
+                    }
+                }
+                else{
+                    $menus = $builder;
+                }               
+            }
+        }
     }
 }
