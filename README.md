@@ -2,6 +2,70 @@
 
 
 #EXEMPLOS
+#RPPS
+#CONFIG DATABASES
+
+```
+
+        'landlord' => [
+            'driver' => 'mysql',
+            'url' => env('DATABASE_URL_LANDLORD'),
+            'host' => env('DB_HOST_LANDLORD', '127.0.0.1'),
+            'port' => env('DB_PORT_LANDLORD', '3306'),
+            'database' => env('DB_DATABASE_LANDLORD', 'forge'),
+            'username' => env('DB_USERNAME_LANDLORD', 'forge'),
+            'password' => env('DB_PASSWORD_LANDLORD', ''),
+            'unix_socket' => env('DB_SOCKET_LANDLORD', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'strict' => true,
+            'engine' => null,
+            'options' => extension_loaded('pdo_mysql') ? array_filter([
+                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+            ]) : [],
+        ],
+        'backup' => [
+            'driver' => 'mysql',
+            'url' => env('DATABASE_URL_BACKUP'),
+            'host' => env('DB_HOST_BACKUP', '127.0.0.1'),
+            'port' => env('DB_PORT_BACKUP', '3306'),
+            'database' => env('DB_DATABASE_BACKUP', 'forge'),
+            'username' => env('DB_USERNAME_BACKUP', 'forge'),
+            'password' => env('DB_PASSWORD_BACKUP', ''),
+            'unix_socket' => env('DB_SOCKET_BACKUP', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'strict' => true,
+            'engine' => null,
+            'options' => extension_loaded('pdo_mysql') ? array_filter([
+                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+            ]) : [],
+        ],
+
+```
+#DEFAULT COMMANDS
+```
+./vendor/bin/sail artisan migrate --database=landlord --path=/database/migrations/landlord
+./vendor/bin/sail artisan migrate:fresh --database=landlord --path=/database/migrations/landlord
+
+ ./vendor/bin/sail artisan db:seed --class=LandlordSeeder
+
+ ./vendor/bin/sail artisan db:seed --class=RoleAndPermissionsSeeder
+ 
+```
+
+```
+ ./vendor/bin/sail artisan migrate --database=mysql
+ ./vendor/bin/sail artisan migrate:fresh --database=mysql
+
+./vendor/bin/sail artisan db:seed --class=TenantSeeder
+
+./vendor/bin/sail artisan db:seed --class=MenusSeeder
+```` 
 
 #COMMANDS
 

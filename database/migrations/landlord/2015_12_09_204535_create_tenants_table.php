@@ -20,10 +20,11 @@ class CreateTenantsTable extends Migration
             $table->string('domain')->nullable(); 
             $table->string('email')->nullable(); 
             $table->string('prefix')->default('admin')->nullable();
-            $table->string('database')->default('tenant_db');
-            $table->string('middleware')->default('tenants');
-            $table->string('provider')->default('tenants');
+            $table->string('database')->default('tenant');
+            $table->string('middleware')->default('tenant');
+            $table->string('provider')->default('tenant');
             $table->text('description')->nullable();   
+            $table->integer('parent')->nullable();   
             $table->foreignUuid('user_id')->nullable()->constrained('users')->cascadeOnDelete();
             $table->enum('status',['draft','published'])->nullable()->comment("Situação")->default('published');
             $table->timestamps();

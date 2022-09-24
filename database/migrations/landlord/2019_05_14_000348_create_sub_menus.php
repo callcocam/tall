@@ -19,7 +19,7 @@ class CreateSubMenus extends Migration
                 $table->string('assets', 255)->nullable();
                 $table->string('name', 255);
                 $table->string('slug', 255)->nullable();
-                $table->string('link', 255)->nullable();
+                $table->text('link', 255)->nullable();
                 $table->string('icone', 50)->nullable();
                 $table->string('attributes', 50)->nullable();
                 $table->text('description')->nullable();

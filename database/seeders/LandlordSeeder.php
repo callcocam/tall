@@ -15,14 +15,19 @@ class LandlordSeeder extends Seeder
     public function run()
     {
 
+      $clone = config('database.connections.mysql');
+      $clone['database'] = 'landlord';
+      \Config::set("database.connections.landlord", $clone);
+
         $host = \Str::replace("www.",'',request()->getHost());
         $id =  \Ramsey\Uuid\Uuid::uuid4();
+        \Tall\Models\Tenant::query()->forceDelete();
         \DB::connection('landlord')->table('tenants')->insert([
           'id' => $id,
           'name' => "Sistema Integrado De Gerenciamento E Administração",
           'slug' => "sistema-integrado-de-gerenciamento-e-administracao",
           'domain'=> $host,
-          'email' => "contato@bengs.com.br",
+          'email' => "contato@sigasmart.com.br",
           'description' => 'Sistema Integrado De Gerenciamento E Administração',
           'status' => 'published',
           'database' => 'landlord',
@@ -39,6 +44,7 @@ class LandlordSeeder extends Seeder
               \DB::connection('landlord')->table('tenants')->insert([
                 'id' => \Ramsey\Uuid\Uuid::uuid4(),
                 'name' => data_get($tenant,'name'),
+                'parent' => data_get($tenant,'id'),
                 'user_id' => null,
                 'slug' => data_get($tenant,'slug'),
                 'domain'=> data_get($tenant,'assets'),
@@ -51,8 +57,8 @@ class LandlordSeeder extends Seeder
             ]);            
           }
         }
-      \App\Models\User::query()->forceDelete();
-      $user =   \App\Models\User::factory()->create([
+      \Tall\Models\UserLandlord::query()->forceDelete();
+      $user =   \Tall\Models\UserLandlord::factory()->create([
           'name' => 'Super Admin',
           'email' => 'landlord@example.com',
       ]);

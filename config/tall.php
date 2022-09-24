@@ -225,12 +225,12 @@ return [
             /*
             * Os caminho dos componentes administrador e proprietário
             */
-            //'path' => env('BASE_LIVEWIRE_PATH', '/Http/Livewire/Admin'),
+            'path' => env('BASE_LIVEWIRE_PATH', '/Http/Livewire/Admin'),
             // OR            
-            'path' => env('BASE_LIVEWIRE_PATH',[
-                'landlord'=>'/Http/Livewire/Landlord',
-                'admin'=>'/Http/Livewire/Admin',
-            ]),
+            // 'path' => env('BASE_LIVEWIRE_PATH',[
+            //     'landlord'=>'/Http/Livewire/Landlord',
+            //     'admin'=>'/Http/Livewire/Admin',
+            // ]),
              /*
             * Você pode personalizar parte do comportamento deste pacote usando nossa própria ação personalizada.
             * Sua ação personalizada deve sempre estender a ação padrão.
