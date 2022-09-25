@@ -7,7 +7,7 @@ if (data_get($menu, 'sub_menu')) {
     $data = $menu;
 }
 @endphp
-<div class="inline-block">
+<div class="flex items-center">
     <a @if (\Route::has(data_get($data, 'slug'))) href="{{ route(data_get($data, 'slug')) }}"                 
     @else
         href="{{ data_get($data, 'link') }}"                  
@@ -15,7 +15,7 @@ if (data_get($menu, 'sub_menu')) {
             target="_blank" 
             @endif
         @endif
-        class="outline-none focus:outline-none px-3 py-4 bg-white rounded-sm flex items-center">
+        class="outline-none focus:outline-none px-3 py-2 bg-white rounded-sm flex items-center h-16  hover:bg-gray-100">
         <span class="pr-1 font-semibold flex-1">{{ __(data_get($data, 'name')) }}</span>
     </a>
 </div>

@@ -21,6 +21,5 @@ if (\Str::contains(data_get($data, 'link'), 'http')):
     $defaltAttributes['target'] = '_blank';
 endif;
 $name = data_get($data, 'name');
-$icone = data_get($data, 'icone');
 @endphp
-<a {{ $attributes->merge($defaltAttributes) }}>{{ __(data_get($data, 'name')) }}</a>
+<a {{ $attributes->merge($defaltAttributes) }}>{{ __($name) }}</a>

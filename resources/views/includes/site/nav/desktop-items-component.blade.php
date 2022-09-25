@@ -1,6 +1,6 @@
 <div class="group inline-block" x-data="{ active: false }" @click.away="active = false" @close.stop="active = false">
     <button x-on:click="active = !active" :class="{ 'hover:bg-gray-100': !active }"
-        class="outline-none focus:outline-none px-2 py-4 bg-white rounded-sm flex items-center min-w-32 w-full text-left">
+        class="outline-none focus:outline-none px-2 h-16 bg-white rounded-sm flex items-center min-w-32 w-full text-left">
         <span class=" font-semibold flex-1">{{ __(data_get($menu, 'sub_menu.name')) }}</span>
         <span>
             <svg :class="{ '-rotate-180': active }"
@@ -21,9 +21,9 @@
                 @if (count($items))
                     @include('tall::includes.site.nav.dropdown', ['items' => $items, 'item' => $sub_menu])
                 @else
-                    <li class="px-3 py-3 hover:bg-gray-100">
+                    <li class="px-3 hover:bg-gray-100">
                         {{-- tall/resources/views/components/nav/link.blade.php --}}
-                        <x-tall::nav.link :item="$sub_menu" />
+                        <x-tall::nav.link class="flex py-2" :item="$sub_menu" />
                     </li>
                 @endif
             @endif
