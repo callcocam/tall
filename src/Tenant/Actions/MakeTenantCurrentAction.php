@@ -65,7 +65,7 @@ class MakeTenantCurrentAction
             if($menus){
                foreach ($menus as  $menu) {
                 if(method_exists($tenant, 'sub_menu_orderings')){
-                    \Config::set('tall.selecttenant', true);                   
+                    \Config::set('tall.selecttenant', $tenant->database == config('tall.multitenancy.landlord_database_connection_name','landlord'));                   
                     if($tenant_id = request()->query('tenant')){
                         if($tenant = \Tall\Models\CurrentTenant::find($tenant_id)){   
                          $builder= $tenant->sub_menu_orderings()        
