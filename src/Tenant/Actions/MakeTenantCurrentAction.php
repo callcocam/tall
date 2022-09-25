@@ -67,10 +67,18 @@ class MakeTenantCurrentAction
                 if(method_exists($tenant, 'sub_menu_orderings')){
 
                     \Config::set('tall.selecttenant', true);
-                    
-                    $builder =  $tenant->sub_menu_orderings()        
-                     ->where('menu_id',$menu->id);   
-
+                    // c4658a55-5224-46d1-82f2-1ad2e9dba37a
+                   
+                    if($tenant_id = request()->query('tenant')){
+                        if($tenant = \Tall\Models\CurrentTenant::find($tenant_id)){   
+                         $builder= $tenant->sub_menu_orderings()        
+                            ->where('menu_id',$menu->id);
+                          }
+                    }
+                    else{
+                        $builder =  $tenant->sub_menu_orderings()        
+                        ->where('menu_id',$menu->id);   
+                    }
 
                 }else{
                     if($menu->sub_menus){
