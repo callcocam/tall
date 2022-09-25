@@ -36,26 +36,14 @@
                         @foreach ($menus as $menu)
                             @if ($sub_menus = $menu->sub_menus)
                                 @if ($sub_menus->count())
-                                    @if (config('tall.selecttenant', false))
-                                        {{-- dropdown-tenant-menu --}}
-                                        @include('tall::includes.admin.sidebar.dropdown-tenant-menu')
-                                    @else
-                                        @include('tall::includes.admin.sidebar.dropdown-menu')
-                                        {{-- dropdown-menu --}}
-                                    @endif
+                                    <x-tall::nav.admin.dropdown-menu :item="$menu">
+                                        @foreach ($sub_menus as $sub_menu)
+                                            <x-tall::nav.admin.dropdown-link :item="$sub_menu" />
+                                        @endforeach
+                                    </x-tall::nav.admin.dropdown-menu>
                                 @else
-                                    @can($menu->slug)
-                                        <div class="space-y-1">
-                                            <!-- Current: "bg-gray-200 text-gray-900", Default: "text-gray-700 hover:text-gray-900 hover:bg-gray-50" -->
-                                            @if (config('tall.selecttenant', false))
-                                                {{-- dropdown-tenant-menu --}}
-                                                @include('tall::includes.admin.sidebar.link-tenant-menu')
-                                            @else
-                                                @include('tall::includes.admin.sidebar.link-menu')
-                                                {{-- dropdown-menu --}}
-                                            @endif
-                                        </div>
-                                    @endcan
+                                    <!-- Current: "bg-gray-200 text-gray-900", Default: "text-gray-700 hover:text-gray-900 hover:bg-gray-50" -->
+                                    <x-tall::nav.admin.link :item="$sub_menu" />
                                 @endif
                             @endif
                             {{-- <li class="nav-title">Components</li> --}}
