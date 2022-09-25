@@ -20,7 +20,7 @@
                     <div class="flex h-5 items-center">
                         <span id="menus-{{ $subitem->id }}"
                             class="h-4 w-4 rounded  border-gray-300 bg-indigo-600 flex items-center justify-center">
-                            <x-tall::icons.outline.check class="h-5 w-5 text-white font-bold" />
+                            <x-tall-icons.outline.check class="h-5 w-5 text-white font-bold" />
                         </span>
                     </div>
                     <div class="ml-3 text-sm flex items-center space-x-2 justify-start">
@@ -28,7 +28,7 @@
                            <span> {{ data_get($subitem, 'parent_sub_menu.name') }}</span>
                             @if (data_get($subitem, 'parent_sub_menu.id'))
                                 - <a href="{{ route('admin.sub-menus.view', data_get($subitem, 'parent_sub_menu')) }}"
-                                    target="_blank"><x-tall::icons.outline.eye class="h-5 w-5 text-black font-bold" /></a>
+                                    target="_blank"><x-tall-icons.outline.eye class="h-5 w-5 text-black font-bold" /></a>
                             @endif </span>
                         <span id="sub-menu-description-{{ $subitem->id }}" class="text-gray-500 flex flex-col">
                             <span class="text-sm text-gray-500 font-extrabold">({{ data_get($subitem, 'ordering') }}

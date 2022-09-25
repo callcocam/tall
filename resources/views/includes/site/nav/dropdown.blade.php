@@ -22,7 +22,7 @@
                 @else
                     <li class="px-3 py-1 hover:bg-gray-100">
                         {{-- tall/resources/views/components/nav/link.blade.php --}}
-                        <x-tall::nav.link :item="$item" />
+                        <x-tall-nav.link :item="$item" />
                     </li>
                 @endif
             @endif

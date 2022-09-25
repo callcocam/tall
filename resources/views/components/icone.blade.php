@@ -7,7 +7,7 @@
                 placeholder="{{ $selectedLabel }}"
                 class="w-full rounded-md border border-gray-300 bg-white py-2 pl-3 pr-12 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm" />
 
-            <x-tall::icons.outline.search class="h-5 w-5 absolute right-2 top-2" />
+            <x-tall-icons.outline.search class="h-5 w-5 absolute right-2 top-2" />
         </div>
         <ul class="mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base sm:text-sm mb-3" id="options-icone"
             role="listbox">
@@ -35,7 +35,7 @@
                                 id="{{ $id }}-icone-{{ $key }}" />
                             @if ($key == $selected)
                                 <span class="inset-y-0 flex items-center  text-indigo-600">
-                                    <x-tall::icons.outline.check class="h-5 w-5 text-indigo-600" />
+                                    <x-tall-icons.outline.check class="h-5 w-5 text-indigo-600" />
                                 </span>
                             @endif
                         </label>

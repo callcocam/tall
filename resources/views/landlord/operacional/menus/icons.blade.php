@@ -7,7 +7,7 @@
     <label for="combobox-label" class="block text-sm font-medium text-gray-700">Icone</label>
     <div class="relative mt-1">
         <input x-on:focus="openIcon = true" wire:model.debounce.500ms="filters.icone" autocomplete="off"
-            id="combobox-tall::icone" type="text" placeholder="cog"
+            id="combobox-tall-icone" type="text" placeholder="cog"
             class="w-full rounded-md border border-gray-300 bg-white py-2 pl-3 pr-12 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm"
             role="combobox" aria-controls="options" :aria-expanded="openIcon.toString()" aria-expanded="false">
         <div class="absolute inset-y-0 right-0 flex items-center rounded-r-md px-2 space-x-2 focus:outline-none">
@@ -31,7 +31,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.academic-cap class="h-5 w-5" /><span>academic-cap</span>
+                        <x-tall-icons.outline.academic-cap class="h-5 w-5" /><span>academic-cap</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="academic-cap"
                         id="632462b3222aa-icone-academic-cap">
@@ -44,7 +44,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.adjustments class="h-5 w-5" /><span>adjustments</span>
+                        <x-tall-icons.outline.adjustments class="h-5 w-5" /><span>adjustments</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="adjustments"
                         id="632462b3222aa-icone-adjustments">
@@ -57,7 +57,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.annotation class="h-5 w-5" /><span>annotation</span>
+                        <x-tall-icons.outline.annotation class="h-5 w-5" /><span>annotation</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="annotation"
                         id="632462b3222aa-icone-annotation">
@@ -70,7 +70,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.archive class="h-5 w-5" /><span>archive</span>
+                        <x-tall-icons.outline.archive class="h-5 w-5" /><span>archive</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="archive"
                         id="632462b3222aa-icone-archive">
@@ -83,7 +83,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.arrow-circle-down class="h-5 w-5" /><span>arrow-circle-down</span>
+                        <x-tall-icons.outline.arrow-circle-down class="h-5 w-5" /><span>arrow-circle-down</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="arrow-circle-down"
                         id="632462b3222aa-icone-arrow-circle-down">
@@ -96,7 +96,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.arrow-circle-left class="h-5 w-5" /><span>arrow-circle-left</span>
+                        <x-tall-icons.outline.arrow-circle-left class="h-5 w-5" /><span>arrow-circle-left</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="arrow-circle-left"
                         id="632462b3222aa-icone-arrow-circle-left">
@@ -109,7 +109,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.arrow-circle-right class="h-5 w-5" /><span>arrow-circle-right</span>
+                        <x-tall-icons.outline.arrow-circle-right class="h-5 w-5" /><span>arrow-circle-right</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="arrow-circle-right"
                         id="632462b3222aa-icone-arrow-circle-right">
@@ -122,7 +122,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.arrow-circle-up class="h-5 w-5" /><span>arrow-circle-up</span>
+                        <x-tall-icons.outline.arrow-circle-up class="h-5 w-5" /><span>arrow-circle-up</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="arrow-circle-up"
                         id="632462b3222aa-icone-arrow-circle-up">
@@ -135,7 +135,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.arrow-down class="h-5 w-5" /><span>arrow-down</span>
+                        <x-tall-icons.outline.arrow-down class="h-5 w-5" /><span>arrow-down</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="arrow-down"
                         id="632462b3222aa-icone-arrow-down">
@@ -148,7 +148,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.arrow-left class="h-5 w-5" /><span>arrow-left</span>
+                        <x-tall-icons.outline.arrow-left class="h-5 w-5" /><span>arrow-left</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="arrow-left"
                         id="632462b3222aa-icone-arrow-left">
@@ -161,7 +161,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.arrow-narrow-down class="h-5 w-5" /><span>arrow-narrow-down</span>
+                        <x-tall-icons.outline.arrow-narrow-down class="h-5 w-5" /><span>arrow-narrow-down</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="arrow-narrow-down"
                         id="632462b3222aa-icone-arrow-narrow-down">
@@ -174,7 +174,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.arrow-narrow-left class="h-5 w-5" /><span>arrow-narrow-left</span>
+                        <x-tall-icons.outline.arrow-narrow-left class="h-5 w-5" /><span>arrow-narrow-left</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="arrow-narrow-left"
                         id="632462b3222aa-icone-arrow-narrow-left">
@@ -187,7 +187,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.arrow-narrow-right class="h-5 w-5" /><span>arrow-narrow-right</span>
+                        <x-tall-icons.outline.arrow-narrow-right class="h-5 w-5" /><span>arrow-narrow-right</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="arrow-narrow-right"
                         id="632462b3222aa-icone-arrow-narrow-right">
@@ -200,7 +200,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.arrow-narrow-up class="h-5 w-5" /><span>arrow-narrow-up</span>
+                        <x-tall-icons.outline.arrow-narrow-up class="h-5 w-5" /><span>arrow-narrow-up</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="arrow-narrow-up"
                         id="632462b3222aa-icone-arrow-narrow-up">
@@ -213,7 +213,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.arrow-right class="h-5 w-5" /><span>arrow-right</span>
+                        <x-tall-icons.outline.arrow-right class="h-5 w-5" /><span>arrow-right</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="arrow-right"
                         id="632462b3222aa-icone-arrow-right">
@@ -226,7 +226,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.arrow-up class="h-5 w-5" /><span>arrow-up</span>
+                        <x-tall-icons.outline.arrow-up class="h-5 w-5" /><span>arrow-up</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="arrow-up"
                         id="632462b3222aa-icone-arrow-up">
@@ -239,7 +239,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.arrows-expand class="h-5 w-5" /><span>arrows-expand</span>
+                        <x-tall-icons.outline.arrows-expand class="h-5 w-5" /><span>arrows-expand</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="arrows-expand"
                         id="632462b3222aa-icone-arrows-expand">
@@ -252,7 +252,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.at-symbol class="h-5 w-5" /><span>at-symbol</span>
+                        <x-tall-icons.outline.at-symbol class="h-5 w-5" /><span>at-symbol</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="at-symbol"
                         id="632462b3222aa-icone-at-symbol">
@@ -265,7 +265,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.backspace class="h-5 w-5" /><span>backspace</span>
+                        <x-tall-icons.outline.backspace class="h-5 w-5" /><span>backspace</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="backspace"
                         id="632462b3222aa-icone-backspace">
@@ -278,7 +278,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.badge-check class="h-5 w-5" /><span>badge-check</span>
+                        <x-tall-icons.outline.badge-check class="h-5 w-5" /><span>badge-check</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="badge-check"
                         id="632462b3222aa-icone-badge-check">
@@ -291,7 +291,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.ban class="h-5 w-5" /><span>ban</span>
+                        <x-tall-icons.outline.ban class="h-5 w-5" /><span>ban</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="ban"
                         id="632462b3222aa-icone-ban">
@@ -304,7 +304,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.beaker class="h-5 w-5" /><span>beaker</span>
+                        <x-tall-icons.outline.beaker class="h-5 w-5" /><span>beaker</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="beaker"
                         id="632462b3222aa-icone-beaker">
@@ -317,7 +317,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.bell class="h-5 w-5" /><span>bell</span>
+                        <x-tall-icons.outline.bell class="h-5 w-5" /><span>bell</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="bell"
                         id="632462b3222aa-icone-bell">
@@ -330,7 +330,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.book-open class="h-5 w-5" /><span>book-open</span>
+                        <x-tall-icons.outline.book-open class="h-5 w-5" /><span>book-open</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="book-open"
                         id="632462b3222aa-icone-book-open">
@@ -343,7 +343,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.bookmark class="h-5 w-5" /><span>bookmark</span>
+                        <x-tall-icons.outline.bookmark class="h-5 w-5" /><span>bookmark</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="bookmark"
                         id="632462b3222aa-icone-bookmark">
@@ -356,7 +356,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.bookmark-alt class="h-5 w-5" /><span>bookmark-alt</span>
+                        <x-tall-icons.outline.bookmark-alt class="h-5 w-5" /><span>bookmark-alt</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="bookmark-alt"
                         id="632462b3222aa-icone-bookmark-alt">
@@ -369,7 +369,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.briefcase class="h-5 w-5" /><span>briefcase</span>
+                        <x-tall-icons.outline.briefcase class="h-5 w-5" /><span>briefcase</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="briefcase"
                         id="632462b3222aa-icone-briefcase">
@@ -382,7 +382,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.cake class="h-5 w-5" /><span>cake</span>
+                        <x-tall-icons.outline.cake class="h-5 w-5" /><span>cake</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="cake"
                         id="632462b3222aa-icone-cake">
@@ -395,7 +395,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.calculator class="h-5 w-5" /><span>calculator</span>
+                        <x-tall-icons.outline.calculator class="h-5 w-5" /><span>calculator</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="calculator"
                         id="632462b3222aa-icone-calculator">
@@ -408,7 +408,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.calendar class="h-5 w-5" /><span>calendar</span>
+                        <x-tall-icons.outline.calendar class="h-5 w-5" /><span>calendar</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="calendar"
                         id="632462b3222aa-icone-calendar">
@@ -421,7 +421,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.camera class="h-5 w-5" /><span>camera</span>
+                        <x-tall-icons.outline.camera class="h-5 w-5" /><span>camera</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="camera"
                         id="632462b3222aa-icone-camera">
@@ -434,7 +434,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.cash class="h-5 w-5" /><span>cash</span>
+                        <x-tall-icons.outline.cash class="h-5 w-5" /><span>cash</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="cash"
                         id="632462b3222aa-icone-cash">
@@ -447,7 +447,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.chart-bar class="h-5 w-5" /><span>chart-bar</span>
+                        <x-tall-icons.outline.chart-bar class="h-5 w-5" /><span>chart-bar</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="chart-bar"
                         id="632462b3222aa-icone-chart-bar">
@@ -460,7 +460,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.chart-pie class="h-5 w-5" /><span>chart-pie</span>
+                        <x-tall-icons.outline.chart-pie class="h-5 w-5" /><span>chart-pie</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="chart-pie"
                         id="632462b3222aa-icone-chart-pie">
@@ -473,7 +473,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.chart-square-bar class="h-5 w-5" /><span>chart-square-bar</span>
+                        <x-tall-icons.outline.chart-square-bar class="h-5 w-5" /><span>chart-square-bar</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="chart-square-bar"
                         id="632462b3222aa-icone-chart-square-bar">
@@ -486,7 +486,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.chat class="h-5 w-5" /><span>chat</span>
+                        <x-tall-icons.outline.chat class="h-5 w-5" /><span>chat</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="chat"
                         id="632462b3222aa-icone-chat">
@@ -499,7 +499,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.chat-alt class="h-5 w-5" /><span>chat-alt</span>
+                        <x-tall-icons.outline.chat-alt class="h-5 w-5" /><span>chat-alt</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="chat-alt"
                         id="632462b3222aa-icone-chat-alt">
@@ -512,7 +512,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.chat-alt-2 class="h-5 w-5" /><span>chat-alt-2</span>
+                        <x-tall-icons.outline.chat-alt-2 class="h-5 w-5" /><span>chat-alt-2</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="chat-alt-2"
                         id="632462b3222aa-icone-chat-alt-2">
@@ -525,7 +525,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.check class="h-5 w-5" /><span>check</span>
+                        <x-tall-icons.outline.check class="h-5 w-5" /><span>check</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="check"
                         id="632462b3222aa-icone-check">
@@ -538,7 +538,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.check-circle class="h-5 w-5" /><span>check-circle</span>
+                        <x-tall-icons.outline.check-circle class="h-5 w-5" /><span>check-circle</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="check-circle"
                         id="632462b3222aa-icone-check-circle">
@@ -551,7 +551,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.chevron-double-down class="h-5 w-5" /><span>chevron-double-down</span>
+                        <x-tall-icons.outline.chevron-double-down class="h-5 w-5" /><span>chevron-double-down</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="chevron-double-down"
                         id="632462b3222aa-icone-chevron-double-down">
@@ -564,7 +564,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.chevron-double-left class="h-5 w-5" /><span>chevron-double-left</span>
+                        <x-tall-icons.outline.chevron-double-left class="h-5 w-5" /><span>chevron-double-left</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="chevron-double-left"
                         id="632462b3222aa-icone-chevron-double-left">
@@ -577,7 +577,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.chevron-double-right class="h-5 w-5" /><span>chevron-double-right</span>
+                        <x-tall-icons.outline.chevron-double-right class="h-5 w-5" /><span>chevron-double-right</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="chevron-double-right"
                         id="632462b3222aa-icone-chevron-double-right">
@@ -590,7 +590,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.chevron-double-up class="h-5 w-5" /><span>chevron-double-up</span>
+                        <x-tall-icons.outline.chevron-double-up class="h-5 w-5" /><span>chevron-double-up</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="chevron-double-up"
                         id="632462b3222aa-icone-chevron-double-up">
@@ -603,7 +603,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.chevron-down class="h-5 w-5" /><span>chevron-down</span>
+                        <x-tall-icons.outline.chevron-down class="h-5 w-5" /><span>chevron-down</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="chevron-down"
                         id="632462b3222aa-icone-chevron-down">
@@ -616,7 +616,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.chevron-left class="h-5 w-5" /><span>chevron-left</span>
+                        <x-tall-icons.outline.chevron-left class="h-5 w-5" /><span>chevron-left</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="chevron-left"
                         id="632462b3222aa-icone-chevron-left">
@@ -629,7 +629,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.chevron-right class="h-5 w-5" /><span>chevron-right</span>
+                        <x-tall-icons.outline.chevron-right class="h-5 w-5" /><span>chevron-right</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="chevron-right"
                         id="632462b3222aa-icone-chevron-right">
@@ -642,7 +642,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.chevron-up class="h-5 w-5" /><span>chevron-up</span>
+                        <x-tall-icons.outline.chevron-up class="h-5 w-5" /><span>chevron-up</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="chevron-up"
                         id="632462b3222aa-icone-chevron-up">
@@ -655,7 +655,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.chevron-up-down class="h-5 w-5" /><span>chevron-up-down</span>
+                        <x-tall-icons.outline.chevron-up-down class="h-5 w-5" /><span>chevron-up-down</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="chevron-up-down"
                         id="632462b3222aa-icone-chevron-up-down">
@@ -668,7 +668,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.chip class="h-5 w-5" /><span>chip</span>
+                        <x-tall-icons.outline.chip class="h-5 w-5" /><span>chip</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="chip"
                         id="632462b3222aa-icone-chip">
@@ -681,7 +681,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.clipboard class="h-5 w-5" /><span>clipboard</span>
+                        <x-tall-icons.outline.clipboard class="h-5 w-5" /><span>clipboard</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="clipboard"
                         id="632462b3222aa-icone-clipboard">
@@ -694,7 +694,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.clipboard-check class="h-5 w-5" /><span>clipboard-check</span>
+                        <x-tall-icons.outline.clipboard-check class="h-5 w-5" /><span>clipboard-check</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="clipboard-check"
                         id="632462b3222aa-icone-clipboard-check">
@@ -707,7 +707,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.clipboard-copy class="h-5 w-5" /><span>clipboard-copy</span>
+                        <x-tall-icons.outline.clipboard-copy class="h-5 w-5" /><span>clipboard-copy</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="clipboard-copy"
                         id="632462b3222aa-icone-clipboard-copy">
@@ -720,7 +720,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.clipboard-list class="h-5 w-5" /><span>clipboard-list</span>
+                        <x-tall-icons.outline.clipboard-list class="h-5 w-5" /><span>clipboard-list</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="clipboard-list"
                         id="632462b3222aa-icone-clipboard-list">
@@ -733,7 +733,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.clock class="h-5 w-5" /><span>clock</span>
+                        <x-tall-icons.outline.clock class="h-5 w-5" /><span>clock</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="clock"
                         id="632462b3222aa-icone-clock">
@@ -746,7 +746,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.cloud class="h-5 w-5" /><span>cloud</span>
+                        <x-tall-icons.outline.cloud class="h-5 w-5" /><span>cloud</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="cloud"
                         id="632462b3222aa-icone-cloud">
@@ -759,7 +759,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.cloud-download class="h-5 w-5" /><span>cloud-download</span>
+                        <x-tall-icons.outline.cloud-download class="h-5 w-5" /><span>cloud-download</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="cloud-download"
                         id="632462b3222aa-icone-cloud-download">
@@ -772,7 +772,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.cloud-upload class="h-5 w-5" /><span>cloud-upload</span>
+                        <x-tall-icons.outline.cloud-upload class="h-5 w-5" /><span>cloud-upload</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="cloud-upload"
                         id="632462b3222aa-icone-cloud-upload">
@@ -785,7 +785,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.code class="h-5 w-5" /><span>code</span>
+                        <x-tall-icons.outline.code class="h-5 w-5" /><span>code</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="code"
                         id="632462b3222aa-icone-code">
@@ -798,7 +798,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.cog class="h-5 w-5" /><span>cog</span>
+                        <x-tall-icons.outline.cog class="h-5 w-5" /><span>cog</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="cog"
                         id="632462b3222aa-icone-cog">
@@ -818,7 +818,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.collection class="h-5 w-5" /><span>collection</span>
+                        <x-tall-icons.outline.collection class="h-5 w-5" /><span>collection</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="collection"
                         id="632462b3222aa-icone-collection">
@@ -831,7 +831,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.color-swatch class="h-5 w-5" /><span>color-swatch</span>
+                        <x-tall-icons.outline.color-swatch class="h-5 w-5" /><span>color-swatch</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="color-swatch"
                         id="632462b3222aa-icone-color-swatch">
@@ -844,7 +844,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.credit-card class="h-5 w-5" /><span>credit-card</span>
+                        <x-tall-icons.outline.credit-card class="h-5 w-5" /><span>credit-card</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="credit-card"
                         id="632462b3222aa-icone-credit-card">
@@ -857,7 +857,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.cube class="h-5 w-5" /><span>cube</span>
+                        <x-tall-icons.outline.cube class="h-5 w-5" /><span>cube</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="cube"
                         id="632462b3222aa-icone-cube">
@@ -870,7 +870,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.cube-transparent class="h-5 w-5" /><span>cube-transparent</span>
+                        <x-tall-icons.outline.cube-transparent class="h-5 w-5" /><span>cube-transparent</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="cube-transparent"
                         id="632462b3222aa-icone-cube-transparent">
@@ -883,7 +883,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.currency-bangladeshi class="h-5 w-5" />
+                        <x-tall-icons.outline.currency-bangladeshi class="h-5 w-5" />
                         <span>currency-bangladeshi</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="currency-bangladeshi"
@@ -897,7 +897,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.currency-dollar class="h-5 w-5" /><span>currency-dollar</span>
+                        <x-tall-icons.outline.currency-dollar class="h-5 w-5" /><span>currency-dollar</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="currency-dollar"
                         id="632462b3222aa-icone-currency-dollar">
@@ -910,7 +910,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.currency-euro class="h-5 w-5" /><span>currency-euro</span>
+                        <x-tall-icons.outline.currency-euro class="h-5 w-5" /><span>currency-euro</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="currency-euro"
                         id="632462b3222aa-icone-currency-euro">
@@ -923,7 +923,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.currency-pound class="h-5 w-5" /><span>currency-pound</span>
+                        <x-tall-icons.outline.currency-pound class="h-5 w-5" /><span>currency-pound</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="currency-pound"
                         id="632462b3222aa-icone-currency-pound">
@@ -936,7 +936,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.currency-rupee class="h-5 w-5" /><span>currency-rupee</span>
+                        <x-tall-icons.outline.currency-rupee class="h-5 w-5" /><span>currency-rupee</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="currency-rupee"
                         id="632462b3222aa-icone-currency-rupee">
@@ -949,7 +949,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.currency-yen class="h-5 w-5" /><span>currency-yen</span>
+                        <x-tall-icons.outline.currency-yen class="h-5 w-5" /><span>currency-yen</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="currency-yen"
                         id="632462b3222aa-icone-currency-yen">
@@ -962,7 +962,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.cursor-click class="h-5 w-5" /><span>cursor-click</span>
+                        <x-tall-icons.outline.cursor-click class="h-5 w-5" /><span>cursor-click</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="cursor-click"
                         id="632462b3222aa-icone-cursor-click">
@@ -975,7 +975,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.database class="h-5 w-5" /><span>database</span>
+                        <x-tall-icons.outline.database class="h-5 w-5" /><span>database</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="database"
                         id="632462b3222aa-icone-database">
@@ -988,7 +988,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.desktop-computer class="h-5 w-5" /><span>desktop-computer</span>
+                        <x-tall-icons.outline.desktop-computer class="h-5 w-5" /><span>desktop-computer</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="desktop-computer"
                         id="632462b3222aa-icone-desktop-computer">
@@ -1001,7 +1001,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.device-mobile class="h-5 w-5" /><span>device-mobile</span>
+                        <x-tall-icons.outline.device-mobile class="h-5 w-5" /><span>device-mobile</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="device-mobile"
                         id="632462b3222aa-icone-device-mobile">
@@ -1014,7 +1014,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.device-tablet class="h-5 w-5" /><span>device-tablet</span>
+                        <x-tall-icons.outline.device-tablet class="h-5 w-5" /><span>device-tablet</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="device-tablet"
                         id="632462b3222aa-icone-device-tablet">
@@ -1027,7 +1027,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.document class="h-5 w-5" /><span>document</span>
+                        <x-tall-icons.outline.document class="h-5 w-5" /><span>document</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="document"
                         id="632462b3222aa-icone-document">
@@ -1040,7 +1040,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.document-add class="h-5 w-5" /><span>document-add</span>
+                        <x-tall-icons.outline.document-add class="h-5 w-5" /><span>document-add</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="document-add"
                         id="632462b3222aa-icone-document-add">
@@ -1053,7 +1053,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.document-download class="h-5 w-5" /><span>document-download</span>
+                        <x-tall-icons.outline.document-download class="h-5 w-5" /><span>document-download</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="document-download"
                         id="632462b3222aa-icone-document-download">
@@ -1066,7 +1066,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.document-duplicate class="h-5 w-5" /><span>document-duplicate</span>
+                        <x-tall-icons.outline.document-duplicate class="h-5 w-5" /><span>document-duplicate</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="document-duplicate"
                         id="632462b3222aa-icone-document-duplicate">
@@ -1079,7 +1079,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.document-remove class="h-5 w-5" /><span>document-remove</span>
+                        <x-tall-icons.outline.document-remove class="h-5 w-5" /><span>document-remove</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="document-remove"
                         id="632462b3222aa-icone-document-remove">
@@ -1092,7 +1092,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.document-report class="h-5 w-5" /><span>document-report</span>
+                        <x-tall-icons.outline.document-report class="h-5 w-5" /><span>document-report</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="document-report"
                         id="632462b3222aa-icone-document-report">
@@ -1105,7 +1105,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.document-search class="h-5 w-5" /><span>document-search</span>
+                        <x-tall-icons.outline.document-search class="h-5 w-5" /><span>document-search</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="document-search"
                         id="632462b3222aa-icone-document-search">
@@ -1118,7 +1118,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.document-text class="h-5 w-5" /><span>document-text</span>
+                        <x-tall-icons.outline.document-text class="h-5 w-5" /><span>document-text</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="document-text"
                         id="632462b3222aa-icone-document-text">
@@ -1132,7 +1132,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.dots-circle-horizontal class="h-5 w-5" />
+                        <x-tall-icons.outline.dots-circle-horizontal class="h-5 w-5" />
                         <span>dots-circle-horizontal</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="dots-circle-horizontal"
@@ -1146,7 +1146,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.dots-horizontal class="h-5 w-5" /><span>dots-horizontal</span>
+                        <x-tall-icons.outline.dots-horizontal class="h-5 w-5" /><span>dots-horizontal</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="dots-horizontal"
                         id="632462b3222aa-icone-dots-horizontal">
@@ -1159,7 +1159,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.dots-vertical class="h-5 w-5" /><span>dots-vertical</span>
+                        <x-tall-icons.outline.dots-vertical class="h-5 w-5" /><span>dots-vertical</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="dots-vertical"
                         id="632462b3222aa-icone-dots-vertical">
@@ -1172,7 +1172,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.download class="h-5 w-5" /><span>download</span>
+                        <x-tall-icons.outline.download class="h-5 w-5" /><span>download</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="download"
                         id="632462b3222aa-icone-download">
@@ -1185,7 +1185,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.duplicate class="h-5 w-5" /><span>duplicate</span>
+                        <x-tall-icons.outline.duplicate class="h-5 w-5" /><span>duplicate</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="duplicate"
                         id="632462b3222aa-icone-duplicate">
@@ -1198,7 +1198,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.emoji-happy class="h-5 w-5" /><span>emoji-happy</span>
+                        <x-tall-icons.outline.emoji-happy class="h-5 w-5" /><span>emoji-happy</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="emoji-happy"
                         id="632462b3222aa-icone-emoji-happy">
@@ -1211,7 +1211,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.emoji-sad class="h-5 w-5" /><span>emoji-sad</span>
+                        <x-tall-icons.outline.emoji-sad class="h-5 w-5" /><span>emoji-sad</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="emoji-sad"
                         id="632462b3222aa-icone-emoji-sad">
@@ -1224,7 +1224,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.exclamation class="h-5 w-5" /><span>exclamation</span>
+                        <x-tall-icons.outline.exclamation class="h-5 w-5" /><span>exclamation</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="exclamation"
                         id="632462b3222aa-icone-exclamation">
@@ -1237,7 +1237,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.exclamation-circle class="h-5 w-5" /><span>exclamation-circle</span>
+                        <x-tall-icons.outline.exclamation-circle class="h-5 w-5" /><span>exclamation-circle</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="exclamation-circle"
                         id="632462b3222aa-icone-exclamation-circle">
@@ -1250,7 +1250,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.external-link class="h-5 w-5" /><span>external-link</span>
+                        <x-tall-icons.outline.external-link class="h-5 w-5" /><span>external-link</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="external-link"
                         id="632462b3222aa-icone-external-link">
@@ -1263,7 +1263,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.eye class="h-5 w-5" /><span>eye</span>
+                        <x-tall-icons.outline.eye class="h-5 w-5" /><span>eye</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="eye"
                         id="632462b3222aa-icone-eye">
@@ -1276,7 +1276,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.eye-off class="h-5 w-5" /><span>eye-off</span>
+                        <x-tall-icons.outline.eye-off class="h-5 w-5" /><span>eye-off</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="eye-off"
                         id="632462b3222aa-icone-eye-off">
@@ -1289,7 +1289,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.fast-forward class="h-5 w-5" /><span>fast-forward</span>
+                        <x-tall-icons.outline.fast-forward class="h-5 w-5" /><span>fast-forward</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="fast-forward"
                         id="632462b3222aa-icone-fast-forward">
@@ -1302,7 +1302,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.film class="h-5 w-5" /><span>film</span>
+                        <x-tall-icons.outline.film class="h-5 w-5" /><span>film</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="film"
                         id="632462b3222aa-icone-film">
@@ -1315,7 +1315,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.filter class="h-5 w-5" /><span>filter</span>
+                        <x-tall-icons.outline.filter class="h-5 w-5" /><span>filter</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="filter"
                         id="632462b3222aa-icone-filter">
@@ -1328,7 +1328,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.finger-print class="h-5 w-5" /><span>finger-print</span>
+                        <x-tall-icons.outline.finger-print class="h-5 w-5" /><span>finger-print</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="finger-print"
                         id="632462b3222aa-icone-finger-print">
@@ -1341,7 +1341,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.fire class="h-5 w-5" /><span>fire</span>
+                        <x-tall-icons.outline.fire class="h-5 w-5" /><span>fire</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="fire"
                         id="632462b3222aa-icone-fire">
@@ -1354,7 +1354,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.flag class="h-5 w-5" /><span>flag</span>
+                        <x-tall-icons.outline.flag class="h-5 w-5" /><span>flag</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="flag"
                         id="632462b3222aa-icone-flag">
@@ -1367,7 +1367,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.folder class="h-5 w-5" /><span>folder</span>
+                        <x-tall-icons.outline.folder class="h-5 w-5" /><span>folder</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="folder"
                         id="632462b3222aa-icone-folder">
@@ -1380,7 +1380,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.folder-add class="h-5 w-5" /><span>folder-add</span>
+                        <x-tall-icons.outline.folder-add class="h-5 w-5" /><span>folder-add</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="folder-add"
                         id="632462b3222aa-icone-folder-add">
@@ -1393,7 +1393,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.folder-download class="h-5 w-5" /><span>folder-download</span>
+                        <x-tall-icons.outline.folder-download class="h-5 w-5" /><span>folder-download</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="folder-download"
                         id="632462b3222aa-icone-folder-download">
@@ -1406,7 +1406,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.folder-open class="h-5 w-5" /><span>folder-open</span>
+                        <x-tall-icons.outline.folder-open class="h-5 w-5" /><span>folder-open</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="folder-open"
                         id="632462b3222aa-icone-folder-open">
@@ -1419,7 +1419,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.folder-remove class="h-5 w-5" /><span>folder-remove</span>
+                        <x-tall-icons.outline.folder-remove class="h-5 w-5" /><span>folder-remove</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="folder-remove"
                         id="632462b3222aa-icone-folder-remove">
@@ -1432,7 +1432,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.gift class="h-5 w-5" /><span>gift</span>
+                        <x-tall-icons.outline.gift class="h-5 w-5" /><span>gift</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="gift"
                         id="632462b3222aa-icone-gift">
@@ -1445,7 +1445,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.globe class="h-5 w-5" /><span>globe</span>
+                        <x-tall-icons.outline.globe class="h-5 w-5" /><span>globe</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="globe"
                         id="632462b3222aa-icone-globe">
@@ -1458,7 +1458,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.globe-alt class="h-5 w-5" /><span>globe-alt</span>
+                        <x-tall-icons.outline.globe-alt class="h-5 w-5" /><span>globe-alt</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="globe-alt"
                         id="632462b3222aa-icone-globe-alt">
@@ -1471,7 +1471,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.hand class="h-5 w-5" /><span>hand</span>
+                        <x-tall-icons.outline.hand class="h-5 w-5" /><span>hand</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="hand"
                         id="632462b3222aa-icone-hand">
@@ -1484,7 +1484,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.hashtag class="h-5 w-5" /><span>hashtag</span>
+                        <x-tall-icons.outline.hashtag class="h-5 w-5" /><span>hashtag</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="hashtag"
                         id="632462b3222aa-icone-hashtag">
@@ -1497,7 +1497,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.heart class="h-5 w-5" /><span>heart</span>
+                        <x-tall-icons.outline.heart class="h-5 w-5" /><span>heart</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="heart"
                         id="632462b3222aa-icone-heart">
@@ -1510,7 +1510,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.home class="h-5 w-5" /><span>home</span>
+                        <x-tall-icons.outline.home class="h-5 w-5" /><span>home</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="home"
                         id="632462b3222aa-icone-home">
@@ -1523,7 +1523,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.identification class="h-5 w-5" /><span>identification</span>
+                        <x-tall-icons.outline.identification class="h-5 w-5" /><span>identification</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="identification"
                         id="632462b3222aa-icone-identification">
@@ -1536,7 +1536,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.inbox class="h-5 w-5" /><span>inbox</span>
+                        <x-tall-icons.outline.inbox class="h-5 w-5" /><span>inbox</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="inbox"
                         id="632462b3222aa-icone-inbox">
@@ -1549,7 +1549,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.inbox-in class="h-5 w-5" /><span>inbox-in</span>
+                        <x-tall-icons.outline.inbox-in class="h-5 w-5" /><span>inbox-in</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="inbox-in"
                         id="632462b3222aa-icone-inbox-in">
@@ -1562,7 +1562,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.information-circle class="h-5 w-5" /><span>information-circle</span>
+                        <x-tall-icons.outline.information-circle class="h-5 w-5" /><span>information-circle</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="information-circle"
                         id="632462b3222aa-icone-information-circle">
@@ -1575,7 +1575,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.key class="h-5 w-5" /><span>key</span>
+                        <x-tall-icons.outline.key class="h-5 w-5" /><span>key</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="key"
                         id="632462b3222aa-icone-key">
@@ -1588,7 +1588,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.library class="h-5 w-5" /><span>library</span>
+                        <x-tall-icons.outline.library class="h-5 w-5" /><span>library</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="library"
                         id="632462b3222aa-icone-library">
@@ -1601,7 +1601,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.light-bulb class="h-5 w-5" /><span>light-bulb</span>
+                        <x-tall-icons.outline.light-bulb class="h-5 w-5" /><span>light-bulb</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="light-bulb"
                         id="632462b3222aa-icone-light-bulb">
@@ -1614,7 +1614,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.lightning-bolt class="h-5 w-5" /><span>lightning-bolt</span>
+                        <x-tall-icons.outline.lightning-bolt class="h-5 w-5" /><span>lightning-bolt</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="lightning-bolt"
                         id="632462b3222aa-icone-lightning-bolt">
@@ -1627,7 +1627,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.link class="h-5 w-5" /><span>link</span>
+                        <x-tall-icons.outline.link class="h-5 w-5" /><span>link</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="link"
                         id="632462b3222aa-icone-link">
@@ -1640,7 +1640,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.location-marker class="h-5 w-5" /><span>location-marker</span>
+                        <x-tall-icons.outline.location-marker class="h-5 w-5" /><span>location-marker</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="location-marker"
                         id="632462b3222aa-icone-location-marker">
@@ -1653,7 +1653,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.lock-closed class="h-5 w-5" /><span>lock-closed</span>
+                        <x-tall-icons.outline.lock-closed class="h-5 w-5" /><span>lock-closed</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="lock-closed"
                         id="632462b3222aa-icone-lock-closed">
@@ -1666,7 +1666,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.lock-open class="h-5 w-5" /><span>lock-open</span>
+                        <x-tall-icons.outline.lock-open class="h-5 w-5" /><span>lock-open</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="lock-open"
                         id="632462b3222aa-icone-lock-open">
@@ -1679,7 +1679,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.login class="h-5 w-5" /><span>login</span>
+                        <x-tall-icons.outline.login class="h-5 w-5" /><span>login</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="login"
                         id="632462b3222aa-icone-login">
@@ -1692,7 +1692,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.logout class="h-5 w-5" /><span>logout</span>
+                        <x-tall-icons.outline.logout class="h-5 w-5" /><span>logout</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="logout"
                         id="632462b3222aa-icone-logout">
@@ -1705,7 +1705,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.mail class="h-5 w-5" /><span>mail</span>
+                        <x-tall-icons.outline.mail class="h-5 w-5" /><span>mail</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="mail"
                         id="632462b3222aa-icone-mail">
@@ -1718,7 +1718,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.mail-open class="h-5 w-5" /><span>mail-open</span>
+                        <x-tall-icons.outline.mail-open class="h-5 w-5" /><span>mail-open</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="mail-open"
                         id="632462b3222aa-icone-mail-open">
@@ -1731,7 +1731,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.map class="h-5 w-5" /><span>map</span>
+                        <x-tall-icons.outline.map class="h-5 w-5" /><span>map</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="map"
                         id="632462b3222aa-icone-map">
@@ -1744,7 +1744,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.menu class="h-5 w-5" /><span>menu</span>
+                        <x-tall-icons.outline.menu class="h-5 w-5" /><span>menu</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="menu"
                         id="632462b3222aa-icone-menu">
@@ -1757,7 +1757,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.menu-alt-1 class="h-5 w-5" /><span>menu-alt-1</span>
+                        <x-tall-icons.outline.menu-alt-1 class="h-5 w-5" /><span>menu-alt-1</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="menu-alt-1"
                         id="632462b3222aa-icone-menu-alt-1">
@@ -1770,7 +1770,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.menu-alt-2 class="h-5 w-5" /><span>menu-alt-2</span>
+                        <x-tall-icons.outline.menu-alt-2 class="h-5 w-5" /><span>menu-alt-2</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="menu-alt-2"
                         id="632462b3222aa-icone-menu-alt-2">
@@ -1783,7 +1783,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.menu-alt-3 class="h-5 w-5" /><span>menu-alt-3</span>
+                        <x-tall-icons.outline.menu-alt-3 class="h-5 w-5" /><span>menu-alt-3</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="menu-alt-3"
                         id="632462b3222aa-icone-menu-alt-3">
@@ -1796,7 +1796,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.menu-alt-4 class="h-5 w-5" /><span>menu-alt-4</span>
+                        <x-tall-icons.outline.menu-alt-4 class="h-5 w-5" /><span>menu-alt-4</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="menu-alt-4"
                         id="632462b3222aa-icone-menu-alt-4">
@@ -1809,7 +1809,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.microphone class="h-5 w-5" /><span>microphone</span>
+                        <x-tall-icons.outline.microphone class="h-5 w-5" /><span>microphone</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="microphone"
                         id="632462b3222aa-icone-microphone">
@@ -1822,7 +1822,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.minus class="h-5 w-5" /><span>minus</span>
+                        <x-tall-icons.outline.minus class="h-5 w-5" /><span>minus</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="minus"
                         id="632462b3222aa-icone-minus">
@@ -1835,7 +1835,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.minus-circle class="h-5 w-5" /><span>minus-circle</span>
+                        <x-tall-icons.outline.minus-circle class="h-5 w-5" /><span>minus-circle</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="minus-circle"
                         id="632462b3222aa-icone-minus-circle">
@@ -1848,7 +1848,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.minus-sm class="h-5 w-5" /><span>minus-sm</span>
+                        <x-tall-icons.outline.minus-sm class="h-5 w-5" /><span>minus-sm</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="minus-sm"
                         id="632462b3222aa-icone-minus-sm">
@@ -1861,7 +1861,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.moon class="h-5 w-5" /><span>moon</span>
+                        <x-tall-icons.outline.moon class="h-5 w-5" /><span>moon</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="moon"
                         id="632462b3222aa-icone-moon">
@@ -1874,7 +1874,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.music-note class="h-5 w-5" /><span>music-note</span>
+                        <x-tall-icons.outline.music-note class="h-5 w-5" /><span>music-note</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="music-note"
                         id="632462b3222aa-icone-music-note">
@@ -1887,7 +1887,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.newspaper class="h-5 w-5" /><span>newspaper</span>
+                        <x-tall-icons.outline.newspaper class="h-5 w-5" /><span>newspaper</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="newspaper"
                         id="632462b3222aa-icone-newspaper">
@@ -1900,7 +1900,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.office-building class="h-5 w-5" /><span>office-building</span>
+                        <x-tall-icons.outline.office-building class="h-5 w-5" /><span>office-building</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="office-building"
                         id="632462b3222aa-icone-office-building">
@@ -1913,7 +1913,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.paper-airplane class="h-5 w-5" /><span>paper-airplane</span>
+                        <x-tall-icons.outline.paper-airplane class="h-5 w-5" /><span>paper-airplane</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="paper-airplane"
                         id="632462b3222aa-icone-paper-airplane">
@@ -1926,7 +1926,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.paper-clip class="h-5 w-5" /><span>paper-clip</span>
+                        <x-tall-icons.outline.paper-clip class="h-5 w-5" /><span>paper-clip</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="paper-clip"
                         id="632462b3222aa-icone-paper-clip">
@@ -1939,7 +1939,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.pause class="h-5 w-5" /><span>pause</span>
+                        <x-tall-icons.outline.pause class="h-5 w-5" /><span>pause</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="pause"
                         id="632462b3222aa-icone-pause">
@@ -1952,7 +1952,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.pencil class="h-5 w-5" /><span>pencil</span>
+                        <x-tall-icons.outline.pencil class="h-5 w-5" /><span>pencil</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="pencil"
                         id="632462b3222aa-icone-pencil">
@@ -1965,7 +1965,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.pencil-alt class="h-5 w-5" /><span>pencil-alt</span>
+                        <x-tall-icons.outline.pencil-alt class="h-5 w-5" /><span>pencil-alt</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="pencil-alt"
                         id="632462b3222aa-icone-pencil-alt">
@@ -1978,7 +1978,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.phone class="h-5 w-5" /><span>phone</span>
+                        <x-tall-icons.outline.phone class="h-5 w-5" /><span>phone</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="phone"
                         id="632462b3222aa-icone-phone">
@@ -1991,7 +1991,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.phone-incoming class="h-5 w-5" /><span>phone-incoming</span>
+                        <x-tall-icons.outline.phone-incoming class="h-5 w-5" /><span>phone-incoming</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="phone-incoming"
                         id="632462b3222aa-icone-phone-incoming">
@@ -2004,7 +2004,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.phone-missed-call class="h-5 w-5" /><span>phone-missed-call</span>
+                        <x-tall-icons.outline.phone-missed-call class="h-5 w-5" /><span>phone-missed-call</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="phone-missed-call"
                         id="632462b3222aa-icone-phone-missed-call">
@@ -2017,7 +2017,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.phone-outgoing class="h-5 w-5" /><span>phone-outgoing</span>
+                        <x-tall-icons.outline.phone-outgoing class="h-5 w-5" /><span>phone-outgoing</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="phone-outgoing"
                         id="632462b3222aa-icone-phone-outgoing">
@@ -2030,7 +2030,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.photograph class="h-5 w-5" /><span>photograph</span>
+                        <x-tall-icons.outline.photograph class="h-5 w-5" /><span>photograph</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="photograph"
                         id="632462b3222aa-icone-photograph">
@@ -2043,7 +2043,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.play class="h-5 w-5" /><span>play</span>
+                        <x-tall-icons.outline.play class="h-5 w-5" /><span>play</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="play"
                         id="632462b3222aa-icone-play">
@@ -2056,7 +2056,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.plus class="h-5 w-5" /><span>plus</span>
+                        <x-tall-icons.outline.plus class="h-5 w-5" /><span>plus</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="plus"
                         id="632462b3222aa-icone-plus">
@@ -2069,7 +2069,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.plus-circle class="h-5 w-5" /><span>plus-circle</span>
+                        <x-tall-icons.outline.plus-circle class="h-5 w-5" /><span>plus-circle</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="plus-circle"
                         id="632462b3222aa-icone-plus-circle">
@@ -2082,7 +2082,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.plus-sm class="h-5 w-5" /><span>plus-sm</span>
+                        <x-tall-icons.outline.plus-sm class="h-5 w-5" /><span>plus-sm</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="plus-sm"
                         id="632462b3222aa-icone-plus-sm">
@@ -2096,7 +2096,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.presentation-chart-bar class="h-5 w-5" />
+                        <x-tall-icons.outline.presentation-chart-bar class="h-5 w-5" />
                         <span>presentation-chart-bar</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="presentation-chart-bar"
@@ -2111,7 +2111,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.presentation-chart-line class="h-5 w-5" />
+                        <x-tall-icons.outline.presentation-chart-line class="h-5 w-5" />
                         <span>presentation-chart-line</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="presentation-chart-line"
@@ -2125,7 +2125,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.printer class="h-5 w-5" /><span>printer</span>
+                        <x-tall-icons.outline.printer class="h-5 w-5" /><span>printer</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="printer"
                         id="632462b3222aa-icone-printer">
@@ -2138,7 +2138,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.puzzle class="h-5 w-5" /><span>puzzle</span>
+                        <x-tall-icons.outline.puzzle class="h-5 w-5" /><span>puzzle</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="puzzle"
                         id="632462b3222aa-icone-puzzle">
@@ -2151,7 +2151,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.qrcode class="h-5 w-5" /><span>qrcode</span>
+                        <x-tall-icons.outline.qrcode class="h-5 w-5" /><span>qrcode</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="qrcode"
                         id="632462b3222aa-icone-qrcode">
@@ -2164,7 +2164,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.question-mark-circle class="h-5 w-5" />
+                        <x-tall-icons.outline.question-mark-circle class="h-5 w-5" />
                         <span>question-mark-circle</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="question-mark-circle"
@@ -2178,7 +2178,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.receipt-refund class="h-5 w-5" /><span>receipt-refund</span>
+                        <x-tall-icons.outline.receipt-refund class="h-5 w-5" /><span>receipt-refund</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="receipt-refund"
                         id="632462b3222aa-icone-receipt-refund">
@@ -2191,7 +2191,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.receipt-tax class="h-5 w-5" /><span>receipt-tax</span>
+                        <x-tall-icons.outline.receipt-tax class="h-5 w-5" /><span>receipt-tax</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="receipt-tax"
                         id="632462b3222aa-icone-receipt-tax">
@@ -2204,7 +2204,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.refresh class="h-5 w-5" /><span>refresh</span>
+                        <x-tall-icons.outline.refresh class="h-5 w-5" /><span>refresh</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="refresh"
                         id="632462b3222aa-icone-refresh">
@@ -2217,7 +2217,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.reply class="h-5 w-5" /><span>reply</span>
+                        <x-tall-icons.outline.reply class="h-5 w-5" /><span>reply</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="reply"
                         id="632462b3222aa-icone-reply">
@@ -2230,7 +2230,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.rewind class="h-5 w-5" /><span>rewind</span>
+                        <x-tall-icons.outline.rewind class="h-5 w-5" /><span>rewind</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="rewind"
                         id="632462b3222aa-icone-rewind">
@@ -2243,7 +2243,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.rss class="h-5 w-5" /><span>rss</span>
+                        <x-tall-icons.outline.rss class="h-5 w-5" /><span>rss</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="rss"
                         id="632462b3222aa-icone-rss">
@@ -2256,7 +2256,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.save class="h-5 w-5" /><span>save</span>
+                        <x-tall-icons.outline.save class="h-5 w-5" /><span>save</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="save"
                         id="632462b3222aa-icone-save">
@@ -2269,7 +2269,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.save-as class="h-5 w-5" /><span>save-as</span>
+                        <x-tall-icons.outline.save-as class="h-5 w-5" /><span>save-as</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="save-as"
                         id="632462b3222aa-icone-save-as">
@@ -2282,7 +2282,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.scale class="h-5 w-5" /><span>scale</span>
+                        <x-tall-icons.outline.scale class="h-5 w-5" /><span>scale</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="scale"
                         id="632462b3222aa-icone-scale">
@@ -2295,7 +2295,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.scissors class="h-5 w-5" /><span>scissors</span>
+                        <x-tall-icons.outline.scissors class="h-5 w-5" /><span>scissors</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="scissors"
                         id="632462b3222aa-icone-scissors">
@@ -2308,7 +2308,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.search class="h-5 w-5" /><span>search</span>
+                        <x-tall-icons.outline.search class="h-5 w-5" /><span>search</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="search"
                         id="632462b3222aa-icone-search">
@@ -2321,7 +2321,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.search-circle class="h-5 w-5" /><span>search-circle</span>
+                        <x-tall-icons.outline.search-circle class="h-5 w-5" /><span>search-circle</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="search-circle"
                         id="632462b3222aa-icone-search-circle">
@@ -2334,7 +2334,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.selector class="h-5 w-5" /><span>selector</span>
+                        <x-tall-icons.outline.selector class="h-5 w-5" /><span>selector</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="selector"
                         id="632462b3222aa-icone-selector">
@@ -2347,7 +2347,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.server class="h-5 w-5" /><span>server</span>
+                        <x-tall-icons.outline.server class="h-5 w-5" /><span>server</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="server"
                         id="632462b3222aa-icone-server">
@@ -2360,7 +2360,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.share class="h-5 w-5" /><span>share</span>
+                        <x-tall-icons.outline.share class="h-5 w-5" /><span>share</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="share"
                         id="632462b3222aa-icone-share">
@@ -2373,7 +2373,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.shield-check class="h-5 w-5" /><span>shield-check</span>
+                        <x-tall-icons.outline.shield-check class="h-5 w-5" /><span>shield-check</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="shield-check"
                         id="632462b3222aa-icone-shield-check">
@@ -2386,7 +2386,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.shield-exclamation class="h-5 w-5" /><span>shield-exclamation</span>
+                        <x-tall-icons.outline.shield-exclamation class="h-5 w-5" /><span>shield-exclamation</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="shield-exclamation"
                         id="632462b3222aa-icone-shield-exclamation">
@@ -2399,7 +2399,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.shopping-bag class="h-5 w-5" /><span>shopping-bag</span>
+                        <x-tall-icons.outline.shopping-bag class="h-5 w-5" /><span>shopping-bag</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="shopping-bag"
                         id="632462b3222aa-icone-shopping-bag">
@@ -2412,7 +2412,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.shopping-cart class="h-5 w-5" /><span>shopping-cart</span>
+                        <x-tall-icons.outline.shopping-cart class="h-5 w-5" /><span>shopping-cart</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="shopping-cart"
                         id="632462b3222aa-icone-shopping-cart">
@@ -2425,7 +2425,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.sort-ascending class="h-5 w-5" /><span>sort-ascending</span>
+                        <x-tall-icons.outline.sort-ascending class="h-5 w-5" /><span>sort-ascending</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="sort-ascending"
                         id="632462b3222aa-icone-sort-ascending">
@@ -2438,7 +2438,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.sort-descending class="h-5 w-5" /><span>sort-descending</span>
+                        <x-tall-icons.outline.sort-descending class="h-5 w-5" /><span>sort-descending</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="sort-descending"
                         id="632462b3222aa-icone-sort-descending">
@@ -2451,7 +2451,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.sparkles class="h-5 w-5" /><span>sparkles</span>
+                        <x-tall-icons.outline.sparkles class="h-5 w-5" /><span>sparkles</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="sparkles"
                         id="632462b3222aa-icone-sparkles">
@@ -2464,7 +2464,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.speakerphone class="h-5 w-5" /><span>speakerphone</span>
+                        <x-tall-icons.outline.speakerphone class="h-5 w-5" /><span>speakerphone</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="speakerphone"
                         id="632462b3222aa-icone-speakerphone">
@@ -2477,7 +2477,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.spinner class="h-5 w-5" /><span>spinner</span>
+                        <x-tall-icons.spinner class="h-5 w-5" /><span>spinner</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="spinner"
                         id="632462b3222aa-icone-spinner">
@@ -2490,7 +2490,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.star class="h-5 w-5" /><span>star</span>
+                        <x-tall-icons.outline.star class="h-5 w-5" /><span>star</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="star"
                         id="632462b3222aa-icone-star">
@@ -2503,7 +2503,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.status-offline class="h-5 w-5" /><span>status-offline</span>
+                        <x-tall-icons.outline.status-offline class="h-5 w-5" /><span>status-offline</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="status-offline"
                         id="632462b3222aa-icone-status-offline">
@@ -2516,7 +2516,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.status-online class="h-5 w-5" /><span>status-online</span>
+                        <x-tall-icons.outline.status-online class="h-5 w-5" /><span>status-online</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="status-online"
                         id="632462b3222aa-icone-status-online">
@@ -2529,7 +2529,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.stop class="h-5 w-5" /><span>stop</span>
+                        <x-tall-icons.outline.stop class="h-5 w-5" /><span>stop</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="stop"
                         id="632462b3222aa-icone-stop">
@@ -2542,7 +2542,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.sun class="h-5 w-5" /><span>sun</span>
+                        <x-tall-icons.outline.sun class="h-5 w-5" /><span>sun</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="sun"
                         id="632462b3222aa-icone-sun">
@@ -2555,7 +2555,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.support class="h-5 w-5" /><span>support</span>
+                        <x-tall-icons.outline.support class="h-5 w-5" /><span>support</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="support"
                         id="632462b3222aa-icone-support">
@@ -2568,7 +2568,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.switch-horizontal class="h-5 w-5" /><span>switch-horizontal</span>
+                        <x-tall-icons.outline.switch-horizontal class="h-5 w-5" /><span>switch-horizontal</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="switch-horizontal"
                         id="632462b3222aa-icone-switch-horizontal">
@@ -2581,7 +2581,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.switch-vertical class="h-5 w-5" /><span>switch-vertical</span>
+                        <x-tall-icons.outline.switch-vertical class="h-5 w-5" /><span>switch-vertical</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="switch-vertical"
                         id="632462b3222aa-icone-switch-vertical">
@@ -2594,7 +2594,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.table class="h-5 w-5" /><span>table</span>
+                        <x-tall-icons.outline.table class="h-5 w-5" /><span>table</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="table"
                         id="632462b3222aa-icone-table">
@@ -2607,7 +2607,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.tag class="h-5 w-5" /><span>tag</span>
+                        <x-tall-icons.outline.tag class="h-5 w-5" /><span>tag</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="tag"
                         id="632462b3222aa-icone-tag">
@@ -2620,7 +2620,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.template class="h-5 w-5" /><span>template</span>
+                        <x-tall-icons.outline.template class="h-5 w-5" /><span>template</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="template"
                         id="632462b3222aa-icone-template">
@@ -2633,7 +2633,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.terminal class="h-5 w-5" /><span>terminal</span>
+                        <x-tall-icons.outline.terminal class="h-5 w-5" /><span>terminal</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="terminal"
                         id="632462b3222aa-icone-terminal">
@@ -2646,7 +2646,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.thumb-down class="h-5 w-5" /><span>thumb-down</span>
+                        <x-tall-icons.outline.thumb-down class="h-5 w-5" /><span>thumb-down</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="thumb-down"
                         id="632462b3222aa-icone-thumb-down">
@@ -2659,7 +2659,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.thumb-up class="h-5 w-5" /><span>thumb-up</span>
+                        <x-tall-icons.outline.thumb-up class="h-5 w-5" /><span>thumb-up</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="thumb-up"
                         id="632462b3222aa-icone-thumb-up">
@@ -2672,7 +2672,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.ticket class="h-5 w-5" /><span>ticket</span>
+                        <x-tall-icons.outline.ticket class="h-5 w-5" /><span>ticket</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="ticket"
                         id="632462b3222aa-icone-ticket">
@@ -2685,7 +2685,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.translate class="h-5 w-5" /><span>translate</span>
+                        <x-tall-icons.outline.translate class="h-5 w-5" /><span>translate</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="translate"
                         id="632462b3222aa-icone-translate">
@@ -2698,7 +2698,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.trash class="h-5 w-5" /><span>trash</span>
+                        <x-tall-icons.outline.trash class="h-5 w-5" /><span>trash</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="trash"
                         id="632462b3222aa-icone-trash">
@@ -2711,7 +2711,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.trending-down class="h-5 w-5" /><span>trending-down</span>
+                        <x-tall-icons.outline.trending-down class="h-5 w-5" /><span>trending-down</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="trending-down"
                         id="632462b3222aa-icone-trending-down">
@@ -2724,7 +2724,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.trending-up class="h-5 w-5" /><span>trending-up</span>
+                        <x-tall-icons.outline.trending-up class="h-5 w-5" /><span>trending-up</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="trending-up"
                         id="632462b3222aa-icone-trending-up">
@@ -2737,7 +2737,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.truck class="h-5 w-5" /><span>truck</span>
+                        <x-tall-icons.outline.truck class="h-5 w-5" /><span>truck</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="truck"
                         id="632462b3222aa-icone-truck">
@@ -2750,7 +2750,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.upload class="h-5 w-5" /><span>upload</span>
+                        <x-tall-icons.outline.upload class="h-5 w-5" /><span>upload</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="upload"
                         id="632462b3222aa-icone-upload">
@@ -2763,7 +2763,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.user class="h-5 w-5" /><span>user</span>
+                        <x-tall-icons.outline.user class="h-5 w-5" /><span>user</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="user"
                         id="632462b3222aa-icone-user">
@@ -2776,7 +2776,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.user-add class="h-5 w-5" /><span>user-add</span>
+                        <x-tall-icons.outline.user-add class="h-5 w-5" /><span>user-add</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="user-add"
                         id="632462b3222aa-icone-user-add">
@@ -2789,7 +2789,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.user-circle class="h-5 w-5" /><span>user-circle</span>
+                        <x-tall-icons.outline.user-circle class="h-5 w-5" /><span>user-circle</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="user-circle"
                         id="632462b3222aa-icone-user-circle">
@@ -2802,7 +2802,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.user-group class="h-5 w-5" /><span>user-group</span>
+                        <x-tall-icons.outline.user-group class="h-5 w-5" /><span>user-group</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="user-group"
                         id="632462b3222aa-icone-user-group">
@@ -2815,7 +2815,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.user-remove class="h-5 w-5" /><span>user-remove</span>
+                        <x-tall-icons.outline.user-remove class="h-5 w-5" /><span>user-remove</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="user-remove"
                         id="632462b3222aa-icone-user-remove">
@@ -2828,7 +2828,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.users class="h-5 w-5" /><span>users</span>
+                        <x-tall-icons.outline.users class="h-5 w-5" /><span>users</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="users"
                         id="632462b3222aa-icone-users">
@@ -2841,7 +2841,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.variable class="h-5 w-5" /><span>variable</span>
+                        <x-tall-icons.outline.variable class="h-5 w-5" /><span>variable</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="variable"
                         id="632462b3222aa-icone-variable">
@@ -2854,7 +2854,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.video-camera class="h-5 w-5" /><span>video-camera</span>
+                        <x-tall-icons.outline.video-camera class="h-5 w-5" /><span>video-camera</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="video-camera"
                         id="632462b3222aa-icone-video-camera">
@@ -2867,7 +2867,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.view-boards class="h-5 w-5" /><span>view-boards</span>
+                        <x-tall-icons.outline.view-boards class="h-5 w-5" /><span>view-boards</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="view-boards"
                         id="632462b3222aa-icone-view-boards">
@@ -2880,7 +2880,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.view-grid class="h-5 w-5" /><span>view-grid</span>
+                        <x-tall-icons.outline.view-grid class="h-5 w-5" /><span>view-grid</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="view-grid"
                         id="632462b3222aa-icone-view-grid">
@@ -2893,7 +2893,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.view-grid-add class="h-5 w-5" /><span>view-grid-add</span>
+                        <x-tall-icons.outline.view-grid-add class="h-5 w-5" /><span>view-grid-add</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="view-grid-add"
                         id="632462b3222aa-icone-view-grid-add">
@@ -2906,7 +2906,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.view-list class="h-5 w-5" /><span>view-list</span>
+                        <x-tall-icons.outline.view-list class="h-5 w-5" /><span>view-list</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="view-list"
                         id="632462b3222aa-icone-view-list">
@@ -2919,7 +2919,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.volume-off class="h-5 w-5" /><span>volume-off</span>
+                        <x-tall-icons.outline.volume-off class="h-5 w-5" /><span>volume-off</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="volume-off"
                         id="632462b3222aa-icone-volume-off">
@@ -2932,7 +2932,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.volume-up class="h-5 w-5" /><span>volume-up</span>
+                        <x-tall-icons.outline.volume-up class="h-5 w-5" /><span>volume-up</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="volume-up"
                         id="632462b3222aa-icone-volume-up">
@@ -2945,7 +2945,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.wifi class="h-5 w-5" /><span>wifi</span>
+                        <x-tall-icons.outline.wifi class="h-5 w-5" /><span>wifi</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="wifi"
                         id="632462b3222aa-icone-wifi">
@@ -2958,7 +2958,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.x class="h-5 w-5" /><span>x</span>
+                        <x-tall-icons.outline.x class="h-5 w-5" /><span>x</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="x"
                         id="632462b3222aa-icone-x">
@@ -2971,7 +2971,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.x-circle class="h-5 w-5" /><span>x-circle</span>
+                        <x-tall-icons.outline.x-circle class="h-5 w-5" /><span>x-circle</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="x-circle"
                         id="632462b3222aa-icone-x-circle">
@@ -2984,7 +2984,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.zoom-in class="h-5 w-5" /><span>zoom-in</span>
+                        <x-tall-icons.outline.zoom-in class="h-5 w-5" /><span>zoom-in</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="zoom-in"
                         id="632462b3222aa-icone-zoom-in">
@@ -2997,7 +2997,7 @@
                     <span class="flex items-center  pl-1.5 text-indigo-600">
                     </span>
                     <span class="ml-3 truncate flex items-center space-x-2">
-                        <x-tall::icons.outline.zoom-out class="h-5 w-5" /><span>zoom-out</span>
+                        <x-tall-icons.outline.zoom-out class="h-5 w-5" /><span>zoom-out</span>
                     </span>
                     <input class="hidden" wire:model="data.icone" type="radio" value="zoom-out"
                         id="632462b3222aa-icone-zoom-out">

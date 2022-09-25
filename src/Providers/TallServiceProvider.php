@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\Blade;
 use Illuminate\View\Compilers\BladeCompiler;
 use Livewire\LivewireBladeDirectives;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Str;
+
+use Symfony\Component\Finder\Finder;
 
 class TallServiceProvider extends ServiceProvider
 {
@@ -94,6 +97,7 @@ class TallServiceProvider extends ServiceProvider
         $this->loadComponent('table.add');
         
         $this->createDirectives();
+        $this->configureDynamicComponent(dirname(__DIR__,2));
 
         
         if (class_exists(Livewire::class)) {
@@ -195,7 +199,23 @@ class TallServiceProvider extends ServiceProvider
         }
 
     }
-
+    /**
+     * Configure the component for the application.
+     *
+     * @return void
+     */
+    public function configureDynamicComponent($path,$search=".blade.php")
+    {
+       foreach ((new Finder)->in(sprintf("%s/resources/views/components", $path))->files()->name('*.blade.php') as $component) {                   
+            $componentPath = $component->getRealPath();     
+            $namespace = Str::beforeLast($componentPath, $search);
+            $namespace = Str::afterLast($namespace, 'components/');
+            $name = Str::replace(DIRECTORY_SEPARATOR,'.',$namespace);
+            if(!Str::contains($namespace, 'tall/')){
+                $this->loadComponent($name, $name);
+            }
+        }
+    }
     
     public function loadComponent($component, $alias=null){
         if ($alias == null){

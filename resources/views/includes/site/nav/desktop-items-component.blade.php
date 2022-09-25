@@ -23,7 +23,7 @@
                 @else
                     <li class="px-3 hover:bg-gray-100">
                         {{-- tall/resources/views/components/nav/link.blade.php --}}
-                        <x-tall::nav.link class="flex py-2" :item="$sub_menu" />
+                        <x-tall-nav.link class="flex py-2" :item="$sub_menu" />
                     </li>
                 @endif
             @endif

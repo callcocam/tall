@@ -4,14 +4,14 @@
     <div class="mt-1 flex flex-col sm:mt-0 sm:flex-row sm:flex-wrap sm:space-x-8">
         <div class="mt-2 flex items-center text-sm text-gray-500 space-x-2">
             <!-- Heroicon name: mini/briefcase -->
-            <x-tall::icons.outline.briefcase class="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" />
+            <x-tall-icons.outline.briefcase class="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" />
             <span> Sub menus </span>
             <span>{{ $model->sub_menus->count() }}</span>
         </div>
 
         <div class="mt-2 flex items-center text-sm text-gray-500">
             <!-- Heroicon name: mini/calendar -->
-            <x-tall::icons.outline.calendar class="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" />
+            <x-tall-icons.outline.calendar class="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" />
             {{ date_carbom_format($model->created_at)->format('D M Y') }}
         </div>
     </div>

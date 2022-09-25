@@ -47,7 +47,7 @@ abstract class BaseButton extends Component
     public function render()
     {
         return function (array $data) {
-            return view('tall::components.button', $this->mergeData($data))->render();
+            return view('tall::components.tall.button', $this->mergeData($data))->render();
         };
     }
     protected function mergeData(array $data): array

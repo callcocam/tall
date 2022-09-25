@@ -17,10 +17,10 @@
             <div class="absolute inset-y-0 right-0 flex items-center rounded-r-md px-2 space-x-2 focus:outline-none">
                 <button type="button" x-on:click="toggleDropdown"
                     class="flex items-center rounded-r-md focus:outline-none">
-                    <x-tall::icons.outline.chevron-up-down class="h-5 w-5 text-gray-400" />
+                    <x-tall-icons.outline.chevron-up-down class="h-5 w-5 text-gray-400" />
                 </button>
                 <button type="button" x-on:click="toggleModal" class="flex items-center rounded-md focus:outline-none">
-                    <x-tall::icons.outline.plus class="h-5 w-5 text-gray-400" />
+                    <x-tall-icons.outline.plus class="h-5 w-5 text-gray-400" />
                 </button>
             </div>
             <ul x-cloak x-show="open"
@@ -47,7 +47,7 @@
                                     @default
                                         @if (in_array($optValue, $selected))
                                             <span class="flex items-center  pl-1.5 text-indigo-600">
-                                                <x-tall::icons.outline.check class="h-5 w-5 " />
+                                                <x-tall-icons.outline.check class="h-5 w-5 " />
                                             </span>
                                         @endif
                                 @endswitch
@@ -59,7 +59,7 @@
                             </label>
                             @if (!in_array($optValue, $selected))
                                 <span class="absolute inset-y-0 right-0 flex items-center pr-4 text-indigo-600">
-                                    <x-tall::icons.outline.check class="h-5 w-5" />
+                                    <x-tall-icons.outline.check class="h-5 w-5" />
                                 </span>
                             @endif
                         </li>

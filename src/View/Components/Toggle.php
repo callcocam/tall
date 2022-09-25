@@ -12,7 +12,7 @@ class Toggle extends Checkbox
 {
     protected function getView(): string
     {
-        return 'tall::components.toggle';
+        return 'tall::components.tall.toggle';
     }
 
     public function backgroundClasses(bool $hasError): string

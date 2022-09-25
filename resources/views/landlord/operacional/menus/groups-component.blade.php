@@ -24,7 +24,7 @@
             <div class="flex absolute justify-items-center items-center w-full top-0 right-0 bottom-0 left-0 py-5 inset-0 bg-gray-500 bg-opacity-75 transition-opacity  z-40 min-h-screen "
                 wire:loading wire:target="showToggle">
                 <div class="flex w-full">
-                    <x-tall::icons.spinner class="h-8 w-8 mx-auto" name="arrows-expand" />
+                    <x-tall-icons.spinner class="h-8 w-8 mx-auto" name="arrows-expand" />
                 </div>
             </div>
             @if ($menus = $this->menus)
@@ -51,7 +51,7 @@
                                     <div class="handler flex items-center  cursor-move">
                                         <div class="pointer-events-none text-gray-300 group-hover:text-gray-400"
                                             aria-hidden="true">
-                                            <x-tall::icons.solid.arrows-expand
+                                            <x-tall-icons.solid.arrows-expand
                                                 class="h-6 w-6  rounded-full group-hover:opacity-75"
                                                 name="arrows-expand" />
                                             {{-- <x-dynamic-component :component="Ui::component('icon')"

@@ -60,12 +60,12 @@
                                             <div class="mt-5 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3 bg-white z-20">
                                                 <button type="submit"
                                                     class="flex space-x-1 items-center w-full justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:col-start-2 sm:text-sm">
-                                                    <x-tall::icons.outline.save class="h-5 w-5" />
+                                                    <x-tall-icons.outline.save class="h-5 w-5" />
                                                     <span>{{ __('Salvar') }}</span>
                                             </button>
                                                 <button type="button" wire:click="showModalToggle"
                                                     class="mt-3 space-x-1 items-center flex w-full justify-center rounded-md border border-red-300 bg-white px-4 py-2 text-base font-medium text-red-700 shadow-sm hover:bg-red-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:col-start-1 sm:mt-0 sm:text-sm">
-                                                   <x-tall::icons.outline.ban class="h-5 w-5" />
+                                                   <x-tall-icons.outline.ban class="h-5 w-5" />
                                                     <span>{{ __('Cancelar') }}</span>
                                                 </button>
                                             </div>

@@ -28,7 +28,7 @@ class Errors extends Component
             $only = array_map(fn (string $name) => trim($name), $only);
         }
 
-        $this->title = $title ?? __('messages.errors.title');
+        $this->title = $title ?? __('messages.errors.tall.title');
         $this->only  = $only;
     }
 

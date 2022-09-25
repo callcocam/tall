@@ -1,4 +1,4 @@
-<x-tall::modal-form wire:submit.prevent="submit">
+<x-tall-modal-form wire:submit.prevent="submit">
     <x-slot name="actions">
         {{-- <x-circle-button type="button" title="{{ __('Edit') }}" icon="pencil" wire:click="showModalToggle" /> --}}
     </x-slot>
@@ -27,7 +27,7 @@
             </div>
             <div class="col-span-3">
                 {{-- @include('tall::landlord.operacional.menus.icons') --}}
-                <x-tall::icone field="icone" label="{{ __('Icone') }}" :options="$this->icons" :selectedLabel="data_get($data, 'icone')"
+                <x-tall-icone field="icone" label="{{ __('Icone') }}" :options="$this->icons" :selectedLabel="data_get($data, 'icone')"
                     :selected="data_get($data, 'icone')" />
             </div>
             <div class="col-span-3">
@@ -51,4 +51,4 @@
             </div>
         </div>
     {{-- @endif --}}
-</x-tall::modal-form>
+</x-tall-modal-form>

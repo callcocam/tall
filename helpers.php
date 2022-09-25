@@ -12,9 +12,11 @@ if (!function_exists('get_tenant_id')) {
      * @param  string $path
      * @return string
      */
-    function get_tenant_id($tenant = 'company_id')
+    function get_tenant_id($tenant = 'id')
     {
-        $tenantId = \Tall\Tenant\Facades\Tenant::getTenantId($tenant);
+        
+        
+        $tenantId =  data_get(get_tenant(), $tenant);
         return $tenantId;
     }
 }
@@ -28,7 +30,8 @@ if (!function_exists('get_tenant')) {
      */
     function get_tenant()
     {
-        return \App\Models\Tenant::find(get_tenant_id());
+        $containerKey = config('tall.multitenancy.current_tenant_container_key', 'currentTenant');
+        return app($containerKey);
     }
 }
 

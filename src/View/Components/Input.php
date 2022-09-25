@@ -64,7 +64,7 @@ class Input extends FormComponent
 
     protected function getView(): string
     {
-        return 'tall::components.input';
+        return 'tall::components.tall.input';
     }
 
     public function getInputClasses(bool $hasError = false): string

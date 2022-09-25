@@ -26,7 +26,7 @@
                             <div class="flex h-5 items-center">
                                 <span id="menus-{{ $item->id }}"
                                     class="h-4 w-4 rounded  border-gray-300 bg-indigo-600 flex items-center justify-center">
-                                    <x-tall::icons.outline.check class="h-5 w-5 text-white font-bold" />
+                                    <x-tall-icons.outline.check class="h-5 w-5 text-white font-bold" />
                                 </span>
                                 <div class="ml-3 text-sm">
                                     <span

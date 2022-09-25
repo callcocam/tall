@@ -28,6 +28,6 @@ class Label extends Component
      */
     public function render()
     {
-        return view('tall::components.label');
+        return view('tall::components.tall.label');
     }
 }

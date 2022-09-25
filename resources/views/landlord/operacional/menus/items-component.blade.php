@@ -35,7 +35,7 @@
                         <div class="flex ring-2 ring-gray-200 w-full p-0 rounded-sm handler  cursor-move items-center ">
                             {{-- <span
                                 class="absolute -top-2 -left-2 bg-blue-500 h-5 shadow-md text-white w-10 rounded-lg text-center flex justify-center items-center text-[10px]">{{ $submenu->id }}</span> --}}
-                            <x-tall::icons.solid.arrows-expand class="h-5 w-5  rounded-full group-hover:opacity-75"
+                            <x-tall-icons.solid.arrows-expand class="h-5 w-5  rounded-full group-hover:opacity-75"
                                 name="arrows-expand" />
                             <span class="text-gray-800 font-bold">
                                 {{ $submenu->name }}

@@ -39,7 +39,7 @@ class Checkbox extends FormComponent
 
     protected function getView(): string
     {
-        return 'tall::components.checkbox';
+        return 'tall::components.tall.checkbox';
     }
 
     public function getClasses(bool $hasError): string

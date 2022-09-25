@@ -52,13 +52,13 @@
                         @foreach ($menus as $menu)
                             @if ($sub_menus = $menu->sub_menus)
                                 @if ($sub_menus->count())
-                                    <x-tall::nav.admin.dropdown-menu :item="$menu">
+                                    <x-tall-nav.admin.dropdown-menu :item="$menu">
                                         @foreach ($sub_menus as $sub_menu)
-                                            <x-tall::nav.admin.dropdown-link :item="$sub_menu" />
+                                            <x-tall-nav.admin.dropdown-link :item="$sub_menu" />
                                         @endforeach
-                                    </x-tall::nav.admin.dropdown-menu>
+                                    </x-tall-nav.admin.dropdown-menu>
                                 @else
-                                    <x-tall::nav.admin.link :item="$sub_menu" />
+                                    <x-tall-nav.admin.link :item="$sub_menu" />
                                 @endif
                             @endif
                             {{-- <li class="nav-title">Components</li> --}}

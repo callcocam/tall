@@ -1,4 +1,3 @@
-@props(['label'=>null, 'hasError'=>null])
 <label {{ $attributes->class([
     'block text-sm font-medium',
     'text-red-600'  => $hasError,

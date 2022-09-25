@@ -17,11 +17,11 @@
                 class="relative -ml-px flex items-center space-x-2 rounded-r-md border border-gray-300 bg-gray-50 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500">
                 <x-dynamic-component :component="Ui::component('icon')" :name="$rightIcon" class="{{ $iconSize }} shrink-0" />
             </button>
-            <x-tall::search>
+            <x-tall-search>
                 <div x-cloak @click.away="open=false" @close.stop="open=false"
                     class="mx-auto max-w-xl max-h-96 transform divide-y divide-gray-100 overflow-hidden rounded-xl bg-white shadow-2xl ring-1 ring-black ring-opacity-5 transition-all">
                     <div class="relative">
-                        <x-tall::icons.outline.search
+                        <x-tall-icons.outline.search
                             class="pointer-events-none absolute top-3.5 left-4 h-5 w-5 text-gray-400" />
                         <input type="text" wire:model.debounce.500ms="filters.{{ $name }}"
                             class="h-12 w-full border-0 bg-transparent pl-11 pr-4 text-gray-800 placeholder-gray-400 focus:ring-0 sm:text-sm"
@@ -31,7 +31,7 @@
                     <button type="button" x-on:click="toggle"
                         class="inline-flex items-center absolute top-2 right-3 rounded-full border border-transparent bg-transparent p-1 text-black shadow-sm hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 focus:ring-offset-2">
                         <!-- Heroicon name: outline/plus -->
-                        <x-tall::icons.outline.x class="h-4 w-4 shrink-0" />
+                        <x-tall-icons.outline.x class="h-4 w-4 shrink-0" />
                     </button>
                     @isset($options)
                         <ul id="simplesidebar" class="max-h-72 py-2 text-sm overscroll-contain text-gray-800 p-2 "
@@ -50,7 +50,7 @@
                                             <span class="absolute inset-y-0 right-0 flex items-center pr-4 text-indigo-600">
                                                 <!-- Heroicon name: mini/check -->
                                                 @if ($optValue == data_get($data, $name))
-                                                    <x-tall::icons.outline.check class="h-5 w-5 text-white" />
+                                                    <x-tall-icons.outline.check class="h-5 w-5 text-white" />
                                                 @endif
                                             </span>
                                             <input class="hidden" value="{{ $optValue }}"
@@ -69,7 +69,7 @@
                     <!-- Results, show/hide based on command palette state -->
 
                 </div>
-            </x-tall::search>
+            </x-tall-search>
         </div>
     </dd>
 </div>

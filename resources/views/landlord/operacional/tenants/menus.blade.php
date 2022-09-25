@@ -40,13 +40,13 @@
                                             @if (data_get($showToggle, sprintf('%s.%s', $menu->id, $item->id)))
                                                 <button type="button" title="{{ __('Ver') }}"
                                                     wire:click.prevent="showToggle('{{ $menu->id }}.{{ $item->id }}',null)">
-                                                    <x-tall::icons.outline.eye
+                                                    <x-tall-icons.outline.eye
                                                         class="pointer-events-none h-5 w-5 text-blue-900" />
                                                 </button>
                                             @else
                                                 <button type="button" title="{{ __('Esconder') }}"
                                                     wire:click.prevent="showToggle('{{ $menu->id }}.{{ $item->id }}','{{ $item->id }}')">
-                                                    <x-tall::icons.outline.eye-off
+                                                    <x-tall-icons.outline.eye-off
                                                         class="pointer-events-none h-5 w-5 text-red-900" />
                                                 </button>
                                             @endif

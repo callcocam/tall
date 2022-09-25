@@ -31,7 +31,7 @@ class Icon extends Component
      */
     public function render()
     {
-        return view('tall::components.icon');
+        return view('tall::components.tall.icon');
     }
 
     private function getStyle(): string

@@ -24,6 +24,6 @@ class Error extends Component
      */
     public function render()
     {
-        return view('tall::components.error');
+        return view('tall::components.tall.error');
     }
 }
