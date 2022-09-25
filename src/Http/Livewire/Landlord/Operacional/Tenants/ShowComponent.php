@@ -31,12 +31,10 @@ class ShowComponent extends FormComponent
     {
          $this->authorize(Route::currentRouteName());
          $this->setFormProperties($model);
-         if (\Schema::connection(config('tall.multitenancy.landlord_database_connection_name','landlord'))->hasTable('copy_tenants')) {  
-            data_set($this->data, 'tenant', $model->copy_tenants()->firstOrCreate([
-                config('tall.multitenancy.current_tenant_key','tenant_id')=>$model->id
-            ]));
-            $this->step = data_get($this->data, 'tenant.step', 0);
-        }
+         data_set($this->data, 'tenant', $model->copy_tenants()->firstOrCreate([
+            config('tall.multitenancy.current_tenant_key','tenant_id')=>$model->id
+        ]));
+        $this->step = data_get($this->data, 'tenant.step', 0);
 
     }
 

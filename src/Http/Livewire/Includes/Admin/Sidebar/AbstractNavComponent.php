@@ -17,10 +17,18 @@ abstract class AbstractNavComponent extends Component
 
     public $tenant="";
 
+    protected $queryString = [
+        'tenant' => ['except' => ""],
+        'search' => ['except' => ""],
+    ];
     public $showDropdown=true;
 
     protected $listeners = ['loadMenus'];
 
+    public function mount()
+    {
+        $this->tenant = request()->query('tenant');
+    }
     public function getTenantsProperty()
     {
        return \Tall\Models\Tenant::all();
@@ -36,10 +44,6 @@ abstract class AbstractNavComponent extends Component
             $menu = \Tall\Models\Menu::query()->where('slug', $this->currentMenu)->first();         
             return $builder->sub_menu_orderings()        
             ->where('menu_id',$menu->id)->get();
-            // ->map(function (\Tall\Models\SubMenuOrdering $SubMenu) {
-            //     $SubMenu->parents = $SubMenu;
-            //     return $SubMenu;
-            // })
           }
         }
         else{
@@ -59,9 +63,11 @@ abstract class AbstractNavComponent extends Component
 
     public function getLoadMenus()
     {
+        $menus = [];
         if(app()->has($this->currentMenu)){
-            $builder =  app($this->currentMenu);               
-            if( $builder){
+            $builder =  app($this->currentMenu);    
+             
+            if( $builder){      
                 if($builder instanceof \Illuminate\Database\Eloquent\Relations\HasMany){
                     $related = $builder->getRelated();
                     if($related instanceof \App\Models\SubMenu){
@@ -98,5 +104,6 @@ abstract class AbstractNavComponent extends Component
                 }               
             }
         }
+        return $menus;
     }
 }

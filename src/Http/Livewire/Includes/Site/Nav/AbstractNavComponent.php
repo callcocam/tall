@@ -33,18 +33,20 @@ abstract class AbstractNavComponent extends Component
                             if($sarch = $this->search){
                                 $builder->where('name','LIKE',"%{$this->search}%");
                             }
-                            $menus = $builder->get()->map(function (\App\Models\SubMenu $SubMenu) {
-                                $SubMenu->parents = $SubMenu;
-                                return $SubMenu;
-                            });
+                            $menus = $builder->get();
+                            // ->map(function (\Tall\Models\SubMenu $SubMenu) {
+                            //     $SubMenu->parents = $SubMenu;
+                            //     return $SubMenu;
+                            // })
                         }elseif($related instanceof \Tall\Models\SubMenu){
                             if($sarch = $this->search){
                                 $builder->where('name','LIKE',"%{$this->search}%");
                             }
-                            $menus = $builder->get()->map(function (\Tall\Models\SubMenu $SubMenu) {
-                                $SubMenu->parents = $SubMenu;
-                                return $SubMenu;
-                            });
+                            $menus = $builder->get();
+                            // ->map(function (\Tall\Models\SubMenu $SubMenu) {
+                            //     $SubMenu->parents = $SubMenu;
+                            //     return $SubMenu;
+                            // })
                         }
                         else{
                             $menus = $builder->get();    
