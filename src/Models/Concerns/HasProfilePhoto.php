@@ -28,7 +28,7 @@ trait HasProfilePhoto
             ])->save();
 
             if ($previous) {
-                Storage::disk($this->profilePhotoDisk())->delete($previous);
+                \Storage::disk($this->profilePhotoDisk())->delete($previous);
             }
         });
     }
@@ -59,7 +59,7 @@ trait HasProfilePhoto
     public function getProfilePhotoUrlAttribute()
     {
         return $this->profile_photo_path
-            ? Storage::disk($this->profilePhotoDisk())->url($this->profile_photo_path)
+            ? \Storage::disk($this->profilePhotoDisk())->url($this->profile_photo_path)
             : $this->defaultProfilePhotoUrl();
     }
 

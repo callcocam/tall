@@ -28,7 +28,7 @@ trait HasCoverPhoto
             ])->save();
 
             if ($previous) {
-                Storage::disk($this->coverPhotoDisk())->delete($previous);
+                \Storage::disk($this->coverPhotoDisk())->delete($previous);
             }
         });
     }
@@ -44,7 +44,7 @@ trait HasCoverPhoto
             return;
         }
 
-        Storage::disk($this->coverPhotoDisk())->delete($this->cover_photo_path);
+        \Storage::disk($this->coverPhotoDisk())->delete($this->cover_photo_path);
 
         $this->forceFill([
             'cover_photo_path' => null,
