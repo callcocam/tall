@@ -59,7 +59,7 @@ trait HasCoverPhoto
     public function getCoverPhotoUrlAttribute()
     {
         return $this->cover_photo_path
-            ? Storage::disk($this->coverPhotoDisk())->url($this->cover_photo_path)
+            ? \Storage::disk($this->coverPhotoDisk())->url($this->cover_photo_path)
             : $this->defaultCoverPhotoUrl();
     }
 

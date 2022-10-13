@@ -43,7 +43,7 @@
                                     </x-tall-nav.admin.dropdown-menu>
                                 @else
                                     <!-- Current: "bg-gray-200 text-gray-900", Default: "text-gray-700 hover:text-gray-900 hover:bg-gray-50" -->
-                                    <x-tall-nav.admin.link :item="$sub_menu" />
+                                    <x-tall-nav.admin.link :item="$menu" />
                                 @endif
                             @endif
                             {{-- <li class="nav-title">Components</li> --}}

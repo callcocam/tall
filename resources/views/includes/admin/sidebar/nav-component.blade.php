@@ -58,7 +58,7 @@
                                         @endforeach
                                     </x-tall-nav.admin.dropdown-menu>
                                 @else
-                                    <x-tall-nav.admin.link :item="$sub_menu" />
+                                    <x-tall-nav.admin.link :item="$menu" />
                                 @endif
                             @endif
                             {{-- <li class="nav-title">Components</li> --}}

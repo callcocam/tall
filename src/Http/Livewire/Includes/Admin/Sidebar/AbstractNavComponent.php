@@ -38,7 +38,7 @@ abstract class AbstractNavComponent extends Component
     {
         $menus = [];
         $this->currentMenu = config('tall.multitenancy.current_tenant_container_menus_key.currentMenuAdmin', 'menu-admin');
-       
+
         if($this->tenant){
           if($builder = \Tall\Models\CurrentTenant::find($this->tenant)){
             $menu = \Tall\Models\Menu::query()->where('slug', $this->currentMenu)->first();         
@@ -66,7 +66,6 @@ abstract class AbstractNavComponent extends Component
         $menus = [];
         if(app()->has($this->currentMenu)){
             $builder =  app($this->currentMenu);    
-             
             if( $builder){      
                 if($builder instanceof \Illuminate\Database\Eloquent\Relations\HasMany){
                     $related = $builder->getRelated();
@@ -99,7 +98,7 @@ abstract class AbstractNavComponent extends Component
                         // })
                     }
                 }
-                else{
+                else{   
                     $menus = $builder;
                 }               
             }

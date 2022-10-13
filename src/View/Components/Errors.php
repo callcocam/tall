@@ -39,7 +39,7 @@ class Errors extends Component
      */
     public function render()
     {
-        return view('tall::components.errors');
+        return view('tall::components.tall.errors');
     }
     public function hasErrors(ViewErrorBag $errors): bool
     {
