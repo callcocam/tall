@@ -176,6 +176,18 @@ class TallServiceProvider extends ServiceProvider
             Livewire::component( 'tall::admin.operacional.users.create-component', \Tall\Http\Livewire\Admin\Operacional\Users\CreateComponent::class);
             Livewire::component( 'tall::admin.operacional.users.show-component', \Tall\Http\Livewire\Admin\Operacional\Users\ShowComponent::class);
             Livewire::component( 'tall::admin.operacional.users.delete-component', \Tall\Http\Livewire\Admin\Operacional\Users\DeleteComponent::class);
+           
+            Livewire::component( 'tall::admin.operacional.cms.inputs.list-component', \Tall\Http\Livewire\Admin\Operacional\Cms\Inputs\ListComponent::class);
+            Livewire::component( 'tall::admin.operacional.cms.inputs.edit-component', \Tall\Http\Livewire\Admin\Operacional\Cms\Inputs\EditComponent::class);
+            Livewire::component( 'tall::admin.operacional.cms.inputs.create-component', \Tall\Http\Livewire\Admin\Operacional\Cms\Inputs\CreateComponent::class);
+            Livewire::component( 'tall::admin.operacional.cms.inputs.show-component', \Tall\Http\Livewire\Admin\Operacional\Cms\Inputs\ShowComponent::class);
+            Livewire::component( 'tall::admin.operacional.cms.inputs.delete-component', \Tall\Http\Livewire\Admin\Operacional\Cms\Inputs\DeleteComponent::class);
+            
+            Livewire::component( 'tall::admin.operacional.cms.inputs.attributes.edit-component', \Tall\Http\Livewire\Admin\Operacional\Cms\Inputs\Attributes\EditComponent::class);
+            Livewire::component( 'tall::admin.operacional.cms.inputs.attributes.create-component', \Tall\Http\Livewire\Admin\Operacional\Cms\Inputs\Attributes\CreateComponent::class);
+
+            Livewire::component( 'tall::admin.operacional.cms.inputs.options.edit-component', \Tall\Http\Livewire\Admin\Operacional\Cms\Inputs\Options\EditComponent::class);
+            Livewire::component( 'tall::admin.operacional.cms.inputs.options.create-component', \Tall\Http\Livewire\Admin\Operacional\Cms\Inputs\Options\CreateComponent::class);
 
             Livewire::component( 'tall::admin.operacional.profile.show-component', \Tall\Http\Livewire\Admin\Operacional\Profile\ShowComponent::class);
             Livewire::component( 'tall::admin.operacional.profile.update-profile-information-form', \Tall\Http\Livewire\Admin\Operacional\Profile\UpdateProfileInformationForm::class);

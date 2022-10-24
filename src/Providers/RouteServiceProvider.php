@@ -103,7 +103,8 @@ class RouteServiceProvider extends ServiceProvider
            
         foreach ((new Finder)->in($path) as $component) {                   
             $componentPath = $component->getRealPath();        
-            $namespace = Str::after($componentPath, $search);
+            $namespace = Str::after($componentPath, 'public_html');
+            $namespace = Str::after($namespace, $search);
             $namespace = Str::replace(['/', '.php'], ['\\', ''], $namespace);
             $component = $ns . $namespace;
             if (class_exists($component)) {

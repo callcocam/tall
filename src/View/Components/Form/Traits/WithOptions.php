@@ -7,6 +7,7 @@
 
 namespace Tall\View\Components\Form\Traits;
 use Illuminate\Contracts\Database\Eloquent\Builder;
+use Illuminate\Support\Arr;
 
 trait WithOptions 
 {
@@ -47,10 +48,18 @@ trait WithOptions
 
         return $this;
     }
+    public function array($options)
+    {
+       
+        $this->setProp('options', $options);
+
+        return $this;       
+    }
+    
     public function options($options)
     {
        
-        if(\Arr::isAssoc($options)){
+        if(Arr::isAssoc($options)){
             $this->setProp('options', array_flip($options));
         }
         else{
@@ -68,6 +77,8 @@ trait WithOptions
         elseif($model instanceof \Illuminate\Database\Eloquent\Builder){
             $builder  = $model;
         }
+        $selected = data_get($this->props, 'selected');
+        
         if( $options = $this->queryBuilder($builder,$selected)->limit(10)->select($fields)->get()){  
             $options->map(function($model) use($selected, $name){
                 if($model->id == $selected){
@@ -82,13 +93,14 @@ trait WithOptions
     
     public function pluck($model, $name="name", $key="id")
     {
+        data_set($this->props, 'selectedLabel', "");
         if(is_string($model)){
             $builder  = app($model)->query();            
         }
         elseif($model instanceof \Illuminate\Database\Eloquent\Builder){
             $builder  = $model;
         }
-        $selected = data_get($this->props, sprintf('selected.%s', $this->name )); 
+        $selected = data_get($this->props, 'selected'); 
         $selectedFilter =[];
         if(!is_array($selected)){
             if($selected){
@@ -124,7 +136,7 @@ trait WithOptions
         
         $modelName = data_get($this->props, 'modelName');             
         $search = data_get($this->props, sprintf('filters.%s', $this->name));       
-        return $builder->when($search ,function (Builder $query) use($search){
+        return $builder->when($search ,function (Builder $query) use($search,$selected){
             if($search){
               return $query->where('name', 'like', "%{$search}%");
             }

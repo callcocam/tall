@@ -5,7 +5,7 @@
 * https://www.bengs.com.br
 */
 
-namespace Tall\Http\Livewire\Admin\Operacional\Cms;
+namespace Tall\Http\Livewire\Admin\Operacional\Cms\Inputs;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -24,9 +24,9 @@ class CreateComponent extends FormComponent
         $this->setFormProperties($model);
         data_set($this->data,'name', '');
         data_set($this->data,'user_id', auth()->id());
-        data_set($this->data,'status', 'draft');
-        data_set($this->data,'created_at', now()->format("Y-m-d H:i:s"));
-        data_set($this->data,'updated_at', now()->format("Y-m-d H:i:s"));
+        data_set($this->data,'status', config('tall.status.default', 'published'));
+        data_set($this->data,'created_at', now()->format("Y-m-d"));
+        data_set($this->data,'updated_at', now()->format("Y-m-d"));
     }
 
     public function route(){

@@ -10,6 +10,7 @@ use Livewire\Component;
 use Tall\Http\Livewire\Traits\FollowsRules;
 use Livewire\WithFileUploads;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Route;
 
 abstract class FormComponent extends AbstractComponent
 {
@@ -140,10 +141,10 @@ abstract class FormComponent extends AbstractComponent
                 if ($this->model->exists) {
                     $this->success( __('sucesso'), __("Cadastro atualizado com sucesso!!"));
                     if(method_exists($this, 'edit')){
-                        if(\Route::has($this->edit)){
+                        if(Route::has($this->edit)){
                             return redirect()->route($this->edit,['model'=>$this->model]);
                         }
-                        elseif(\Route::has($this->list)){
+                        elseif(Route::has($this->list)){
                             return redirect()->route($this->list);
                         }
                     }

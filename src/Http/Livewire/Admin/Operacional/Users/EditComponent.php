@@ -43,7 +43,6 @@ class EditComponent extends FormComponent
         }
         return $rules;
     }
-
     protected function fields(){
 
         $fields = [

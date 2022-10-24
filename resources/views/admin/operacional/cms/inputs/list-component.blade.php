@@ -18,7 +18,7 @@
                             <x-tall-table.filters.clear  :filters="$filters" />
                             <x-tall-table.search />
                             <x-tall-table.add href="{{ route($this->create) }}">
-                                {{ __('Adicionar SubMenu') }}
+                                {{ __('Adicionar Input') }}
                             </x-tall-table.add>
                         </div>
                     </div>
@@ -26,15 +26,11 @@
                         <thead class="shadow-md rounded-t-sm">
                             <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal rounded-t-md">
                                 <th class="py-1 px-6 text-left  cursor-pointer">
-                                    <div class="flex flex-col space-y-1">
-                                        <x-tall-table.sort name="name">{{ __('Nome') }}</x-tall-table.sort>
-                                        <x-tall-table.filters.select name="menu" :options="$this->menus" />
-                                    </div>
+                                  
                                 </th>
                                 <th class="py-1 px-6 text-left  cursor-pointer">
                                     <div class="flex flex-col space-y-1">
                                         <x-tall-table.sort name="name">{{ __('Parent') }}</x-tall-table.sort>
-                                        <x-tall-table.filters.select name="parent" :options="$this->parents" />
                                     </div>
                                 </th>
                                 <th class="py-1 px-6 text-left">

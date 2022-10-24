@@ -8,7 +8,9 @@ namespace Tall\View\Components\Form;
 
 use Illuminate\View\Component;
 
-abstract class Field extends Component
+use Illuminate\Support\{Str};
+
+abstract class Field
 {
 
     protected $props = [];
@@ -23,12 +25,14 @@ abstract class Field extends Component
     }
 
     public function init($label, $name=null)
-    {
+    {   
+        $this->setProp('span', '12');
         $this->setProp('id', uniqid());
         $this->setProp('type', $this->type());
+        $this->setProp('condition', true);
         if($label){
             if(empty($name)){
-                $name = \Str::slug($label, '_');
+                $name = Str::slug($label, '_');
             }
             $this->setProp('key', sprintf("data.%s", $name));
             $this->setProp('name', $name);
@@ -53,6 +57,16 @@ abstract class Field extends Component
     {
         return view(sprintf('tall::components.form.%s', $this->view()))->with($this->props);
     }
+    
+    /**
+     * Get the view / contents that represent the component.
+     *
+     * @return \Illuminate\Contracts\View\View|\Closure|string
+     */
+    public function horizontal()
+    {
+        return view(sprintf('tall::components.form.horizontal.%s', $this->view()))->with($this->props);
+    }
 
     public function setProp($prop, $value)
     {
@@ -65,6 +79,13 @@ abstract class Field extends Component
     {
         $this->setProp('span', $span);
 
+        return $this;
+    }
+
+    public function hiddenIf($condition)
+    {
+        $this->setProp('condition', $condition);
+// dd($condition);
         return $this;
     }
 

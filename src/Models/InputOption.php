@@ -9,12 +9,11 @@ namespace Tall\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Tall\Tenant\Models\Concerns\UsesLandlordConnection;
 
-class Input extends AbstractModel
+class InputOption extends AbstractModel
 {
     use HasFactory,UsesLandlordConnection;
  
     protected $guarded = ['id'];
-    protected $with = ['attributes', 'options'];
 
      /**
      * The attributes that should be cast.
@@ -28,14 +27,9 @@ class Input extends AbstractModel
 
     //protected $table = "table";
 
-    public function options()
+    public function inpunt()
     {
-        return $this->hasMany(InputOption::class);
-    }
-
-    public function attributes()
-    {
-        return $this->hasMany(InputAttribute::class);
+        return $this->hasOne(Input::class);
     }
 
 }

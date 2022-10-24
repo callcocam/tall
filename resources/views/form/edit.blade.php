@@ -3,9 +3,11 @@
     <dl>
         @if ($types = $this->types)
             @foreach ($types as $name => $field)
-                @if (!in_array($name, $this->ignores))
-                    @if (in_array($name, array_keys($data)))
-                        {{ $field->render()->with('data', $data)->with('field', $name)->with('model', $model) }}
+                @if ($field->condition)
+                    @if (!in_array($name, $this->ignores))
+                        @if (in_array($name, array_keys($data)))
+                            {{ $field->render()->with('data', $data)->with('field', $name)->with('model', $model) }}
+                        @endif
                     @endif
                 @endif
             @endforeach

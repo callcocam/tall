@@ -2,7 +2,7 @@
     <dt class="text-sm font-medium text-gray-500">{{ __($label) }}</dt>
     <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
         <fieldset class="mt-4">
-            <div class="space-x-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10">
+            <div class="gap-2 sm:grid sm:grid-cols-3 md:grid-cols-4">
                 @isset($options)
                     @foreach ($options as $name => $value)
                         <div class="flex items-center">

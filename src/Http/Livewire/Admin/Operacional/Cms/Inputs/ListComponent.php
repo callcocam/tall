@@ -5,7 +5,7 @@
 * https://www.bengs.com.br
 */
 
-namespace Tall\Http\Livewire\Admin\Operacional\Cms;
+namespace Tall\Http\Livewire\Admin\Operacional\Cms\Inputs;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
