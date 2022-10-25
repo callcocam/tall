@@ -9,6 +9,8 @@ namespace Tall\Models\Concerns;
 
 
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
+use Laravel\Fortify\Features;
 
 trait HasCoverPhoto
 {
@@ -28,7 +30,7 @@ trait HasCoverPhoto
             ])->save();
 
             if ($previous) {
-                \Storage::disk($this->coverPhotoDisk())->delete($previous);
+                Storage::disk($this->coverPhotoDisk())->delete($previous);
             }
         });
     }
@@ -44,7 +46,7 @@ trait HasCoverPhoto
             return;
         }
 
-        \Storage::disk($this->coverPhotoDisk())->delete($this->cover_photo_path);
+        Storage::disk($this->coverPhotoDisk())->delete($this->cover_photo_path);
 
         $this->forceFill([
             'cover_photo_path' => null,
@@ -59,7 +61,7 @@ trait HasCoverPhoto
     public function getCoverPhotoUrlAttribute()
     {
         return $this->cover_photo_path
-            ? \Storage::disk($this->coverPhotoDisk())->url($this->cover_photo_path)
+            ? Storage::disk($this->coverPhotoDisk())->url($this->cover_photo_path)
             : $this->defaultCoverPhotoUrl();
     }
 
