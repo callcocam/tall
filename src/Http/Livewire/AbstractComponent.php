@@ -67,4 +67,15 @@ abstract class AbstractComponent extends Component
         // $this->emitTo('includes.global.notifications','notify', $title, $message, 'info');
     }
     
+    public function geGroupUpdatedOrder()
+    {
+       return [];
+    }
+    
+    public function setGroupUpdatedOrder($data)
+    {
+        $orders = explode("|", $data);
+        $orders = array_filter($orders);
+        return $orders;
+    }
 }
