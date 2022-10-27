@@ -9,7 +9,7 @@ namespace [namespace];
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use App\Http\Livewire\FormComponent;
+use Tall\Http\Livewire\FormComponent;
 use [modelnamespace];
 
 class EditComponent extends FormComponent

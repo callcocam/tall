@@ -19,7 +19,10 @@
                             <x-tall-table.search />
                             <x-tall-table.add href="{{ route($this->create) }}">
                                 {{ __('Adicionar [model]') }}
-                            </x-tall-table.add>
+                            </x-tall-table.add>                            
+                            @if (\Route::has($this->order))
+                                <x-tall-table.order href="{{ route($this->order) }}" />
+                            @endif
                         </div>
                     </div>                    
                     @include('tall::table.list')          

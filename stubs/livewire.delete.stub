@@ -9,7 +9,7 @@ namespace [namespace];
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use App\Http\Livewire\AbstractDeleteComponent;
+use Tall\Http\Livewire\AbstractDeleteComponent;
 use [modelnamespace];
 
 class DeleteComponent extends AbstractDeleteComponent

@@ -9,6 +9,7 @@ namespace {{ namespace }};
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Tall\Tenant\Models\Concerns\UsesTenantConnection;
 use Tall\Tenant\BelongsToTenants;
+use Tall\Models\AbstractModel;
 
 class {{ class }} extends AbstractModel
 {

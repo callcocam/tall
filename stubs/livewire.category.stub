@@ -6,7 +6,7 @@
 */
 namespace [namespace];
 
-use App\Http\Livewire\Components\AbstractFormComponent;
+use Tall\Http\Livewire\Components\AbstractFormComponent;
 use [modelnamespace];
 
 class [class] extends AbstractFormComponent

@@ -21,7 +21,7 @@ class [class] extends TableComponent
     }
 
     public function route(){
-        Route::get('/[path]', static::class)->name('[route]');
+        Route::get('/[path]/ordenar', static::class)->name('[route].order');
     }
 
     public function query()
@@ -49,24 +49,31 @@ class [class] extends TableComponent
     {
        return '[route].view';
     }
-
     public function getEditProperty()
     {
        return '[route].edit';
     }
-
     public function getDeleteProperty()
     {
        return '[route].delete';
     }
-    
-    public function getOrderProperty()
-    {
-       return '[route].order';
-    }
-
     public function view()
     {
         return 'livewire.[view]';
+    }
+
+    public function setGroupUpdatedOrder($data)
+    {
+        $orders = parent::setGroupUpdatedOrder($data);
+        $orders = array_filter($orders);
+        if($orders){
+            foreach($orders as $order => $id){
+                if($model=Post::find( $id)){
+                    $model->ordering = $order;
+                    $model->update();
+                }
+            }
+        }
+        return $orders;
     }
 }

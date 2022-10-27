@@ -1,22 +1,28 @@
 <x-slot name="header">
-    <x-tall-table.breadcrumbs url="{{ route($this->list) }}" label="{{ __('[model]') }}" />
-    <x-tall-table.breadcrumbs url="#" label="{{ $title }}" />
+    <x-tall-table.breadcrumbs url="{{ route($this->list) }}" label="{{ __('[model]s') }}" />
+    <x-tall-table.breadcrumbs url="#" label="{{ __('Ordenar') }}" />
 </x-slot>
 <div class="w-full">
     <div class="overflow-x-auto">
         <div class="min-w-screen min-h-screen bg-gray-100 flex  font-sans overflow-hidden">
             <div class="w-full">
-                <div class="bg-white shadow-md rounded">
-                    <!-- This example requires Tailwind CSS v2.0+ -->
-                    <div class="bg-white shadow overflow-hidden sm:rounded-lg">
-                        <div class="px-4 py-5 sm:px-6">
-                            <h3 class="text-lg leading-6 font-medium text-gray-900">{{ $model->name }}</h3>
-                            {{-- <p class="mt-1 max-w-2xl text-sm text-gray-500">Personal details and application.</p> --}}
+                <div class="bg-white shadow-md rounded px-4">
+                    <div class="sm:flex sm:items-center px-6 pt-6 pb-4">
+                        <div class="sm:flex-auto">
+                            <h1 class="text-xl font-semibold text-gray-900">{{ __('[model]s') }}</h1>
+                            @isset($description)
+                                <p class="mt-2 text-sm text-gray-700">{{ $description }}</p>
+                            @endisset
                         </div>
-                        <div class="border-t border-gray-200">
-                              @include('tall::form.order')
+                        <div class="mt-4 sm:mt-0 sm:ml-16 flex items-center space-x-2">
+                            <x-tall-table.filters.clear  :filters="$filters" />
+                            <x-tall-table.search />
+                            <x-tall-table.add href="{{ route($this->create) }}">
+                                {{ __('Adicionar [model]') }}
+                            </x-tall-table.add>
                         </div>
-                    </div>
+                    </div>                    
+                    @include('tall::table.order')          
                 </div>
             </div>
         </div>
