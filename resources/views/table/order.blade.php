@@ -7,8 +7,8 @@
                     <div class="py-1 px-6 text-left">
                         {{ $model->name }} - {{ $model->ordering }}
                     </div>
-                    <div class="py-3 px-6 text-center draggable-handler">
-                        <x-tall-icon name="arrows-expand" class="w-8 h-8" />
+                    <div class="py-1 px-6 text-center draggable-handler">
+                        <x-tall-icon name="arrows-expand" class="w-4 h-4" />
                     </div>
                 </div>
             @endforeach
