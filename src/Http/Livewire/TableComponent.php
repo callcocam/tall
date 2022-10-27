@@ -5,10 +5,9 @@
 * https://www.sigasmart.com.br
 */
 namespace Tall\Http\Livewire;
-use Tall\Http\Livewire\Traits\DateRange;
 use Livewire\WithPagination;
 use Carbon\Carbon;
-use Tall\Http\Livewire\Traits\Relationship;
+use Illuminate\Support\{Arr, Str};
 use Illuminate\Database\Eloquent\Builder;
 
 
@@ -19,6 +18,7 @@ abstract class TableComponent extends AbstractComponent
     protected $paginationTheme = 'pagination';
 
     public $filters = [];
+    public $optionsPerPage = [6,12,24,48,100,200,500];
 
     protected $builder;
 
@@ -93,13 +93,13 @@ abstract class TableComponent extends AbstractComponent
             if($search =  data_get($this->filters,'search')){
                 $this->builder->where(function (Builder $builder) use($search){
                     foreach ($this->columns() as $column) {
-                        if (\Str::contains($column, '.')) {
+                        if (Str::contains($column, '.')) {
                             $relationship = $this->relationship($column);
 
                             $builder->orWhereHas($relationship->name, function (Builder $query) use ($relationship, $search) {
                                 $query->where($relationship, 'like', '%' . $search . '%');
                             });
-                        } elseif (\Str::endsWith($column, '_count')) {
+                        } elseif (Str::endsWith($column, '_count')) {
                             // No clean way of using having() with pagination aggregation, do not search counts for now.
                             // If you read this and have a good solution, feel free to submit a PR :P
                         } else {
@@ -108,7 +108,7 @@ abstract class TableComponent extends AbstractComponent
                     }
                 });
             }
-            return $this->builder->paginate();
+            return $this->builder->paginate(data_get($this->filters, 'perPage', 12));
         }
         return [];
     }
@@ -124,7 +124,7 @@ abstract class TableComponent extends AbstractComponent
 
     public function resetFilter($filter)
     {
-        \Arr::forget($this->filters, $filter);
+        Arr::forget($this->filters, $filter);
     }
 
     public function resetFilters()

@@ -54,6 +54,7 @@ class TallServiceProvider extends ServiceProvider
                     \Tall\Console\Commands\CrudCommand::class,
                     \Tall\Console\Commands\DeleteCommand::class,
                     \Tall\Console\Commands\EditCommand::class,
+                    \Tall\Console\Commands\OrderCommand::class,
                     \Tall\Console\Commands\ShowCommand::class
                 ]);
         }

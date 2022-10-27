@@ -52,6 +52,10 @@ class CrudCommand extends Command
             'name'=>$this->argument('name'),
             'model' => $this->argument('model')
         ]);
+        $this->call('make:order',[
+            'name'=>$this->argument('name'),
+            'model' => $this->argument('model')
+        ]);
 
         $this->call('make:model',[
             'name'=>$this->argument('model'),

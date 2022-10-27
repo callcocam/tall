@@ -6,6 +6,7 @@
 */
 namespace Tall\Http\Livewire;
 
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
 abstract class AbstractComponent extends Component
@@ -34,7 +35,7 @@ abstract class AbstractComponent extends Component
     {
         return view(sprintf("%s-component", $this->view()))
         ->with($this->data())        
-        ->layout($this->layout(),['querysLogs'=>\DB::getQueryLog()]);
+        ->layout($this->layout(),['querysLogs'=>DB::getQueryLog()]);
     }
 
     public function success($title, $message)
