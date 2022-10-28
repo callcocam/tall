@@ -68,7 +68,7 @@ class [class] extends TableComponent
         $orders = array_filter($orders);
         if($orders){
             foreach($orders as $order => $id){
-                if($model=Post::find( $id)){
+                if($model=[model]::find( $id)){
                     $model->ordering = $order;
                     $model->update();
                 }
