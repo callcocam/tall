@@ -17,6 +17,7 @@ abstract class FormComponent extends AbstractComponent
 
     use FollowsRules, WithFileUploads;
 
+    public $config;
     public $model;
     public $data = [];
     public $filters = [];
@@ -39,10 +40,11 @@ abstract class FormComponent extends AbstractComponent
       /**
      * @param null $model
      */
-    public function setFormProperties($model = null)
+    public function setFormProperties($model = null, $config=null)
     {
         //$this->user = $this->user();
         $this->model = $model;
+        $this->config = $config;
         if ($model) {
             $this->data = $model->toArray();
         }

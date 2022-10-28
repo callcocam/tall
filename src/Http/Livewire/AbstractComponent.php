@@ -13,6 +13,23 @@ abstract class AbstractComponent extends Component
 {
     public $search="";
     
+    /**
+     * @var string[]
+     */
+    protected $listeners = ['refreshOrder', 'refreshCreate', 'refreshDelete'];
+
+    public function refreshCreate($data=[]){
+        
+    }
+
+    public function refreshDelete($data=[]){
+        
+    }
+
+    public function refreshOrder($data=[]){
+        
+    }
+
     protected function models(){
         
     }
