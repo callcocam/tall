@@ -6,7 +6,6 @@
 */
 namespace Tall\Http\Livewire;
 
-use Livewire\Component;
 use Tall\Http\Livewire\Traits\FollowsRules;
 use Livewire\WithFileUploads;
 use Illuminate\Http\UploadedFile;
@@ -117,9 +116,17 @@ abstract class FormComponent extends AbstractComponent
         return 'name';
     }
 
+    public function getFormFieldTypesProperty()
+    {
+        $fields = config('tall-fluxo.views.form',[]);
+
+        return array_combine($fields,$fields);
+    }
+
     public function submit()
     {
-        $this->validate();
+        if($this->rules())
+            $this->validate();
         $this->uploadPhoto();
         return $this->save();
     }
