@@ -24,3 +24,4 @@ Route::get('{slugpagina}', function ($slugpagina) {
   else{
       return view('tall::site.404');
   }
+});

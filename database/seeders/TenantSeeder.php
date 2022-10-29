@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\DB;
 
 class TenantSeeder extends Seeder
 {
@@ -16,9 +18,9 @@ class TenantSeeder extends Seeder
     {
       $clone = config('database.connections.mysql');
       $clone['database'] = 'mysql';
-      \Config::set("database.connections.mysql", $clone);
+      Config::set("database.connections.mysql", $clone);
   
-      $tenants =  \DB::connection('backup')->table('companies')->get();
+      $tenants =  DB::connection('backup')->table('companies')->get();
 
       
       if($tenants){
@@ -32,12 +34,12 @@ class TenantSeeder extends Seeder
     }
 
     private function bkUserCreate($tenant, $currentTenant){
-      $users =  \DB::connection('backup')->table('users')
+      $users =  DB::connection('backup')->table('users')
       ->select('name', 'email', 'assets','slug', 'document', 'vereador_old_id','profession','genre','nationality','date_birth', 'office','password')
       ->where('company_id',data_get($tenant,'id'))->get();
         foreach ($users as  $user) {
           $userId = \Ramsey\Uuid\Uuid::uuid4();
-          \DB::connection('mysql')->table('users')->insert([
+          DB::connection('mysql')->table('users')->insert([
             'id' => $userId,
             'tenant_id' => data_get($currentTenant,'id'),
             'name' => data_get($user,'name'),
@@ -51,7 +53,7 @@ class TenantSeeder extends Seeder
             'created_at'=>data_get($user,'created_at'),
             'updated_at'=>data_get($user,'updated_at'),
           ]);           
-          \DB::connection('mysql')->table('user_infos')->insert([
+          DB::connection('mysql')->table('user_infos')->insert([
             'id' => \Ramsey\Uuid\Uuid::uuid4(),
             'user_id' => $userId,
             'office' => data_get($user,'office'),

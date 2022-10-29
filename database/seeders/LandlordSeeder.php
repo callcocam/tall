@@ -4,6 +4,10 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+use Tall\Models\Tenant;
 
 class LandlordSeeder extends Seeder
 {
@@ -17,12 +21,13 @@ class LandlordSeeder extends Seeder
 
       $clone = config('database.connections.mysql');
       $clone['database'] = 'landlord';
-      \Config::set("database.connections.landlord", $clone);
+      Config::set("database.connections.landlord", $clone);
 
-        $host = \Str::replace("www.",'',request()->getHost());
+        $host = Str::replace("www.",'',request()->getHost());
         $id =  \Ramsey\Uuid\Uuid::uuid4();
-        \Tall\Models\Tenant::query()->forceDelete();
-        \DB::connection('landlord')->table('tenants')->insert([
+        Tenant::query()->forceDelete();
+        // DB::connection('landlord')->table('tenants')->insert([
+        DB::connection('mysql')->table('tenants')->insert([
           'id' => $id,
           'name' => "Sistema Integrado De Gerenciamento E Administração",
           'slug' => "sistema-integrado-de-gerenciamento-e-administracao",
@@ -37,26 +42,26 @@ class LandlordSeeder extends Seeder
           'created_at'=>today()->format('Y-m-d H:i:s'),
           'updated_at'=>today()->format('Y-m-d H:i:s')
         ]);
-        $tenants =  \DB::connection('backup')->table('companies')->get();
-        if($tenants){
-          foreach ($tenants as  $tenant) {         
+        // $tenants =  \DB::connection('backup')->table('companies')->get();
+        // if($tenants){
+        //   foreach ($tenants as  $tenant) {         
                           
-              \DB::connection('landlord')->table('tenants')->insert([
-                'id' => \Ramsey\Uuid\Uuid::uuid4(),
-                'name' => data_get($tenant,'name'),
-                'parent' => data_get($tenant,'id'),
-                'user_id' => null,
-                'slug' => data_get($tenant,'slug'),
-                'domain'=> data_get($tenant,'assets'),
-                'email' => data_get($tenant,'email'),
-                'prefix' => 'admin',
-                'description' => data_get($tenant,'description'),
-                'status' => 'published',
-                'created_at'=>data_get($tenant,'created_at'),
-                'updated_at'=>data_get($tenant,'updated_at'),
-            ]);            
-          }
-        }
+        //       \DB::connection('landlord')->table('tenants')->insert([
+        //         'id' => \Ramsey\Uuid\Uuid::uuid4(),
+        //         'name' => data_get($tenant,'name'),
+        //         'parent' => data_get($tenant,'id'),
+        //         'user_id' => null,
+        //         'slug' => data_get($tenant,'slug'),
+        //         'domain'=> data_get($tenant,'assets'),
+        //         'email' => data_get($tenant,'email'),
+        //         'prefix' => 'admin',
+        //         'description' => data_get($tenant,'description'),
+        //         'status' => 'published',
+        //         'created_at'=>data_get($tenant,'created_at'),
+        //         'updated_at'=>data_get($tenant,'updated_at'),
+        //     ]);            
+        //   }
+        // }
       \Tall\Models\UserLandlord::query()->forceDelete();
       $user =   \Tall\Models\UserLandlord::factory()->create([
           'name' => 'Super Admin',
