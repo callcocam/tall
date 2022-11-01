@@ -71,13 +71,13 @@ abstract class FormComponent extends AbstractComponent
     {
         
         $defaults = [
-            'name'=> \Tall\View\Components\Form\Input::make('Nome Completo', 'name')->order(1),
+            'name'=> \Tall\View\Components\Form\Input::make('Nome', 'name')->order(1),
             // 'assets'=> \Tall\View\Components\Form\Input::make('assets')->order(49),
             //'date_birth'=> \Tall\View\Components\Form\DateTime::make('Data de Nascimento','date_birth')->order(40),
             'description'=> \Tall\View\Components\Form\Textarea::make('Descrição','description')->order(15),
             'status'=> \Tall\View\Components\Form\Status::make('Status')->order(30),
-            'created_at'=> \Tall\View\Components\Form\DateTime::make('Data de criação','created_at')->order(40),
-            'updated_at'=> \Tall\View\Components\Form\DateTime::make('Última atualização','updated_at')->order(41),
+            // 'created_at'=> \Tall\View\Components\Form\DateTime::make('Data de criação','created_at')->order(40),
+            // 'updated_at'=> \Tall\View\Components\Form\DateTime::make('Última atualização','updated_at')->order(41),
         ];
         return $this->getOrderedFields(array_merge($defaults, $this->fields()));
     }
@@ -149,7 +149,7 @@ abstract class FormComponent extends AbstractComponent
                 $this->model = $this->model->create($this->data);
                 if ($this->model->exists) {
                     $this->success( __('sucesso'), __("Cadastro atualizado com sucesso!!"));
-                    if(method_exists($this, 'edit')){
+                    if(method_exists($this, 'getEditProperty')){
                         if(Route::has($this->edit)){
                             return redirect()->route($this->edit,['model'=>$this->model]);
                         }
