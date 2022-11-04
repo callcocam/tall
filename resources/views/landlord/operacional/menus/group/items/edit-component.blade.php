@@ -30,6 +30,10 @@
                 <x-tall-icone field="icone" label="{{ __('Icone') }}" :options="$this->icons" :selectedLabel="data_get($data, 'icone')"
                     :selected="data_get($data, 'icone')" />
             </div>
+            
+            <div class="col-span-3">
+                <x-toggle lg label="{{ __('Target') }}" wire:model="data.target" />
+            </div>
             <div class="col-span-3">
                 <x-toggle lg label="{{ __('Status') }}" wire:model="data.status" />
             </div>

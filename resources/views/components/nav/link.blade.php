@@ -20,6 +20,9 @@ endif;
 if (\Str::contains(data_get($data, 'link'), 'http')):
     $defaltAttributes['target'] = '_blank';
 endif;
+if (data_get($data, 'target', 0)):
+    $defaltAttributes['target'] = '_blank';
+endif;
 $name = data_get($data, 'name');
 @endphp
 <a {{ $attributes->merge($defaltAttributes) }}>{{ __($name) }}</a>
