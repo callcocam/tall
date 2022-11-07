@@ -2,6 +2,8 @@
 
 
 ```
+ npm install quill@1.3.6
+ 
 
 import Quill from "quill/dist/quill.min"; // @see https://quilljs.com/
 
