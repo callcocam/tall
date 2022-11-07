@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Tall\Http\Livewire\FormComponent;
 use App\Models\Role;
-use Tall\View\Components\Form\{Access};
+use Tall\View\Components\Form\{Access, Editor};
 
 
 class EditComponent extends FormComponent
@@ -51,7 +51,9 @@ class EditComponent extends FormComponent
     protected function fields(){
 
         return [
-            'permissions'=> Access::make('Permissions')->filters($this->filters)->pluck(\App\Models\Permission::query())
+            'permissions'=> Access::make('Permissions')
+            ->filters($this->filters)->pluck(\App\Models\Permission::query()),
+            'description'=> Editor::make('Description')
         ];
     }
 

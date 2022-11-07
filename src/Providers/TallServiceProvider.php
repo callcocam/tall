@@ -230,6 +230,7 @@ class TallServiceProvider extends ServiceProvider
             $componentPath = $component->getRealPath();     
             $namespace = Str::beforeLast($componentPath, $search);
             $namespace = Str::afterLast($namespace, 'components/');
+            $namespace = Str::afterLast($namespace, 'components\\');
             $name = Str::replace(DIRECTORY_SEPARATOR,'.',$namespace);
             
             if(!Str::contains($namespace, 'tall/')){
