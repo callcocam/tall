@@ -1,6 +1,15 @@
 #TALL STATUS
 
 
+```
+
+import Quill from "quill/dist/quill.min"; // @see https://quilljs.com/
+
+
+import "quill/dist/quill.snow.css";
+
+```
+
 #EXEMPLOS
 #RPPS
 #CONFIG DATABASES
