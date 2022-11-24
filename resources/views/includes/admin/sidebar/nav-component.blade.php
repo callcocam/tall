@@ -48,6 +48,8 @@
             <!-- Navigation -->
             <div x-data="{}" x-init="new SimpleBar($el)">
                 <nav class="mt-6 px-3 max-h-[400px] overflow-auto">
+                    
+                    @includeIf('tall::fluxos-nav')
                     @if ($menus = $this->menus)
                         @foreach ($menus as $menu)
                             @if ($sub_menus = $menu->sub_menus)

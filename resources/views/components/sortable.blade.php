@@ -11,7 +11,7 @@
         get: function(sortable) {
             var order = $wire.geGroupUpdatedOrder();
             order.then(d => {
-                console.log(d, sortable.options.group.name)
+                {{-- console.log(d, sortable.options.group.name) --}}
             });
             return [];
         },

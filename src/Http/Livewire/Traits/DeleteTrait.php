@@ -8,6 +8,7 @@ namespace Tall\Http\Livewire\Traits;
 
 
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Route;
 
 trait DeleteTrait
 {
@@ -90,7 +91,7 @@ trait DeleteTrait
         $this->model->delete();
         return redirect()->route($this->list);
     }
-    public function kill($route=null)
+    public function kill($route=null, $params=[])
     {
         if($this->model->delete()){  
             $this->confirm = 0;
@@ -99,8 +100,8 @@ trait DeleteTrait
                     'security'=>now()->addDays(10)->format("Y-m-d H:i:s")
                  ]);
              }
-            if(\Route::has($route)){
-                return redirect()->route($route);
+            if(Route::has($route)){
+                return redirect()->route($route, $params);
             }
             else{
                 return redirect()->back();

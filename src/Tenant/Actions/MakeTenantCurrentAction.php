@@ -6,11 +6,8 @@
 */
 namespace Tall\Tenant\Actions;
 
-use Tall\Tenant\Events\MadeTenantCurrentEvent;
-use Tall\Tenant\Events\MakingTenantCurrentEvent;
+use Illuminate\Support\Facades\Config;
 use Tall\Models\Tenant;
-use Tall\Tenant\Tasks\SwitchTenantTask;
-use Tall\Tenant\Tasks\TasksCollection;
 use Illuminate\Support\Facades\Schema;
 
 class MakeTenantCurrentAction
@@ -35,24 +32,24 @@ class MakeTenantCurrentAction
         //pegar a conexão de acordo com o tenant
         $clone = config('database.connections.mysql');
         $clone['database'] = $tenant->database;
-        \Config::set("database.connections.{$tenant->database}", $clone);
+        Config::set("database.connections.{$tenant->database}", $clone);
        //pastas para ler os compnent livewire padrão e geração de rotas
        if(!is_array(config("tall.multitenancy.path"))){
             $paths = config('tall.multitenancy.paths',[
                 'landlord'=>'/Http/Livewire/Landlord',
                 'admin'=>'/Http/Livewire/Admin',
             ]);
-            \Config::set("tall.multitenancy.path",  data_get($paths,$tenant->prefix));
+            Config::set("tall.multitenancy.path",  data_get($paths,$tenant->prefix));
             //prefix da rota da administração
-            \Config::set("tall.multitenancy.prefix",  $tenant->prefix);
+            Config::set("tall.multitenancy.prefix",  $tenant->prefix);
         }
         //Alteramos a model do user
-        if($provider = \Config::get("tall.multitenancy.providers.users.model.{$tenant->provider}")){
+        if($provider = Config::get("tall.multitenancy.providers.users.model.{$tenant->provider}")){
             $clone = config('auth.providers.users');
             $clone['model'] = $provider;        
-            \Config::set("auth.providers.users", $clone);
+            Config::set("auth.providers.users", $clone);
         }
-        \Config::set("app.name", $tenant->name);
+        Config::set("app.name", $tenant->name);
 
         if (Schema::connection(config('tall.multitenancy.landlord_database_connection_name','landlord'))->hasTable('menus')) {  
             $builder = null;
@@ -66,7 +63,7 @@ class MakeTenantCurrentAction
                foreach ($menus as  $menu) {
                 if(method_exists($tenant, 'sub_menu_orderings')){
                     if($tenant->database == config('tall.multitenancy.landlord_database_connection_name','landlord')){
-                        \Config::set('tall.selecttenant', true);   
+                        Config::set('tall.selecttenant', true);   
                         if($tenant_id = request()->query('tenant')){
                             if($tenant = \Tall\Models\CurrentTenant::find($tenant_id)){   
                              $builder= $tenant->sub_menu_orderings()        

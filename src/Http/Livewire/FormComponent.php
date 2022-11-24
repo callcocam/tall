@@ -18,6 +18,9 @@ abstract class FormComponent extends AbstractComponent
 
     public $config;
     public $model;
+    /**
+     * @var $data Collect
+     */
     public $data = [];
     public $filters = [];
     
