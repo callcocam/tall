@@ -25,7 +25,7 @@
                             class="pointer-events-none absolute top-3.5 left-4 h-5 w-5 text-gray-400" />
                         <input type="text" wire:model.debounce.500ms="filters.{{ $name }}"
                             class="h-12 w-full border-0 bg-transparent pl-11 pr-4 text-gray-800 placeholder-gray-400 focus:ring-0 sm:text-sm"
-                            placeholder="Search..." role="search-combobox" x-bind:aria-expanded="open.toString()"
+                            placeholder="Pesquisar..." role="search-combobox" x-bind:aria-expanded="open.toString()"
                             aria-controls="options" />
                     </div>
                     <button type="button" x-on:click="toggle"

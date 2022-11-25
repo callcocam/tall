@@ -12,6 +12,6 @@
         </div>
         <input type="text" name="search" wire:model.debounce.500ms="filters.search"
             class="block w-full rounded-md border-gray-300 pl-9 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-            placeholder="{{ __('Search...') }}">
+            placeholder="{{ __('Pesquisar...') }}">
     </div>
 </div>
