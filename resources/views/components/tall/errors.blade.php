@@ -6,7 +6,7 @@
                 name="exclamation-circle" />
 
             <span class="text-sm font-semibold text-negative-800 dark:text-negative-600">
-                {{ str_replace('{errors}', $count($errors), $title) }}
+               Oops! Algum campo não esta preenchido corretamente!
             </span>
         </div>
 
