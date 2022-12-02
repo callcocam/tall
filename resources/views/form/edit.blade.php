@@ -19,5 +19,6 @@
             @endif
             <x-button icon="save" indigo squared type="submit" label="{{ __('Salvar alterações') }}" />
         </div>
+            <x-errors />
     </dl>
 </form>

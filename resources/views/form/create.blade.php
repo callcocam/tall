@@ -43,6 +43,7 @@
                     </div>
                 </dl>
             </dd>
+            <x-errors />
         </div>
     </div>
 </form>
