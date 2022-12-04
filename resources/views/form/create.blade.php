@@ -9,7 +9,7 @@
             <span>Iniciar um novo cadastro.</span>
         </h3>
         <p class="mt-1 max-w-2xl text-sm text-gray-500">
-            Use o campo abaixo para iniciar um novo cadastro.</p>
+            Utilize o formulário abaixo para iniciar um novo cadastro.</p>
     </div>
     <div class="border-t border-gray-200">
         <div class="bg-white px-4 py-5">
@@ -19,7 +19,7 @@
                     você
                     deseja fazer agora?
                 @else
-                    <b class="text-xl"> Tem certeza de que deseja criar um novo cadastro? </b>
+{{--                    <b class="text-xl"> Tem certeza de que deseja criar um novo cadastro? </b>--}}
                 @endif
             </dt>
             <dd class="mt-1 text-sm text-gray-900 sm:mt-0">

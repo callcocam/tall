@@ -10,7 +10,7 @@
             <th class="py-1 px-6 text-left">
                  <x-tall-table.filters.status sort="1" />
             </th>
-            <th class="py-3 px-6 text-center">#</th>
+            <th class="py-3 px-6 text-center">Ações</th>
         </tr>
     </thead>
     @if ($models->count())

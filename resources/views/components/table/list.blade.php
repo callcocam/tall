@@ -18,11 +18,13 @@
                             <x-tall-table.search />
                             @if (\Route::has($routeCreate))
                                 <x-tall-table.add href="{{ route($this->create) }}">
-                                    {{ __('Adicionar Post') }}
+                                    {{ __('Adicionar') }}
                                 </x-tall-table.add>
                             @endif
                             @if (\Route::has($routeOrder))
-                                <x-tall-table.order href="{{ route($routeOrder) }}" />
+                                    <x-tall-table.order href="{{ route($routeOrder) }}" >
+                                        {{ __('Ordenar') }}
+                                    </x-tall-table.order>
                             @endif
                             @isset($actions)
                                 {{ $actions }}

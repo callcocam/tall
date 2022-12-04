@@ -7,7 +7,7 @@
     wire:model="filters.{{ $name }}">
     @if ($options)
         <option value="">
-            {{ __('--Tudo--') }}
+            {{ __('--Todos--') }}
         </option>
         @foreach ($options as $value => $option)
             <option value="{{ $value }}">
