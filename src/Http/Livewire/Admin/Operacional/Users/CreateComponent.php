@@ -7,6 +7,7 @@
 
 namespace Tall\Http\Livewire\Admin\Operacional\Users;
 
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Tall\Http\Livewire\FormComponent;
@@ -25,7 +26,7 @@ class CreateComponent extends FormComponent
         $this->setFormProperties($model);
         data_set($this->data,'name', '');
         data_set($this->data,'email', '');
-        data_set($this->data,'password', 'coopmudar');
+        data_set($this->data,'password', Hash::make('coopmudar'));
         data_set($this->data,'user_id', auth()->id());
         data_set($this->data,'status', 'published');
         data_set($this->data,'created_at', now()->format("Y-m-d"));
