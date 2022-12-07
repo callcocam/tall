@@ -11,7 +11,7 @@
             <!-- Sidebar Search -->
             @if (config('tall.selecttenant', false))
                 <div class="mt-5 px-3">
-                    <label for="search" class="sr-only">Search</label>
+                    <label for="search" class="sr-only">Pesquisar</label>
                     <div class="relative mt-1 rounded-md shadow-sm">
                         @if ($tenants = $this->tenants)
                             <select wire:model="tenant"
@@ -66,14 +66,14 @@
                             {{-- <li class="nav-title">Components</li> --}}
                         @endforeach
                     @endif
-                    <div class="space-y-1">
-                        <a class="group flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-50"
-                            href="/" target="_blank">
-                            <x-dynamic-component component="tall::icons.outline.home"
-                                class="mr-3 h-4 w-4 flex-shrink-0 text-gray-400 " />
-                            {{ __('Ir para o site') }}
-                        </a>
-                    </div>
+{{--                    <div class="space-y-1">--}}
+{{--                        <a class="group flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-50"--}}
+{{--                            href="/" target="_blank">--}}
+{{--                            <x-dynamic-component component="tall::icons.outline.home"--}}
+{{--                                class="mr-3 h-4 w-4 flex-shrink-0 text-gray-400 " />--}}
+{{--                            {{ __('Ir para o site') }}--}}
+{{--                        </a>--}}
+{{--                    </div>--}}
                     <div class="space-y-1">
                         <form class="py-1" role="none" method="POST" action="{{ route('logout') }}" x-data>
                             @csrf
@@ -81,7 +81,7 @@
                                 role="menuitem" href="{{ route('logout') }}" @click.prevent="$root.submit();">
                                 <x-dynamic-component component="tall::icons.outline.logout"
                                     class="mr-3 h-4 w-4 flex-shrink-0 text-gray-400 " />
-                                {{ __('Log Out') }}
+                                {{ __('Deslogar') }}
                             </a>
                         </form>
                     </div>
