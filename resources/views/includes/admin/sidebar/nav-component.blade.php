@@ -1,6 +1,6 @@
 <div
-    class="hidden lg:fixed lg:inset-y-0 lg:flex lg:w-64 lg:flex-col lg:pb-4">
-    <div class="flex flex-shrink-0 items-center px-6 bg-gray-700 shadow-md justify-center py-2">
+    class="hidden lg:fixed lg:inset-y-0 lg:flex lg:w-64 lg:flex-col lg:border-r lg:border-gray-200 lg:bg-gray-100 lg:pb-4">
+    <div class="flex flex-shrink-0 items-center px-6 shadow-md justify-center py-2">
         <img class="w-auto h-10" src="{{ app('currentTenant')->cover_photo_url }}" alt="{{ app('currentTenant')->name }}">
     </div>
     <!-- Sidebar component, swap this element with another sidebar if you like -->
