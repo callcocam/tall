@@ -18,9 +18,10 @@ class ListComponent extends TableComponent
 
     public function mount()
     {
+
         $this->authorize(Route::currentRouteName());
 
-        //\Tall\Models\Auth\Acl\LoadRouterHelper::save();
+        \Tall\Models\Auth\Acl\LoadRouterHelper::save();
     }
 
     public function route(){

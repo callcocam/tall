@@ -55,7 +55,17 @@ class LoadRouterHelper
                             'status' => 'published',
                             'description' => $name
                         ]));
-                }               
+                }
+                else{
+                    Permission::factory()->create(
+                        [
+                            'name' => $name,
+                            'slug' => $permission,
+                            'group' => $last,
+                            'status' => 'published',
+                            'description' => $name
+                        ]);
+                }
             }
         }
     }

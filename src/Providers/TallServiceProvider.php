@@ -28,7 +28,7 @@ class TallServiceProvider extends ServiceProvider
         $this->app->register(\Tall\Tenant\TenantServiceProvider::class);
         $this->app->register(\Tall\Models\Auth\Acl\AclServiceProvider::class);
         $loader = \Illuminate\Foundation\AliasLoader::getInstance();
-        $loader->alias('Ui', \Tall\Facades\Ui::class);    
+        $loader->alias('Ui', \Tall\Facades\Ui::class);
     }
 
     /**
@@ -37,13 +37,13 @@ class TallServiceProvider extends ServiceProvider
      * @return void
      */
     public function boot()
-    { 
+    {
         include_once __DIR__ . '/../../helpers.php';
         $this->mergeConfigFrom(
             __DIR__ . '/../../config/tall.php','tall'
         );
-        
-      
+
+
         if ($this->app->runningInConsole()) {
            $this->commands([
                     \Tall\Console\Commands\InstallCommand::class,
@@ -59,28 +59,28 @@ class TallServiceProvider extends ServiceProvider
                 ]);
         }
         // else{
-        //     if (Schema::connection(config('tall.multitenancy.landlord_database_connection_name','landlord'))->hasTable('menus')) {  
+        //     if (Schema::connection(config('tall.multitenancy.landlord_database_connection_name','landlord'))->hasTable('menus')) {
         //         $builder = null;
         //         if($menu = \App\Models\Menu::query()->where([
         //             'slug' =>  'menusadmin',
         //         ])->first()){
-        //             $builder =  $menu->sub_menus();   
+        //             $builder =  $menu->sub_menus();
         //         }
         //         $this->app->instance('menusadmin', $builder);
-                
+
         //         $builder = null;
-    
+
         //         if($menu = \App\Models\Menu::query()->where([
         //             'slug' => config('tall.menu.site', 'menus-site'),
         //         ])->first()){
-        //             $builder =  $menu->sub_menus();   
+        //             $builder =  $menu->sub_menus();
         //         }
         //         $this->app->instance('currentMenuSite', $builder);
         //     }
-           
+
         // }
 
-        
+
         $this->registerBladeDirectives();
         $this->registerBladeComponents();
         $this->publishMigrations();
@@ -96,9 +96,9 @@ class TallServiceProvider extends ServiceProvider
         $this->loadComponent('table.actions');
         $this->loadComponent('table.empty');
         $this->loadComponent('table.add');
-        
+
         $this->createDirectives();
-       
+
         if(is_dir(resource_path('views/vendor/tall/components')))
         {
             $this->configureDynamicComponent(resource_path('views/vendor/tall/components'));
@@ -107,7 +107,7 @@ class TallServiceProvider extends ServiceProvider
             $this->configureDynamicComponent(sprintf("%s/resources/views/components", dirname(__DIR__,2)));
         }
 
-        
+
         if (class_exists(Livewire::class)) {
             //SIDEBAR GLOBAL
             Livewire::component( 'tall::includes.admin.sidebar.mobile.nav-component', \Tall\Http\Livewire\Includes\Admin\Sidebar\Mobile\NavComponent::class);
@@ -116,8 +116,8 @@ class TallServiceProvider extends ServiceProvider
             Livewire::component( 'tall::includes.admin.sidebar.account-component', \Tall\Http\Livewire\Includes\Admin\Sidebar\AccountComponent::class);
             Livewire::component( 'tall::includes.admin.header.search-component', \Tall\Http\Livewire\Includes\Admin\Header\SearchComponent::class);
             Livewire::component( 'tall::includes.admin.header-component', \Tall\Http\Livewire\Includes\Admin\Header\HeaderComponent::class);
-                       
-           
+
+
             //LAND LORD
             Livewire::component( 'tall::landlord.dashboard-component', \Tall\Http\Livewire\Landlord\DashboardComponent::class);
             Livewire::component( 'tall::landlord.operacional.users.list-component', \Tall\Http\Livewire\Landlord\Operacional\Users\ListComponent::class);
@@ -125,8 +125,8 @@ class TallServiceProvider extends ServiceProvider
             Livewire::component( 'tall::landlord.operacional.users.create-component', \Tall\Http\Livewire\Landlord\Operacional\Users\CreateComponent::class);
             Livewire::component( 'tall::landlord.operacional.users.show-component', \Tall\Http\Livewire\Landlord\Operacional\Users\ShowComponent::class);
             Livewire::component( 'tall::landlord.operacional.users.delete-component', \Tall\Http\Livewire\Landlord\Operacional\Users\DeleteComponent::class);
-           
-           
+
+
             Livewire::component( 'tall::landlord.operacional.profile.show-component', \Tall\Http\Livewire\Landlord\Operacional\Profile\ShowComponent::class);
             Livewire::component( 'tall::landlord.operacional.profile.update-profile-information-form', \Tall\Http\Livewire\Landlord\Operacional\Profile\UpdateProfileInformationForm::class);
             Livewire::component( 'tall::landlord.operacional.profile.update-password-form', \Tall\Http\Livewire\Landlord\Operacional\Profile\UpdatePasswordForm::class);
@@ -141,20 +141,20 @@ class TallServiceProvider extends ServiceProvider
             Livewire::component( 'tall::landlord.operacional.tenants.delete-component', \Tall\Http\Livewire\Landlord\Operacional\Tenants\DeleteComponent::class);
             Livewire::component( 'tall::landlord.operacional.tenants.groups-component', \Tall\Http\Livewire\Landlord\Operacional\Tenants\GroupsComponent::class);
             Livewire::component( 'tall::landlord.operacional.tenants.items-component', \Tall\Http\Livewire\Landlord\Operacional\Tenants\ItemsComponent::class);
-            
+
             Livewire::component( 'tall::landlord.operacional.roles.list-component', \Tall\Http\Livewire\Landlord\Operacional\Roles\ListComponent::class);
             Livewire::component( 'tall::landlord.operacional.roles.edit-component', \Tall\Http\Livewire\Landlord\Operacional\Roles\EditComponent::class);
             Livewire::component( 'tall::landlord.operacional.roles.create-component', \Tall\Http\Livewire\Landlord\Operacional\Roles\CreateComponent::class);
             Livewire::component( 'tall::landlord.operacional.roles.show-component', \Tall\Http\Livewire\Landlord\Operacional\Roles\ShowComponent::class);
             Livewire::component( 'tall::landlord.operacional.roles.delete-component', \Tall\Http\Livewire\Landlord\Operacional\Roles\DeleteComponent::class);
-            
-            Livewire::component( 'tall::landlord.operacional.permissions.list-component', \Tall\Http\Livewire\Landlord\Operacional\Permissions\ListComponent::class);
-            Livewire::component( 'tall::landlord.operacional.permissions.edit-component', \Tall\Http\Livewire\Landlord\Operacional\Permissions\EditComponent::class);
-            Livewire::component( 'tall::landlord.operacional.permissions.create-component', \Tall\Http\Livewire\Landlord\Operacional\Permissions\CreateComponent::class);
-            Livewire::component( 'tall::landlord.operacional.permissions.show-component', \Tall\Http\Livewire\Landlord\Operacional\Permissions\ShowComponent::class);
-            Livewire::component( 'tall::landlord.operacional.permissions.delete-component', \Tall\Http\Livewire\Landlord\Operacional\Permissions\DeleteComponent::class);
 
-            
+            Livewire::component( 'tall::landlord.operacional.permissions.list-component', \Tall\Http\Livewire\Landlord\Operacional\Permissoes\ListComponent::class);
+            Livewire::component( 'tall::landlord.operacional.permissions.edit-component', \Tall\Http\Livewire\Landlord\Operacional\Permissoes\EditComponent::class);
+            Livewire::component( 'tall::landlord.operacional.permissions.create-component', \Tall\Http\Livewire\Landlord\Operacional\Permissoes\CreateComponent::class);
+            Livewire::component( 'tall::landlord.operacional.permissions.show-component', \Tall\Http\Livewire\Landlord\Operacional\Permissoes\ShowComponent::class);
+            Livewire::component( 'tall::landlord.operacional.permissions.delete-component', \Tall\Http\Livewire\Landlord\Operacional\Permissoes\DeleteComponent::class);
+
+
             Livewire::component( 'tall::landlord.operacional.menus.list-component', \Tall\Http\Livewire\Landlord\Operacional\Menus\ListComponent::class);
             Livewire::component( 'tall::landlord.operacional.menus.edit-component', \Tall\Http\Livewire\Landlord\Operacional\Menus\EditComponent::class);
             Livewire::component( 'tall::landlord.operacional.menus.create-component', \Tall\Http\Livewire\Landlord\Operacional\Menus\CreateComponent::class);
@@ -167,13 +167,13 @@ class TallServiceProvider extends ServiceProvider
             Livewire::component( 'tall::landlord.operacional.menus.groups-component', \Tall\Http\Livewire\Landlord\Operacional\Menus\GroupsComponent::class);
             Livewire::component( 'tall::landlord.operacional.menus.items-component', \Tall\Http\Livewire\Landlord\Operacional\Menus\ItemsComponent::class);
 
-            
+
             Livewire::component( 'tall::landlord.operacional.menus.sub-menus.list-component', \Tall\Http\Livewire\Landlord\Operacional\Menus\SubMenus\ListComponent::class);
             Livewire::component( 'tall::landlord.operacional.menus.sub-menus.edit-component', \Tall\Http\Livewire\Landlord\Operacional\Menus\SubMenus\EditComponent::class);
             Livewire::component( 'tall::landlord.operacional.menus.sub-menus.create-component', \Tall\Http\Livewire\Landlord\Operacional\Menus\SubMenus\CreateComponent::class);
             Livewire::component( 'tall::landlord.operacional.menus.sub-menus.show-component', \Tall\Http\Livewire\Landlord\Operacional\Menus\SubMenus\ShowComponent::class);
             Livewire::component( 'tall::landlord.operacional.menus.sub-menus.delete-component',  \Tall\Http\Livewire\Landlord\Operacional\Menus\SubMenus\DeleteComponent::class);
-          
+
 
 
 
@@ -184,13 +184,13 @@ class TallServiceProvider extends ServiceProvider
             Livewire::component( 'tall::admin.operacional.users.create-component', \Tall\Http\Livewire\Admin\Operacional\Users\CreateComponent::class);
             Livewire::component( 'tall::admin.operacional.users.show-component', \Tall\Http\Livewire\Admin\Operacional\Users\ShowComponent::class);
             Livewire::component( 'tall::admin.operacional.users.delete-component', \Tall\Http\Livewire\Admin\Operacional\Users\DeleteComponent::class);
-           
+
             Livewire::component( 'tall::admin.operacional.cms.inputs.list-component', \Tall\Http\Livewire\Admin\Operacional\Cms\Inputs\ListComponent::class);
             Livewire::component( 'tall::admin.operacional.cms.inputs.edit-component', \Tall\Http\Livewire\Admin\Operacional\Cms\Inputs\EditComponent::class);
             Livewire::component( 'tall::admin.operacional.cms.inputs.create-component', \Tall\Http\Livewire\Admin\Operacional\Cms\Inputs\CreateComponent::class);
             Livewire::component( 'tall::admin.operacional.cms.inputs.show-component', \Tall\Http\Livewire\Admin\Operacional\Cms\Inputs\ShowComponent::class);
             Livewire::component( 'tall::admin.operacional.cms.inputs.delete-component', \Tall\Http\Livewire\Admin\Operacional\Cms\Inputs\DeleteComponent::class);
-            
+
             Livewire::component( 'tall::admin.operacional.cms.inputs.attributes.edit-component', \Tall\Http\Livewire\Admin\Operacional\Cms\Inputs\Attributes\EditComponent::class);
             Livewire::component( 'tall::admin.operacional.cms.inputs.attributes.create-component', \Tall\Http\Livewire\Admin\Operacional\Cms\Inputs\Attributes\CreateComponent::class);
 
@@ -213,9 +213,9 @@ class TallServiceProvider extends ServiceProvider
             Livewire::component( 'tall::includes.site.footer-component',\Tall\Http\Livewire\Includes\Site\FooterComponent::class);
             Livewire::component( 'tall::site.dash-board-component',\Tall\Http\Livewire\Site\DashBoardComponent::class);
 
-           
-            $this->app->register(RouteServiceProvider::class);     
-     
+
+            $this->app->register(RouteServiceProvider::class);
+
         }
 
     }
@@ -226,19 +226,19 @@ class TallServiceProvider extends ServiceProvider
      */
     public function configureDynamicComponent($path,$search=".blade.php")
     {
-       foreach ((new Finder)->in($path)->files()->name('*.blade.php') as $component) {                   
-            $componentPath = $component->getRealPath();     
+       foreach ((new Finder)->in($path)->files()->name('*.blade.php') as $component) {
+            $componentPath = $component->getRealPath();
             $namespace = Str::beforeLast($componentPath, $search);
             $namespace = Str::afterLast($namespace, 'components/');
             $namespace = Str::afterLast($namespace, 'components\\');
             $name = Str::replace(DIRECTORY_SEPARATOR,'.',$namespace);
-            
+
             if(!Str::contains($namespace, 'tall/')){
                 $this->loadComponent($name, $name);
             }
         }
     }
-    
+
     public function loadComponent($component, $alias=null){
         if ($alias == null){
             $alias=$component;
@@ -246,10 +246,10 @@ class TallServiceProvider extends ServiceProvider
         Blade::component("tall::components.{$component}",'tall-'.$alias);
     }
 
-    
+
     protected function registerBladeDirectives(): void
     {
-       
+
         Blade::directive('toJs', static function ($expression): string {
             return LivewireBladeDirectives::js($expression);
         });
@@ -263,7 +263,7 @@ class TallServiceProvider extends ServiceProvider
             }
         });
     }
-    
+
       /**
      * Publish the migration files.
      *
@@ -302,13 +302,13 @@ class TallServiceProvider extends ServiceProvider
             Blade::anonymousComponentNamespace(resource_path('views/vendor/tall/components'), 'tall');
         }
 
-        $this->publishes([         
+        $this->publishes([
             __DIR__ . '/../../database/migrations/' => database_path('migrations'),
             __DIR__ . '/../../database/factories/' => database_path('factories'),
             __DIR__ . '/../../database/seeders/' => database_path('seeders'),
         ], 'tall-migrations');
 
-        
+
         $this->publishes([
             __DIR__ . '/../../resources/views' => resource_path('views/vendor/tall'),
             __DIR__ . '/../../resources/css' => resource_path('css'),
@@ -316,28 +316,28 @@ class TallServiceProvider extends ServiceProvider
             __DIR__ . '/../../resources/lang' => base_path('lang/vendor/tall' ),
         ], 'tall-views');
 
-        
-        $this->publishes([         
+
+        $this->publishes([
             __DIR__ . '/../../public/js' => public_path('js'),
             __DIR__ . '/../../public/css' => public_path('css'),
             __DIR__ . '/../../public/img' => public_path('img'),
         ], 'tall-public');
 
-        
+
         $this->publishes([
             __DIR__ . '/../../stubs' => base_path('stubs' ),
         ], 'tall-stubs');
 
-        
+
         $this->publishes([
             __DIR__ . '/../../config/tall.php' => config_path('tall.php'),
         ], 'tall-config');
-        
-        $this->publishes([         
+
+        $this->publishes([
             __DIR__ . '/../../package.json' => base_path('package.json'),
         ], 'tall-package');
-        
-        $this->publishes([         
+
+        $this->publishes([
             __DIR__ . '/../../package.json' => base_path('package.json'),
         ], 'tall-vite');
 
