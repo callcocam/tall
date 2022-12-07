@@ -35,14 +35,14 @@
                 @can('admin.profile.view')
                     <a href="{{ route('admin.profile.view') }}"
                         class="text-gray-700 block px-4 py-2 text-sm {{ request()->routeIs('admin.profile.view') ? 'bg-gray-100 text-gray-900' : 'text-gray-700' }}"
-                        role="menuitem" tabindex="-1" id="options-menu-item-0">{{ __('View profile') }}</a>
+                        role="menuitem" tabindex="-1" id="options-menu-item-0">{{ __('Perfil') }}</a>
                 @endcan
             @endif
             @if (\Route::has('admin.tenant.view'))
                 @can('admin.tenant.view')
                     <a href="{{ route('admin.tenant.view') }}"
                         class="text-gray-700 block px-4 py-2 text-sm {{ request()->routeIs('admin.tenant.view') ? 'bg-gray-100 text-gray-900' : 'text-gray-700' }}"
-                        role="menuitem" tabindex="-1" id="options-menu-item-0">{{ __('Settings') }}</a>
+                        role="menuitem" tabindex="-1" id="options-menu-item-0">{{ __('Configurações') }}</a>
                 @endcan
             @endif
         </div>
@@ -51,28 +51,28 @@
                 @can('admin.tenants')
                     <a href="{{ route('admin.tenants') }}"
                         class="text-gray-700 block px-4 py-2 text-sm {{ request()->routeIs('admin.tenants') ? 'bg-gray-100 text-gray-900' : 'text-gray-700' }}"
-                        role="menuitem" tabindex="-1" id="options-users-item-3">{{ __('Tenants') }}</a>
+                        role="menuitem" tabindex="-1" id="options-users-item-3">{{ __('Empresas') }}</a>
                 @endcan
             @endif
             @if (\Route::has('admin.users'))
                 @can('admin.users')
                     <a href="{{ route('admin.users') }}"
                         class="text-gray-700 block px-4 py-2 text-sm {{ request()->routeIs('admin.users') ? 'bg-gray-100 text-gray-900' : 'text-gray-700' }}"
-                        role="menuitem" tabindex="-1" id="options-users-item-3">{{ __('Users') }}</a>
+                        role="menuitem" tabindex="-1" id="options-users-item-3">{{ __('Usuários') }}</a>
                 @endcan
             @endif
             @if (\Route::has('admin.roles'))
                 @can('admin.roles')
                     <a href="{{ route('admin.roles') }}"
                         class="text-gray-700 block px-4 py-2 text-sm {{ request()->routeIs('admin.roles') ? 'bg-gray-100 text-gray-900' : 'text-gray-700' }}"
-                        role="menuitem" tabindex="-1" id="options-roles-item-3">{{ __('Roles') }}</a>
+                        role="menuitem" tabindex="-1" id="options-roles-item-3">{{ __('Regras') }}</a>
                 @endcan
             @endif
             @if (\Route::has('admin.permissions'))
                 @can('admin.permissions')
                     <a href="{{ route('admin.permissions') }}"
                         class="text-gray-700 block px-4 py-2 text-sm {{ request()->routeIs('admin.permissions') ? 'bg-gray-100 text-gray-900' : 'text-gray-700' }}"
-                        role="menuitem" tabindex="-1" id="options-permissions-item-3">{{ __('Permissions') }}</a>
+                        role="menuitem" tabindex="-1" id="options-permissions-item-3">{{ __('Permissões') }}</a>
                 @endcan
             @endif
             @if (\Route::has('admin.menus'))
@@ -95,7 +95,7 @@
             @csrf
             <a class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" href="{{ route('logout') }}"
                 @click.prevent="$root.submit();">
-                {{ __('Log Out') }}
+                {{ __('Deslogar') }}
             </a>
         </form>
     </div>
