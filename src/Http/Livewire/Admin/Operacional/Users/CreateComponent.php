@@ -25,11 +25,9 @@ class CreateComponent extends FormComponent
         $this->setFormProperties($model);
         data_set($this->data,'name', '');
         data_set($this->data,'email', '');
-        data_set($this->data,'username', 'w');
-        data_set($this->data,'content', '');
-        data_set($this->data,'password', date("YmdHis"));
+        data_set($this->data,'password', 'coopmudar');
         data_set($this->data,'user_id', auth()->id());
-        data_set($this->data,'status', 'draft');
+        data_set($this->data,'status', 'published');
         data_set($this->data,'created_at', now()->format("Y-m-d"));
         data_set($this->data,'updated_at', now()->format("Y-m-d"));
     }
@@ -55,8 +53,8 @@ class CreateComponent extends FormComponent
 
         return [
             'email'=> Input::make('Email')->order(4 ),
-            'content'=> Db::make('content')->db('content')->order(6 ),
-            'username'=> Db::make('username')->db('username')
+//            'content'=> Db::make('content')->db('content')->order(6 ),
+//            'username'=> Db::make('username')->db('username')
         ];
     }
 
@@ -84,7 +82,7 @@ class CreateComponent extends FormComponent
         return 'tall::admin.operacional.users.create';
     }
 
-    
+
     public function getIgnoresProperty()
     {
         return [
