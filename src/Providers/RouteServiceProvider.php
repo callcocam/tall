@@ -31,9 +31,9 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-       
+
         $this->routes(function () {
-            
+
             Route::prefix('api')
                 ->middleware('api')
                 ->namespace($this->namespace)
@@ -47,7 +47,7 @@ class RouteServiceProvider extends ServiceProvider
 
             Route::middleware(['web'])
                 ->namespace($this->namespace)
-                ->group(function(){                    
+                ->group(function(){
                     if(config('tall.generate.route.site', true)){
                         $this->configureDynamicRoute(sprintf("%s/Http/Livewire/Site",dirname(__DIR__,1)),'src','\\Tall');
                         if(is_dir(app_path('Http/Livewire/Site'))){
@@ -63,7 +63,7 @@ class RouteServiceProvider extends ServiceProvider
                 config('jetstream.auth_session'),
                 'verified'
             ])
-            // ->prefix(config('tall.multitenancy.prefix','admin'))
+             ->prefix(config('tall.multitenancy.prefix','admin'))
             ->group(function(){
                 if(is_array(config("tall.multitenancy.path"))){
                     foreach (config("tall.multitenancy.path") as  $value) {
@@ -75,7 +75,7 @@ class RouteServiceProvider extends ServiceProvider
                     $path = sprintf("%s/%s",dirname(__DIR__,1),config("tall.multitenancy.path"));
                     $this->configureDynamicRoute($path,'src','\\Tall');
                 }
-               
+
                 if(config('tall.generate.route.admin', true)){
                     if(is_dir(app_path('Http/Livewire/Admin'))){
                         $this->configureDynamicRoute(app_path('Http/Livewire/Admin'));
@@ -92,7 +92,7 @@ class RouteServiceProvider extends ServiceProvider
         });
     }
 
-    
+
     /**
      * Configure the routes for the application.
      *
@@ -100,15 +100,15 @@ class RouteServiceProvider extends ServiceProvider
      */
     public static function configureDynamicRoute($path,$search="app", $ns = "\\App")
     {
-           
-        foreach ((new Finder)->in($path) as $component) {                   
-            $componentPath = $component->getRealPath();        
+
+        foreach ((new Finder)->in($path) as $component) {
+            $componentPath = $component->getRealPath();
             $namespace = Str::after($componentPath, 'public_html');
             $namespace = Str::after($namespace, $search);
             $namespace = Str::replace(['/', '.php'], ['\\', ''], $namespace);
             $component = $ns . $namespace;
             if (class_exists($component)) {
-                if (method_exists($component, 'route')) {                   
+                if (method_exists($component, 'route')) {
                     $comp =  app($component);
                     $comp ->route();
                 }
