@@ -63,7 +63,7 @@ class RouteServiceProvider extends ServiceProvider
                 config('jetstream.auth_session'),
                 'verified'
             ])
-            ->prefix(config('tall.multitenancy.prefix','admin'))
+            // ->prefix(config('tall.multitenancy.prefix','admin'))
             ->group(function(){
                 if(is_array(config("tall.multitenancy.path"))){
                     foreach (config("tall.multitenancy.path") as  $value) {

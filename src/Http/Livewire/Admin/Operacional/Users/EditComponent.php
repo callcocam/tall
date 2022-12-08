@@ -60,6 +60,17 @@ class EditComponent extends FormComponent
         return array_merge( $fields, config('tall.fields.users', []));
     }
 
+    protected function save(){
+  
+       if(parent::save()){
+           
+        $this->model->roles()->sync(array_filter(data_get($this->data, 'access',[])));
+
+
+       }
+       return false;
+    }
+
     public function getListProperty()
     {
         return 'admin.users';

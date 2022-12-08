@@ -35,6 +35,14 @@ class User extends AbstractModel implements
         });
     }
 
+    
+    protected $appends = ['access'];
+
+    public function getAccessAttribute()
+    {
+        return $this->roles()->pluck('id','id')->toArray();
+    }
+
 
 
 }
