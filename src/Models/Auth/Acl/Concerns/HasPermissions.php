@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Arr;
 use Tall\Models\Auth\Acl\Exceptions\PermissionNotFoundException;
 use App\Models\Permission;
+use Tall\Models\Auth\Acl\Models\Permission as ModelsPermission;
 
 trait HasPermissions
 {
@@ -159,7 +160,10 @@ trait HasPermissions
             $permission = $permission->slug;
         }
 
-        return (bool) $this->permissions->where($this->getKeyField(), $permission)->count();
+        if ($permission instanceof ModelsPermission) {
+            $permission = $permission->slug;
+        }
+        return (bool) $this->permissions()->where($this->getKeyField(), $permission)->count();
     }
 
     /**
@@ -169,15 +173,15 @@ trait HasPermissions
      */
     protected function getPermissionModel()
     {
-        if (config('tall.cache.enabled')) {
-            return cache()->tags(config('tall.cache.tag'))->remember(
-                'permissions',
-                config('tall.cache.length'),
-                function() {
-                    return app()->make(config('tall.models.permission'))->get();
-                }
-            );
-        }
+        // if (config('tall.cache.enabled')) {
+        //     return cache()->tags(config('tall.cache.tag'))->remember(
+        //         'permissions',
+        //         config('tall.cache.length'),
+        //         function() {
+        //             return app()->make(config('tall.models.permission'))->get();
+        //         }
+        //     );
+        // }
 
         return app()->make(config('tall.models.permission'));
     }
