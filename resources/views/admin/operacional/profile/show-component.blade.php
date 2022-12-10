@@ -46,7 +46,7 @@
                                         <x-jet-section-border />
 
                                         <div class="mt-10 sm:mt-0">
-                                            @livewire('tall::admin.operacional.profile.delete-user-form')
+{{--                                            @livewire('tall::admin.operacional.profile.delete-user-form')--}}
                                         </div>
                                     @endif
                                 </div>
