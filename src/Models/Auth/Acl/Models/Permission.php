@@ -34,7 +34,7 @@ class Permission extends AbstractModel implements \Tall\Models\Auth\Acl\Contract
      */
     public function roles(): BelongsToMany
     {
-        return $this->belongsToMany(config('acl.models.role'))->withTimestamps();
+        return $this->belongsToMany(config('tall.models.role'))->withTimestamps();
     }
 
 }
