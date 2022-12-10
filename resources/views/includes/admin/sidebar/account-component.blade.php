@@ -32,11 +32,11 @@
         <div class="py-1" role="none">
             <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
             @if (\Route::has('admin.profile.view'))
-                @can('admin.profile.view')
+{{--                @can('admin.profile.view')--}}
                     <a href="{{ route('admin.profile.view') }}"
                         class="text-gray-700 block px-4 py-2 text-sm {{ request()->routeIs('admin.profile.view') ? 'bg-gray-100 text-gray-900' : 'text-gray-700' }}"
                         role="menuitem" tabindex="-1" id="options-menu-item-0">{{ __('Perfil') }}</a>
-                @endcan
+{{--                @endcan--}}
             @endif
             @if (\Route::has('admin.tenant.view'))
                 @can('admin.tenant.view')

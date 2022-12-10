@@ -14,13 +14,13 @@ use App\Models\User;
 
 class ShowComponent extends FormComponent
 {
-    use AuthorizesRequests;
+//    use AuthorizesRequests;
 
     public $title = "Profile";
 
     public function mount()
     {
-         $this->authorize(Route::currentRouteName());       
+//         $this->authorize(Route::currentRouteName());
          $this->setFormProperties(auth()->user());
     }
 
