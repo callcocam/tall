@@ -16,6 +16,7 @@ abstract class TableComponent extends AbstractComponent
     use WithPagination;
 
     protected $paginationTheme = 'pagination';
+    protected $defaultPerPage = '12';
 
     public $filters = [];
     public $optionsPerPage = [6,12,24,48,100,200,500];
@@ -78,11 +79,11 @@ abstract class TableComponent extends AbstractComponent
             }
             if($sort = data_get($this->filters,'sort')){
                 if($dir = data_get($this->filters,'dir')){
-                     $dir = strtolower($dir) == 'asc' ?'desc':'asc';     
-                     data_set($this->filters,'dir',$dir);               
+                     $dir = strtolower($dir) == 'asc' ?'desc':'asc';
+                     data_set($this->filters,'dir',$dir);
                 }
                 else{
-                    $dir =  'asc';   
+                    $dir =  'asc';
                     data_set($this->filters,'dir',$dir);
                 }
                 $this->builder->orderBy($sort,$dir);
@@ -108,7 +109,7 @@ abstract class TableComponent extends AbstractComponent
                     }
                 });
             }
-            return $this->builder->paginate(data_get($this->filters, 'perPage', 12));
+            return $this->builder->paginate(data_get($this->filters, 'perPage', $this->defaultPerPage));
         }
         return [];
     }
