@@ -8,17 +8,17 @@ namespace Tall\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Tall\Tenant\BelongsToTenants;
 use Tall\Models\Concerns\DateRange;
 use Tall\Sluggable\SlugOptions;
 use Tall\Sluggable\HasSlug;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Eloquent\Casts\Attribute;
+use Tall\Fluxo\Models\Traits\DbFilter;
 use Tall\Scopes\UuidGenerate;
 
 class AbstractModel extends Model
 {
     use HasFactory, DateRange, HasSlug, SoftDeletes, UuidGenerate;
+    use DbFilter;
     // use HasFactory, BelongsToTenants, DateRange, HasSlug, SoftDeletes, UuidGenerate;
 
 

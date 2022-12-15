@@ -34,7 +34,10 @@ class User extends AbstractModel implements
             $builder->where('id', $term);
         });
     }
-
+    public function compras()
+    {
+        return $this->roles()->where('slug', 'compras');;
+    }
     
     protected $appends = ['access'];
 
