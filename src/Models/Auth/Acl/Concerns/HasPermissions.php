@@ -18,7 +18,7 @@ trait HasPermissions
 
     public function getKeyField()
     {
-        return config('tall.key', 'id');
+        return config('tall.key', 'slug');
     }
     /**
      * Users can have many permissions
@@ -50,13 +50,13 @@ trait HasPermissions
         if ((method_exists($this, 'hasPermissionFlags') and $this->hasPermissionFlags())) {
             return $this->hasPermissionThroughFlag();
         }
-
         // Fetch permission if we pass through a string
         if (is_string($permission)) {
+            $permissionName = $permission;
             $permission = $this->getPermissionModel()->where($this->getKeyField(), $permission)->first();
 
             if (! $permission) {
-                throw new PermissionNotFoundException;
+                throw new PermissionNotFoundException( "Permisão {$permissionName} não encotrada");
             }
         }
 

@@ -313,7 +313,7 @@ class TallServiceProvider extends ServiceProvider
             __DIR__ . '/../../resources/views' => resource_path('views/vendor/tall'),
             __DIR__ . '/../../resources/css' => resource_path('css'),
             __DIR__ . '/../../resources/js' => resource_path('js'),
-            __DIR__ . '/../../resources/lang' => base_path('lang/vendor/tall' ),
+            // __DIR__ . '/../../resources/lang' => base_path('lang/vendor/tall' ),
         ], 'tall-views');
 
 

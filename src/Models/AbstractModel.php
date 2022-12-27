@@ -12,13 +12,13 @@ use Tall\Models\Concerns\DateRange;
 use Tall\Sluggable\SlugOptions;
 use Tall\Sluggable\HasSlug;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Tall\Fluxo\Models\Traits\DbFilter;
+// use Tall\Fluxo\Models\Traits\DbFilter;
 use Tall\Scopes\UuidGenerate;
 
 class AbstractModel extends Model
 {
     use HasFactory, DateRange, HasSlug, SoftDeletes, UuidGenerate;
-    use DbFilter;
+    // use DbFilter;
     // use HasFactory, BelongsToTenants, DateRange, HasSlug, SoftDeletes, UuidGenerate;
 
 

@@ -55,7 +55,7 @@ class AclServiceProvider extends ServiceProvider
                     return $user->hasPermissionTo($permission) ?: null;
                 }
             } catch (\Exception $e) {
-                //dd($e);
+               dd($e);
             }
         });
     }

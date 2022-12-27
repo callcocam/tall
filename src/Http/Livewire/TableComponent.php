@@ -15,7 +15,7 @@ abstract class TableComponent extends AbstractComponent
 {
     use WithPagination;
 
-    protected $paginationTheme = 'pagination';
+    // protected $paginationTheme = 'pagination';
     protected $defaultPerPage = '12';
 
     public $filters = [];

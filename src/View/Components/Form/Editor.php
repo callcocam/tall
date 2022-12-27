@@ -22,6 +22,7 @@ class Editor extends  Field
     {
         $this->init($label, $name);
         $this->setProp('row',"4");
+        $this->setProp('endpoint',route('api.upload'));
         $this->array([
             'modules' => [
                 'toolbar' => [
@@ -29,8 +30,8 @@ class Editor extends  Field
                     [
                     ['list' =>'ordered'],
                     ['header' =>1],
-                    ['background' => []],
-                    ],
+                    ['background' => []],],
+                    ['image']
                 ],
             ],
             'placeholder' => 'Enter your content...',

@@ -66,26 +66,6 @@ class TenantServiceProvider extends ServiceProvider
 
                 endif;
                 TenantFacade::addTenant(config('tall.multitenancy.current_tenant_key', 'tenant_id'), $this->tenant->id);
-
-            // config([
-            //     'lfm.folder_categories.file.folder_name'=> sprintf("files/%s", $this->tenant->id)
-            // ]);
-            // config([
-            //     'lfm.folder_categories.image.folder_name'=> sprintf("photos/%s", $this->tenant->id)
-            // ]);
-            // config([
-            //     'lfm'=> [
-            //         'folder_categories'=>[
-            //             'file'=>[
-            //                 'folder_name'=>sprintf("files/%s", $this->tenant->id)
-            //             ],
-            //             'image'=>[
-            //                 'folder_name'=>sprintf("photos/%s", $this->tenant->id)
-            //             ]
-            //         ]
-            //     ]
-            // ]);
-            // dd(config('lfm'));
             } catch (\PDOException $th) {
 
                 throw $th;
